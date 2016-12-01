@@ -16,6 +16,7 @@
 		22C5C03B1DF061CE00790EF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C5C0391DF061CE00790EF6 /* LaunchScreen.storyboard */; };
 		22C5C0461DF061CE00790EF6 /* iotbroker_cloud_clientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0451DF061CE00790EF6 /* iotbroker_cloud_clientTests.m */; };
 		22C5C0511DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0501DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m */; };
+		22C5C0631DF0631200790EF6 /* IBConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0621DF0631200790EF6 /* IBConnection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		22C5C04C1DF061CE00790EF6 /* iotbroker.cloud-clientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iotbroker.cloud-clientUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C5C0501DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iotbroker_cloud_clientUITests.m; sourceTree = "<group>"; };
 		22C5C0521DF061CE00790EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22C5C0611DF0631200790EF6 /* IBConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBConnection.h; sourceTree = "<group>"; };
+		22C5C0621DF0631200790EF6 /* IBConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBConnection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,8 @@
 		22C5C0271DF061CE00790EF6 /* iotbroker.cloud-client */ = {
 			isa = PBXGroup;
 			children = (
+				22C5C0611DF0631200790EF6 /* IBConnection.h */,
+				22C5C0621DF0631200790EF6 /* IBConnection.m */,
 				22C5C02B1DF061CE00790EF6 /* AppDelegate.h */,
 				22C5C02C1DF061CE00790EF6 /* AppDelegate.m */,
 				22C5C02E1DF061CE00790EF6 /* ViewController.h */,
@@ -279,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22C5C0631DF0631200790EF6 /* IBConnection.m in Sources */,
 				22C5C0361DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodeld in Sources */,
 				22C5C0301DF061CE00790EF6 /* ViewController.m in Sources */,
 				22C5C02D1DF061CE00790EF6 /* AppDelegate.m in Sources */,
