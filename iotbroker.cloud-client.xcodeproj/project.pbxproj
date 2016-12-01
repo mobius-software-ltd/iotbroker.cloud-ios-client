@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22C5C02A1DF061CE00790EF6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0291DF061CE00790EF6 /* main.m */; };
+		22C5C02D1DF061CE00790EF6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C02C1DF061CE00790EF6 /* AppDelegate.m */; };
+		22C5C0301DF061CE00790EF6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C02F1DF061CE00790EF6 /* ViewController.m */; };
+		22C5C0331DF061CE00790EF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C5C0311DF061CE00790EF6 /* Main.storyboard */; };
+		22C5C0361DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0341DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodeld */; };
+		22C5C0381DF061CE00790EF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C5C0371DF061CE00790EF6 /* Assets.xcassets */; };
+		22C5C03B1DF061CE00790EF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C5C0391DF061CE00790EF6 /* LaunchScreen.storyboard */; };
+		22C5C0461DF061CE00790EF6 /* iotbroker_cloud_clientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0451DF061CE00790EF6 /* iotbroker_cloud_clientTests.m */; };
+		22C5C0511DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0501DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		22C5C0421DF061CE00790EF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22C5C01D1DF061CE00790EF6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22C5C0241DF061CE00790EF6;
+			remoteInfo = "iotbroker.cloud-client";
+		};
+		22C5C04D1DF061CE00790EF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22C5C01D1DF061CE00790EF6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22C5C0241DF061CE00790EF6;
+			remoteInfo = "iotbroker.cloud-client";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		22C5C0251DF061CE00790EF6 /* iotbroker.cloud-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iotbroker.cloud-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22C5C0291DF061CE00790EF6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		22C5C02B1DF061CE00790EF6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		22C5C02C1DF061CE00790EF6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		22C5C02E1DF061CE00790EF6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		22C5C02F1DF061CE00790EF6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		22C5C0321DF061CE00790EF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		22C5C0351DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iotbroker_cloud_client.xcdatamodel; sourceTree = "<group>"; };
+		22C5C0371DF061CE00790EF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		22C5C03A1DF061CE00790EF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		22C5C03C1DF061CE00790EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22C5C0411DF061CE00790EF6 /* iotbroker.cloud-clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iotbroker.cloud-clientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22C5C0451DF061CE00790EF6 /* iotbroker_cloud_clientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iotbroker_cloud_clientTests.m; sourceTree = "<group>"; };
+		22C5C0471DF061CE00790EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22C5C04C1DF061CE00790EF6 /* iotbroker.cloud-clientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iotbroker.cloud-clientUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22C5C0501DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iotbroker_cloud_clientUITests.m; sourceTree = "<group>"; };
+		22C5C0521DF061CE00790EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22C5C0221DF061CE00790EF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22C5C03E1DF061CE00790EF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22C5C0491DF061CE00790EF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22C5C01C1DF061CE00790EF6 = {
+			isa = PBXGroup;
+			children = (
+				22C5C0271DF061CE00790EF6 /* iotbroker.cloud-client */,
+				22C5C0441DF061CE00790EF6 /* iotbroker.cloud-clientTests */,
+				22C5C04F1DF061CE00790EF6 /* iotbroker.cloud-clientUITests */,
+				22C5C0261DF061CE00790EF6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22C5C0261DF061CE00790EF6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22C5C0251DF061CE00790EF6 /* iotbroker.cloud-client.app */,
+				22C5C0411DF061CE00790EF6 /* iotbroker.cloud-clientTests.xctest */,
+				22C5C04C1DF061CE00790EF6 /* iotbroker.cloud-clientUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22C5C0271DF061CE00790EF6 /* iotbroker.cloud-client */ = {
+			isa = PBXGroup;
+			children = (
+				22C5C02B1DF061CE00790EF6 /* AppDelegate.h */,
+				22C5C02C1DF061CE00790EF6 /* AppDelegate.m */,
+				22C5C02E1DF061CE00790EF6 /* ViewController.h */,
+				22C5C02F1DF061CE00790EF6 /* ViewController.m */,
+				22C5C0311DF061CE00790EF6 /* Main.storyboard */,
+				22C5C0371DF061CE00790EF6 /* Assets.xcassets */,
+				22C5C0391DF061CE00790EF6 /* LaunchScreen.storyboard */,
+				22C5C03C1DF061CE00790EF6 /* Info.plist */,
+				22C5C0341DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodeld */,
+				22C5C0281DF061CE00790EF6 /* Supporting Files */,
+			);
+			path = "iotbroker.cloud-client";
+			sourceTree = "<group>";
+		};
+		22C5C0281DF061CE00790EF6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				22C5C0291DF061CE00790EF6 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22C5C0441DF061CE00790EF6 /* iotbroker.cloud-clientTests */ = {
+			isa = PBXGroup;
+			children = (
+				22C5C0451DF061CE00790EF6 /* iotbroker_cloud_clientTests.m */,
+				22C5C0471DF061CE00790EF6 /* Info.plist */,
+			);
+			path = "iotbroker.cloud-clientTests";
+			sourceTree = "<group>";
+		};
+		22C5C04F1DF061CE00790EF6 /* iotbroker.cloud-clientUITests */ = {
+			isa = PBXGroup;
+			children = (
+				22C5C0501DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m */,
+				22C5C0521DF061CE00790EF6 /* Info.plist */,
+			);
+			path = "iotbroker.cloud-clientUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22C5C0241DF061CE00790EF6 /* iotbroker.cloud-client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22C5C0551DF061CE00790EF6 /* Build configuration list for PBXNativeTarget "iotbroker.cloud-client" */;
+			buildPhases = (
+				22C5C0211DF061CE00790EF6 /* Sources */,
+				22C5C0221DF061CE00790EF6 /* Frameworks */,
+				22C5C0231DF061CE00790EF6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iotbroker.cloud-client";
+			productName = "iotbroker.cloud-client";
+			productReference = 22C5C0251DF061CE00790EF6 /* iotbroker.cloud-client.app */;
+			productType = "com.apple.product-type.application";
+		};
+		22C5C0401DF061CE00790EF6 /* iotbroker.cloud-clientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22C5C0581DF061CE00790EF6 /* Build configuration list for PBXNativeTarget "iotbroker.cloud-clientTests" */;
+			buildPhases = (
+				22C5C03D1DF061CE00790EF6 /* Sources */,
+				22C5C03E1DF061CE00790EF6 /* Frameworks */,
+				22C5C03F1DF061CE00790EF6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22C5C0431DF061CE00790EF6 /* PBXTargetDependency */,
+			);
+			name = "iotbroker.cloud-clientTests";
+			productName = "iotbroker.cloud-clientTests";
+			productReference = 22C5C0411DF061CE00790EF6 /* iotbroker.cloud-clientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		22C5C04B1DF061CE00790EF6 /* iotbroker.cloud-clientUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22C5C05B1DF061CE00790EF6 /* Build configuration list for PBXNativeTarget "iotbroker.cloud-clientUITests" */;
+			buildPhases = (
+				22C5C0481DF061CE00790EF6 /* Sources */,
+				22C5C0491DF061CE00790EF6 /* Frameworks */,
+				22C5C04A1DF061CE00790EF6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22C5C04E1DF061CE00790EF6 /* PBXTargetDependency */,
+			);
+			name = "iotbroker.cloud-clientUITests";
+			productName = "iotbroker.cloud-clientUITests";
+			productReference = 22C5C04C1DF061CE00790EF6 /* iotbroker.cloud-clientUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22C5C01D1DF061CE00790EF6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = MobiusSoftware;
+				TargetAttributes = {
+					22C5C0241DF061CE00790EF6 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5K455F48MX;
+						ProvisioningStyle = Automatic;
+					};
+					22C5C0401DF061CE00790EF6 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5K455F48MX;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 22C5C0241DF061CE00790EF6;
+					};
+					22C5C04B1DF061CE00790EF6 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5K455F48MX;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 22C5C0241DF061CE00790EF6;
+					};
+				};
+			};
+			buildConfigurationList = 22C5C0201DF061CE00790EF6 /* Build configuration list for PBXProject "iotbroker.cloud-client" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 22C5C01C1DF061CE00790EF6;
+			productRefGroup = 22C5C0261DF061CE00790EF6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22C5C0241DF061CE00790EF6 /* iotbroker.cloud-client */,
+				22C5C0401DF061CE00790EF6 /* iotbroker.cloud-clientTests */,
+				22C5C04B1DF061CE00790EF6 /* iotbroker.cloud-clientUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22C5C0231DF061CE00790EF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22C5C03B1DF061CE00790EF6 /* LaunchScreen.storyboard in Resources */,
+				22C5C0381DF061CE00790EF6 /* Assets.xcassets in Resources */,
+				22C5C0331DF061CE00790EF6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22C5C03F1DF061CE00790EF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22C5C04A1DF061CE00790EF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22C5C0211DF061CE00790EF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22C5C0361DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodeld in Sources */,
+				22C5C0301DF061CE00790EF6 /* ViewController.m in Sources */,
+				22C5C02D1DF061CE00790EF6 /* AppDelegate.m in Sources */,
+				22C5C02A1DF061CE00790EF6 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22C5C03D1DF061CE00790EF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22C5C0461DF061CE00790EF6 /* iotbroker_cloud_clientTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22C5C0481DF061CE00790EF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22C5C0511DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		22C5C0431DF061CE00790EF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22C5C0241DF061CE00790EF6 /* iotbroker.cloud-client */;
+			targetProxy = 22C5C0421DF061CE00790EF6 /* PBXContainerItemProxy */;
+		};
+		22C5C04E1DF061CE00790EF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22C5C0241DF061CE00790EF6 /* iotbroker.cloud-client */;
+			targetProxy = 22C5C04D1DF061CE00790EF6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		22C5C0311DF061CE00790EF6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22C5C0321DF061CE00790EF6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		22C5C0391DF061CE00790EF6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22C5C03A1DF061CE00790EF6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		22C5C0531DF061CE00790EF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22C5C0541DF061CE00790EF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22C5C0561DF061CE00790EF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5K455F48MX;
+				INFOPLIST_FILE = "iotbroker.cloud-client/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker-cloud-client";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		22C5C0571DF061CE00790EF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5K455F48MX;
+				INFOPLIST_FILE = "iotbroker.cloud-client/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker-cloud-client";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		22C5C0591DF061CE00790EF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 5K455F48MX;
+				INFOPLIST_FILE = "iotbroker.cloud-clientTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker-cloud-clientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iotbroker.cloud-client.app/iotbroker.cloud-client";
+			};
+			name = Debug;
+		};
+		22C5C05A1DF061CE00790EF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 5K455F48MX;
+				INFOPLIST_FILE = "iotbroker.cloud-clientTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker-cloud-clientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iotbroker.cloud-client.app/iotbroker.cloud-client";
+			};
+			name = Release;
+		};
+		22C5C05C1DF061CE00790EF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 5K455F48MX;
+				INFOPLIST_FILE = "iotbroker.cloud-clientUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker-cloud-clientUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "iotbroker.cloud-client";
+			};
+			name = Debug;
+		};
+		22C5C05D1DF061CE00790EF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 5K455F48MX;
+				INFOPLIST_FILE = "iotbroker.cloud-clientUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker-cloud-clientUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "iotbroker.cloud-client";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22C5C0201DF061CE00790EF6 /* Build configuration list for PBXProject "iotbroker.cloud-client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22C5C0531DF061CE00790EF6 /* Debug */,
+				22C5C0541DF061CE00790EF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22C5C0551DF061CE00790EF6 /* Build configuration list for PBXNativeTarget "iotbroker.cloud-client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22C5C0561DF061CE00790EF6 /* Debug */,
+				22C5C0571DF061CE00790EF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		22C5C0581DF061CE00790EF6 /* Build configuration list for PBXNativeTarget "iotbroker.cloud-clientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22C5C0591DF061CE00790EF6 /* Debug */,
+				22C5C05A1DF061CE00790EF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		22C5C05B1DF061CE00790EF6 /* Build configuration list for PBXNativeTarget "iotbroker.cloud-clientUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22C5C05C1DF061CE00790EF6 /* Debug */,
+				22C5C05D1DF061CE00790EF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		22C5C0341DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				22C5C0351DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodel */,
+			);
+			currentVersion = 22C5C0351DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodel */;
+			path = iotbroker_cloud_client.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 22C5C01D1DF061CE00790EF6 /* Project object */;
+}
