@@ -1,5 +1,5 @@
 //
-//  IBConnection.h
+//  IBConnect.h
 //  iotbroker.cloud-client
 //
 //  Created by MacOS on 01.12.16.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface IBConnection : NSObject
+@interface IBConnect : NSObject
 
 @end
