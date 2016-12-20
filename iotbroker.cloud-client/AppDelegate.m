@@ -1,10 +1,22 @@
-//
-//  AppDelegate.m
-//  iotbroker.cloud-client
-//
-//  Created by MacOS on 01.12.16.
-//  Copyright © 2016 MobiusSoftware. All rights reserved.
-//
+/**
+ * Mobius Software LTD
+ * Copyright 2015-2016, Mobius Software LTD
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */
 
 #import "AppDelegate.h"
 
@@ -16,7 +28,26 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    CGFloat r = 39.0/255.0, g = 164.0/255.0, b = 217.0/255.0;
+    
+    CGFloat r2,g2,b2,a2;
+    r2 = g2 = b2 = a2 = 1;
+    
+    CGFloat red,green,blue ;
+    
+    CGFloat alpha = 0.01;
+    do {
+        alpha += 0.01;
+        red = (r - r2 + r2 * alpha) / alpha;
+        green = (g - g2 + g2 * alpha) / alpha;
+        blue = (b - b2 + b2 * alpha) / alpha;
+    } while (alpha < 1 && (red < 0 || green < 0 || blue < 0 || red > 1 || green > 1 || blue > 1));
+    
+    [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
+    [UINavigationBar appearance].tintColor = [UIColor whiteColor];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor], NSForegroundColorAttributeName, nil]];
+    
     return YES;
 }
 
@@ -73,7 +104,7 @@
                      Check the error message to determine what the actual problem was.
                     */
                     NSLog(@"Unresolved error %@, %@", error, error.userInfo);
-                    abort();
+                    //abort();
                 }
             }];
         }
@@ -91,7 +122,7 @@
         // Replace this implementation with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, error.userInfo);
-        abort();
+        //abort();
     }
 }
 
