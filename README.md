@@ -27,9 +27,9 @@ These instructions will help you get a copy of the project and run it.
 
 ### Installation
 
-* To install IoTBroker.Cloud on your iPhone, first you should download IoTBroker.Cloud iOS client [IotBroker.Cloud iOS Client](https://github.com/mobius-software-ltd/iotbroker.cloud-ios-client).
+* To install IoTBroker.Cloud on your iPhone, first you should download [IotBroker.Cloud iOS Client](https://github.com/mobius-software-ltd/iotbroker.cloud-ios-client).
 
-* In order to open IoTBroker.Cloud iOS client in Xcode, first you should go to *File-Open-Choose project*. It is necessary to choose **iotbroker.cloud-client.xcodeproj** file.
+* In order to open IoTBroker.Cloud iOS client in Xcode, you should go to *File-Open-Choose project*. It is necessary to choose **iotbroker.cloud-client.xcodeproj** file.
 
 * Now you should connect your iPhone to Mac via USB.
 
