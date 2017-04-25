@@ -82,7 +82,6 @@ static NSString *const IBChooseAccountPopover = @"IBChooseAccountPopover";
 - (void)didSelectedAccount:(Account *)account {
     
     if (account != nil && self->_popoverViewController != nil) {
-        
         NSLog(@"USERNAME : %@", account.username);
         NSLog(@"PASSWORD : %@", account.password);
         NSLog(@"TOPICS : %zd", account.topics.count);
