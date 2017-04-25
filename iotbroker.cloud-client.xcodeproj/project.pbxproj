@@ -26,16 +26,64 @@
 		2262BD9A1DF8638F00D5A83E /* IBLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2262BD991DF8638F00D5A83E /* IBLoadingViewController.m */; };
 		22A219FF1DF168E60063C9A8 /* IBLengthDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A219FE1DF168E60063C9A8 /* IBLengthDetails.m */; };
 		22A21A021DF16AA40063C9A8 /* IBMutableData.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A21A011DF16AA40063C9A8 /* IBMutableData.m */; };
-		22A21A061DF16C640063C9A8 /* IBParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A21A051DF16C640063C9A8 /* IBParser.m */; };
-		22A21A0A1DF16F9B0063C9A8 /* IBWill.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A21A091DF16F9B0063C9A8 /* IBWill.m */; };
-		22A21A141DF19BF10063C9A8 /* IBQoS.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A21A131DF19BF10063C9A8 /* IBQoS.m */; };
-		22A21A181DF1ABC00063C9A8 /* IBTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A21A171DF1ABC00063C9A8 /* IBTopic.m */; };
-		22A21A1B1DF1AD1A0063C9A8 /* IBDisconnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A21A1A1DF1AD1A0063C9A8 /* IBDisconnect.m */; };
-		22A21A1E1DF1AD8C0063C9A8 /* IBPingreq.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A21A1D1DF1AD8C0063C9A8 /* IBPingreq.m */; };
-		22A21A211DF1ADF00063C9A8 /* IBPingresp.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A21A201DF1ADF00063C9A8 /* IBPingresp.m */; };
-		22A21A241DF1AEB20063C9A8 /* IBPuback.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A21A231DF1AEB20063C9A8 /* IBPuback.m */; };
-		22A21A271DF1AF670063C9A8 /* IBCountableMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A21A261DF1AF670063C9A8 /* IBCountableMessage.m */; };
-		22A21A2A1DF1B2BD0063C9A8 /* IBPubcomp.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A21A291DF1B2BD0063C9A8 /* IBPubcomp.m */; };
+		22C531A31EAF90D2007F57A8 /* IBPuback.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531871EAF90D2007F57A8 /* IBPuback.m */; };
+		22C531A41EAF90D2007F57A8 /* IBConnack.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531891EAF90D2007F57A8 /* IBConnack.m */; };
+		22C531A51EAF90D2007F57A8 /* IBConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5318B1EAF90D2007F57A8 /* IBConnect.m */; };
+		22C531A61EAF90D2007F57A8 /* IBDisconnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5318D1EAF90D2007F57A8 /* IBDisconnect.m */; };
+		22C531A71EAF90D2007F57A8 /* IBPingreq.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5318F1EAF90D2007F57A8 /* IBPingreq.m */; };
+		22C531A81EAF90D2007F57A8 /* IBPingresp.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531911EAF90D2007F57A8 /* IBPingresp.m */; };
+		22C531A91EAF90D2007F57A8 /* IBPubcomp.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531941EAF90D2007F57A8 /* IBPubcomp.m */; };
+		22C531AA1EAF90D2007F57A8 /* IBPublish.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531961EAF90D2007F57A8 /* IBPublish.m */; };
+		22C531AB1EAF90D2007F57A8 /* IBPubrec.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531981EAF90D2007F57A8 /* IBPubrec.m */; };
+		22C531AC1EAF90D2007F57A8 /* IBPubrel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5319A1EAF90D2007F57A8 /* IBPubrel.m */; };
+		22C531AD1EAF90D2007F57A8 /* IBSuback.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5319C1EAF90D2007F57A8 /* IBSuback.m */; };
+		22C531AE1EAF90D2007F57A8 /* IBSubscribe.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5319E1EAF90D2007F57A8 /* IBSubscribe.m */; };
+		22C531AF1EAF90D2007F57A8 /* IBUnsuback.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531A01EAF90D2007F57A8 /* IBUnsuback.m */; };
+		22C531B01EAF90D2007F57A8 /* IBUnsubscribe.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531A21EAF90D2007F57A8 /* IBUnsubscribe.m */; };
+		22C531B91EAF90F2007F57A8 /* IBTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531B11EAF90F2007F57A8 /* IBTopic.m */; };
+		22C531BA1EAF90F2007F57A8 /* IBCountableMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531B51EAF90F2007F57A8 /* IBCountableMessage.m */; };
+		22C531BB1EAF90F2007F57A8 /* IBQoS.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531B71EAF90F2007F57A8 /* IBQoS.m */; };
+		22C531BC1EAF90F2007F57A8 /* IBWill.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531B81EAF90F2007F57A8 /* IBWill.m */; };
+		22C531D11EAF9216007F57A8 /* IBParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531D01EAF9216007F57A8 /* IBParser.m */; };
+		22C5320B1EAF9338007F57A8 /* IBSNPublish.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531D21EAF9338007F57A8 /* IBSNPublish.m */; };
+		22C5320C1EAF9338007F57A8 /* IBSNWillMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531D31EAF9338007F57A8 /* IBSNWillMsg.m */; };
+		22C5320D1EAF9338007F57A8 /* IBSNWillMsgUpd.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531D41EAF9338007F57A8 /* IBSNWillMsgUpd.m */; };
+		22C5320E1EAF9338007F57A8 /* IBSNWillTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531D51EAF9338007F57A8 /* IBSNWillTopic.m */; };
+		22C5320F1EAF9338007F57A8 /* IBSNDisconnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531D61EAF9338007F57A8 /* IBSNDisconnect.m */; };
+		22C532101EAF9338007F57A8 /* IBSNEncapsulated.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531D71EAF9338007F57A8 /* IBSNEncapsulated.m */; };
+		22C532111EAF9338007F57A8 /* IBSNPingreq.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531D81EAF9338007F57A8 /* IBSNPingreq.m */; };
+		22C532121EAF9338007F57A8 /* IBSNPuback.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531D91EAF9338007F57A8 /* IBSNPuback.m */; };
+		22C532131EAF9338007F57A8 /* IBSNPubcomp.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531DA1EAF9338007F57A8 /* IBSNPubcomp.m */; };
+		22C532141EAF9338007F57A8 /* IBSNPubrec.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531DB1EAF9338007F57A8 /* IBSNPubrec.m */; };
+		22C532151EAF9338007F57A8 /* IBSNPubrel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531DC1EAF9338007F57A8 /* IBSNPubrel.m */; };
+		22C532161EAF9338007F57A8 /* IBSNRegack.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531DD1EAF9338007F57A8 /* IBSNRegack.m */; };
+		22C532171EAF9338007F57A8 /* IBSNRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531DE1EAF9338007F57A8 /* IBSNRegister.m */; };
+		22C532181EAF9338007F57A8 /* IBSNSuback.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531DF1EAF9338007F57A8 /* IBSNSuback.m */; };
+		22C532191EAF9338007F57A8 /* IBSNSubscribe.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531E01EAF9338007F57A8 /* IBSNSubscribe.m */; };
+		22C5321A1EAF9338007F57A8 /* IBSNUnsuback.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531E11EAF9338007F57A8 /* IBSNUnsuback.m */; };
+		22C5321B1EAF9338007F57A8 /* IBSNUnsubscribe.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531E21EAF9338007F57A8 /* IBSNUnsubscribe.m */; };
+		22C5321C1EAF9338007F57A8 /* IBSNWillMsgResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531E31EAF9338007F57A8 /* IBSNWillMsgResp.m */; };
+		22C5321D1EAF9338007F57A8 /* IBSNWillTopicResp.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531E41EAF9338007F57A8 /* IBSNWillTopicResp.m */; };
+		22C5321E1EAF9338007F57A8 /* IBSNWillTopicUpd.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531E51EAF9338007F57A8 /* IBSNWillTopicUpd.m */; };
+		22C5321F1EAF9338007F57A8 /* IBSNConnack.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531E61EAF9338007F57A8 /* IBSNConnack.m */; };
+		22C532201EAF9338007F57A8 /* IBSNConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531E71EAF9338007F57A8 /* IBSNConnect.m */; };
+		22C532211EAF9338007F57A8 /* IBSNGWInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531E91EAF9338007F57A8 /* IBSNGWInfo.m */; };
+		22C532221EAF9338007F57A8 /* IBSNSearchGW.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531EA1EAF9338007F57A8 /* IBSNSearchGW.m */; };
+		22C532231EAF9338007F57A8 /* IBSNAdvertise.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531EB1EAF9338007F57A8 /* IBSNAdvertise.m */; };
+		22C532241EAF9338007F57A8 /* IBSNWillTopicReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531F11EAF9338007F57A8 /* IBSNWillTopicReq.m */; };
+		22C532251EAF9338007F57A8 /* IBSNWillMsgReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531F81EAF9338007F57A8 /* IBSNWillMsgReq.m */; };
+		22C532261EAF9338007F57A8 /* IBSNPingresp.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C532051EAF9338007F57A8 /* IBSNPingresp.m */; };
+		22C5323C1EAF95A8007F57A8 /* IBSNFlags.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C532281EAF95A8007F57A8 /* IBSNFlags.m */; };
+		22C5323D1EAF95A8007F57A8 /* IBSNFullTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C532291EAF95A8007F57A8 /* IBSNFullTopic.m */; };
+		22C5323E1EAF95A8007F57A8 /* IBSNIdentifierTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5322A1EAF95A8007F57A8 /* IBSNIdentifierTopic.m */; };
+		22C5323F1EAF95A8007F57A8 /* IBSNShortTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5322B1EAF95A8007F57A8 /* IBSNShortTopic.m */; };
+		22C532401EAF95A8007F57A8 /* IBSNValuesValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5322E1EAF95A8007F57A8 /* IBSNValuesValidator.m */; };
+		22C532411EAF95A8007F57A8 /* IBSNTopicType.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C532301EAF95A8007F57A8 /* IBSNTopicType.m */; };
+		22C532421EAF95A8007F57A8 /* IBSNControls.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C532321EAF95A8007F57A8 /* IBSNControls.m */; };
+		22C532431EAF95A8007F57A8 /* IBSNQoS.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C532371EAF95A8007F57A8 /* IBSNQoS.m */; };
+		22C532441EAF95A8007F57A8 /* IBSNResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C532391EAF95A8007F57A8 /* IBSNResponseMessage.m */; };
+		22C532451EAF95A8007F57A8 /* IBSNCountableMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5323B1EAF95A8007F57A8 /* IBSNCountableMessage.m */; };
+		22C532491EAF9625007F57A8 /* IBSNParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C532481EAF9625007F57A8 /* IBSNParser.m */; };
 		22C5C02A1DF061CE00790EF6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0291DF061CE00790EF6 /* main.m */; };
 		22C5C02D1DF061CE00790EF6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C02C1DF061CE00790EF6 /* AppDelegate.m */; };
 		22C5C0331DF061CE00790EF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C5C0311DF061CE00790EF6 /* Main.storyboard */; };
@@ -44,18 +92,9 @@
 		22C5C03B1DF061CE00790EF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C5C0391DF061CE00790EF6 /* LaunchScreen.storyboard */; };
 		22C5C0461DF061CE00790EF6 /* iotbroker_cloud_clientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0451DF061CE00790EF6 /* iotbroker_cloud_clientTests.m */; };
 		22C5C0511DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0501DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m */; };
-		22C5C0661DF063FC00790EF6 /* IBConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0651DF063FC00790EF6 /* IBConnect.m */; };
-		22C5C06B1DF0646C00790EF6 /* IBConnack.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C06A1DF0646C00790EF6 /* IBConnack.m */; };
 		22E104B81E0017C10044AAFD /* IBAddTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E104B71E0017C10044AAFD /* IBAddTopicViewController.m */; };
 		22E104BB1E00354C0044AAFD /* IBAccountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E104BA1E00354C0044AAFD /* IBAccountListViewController.m */; };
 		22E104BF1E0036270044AAFD /* IBAccountListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E104BE1E0036270044AAFD /* IBAccountListTableViewCell.m */; };
-		22E3D9D71DF58007004C449F /* IBPublish.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E3D9D61DF58007004C449F /* IBPublish.m */; };
-		22E3D9DA1DF58208004C449F /* IBPubrec.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E3D9D91DF58208004C449F /* IBPubrec.m */; };
-		22E3D9DD1DF5828C004C449F /* IBPubrel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E3D9DC1DF5828C004C449F /* IBPubrel.m */; };
-		22E3D9E11DF582F2004C449F /* IBSuback.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E3D9E01DF582F2004C449F /* IBSuback.m */; };
-		22E3D9E41DF583BC004C449F /* IBSubscribe.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E3D9E31DF583BC004C449F /* IBSubscribe.m */; };
-		22E3D9ED1DF58528004C449F /* IBUnsubscribe.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E3D9EC1DF58528004C449F /* IBUnsubscribe.m */; };
-		22E3D9F01DF58532004C449F /* IBUnsuback.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E3D9EF1DF58532004C449F /* IBUnsuback.m */; };
 		22F2C6DA1DFAA7ED004FB400 /* IBCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F2C6D91DFAA7ED004FB400 /* IBCoreDataManager.m */; };
 		22F2C6E21DFAC397004FB400 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F2C6E11DFAC397004FB400 /* CoreData.framework */; };
 		22F2C6E51DFACAFA004FB400 /* IBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F2C6E41DFACAFA004FB400 /* IBTabBarController.m */; };
@@ -122,26 +161,127 @@
 		22A219FE1DF168E60063C9A8 /* IBLengthDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLengthDetails.m; sourceTree = "<group>"; };
 		22A21A001DF16AA40063C9A8 /* IBMutableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBMutableData.h; sourceTree = "<group>"; };
 		22A21A011DF16AA40063C9A8 /* IBMutableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBMutableData.m; sourceTree = "<group>"; };
-		22A21A041DF16C640063C9A8 /* IBParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBParser.h; sourceTree = "<group>"; };
-		22A21A051DF16C640063C9A8 /* IBParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBParser.m; sourceTree = "<group>"; };
-		22A21A081DF16F9B0063C9A8 /* IBWill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBWill.h; sourceTree = "<group>"; };
-		22A21A091DF16F9B0063C9A8 /* IBWill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBWill.m; sourceTree = "<group>"; };
-		22A21A121DF19BF10063C9A8 /* IBQoS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBQoS.h; sourceTree = "<group>"; };
-		22A21A131DF19BF10063C9A8 /* IBQoS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBQoS.m; sourceTree = "<group>"; };
-		22A21A161DF1ABC00063C9A8 /* IBTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTopic.h; sourceTree = "<group>"; };
-		22A21A171DF1ABC00063C9A8 /* IBTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTopic.m; sourceTree = "<group>"; };
-		22A21A191DF1AD1A0063C9A8 /* IBDisconnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBDisconnect.h; sourceTree = "<group>"; };
-		22A21A1A1DF1AD1A0063C9A8 /* IBDisconnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBDisconnect.m; sourceTree = "<group>"; };
-		22A21A1C1DF1AD8C0063C9A8 /* IBPingreq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPingreq.h; sourceTree = "<group>"; };
-		22A21A1D1DF1AD8C0063C9A8 /* IBPingreq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPingreq.m; sourceTree = "<group>"; };
-		22A21A1F1DF1ADF00063C9A8 /* IBPingresp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPingresp.h; sourceTree = "<group>"; };
-		22A21A201DF1ADF00063C9A8 /* IBPingresp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPingresp.m; sourceTree = "<group>"; };
-		22A21A221DF1AEB20063C9A8 /* IBPuback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPuback.h; sourceTree = "<group>"; };
-		22A21A231DF1AEB20063C9A8 /* IBPuback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPuback.m; sourceTree = "<group>"; };
-		22A21A251DF1AF670063C9A8 /* IBCountableMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCountableMessage.h; sourceTree = "<group>"; };
-		22A21A261DF1AF670063C9A8 /* IBCountableMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBCountableMessage.m; sourceTree = "<group>"; };
-		22A21A281DF1B2BD0063C9A8 /* IBPubcomp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPubcomp.h; sourceTree = "<group>"; };
-		22A21A291DF1B2BD0063C9A8 /* IBPubcomp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPubcomp.m; sourceTree = "<group>"; };
+		22C531811EAF8AC3007F57A8 /* IBMQTTMessages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBMQTTMessages.h; sourceTree = "<group>"; };
+		22C531851EAF8C92007F57A8 /* IBMQTT-SNMessages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IBMQTT-SNMessages.h"; sourceTree = "<group>"; };
+		22C531861EAF90D2007F57A8 /* IBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBMessage.h; sourceTree = "<group>"; };
+		22C531871EAF90D2007F57A8 /* IBPuback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPuback.m; sourceTree = "<group>"; };
+		22C531881EAF90D2007F57A8 /* IBConnack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBConnack.h; sourceTree = "<group>"; };
+		22C531891EAF90D2007F57A8 /* IBConnack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBConnack.m; sourceTree = "<group>"; };
+		22C5318A1EAF90D2007F57A8 /* IBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBConnect.h; sourceTree = "<group>"; };
+		22C5318B1EAF90D2007F57A8 /* IBConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBConnect.m; sourceTree = "<group>"; };
+		22C5318C1EAF90D2007F57A8 /* IBDisconnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBDisconnect.h; sourceTree = "<group>"; };
+		22C5318D1EAF90D2007F57A8 /* IBDisconnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBDisconnect.m; sourceTree = "<group>"; };
+		22C5318E1EAF90D2007F57A8 /* IBPingreq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPingreq.h; sourceTree = "<group>"; };
+		22C5318F1EAF90D2007F57A8 /* IBPingreq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPingreq.m; sourceTree = "<group>"; };
+		22C531901EAF90D2007F57A8 /* IBPingresp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPingresp.h; sourceTree = "<group>"; };
+		22C531911EAF90D2007F57A8 /* IBPingresp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPingresp.m; sourceTree = "<group>"; };
+		22C531921EAF90D2007F57A8 /* IBPuback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPuback.h; sourceTree = "<group>"; };
+		22C531931EAF90D2007F57A8 /* IBPubcomp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPubcomp.h; sourceTree = "<group>"; };
+		22C531941EAF90D2007F57A8 /* IBPubcomp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPubcomp.m; sourceTree = "<group>"; };
+		22C531951EAF90D2007F57A8 /* IBPublish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPublish.h; sourceTree = "<group>"; };
+		22C531961EAF90D2007F57A8 /* IBPublish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPublish.m; sourceTree = "<group>"; };
+		22C531971EAF90D2007F57A8 /* IBPubrec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPubrec.h; sourceTree = "<group>"; };
+		22C531981EAF90D2007F57A8 /* IBPubrec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPubrec.m; sourceTree = "<group>"; };
+		22C531991EAF90D2007F57A8 /* IBPubrel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPubrel.h; sourceTree = "<group>"; };
+		22C5319A1EAF90D2007F57A8 /* IBPubrel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPubrel.m; sourceTree = "<group>"; };
+		22C5319B1EAF90D2007F57A8 /* IBSuback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSuback.h; sourceTree = "<group>"; };
+		22C5319C1EAF90D2007F57A8 /* IBSuback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBSuback.m; sourceTree = "<group>"; };
+		22C5319D1EAF90D2007F57A8 /* IBSubscribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSubscribe.h; sourceTree = "<group>"; };
+		22C5319E1EAF90D2007F57A8 /* IBSubscribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBSubscribe.m; sourceTree = "<group>"; };
+		22C5319F1EAF90D2007F57A8 /* IBUnsuback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBUnsuback.h; sourceTree = "<group>"; };
+		22C531A01EAF90D2007F57A8 /* IBUnsuback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBUnsuback.m; sourceTree = "<group>"; };
+		22C531A11EAF90D2007F57A8 /* IBUnsubscribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBUnsubscribe.h; sourceTree = "<group>"; };
+		22C531A21EAF90D2007F57A8 /* IBUnsubscribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBUnsubscribe.m; sourceTree = "<group>"; };
+		22C531B11EAF90F2007F57A8 /* IBTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTopic.m; sourceTree = "<group>"; };
+		22C531B21EAF90F2007F57A8 /* IBTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTopic.h; sourceTree = "<group>"; };
+		22C531B31EAF90F2007F57A8 /* IBWill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBWill.h; sourceTree = "<group>"; };
+		22C531B41EAF90F2007F57A8 /* IBCountableMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCountableMessage.h; sourceTree = "<group>"; };
+		22C531B51EAF90F2007F57A8 /* IBCountableMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBCountableMessage.m; sourceTree = "<group>"; };
+		22C531B61EAF90F2007F57A8 /* IBQoS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBQoS.h; sourceTree = "<group>"; };
+		22C531B71EAF90F2007F57A8 /* IBQoS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBQoS.m; sourceTree = "<group>"; };
+		22C531B81EAF90F2007F57A8 /* IBWill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBWill.m; sourceTree = "<group>"; };
+		22C531CF1EAF9216007F57A8 /* IBParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBParser.h; sourceTree = "<group>"; };
+		22C531D01EAF9216007F57A8 /* IBParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBParser.m; sourceTree = "<group>"; };
+		22C531D21EAF9338007F57A8 /* IBSNPublish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNPublish.m; path = "Protocols/MQTT-SN/Messages/IBSNPublish.m"; sourceTree = "<group>"; };
+		22C531D31EAF9338007F57A8 /* IBSNWillMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNWillMsg.m; path = "Protocols/MQTT-SN/Messages/IBSNWillMsg.m"; sourceTree = "<group>"; };
+		22C531D41EAF9338007F57A8 /* IBSNWillMsgUpd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNWillMsgUpd.m; path = "Protocols/MQTT-SN/Messages/IBSNWillMsgUpd.m"; sourceTree = "<group>"; };
+		22C531D51EAF9338007F57A8 /* IBSNWillTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNWillTopic.m; path = "Protocols/MQTT-SN/Messages/IBSNWillTopic.m"; sourceTree = "<group>"; };
+		22C531D61EAF9338007F57A8 /* IBSNDisconnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNDisconnect.m; path = "Protocols/MQTT-SN/Messages/IBSNDisconnect.m"; sourceTree = "<group>"; };
+		22C531D71EAF9338007F57A8 /* IBSNEncapsulated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNEncapsulated.m; path = "Protocols/MQTT-SN/Messages/IBSNEncapsulated.m"; sourceTree = "<group>"; };
+		22C531D81EAF9338007F57A8 /* IBSNPingreq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNPingreq.m; path = "Protocols/MQTT-SN/Messages/IBSNPingreq.m"; sourceTree = "<group>"; };
+		22C531D91EAF9338007F57A8 /* IBSNPuback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNPuback.m; path = "Protocols/MQTT-SN/Messages/IBSNPuback.m"; sourceTree = "<group>"; };
+		22C531DA1EAF9338007F57A8 /* IBSNPubcomp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNPubcomp.m; path = "Protocols/MQTT-SN/Messages/IBSNPubcomp.m"; sourceTree = "<group>"; };
+		22C531DB1EAF9338007F57A8 /* IBSNPubrec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNPubrec.m; path = "Protocols/MQTT-SN/Messages/IBSNPubrec.m"; sourceTree = "<group>"; };
+		22C531DC1EAF9338007F57A8 /* IBSNPubrel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNPubrel.m; path = "Protocols/MQTT-SN/Messages/IBSNPubrel.m"; sourceTree = "<group>"; };
+		22C531DD1EAF9338007F57A8 /* IBSNRegack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNRegack.m; path = "Protocols/MQTT-SN/Messages/IBSNRegack.m"; sourceTree = "<group>"; };
+		22C531DE1EAF9338007F57A8 /* IBSNRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNRegister.m; path = "Protocols/MQTT-SN/Messages/IBSNRegister.m"; sourceTree = "<group>"; };
+		22C531DF1EAF9338007F57A8 /* IBSNSuback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNSuback.m; path = "Protocols/MQTT-SN/Messages/IBSNSuback.m"; sourceTree = "<group>"; };
+		22C531E01EAF9338007F57A8 /* IBSNSubscribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNSubscribe.m; path = "Protocols/MQTT-SN/Messages/IBSNSubscribe.m"; sourceTree = "<group>"; };
+		22C531E11EAF9338007F57A8 /* IBSNUnsuback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNUnsuback.m; path = "Protocols/MQTT-SN/Messages/IBSNUnsuback.m"; sourceTree = "<group>"; };
+		22C531E21EAF9338007F57A8 /* IBSNUnsubscribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNUnsubscribe.m; path = "Protocols/MQTT-SN/Messages/IBSNUnsubscribe.m"; sourceTree = "<group>"; };
+		22C531E31EAF9338007F57A8 /* IBSNWillMsgResp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNWillMsgResp.m; path = "Protocols/MQTT-SN/Messages/IBSNWillMsgResp.m"; sourceTree = "<group>"; };
+		22C531E41EAF9338007F57A8 /* IBSNWillTopicResp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNWillTopicResp.m; path = "Protocols/MQTT-SN/Messages/IBSNWillTopicResp.m"; sourceTree = "<group>"; };
+		22C531E51EAF9338007F57A8 /* IBSNWillTopicUpd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNWillTopicUpd.m; path = "Protocols/MQTT-SN/Messages/IBSNWillTopicUpd.m"; sourceTree = "<group>"; };
+		22C531E61EAF9338007F57A8 /* IBSNConnack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNConnack.m; path = "Protocols/MQTT-SN/Messages/IBSNConnack.m"; sourceTree = "<group>"; };
+		22C531E71EAF9338007F57A8 /* IBSNConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNConnect.m; path = "Protocols/MQTT-SN/Messages/IBSNConnect.m"; sourceTree = "<group>"; };
+		22C531E81EAF9338007F57A8 /* IBSNGWInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNGWInfo.h; path = "Protocols/MQTT-SN/Messages/IBSNGWInfo.h"; sourceTree = "<group>"; };
+		22C531E91EAF9338007F57A8 /* IBSNGWInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNGWInfo.m; path = "Protocols/MQTT-SN/Messages/IBSNGWInfo.m"; sourceTree = "<group>"; };
+		22C531EA1EAF9338007F57A8 /* IBSNSearchGW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNSearchGW.m; path = "Protocols/MQTT-SN/Messages/IBSNSearchGW.m"; sourceTree = "<group>"; };
+		22C531EB1EAF9338007F57A8 /* IBSNAdvertise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNAdvertise.m; path = "Protocols/MQTT-SN/Messages/IBSNAdvertise.m"; sourceTree = "<group>"; };
+		22C531EC1EAF9338007F57A8 /* IBSNAdvertise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNAdvertise.h; path = "Protocols/MQTT-SN/Messages/IBSNAdvertise.h"; sourceTree = "<group>"; };
+		22C531ED1EAF9338007F57A8 /* IBSNMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSNMessage.h; sourceTree = "<group>"; };
+		22C531EE1EAF9338007F57A8 /* IBSNSuback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNSuback.h; path = "Protocols/MQTT-SN/Messages/IBSNSuback.h"; sourceTree = "<group>"; };
+		22C531EF1EAF9338007F57A8 /* IBSNConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNConnect.h; path = "Protocols/MQTT-SN/Messages/IBSNConnect.h"; sourceTree = "<group>"; };
+		22C531F01EAF9338007F57A8 /* IBSNRegack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNRegack.h; path = "Protocols/MQTT-SN/Messages/IBSNRegack.h"; sourceTree = "<group>"; };
+		22C531F11EAF9338007F57A8 /* IBSNWillTopicReq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNWillTopicReq.m; path = "Protocols/MQTT-SN/Messages/IBSNWillTopicReq.m"; sourceTree = "<group>"; };
+		22C531F21EAF9338007F57A8 /* IBSNWillTopicReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNWillTopicReq.h; path = "Protocols/MQTT-SN/Messages/IBSNWillTopicReq.h"; sourceTree = "<group>"; };
+		22C531F31EAF9338007F57A8 /* IBSNWillTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNWillTopic.h; path = "Protocols/MQTT-SN/Messages/IBSNWillTopic.h"; sourceTree = "<group>"; };
+		22C531F41EAF9338007F57A8 /* IBSNWillTopicUpd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNWillTopicUpd.h; path = "Protocols/MQTT-SN/Messages/IBSNWillTopicUpd.h"; sourceTree = "<group>"; };
+		22C531F51EAF9338007F57A8 /* IBSNWillTopicResp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNWillTopicResp.h; path = "Protocols/MQTT-SN/Messages/IBSNWillTopicResp.h"; sourceTree = "<group>"; };
+		22C531F61EAF9338007F57A8 /* IBSNWillMsgUpd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNWillMsgUpd.h; path = "Protocols/MQTT-SN/Messages/IBSNWillMsgUpd.h"; sourceTree = "<group>"; };
+		22C531F71EAF9338007F57A8 /* IBSNWillMsgResp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNWillMsgResp.h; path = "Protocols/MQTT-SN/Messages/IBSNWillMsgResp.h"; sourceTree = "<group>"; };
+		22C531F81EAF9338007F57A8 /* IBSNWillMsgReq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNWillMsgReq.m; path = "Protocols/MQTT-SN/Messages/IBSNWillMsgReq.m"; sourceTree = "<group>"; };
+		22C531F91EAF9338007F57A8 /* IBSNWillMsgReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNWillMsgReq.h; path = "Protocols/MQTT-SN/Messages/IBSNWillMsgReq.h"; sourceTree = "<group>"; };
+		22C531FA1EAF9338007F57A8 /* IBSNWillMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNWillMsg.h; path = "Protocols/MQTT-SN/Messages/IBSNWillMsg.h"; sourceTree = "<group>"; };
+		22C531FB1EAF9338007F57A8 /* IBSNSearchGW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNSearchGW.h; path = "Protocols/MQTT-SN/Messages/IBSNSearchGW.h"; sourceTree = "<group>"; };
+		22C531FC1EAF9338007F57A8 /* IBSNUnsubscribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNUnsubscribe.h; path = "Protocols/MQTT-SN/Messages/IBSNUnsubscribe.h"; sourceTree = "<group>"; };
+		22C531FD1EAF9338007F57A8 /* IBSNUnsuback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNUnsuback.h; path = "Protocols/MQTT-SN/Messages/IBSNUnsuback.h"; sourceTree = "<group>"; };
+		22C531FE1EAF9338007F57A8 /* IBSNSubscribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNSubscribe.h; path = "Protocols/MQTT-SN/Messages/IBSNSubscribe.h"; sourceTree = "<group>"; };
+		22C531FF1EAF9338007F57A8 /* IBSNPubrel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNPubrel.h; path = "Protocols/MQTT-SN/Messages/IBSNPubrel.h"; sourceTree = "<group>"; };
+		22C532001EAF9338007F57A8 /* IBSNPubrec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNPubrec.h; path = "Protocols/MQTT-SN/Messages/IBSNPubrec.h"; sourceTree = "<group>"; };
+		22C532011EAF9338007F57A8 /* IBSNPublish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNPublish.h; path = "Protocols/MQTT-SN/Messages/IBSNPublish.h"; sourceTree = "<group>"; };
+		22C532021EAF9338007F57A8 /* IBSNPubcomp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNPubcomp.h; path = "Protocols/MQTT-SN/Messages/IBSNPubcomp.h"; sourceTree = "<group>"; };
+		22C532031EAF9338007F57A8 /* IBSNPuback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNPuback.h; path = "Protocols/MQTT-SN/Messages/IBSNPuback.h"; sourceTree = "<group>"; };
+		22C532041EAF9338007F57A8 /* IBSNPingresp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNPingresp.h; path = "Protocols/MQTT-SN/Messages/IBSNPingresp.h"; sourceTree = "<group>"; };
+		22C532051EAF9338007F57A8 /* IBSNPingresp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNPingresp.m; path = "Protocols/MQTT-SN/Messages/IBSNPingresp.m"; sourceTree = "<group>"; };
+		22C532061EAF9338007F57A8 /* IBSNPingreq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNPingreq.h; path = "Protocols/MQTT-SN/Messages/IBSNPingreq.h"; sourceTree = "<group>"; };
+		22C532071EAF9338007F57A8 /* IBSNDisconnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNDisconnect.h; path = "Protocols/MQTT-SN/Messages/IBSNDisconnect.h"; sourceTree = "<group>"; };
+		22C532081EAF9338007F57A8 /* IBSNConnack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNConnack.h; path = "Protocols/MQTT-SN/Messages/IBSNConnack.h"; sourceTree = "<group>"; };
+		22C532091EAF9338007F57A8 /* IBSNEncapsulated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNEncapsulated.h; path = "Protocols/MQTT-SN/Messages/IBSNEncapsulated.h"; sourceTree = "<group>"; };
+		22C5320A1EAF9338007F57A8 /* IBSNRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNRegister.h; path = "Protocols/MQTT-SN/Messages/IBSNRegister.h"; sourceTree = "<group>"; };
+		22C532271EAF95A8007F57A8 /* IBSNFlags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNFlags.h; path = "Protocols/MQTT-SN/Classes/IBSNFlags.h"; sourceTree = "<group>"; };
+		22C532281EAF95A8007F57A8 /* IBSNFlags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNFlags.m; path = "Protocols/MQTT-SN/Classes/IBSNFlags.m"; sourceTree = "<group>"; };
+		22C532291EAF95A8007F57A8 /* IBSNFullTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNFullTopic.m; path = "Protocols/MQTT-SN/Classes/IBSNFullTopic.m"; sourceTree = "<group>"; };
+		22C5322A1EAF95A8007F57A8 /* IBSNIdentifierTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNIdentifierTopic.m; path = "Protocols/MQTT-SN/Classes/IBSNIdentifierTopic.m"; sourceTree = "<group>"; };
+		22C5322B1EAF95A8007F57A8 /* IBSNShortTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNShortTopic.m; path = "Protocols/MQTT-SN/Classes/IBSNShortTopic.m"; sourceTree = "<group>"; };
+		22C5322C1EAF95A8007F57A8 /* IBSNTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNTopic.h; path = "Protocols/MQTT-SN/Classes/IBSNTopic.h"; sourceTree = "<group>"; };
+		22C5322D1EAF95A8007F57A8 /* IBSNValuesValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNValuesValidator.h; path = "Protocols/MQTT-SN/Classes/IBSNValuesValidator.h"; sourceTree = "<group>"; };
+		22C5322E1EAF95A8007F57A8 /* IBSNValuesValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNValuesValidator.m; path = "Protocols/MQTT-SN/Classes/IBSNValuesValidator.m"; sourceTree = "<group>"; };
+		22C5322F1EAF95A8007F57A8 /* IBSNTopicType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSNTopicType.h; sourceTree = "<group>"; };
+		22C532301EAF95A8007F57A8 /* IBSNTopicType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBSNTopicType.m; sourceTree = "<group>"; };
+		22C532311EAF95A8007F57A8 /* IBSNControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNControls.h; path = "Protocols/MQTT-SN/Classes/IBSNControls.h"; sourceTree = "<group>"; };
+		22C532321EAF95A8007F57A8 /* IBSNControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNControls.m; path = "Protocols/MQTT-SN/Classes/IBSNControls.m"; sourceTree = "<group>"; };
+		22C532331EAF95A8007F57A8 /* IBSNShortTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNShortTopic.h; path = "Protocols/MQTT-SN/Classes/IBSNShortTopic.h"; sourceTree = "<group>"; };
+		22C532341EAF95A8007F57A8 /* IBSNIdentifierTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNIdentifierTopic.h; path = "Protocols/MQTT-SN/Classes/IBSNIdentifierTopic.h"; sourceTree = "<group>"; };
+		22C532351EAF95A8007F57A8 /* IBSNFullTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNFullTopic.h; path = "Protocols/MQTT-SN/Classes/IBSNFullTopic.h"; sourceTree = "<group>"; };
+		22C532361EAF95A8007F57A8 /* IBSNQoS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNQoS.h; path = "Protocols/MQTT-SN/Classes/IBSNQoS.h"; sourceTree = "<group>"; };
+		22C532371EAF95A8007F57A8 /* IBSNQoS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNQoS.m; path = "Protocols/MQTT-SN/Classes/IBSNQoS.m"; sourceTree = "<group>"; };
+		22C532381EAF95A8007F57A8 /* IBSNResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNResponseMessage.h; path = "Protocols/MQTT-SN/Classes/IBSNResponseMessage.h"; sourceTree = "<group>"; };
+		22C532391EAF95A8007F57A8 /* IBSNResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNResponseMessage.m; path = "Protocols/MQTT-SN/Classes/IBSNResponseMessage.m"; sourceTree = "<group>"; };
+		22C5323A1EAF95A8007F57A8 /* IBSNCountableMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSNCountableMessage.h; path = "Protocols/MQTT-SN/Classes/IBSNCountableMessage.h"; sourceTree = "<group>"; };
+		22C5323B1EAF95A8007F57A8 /* IBSNCountableMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNCountableMessage.m; path = "Protocols/MQTT-SN/Classes/IBSNCountableMessage.m"; sourceTree = "<group>"; };
+		22C532471EAF9625007F57A8 /* IBSNParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSNParser.h; sourceTree = "<group>"; };
+		22C532481EAF9625007F57A8 /* IBSNParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBSNParser.m; sourceTree = "<group>"; };
 		22C5C0251DF061CE00790EF6 /* iotbroker.cloud-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iotbroker.cloud-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C5C0291DF061CE00790EF6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		22C5C02B1DF061CE00790EF6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -157,31 +297,12 @@
 		22C5C04C1DF061CE00790EF6 /* iotbroker.cloud-clientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iotbroker.cloud-clientUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C5C0501DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iotbroker_cloud_clientUITests.m; sourceTree = "<group>"; };
 		22C5C0521DF061CE00790EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22C5C0641DF063FC00790EF6 /* IBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBConnect.h; sourceTree = "<group>"; };
-		22C5C0651DF063FC00790EF6 /* IBConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBConnect.m; sourceTree = "<group>"; };
-		22C5C0691DF0646C00790EF6 /* IBConnack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBConnack.h; sourceTree = "<group>"; };
-		22C5C06A1DF0646C00790EF6 /* IBConnack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBConnack.m; sourceTree = "<group>"; };
-		22C5C0791DF0686300790EF6 /* IBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBMessage.h; sourceTree = "<group>"; };
 		22E104B61E0017C10044AAFD /* IBAddTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAddTopicViewController.h; sourceTree = "<group>"; };
 		22E104B71E0017C10044AAFD /* IBAddTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAddTopicViewController.m; sourceTree = "<group>"; };
 		22E104B91E00354C0044AAFD /* IBAccountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAccountListViewController.h; sourceTree = "<group>"; };
 		22E104BA1E00354C0044AAFD /* IBAccountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAccountListViewController.m; sourceTree = "<group>"; };
 		22E104BD1E0036270044AAFD /* IBAccountListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAccountListTableViewCell.h; sourceTree = "<group>"; };
 		22E104BE1E0036270044AAFD /* IBAccountListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAccountListTableViewCell.m; sourceTree = "<group>"; };
-		22E3D9D51DF58007004C449F /* IBPublish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPublish.h; sourceTree = "<group>"; };
-		22E3D9D61DF58007004C449F /* IBPublish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPublish.m; sourceTree = "<group>"; };
-		22E3D9D81DF58208004C449F /* IBPubrec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPubrec.h; sourceTree = "<group>"; };
-		22E3D9D91DF58208004C449F /* IBPubrec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPubrec.m; sourceTree = "<group>"; };
-		22E3D9DB1DF5828C004C449F /* IBPubrel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPubrel.h; sourceTree = "<group>"; };
-		22E3D9DC1DF5828C004C449F /* IBPubrel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPubrel.m; sourceTree = "<group>"; };
-		22E3D9DF1DF582F2004C449F /* IBSuback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSuback.h; sourceTree = "<group>"; };
-		22E3D9E01DF582F2004C449F /* IBSuback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBSuback.m; sourceTree = "<group>"; };
-		22E3D9E21DF583BC004C449F /* IBSubscribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSubscribe.h; sourceTree = "<group>"; };
-		22E3D9E31DF583BC004C449F /* IBSubscribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBSubscribe.m; sourceTree = "<group>"; };
-		22E3D9EB1DF58528004C449F /* IBUnsubscribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBUnsubscribe.h; sourceTree = "<group>"; };
-		22E3D9EC1DF58528004C449F /* IBUnsubscribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBUnsubscribe.m; sourceTree = "<group>"; };
-		22E3D9EE1DF58532004C449F /* IBUnsuback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBUnsuback.h; sourceTree = "<group>"; };
-		22E3D9EF1DF58532004C449F /* IBUnsuback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBUnsuback.m; sourceTree = "<group>"; };
 		22F2C6D81DFAA7ED004FB400 /* IBCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCoreDataManager.h; sourceTree = "<group>"; };
 		22F2C6D91DFAA7ED004FB400 /* IBCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBCoreDataManager.m; sourceTree = "<group>"; };
 		22F2C6E11DFAC397004FB400 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -350,18 +471,6 @@
 			name = "Core data";
 			sourceTree = "<group>";
 		};
-		2262BD8E1DF846A800D5A83E /* Parser */ = {
-			isa = PBXGroup;
-			children = (
-				22A21A151DF1ABAF0063C9A8 /* Topic */,
-				22A21A0B1DF16F9F0063C9A8 /* Will */,
-				22A21A111DF19BB30063C9A8 /* QoS */,
-				22C5C0781DF0683D00790EF6 /* Messages */,
-				22A21A071DF16C680063C9A8 /* Parser */,
-			);
-			name = Parser;
-			sourceTree = "<group>";
-		};
 		2262BD921DF85C8500D5A83E /* LoginTableViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +501,386 @@
 			name = LoadingViewController;
 			sourceTree = "<group>";
 		};
+		228A44D01EADEA2D00D824E5 /* Advertise */ = {
+			isa = PBXGroup;
+			children = (
+				22C531EC1EAF9338007F57A8 /* IBSNAdvertise.h */,
+				22C531EB1EAF9338007F57A8 /* IBSNAdvertise.m */,
+			);
+			name = Advertise;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A44D11EADEA3000D824E5 /* Encapsulated */ = {
+			isa = PBXGroup;
+			children = (
+				22C532091EAF9338007F57A8 /* IBSNEncapsulated.h */,
+				22C531D71EAF9338007F57A8 /* IBSNEncapsulated.m */,
+			);
+			name = Encapsulated;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A44D81EADEB8A00D824E5 /* GWInfo */ = {
+			isa = PBXGroup;
+			children = (
+				22C531E81EAF9338007F57A8 /* IBSNGWInfo.h */,
+				22C531E91EAF9338007F57A8 /* IBSNGWInfo.m */,
+			);
+			name = GWInfo;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A44D91EADEEC600D824E5 /* CountableMessage */ = {
+			isa = PBXGroup;
+			children = (
+				22C5323A1EAF95A8007F57A8 /* IBSNCountableMessage.h */,
+				22C5323B1EAF95A8007F57A8 /* IBSNCountableMessage.m */,
+			);
+			name = CountableMessage;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A44E01EADEF7C00D824E5 /* Regack */ = {
+			isa = PBXGroup;
+			children = (
+				22C531F01EAF9338007F57A8 /* IBSNRegack.h */,
+				22C531DD1EAF9338007F57A8 /* IBSNRegack.m */,
+			);
+			name = Regack;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A44E41EADF07700D824E5 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				22C5320A1EAF9338007F57A8 /* IBSNRegister.h */,
+				22C531DE1EAF9338007F57A8 /* IBSNRegister.m */,
+			);
+			name = Register;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A44E51EADF30400D824E5 /* ResponseMessage */ = {
+			isa = PBXGroup;
+			children = (
+				22C532381EAF95A8007F57A8 /* IBSNResponseMessage.h */,
+				22C532391EAF95A8007F57A8 /* IBSNResponseMessage.m */,
+			);
+			name = ResponseMessage;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A44EC1EADF3AB00D824E5 /* Connack */ = {
+			isa = PBXGroup;
+			children = (
+				22C532081EAF9338007F57A8 /* IBSNConnack.h */,
+				22C531E61EAF9338007F57A8 /* IBSNConnack.m */,
+			);
+			name = Connack;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A44F01EADF41800D824E5 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				22C531EF1EAF9338007F57A8 /* IBSNConnect.h */,
+				22C531E71EAF9338007F57A8 /* IBSNConnect.m */,
+			);
+			name = Connect;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A44F41EADF69C00D824E5 /* Disconnect */ = {
+			isa = PBXGroup;
+			children = (
+				22C532071EAF9338007F57A8 /* IBSNDisconnect.h */,
+				22C531D61EAF9338007F57A8 /* IBSNDisconnect.m */,
+			);
+			name = Disconnect;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A44F81EADF77C00D824E5 /* Pingreq */ = {
+			isa = PBXGroup;
+			children = (
+				22C532061EAF9338007F57A8 /* IBSNPingreq.h */,
+				22C531D81EAF9338007F57A8 /* IBSNPingreq.m */,
+			);
+			name = Pingreq;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A44FC1EADF9DD00D824E5 /* Pingresp */ = {
+			isa = PBXGroup;
+			children = (
+				22C532041EAF9338007F57A8 /* IBSNPingresp.h */,
+				22C532051EAF9338007F57A8 /* IBSNPingresp.m */,
+			);
+			name = Pingresp;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45001EADFA3800D824E5 /* Puback */ = {
+			isa = PBXGroup;
+			children = (
+				22C532031EAF9338007F57A8 /* IBSNPuback.h */,
+				22C531D91EAF9338007F57A8 /* IBSNPuback.m */,
+			);
+			name = Puback;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45041EADFB4700D824E5 /* Pubcomp */ = {
+			isa = PBXGroup;
+			children = (
+				22C532021EAF9338007F57A8 /* IBSNPubcomp.h */,
+				22C531DA1EAF9338007F57A8 /* IBSNPubcomp.m */,
+			);
+			name = Pubcomp;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45081EADFBEB00D824E5 /* Publish */ = {
+			isa = PBXGroup;
+			children = (
+				22C532011EAF9338007F57A8 /* IBSNPublish.h */,
+				22C531D21EAF9338007F57A8 /* IBSNPublish.m */,
+			);
+			name = Publish;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A450C1EADFCC800D824E5 /* QoS */ = {
+			isa = PBXGroup;
+			children = (
+				22C532361EAF95A8007F57A8 /* IBSNQoS.h */,
+				22C532371EAF95A8007F57A8 /* IBSNQoS.m */,
+			);
+			name = QoS;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45111EAE00CF00D824E5 /* Pubrec */ = {
+			isa = PBXGroup;
+			children = (
+				22C532001EAF9338007F57A8 /* IBSNPubrec.h */,
+				22C531DB1EAF9338007F57A8 /* IBSNPubrec.m */,
+			);
+			name = Pubrec;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45151EAE011900D824E5 /* Pubrel */ = {
+			isa = PBXGroup;
+			children = (
+				22C531FF1EAF9338007F57A8 /* IBSNPubrel.h */,
+				22C531DC1EAF9338007F57A8 /* IBSNPubrel.m */,
+			);
+			name = Pubrel;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45191EAE016700D824E5 /* Suback */ = {
+			isa = PBXGroup;
+			children = (
+				22C531EE1EAF9338007F57A8 /* IBSNSuback.h */,
+				22C531DF1EAF9338007F57A8 /* IBSNSuback.m */,
+			);
+			name = Suback;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A451D1EAE02CE00D824E5 /* Subscribe */ = {
+			isa = PBXGroup;
+			children = (
+				22C531FE1EAF9338007F57A8 /* IBSNSubscribe.h */,
+				22C531E01EAF9338007F57A8 /* IBSNSubscribe.m */,
+			);
+			name = Subscribe;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45211EAE040600D824E5 /* Unsuback */ = {
+			isa = PBXGroup;
+			children = (
+				22C531FD1EAF9338007F57A8 /* IBSNUnsuback.h */,
+				22C531E11EAF9338007F57A8 /* IBSNUnsuback.m */,
+			);
+			name = Unsuback;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45251EAE045E00D824E5 /* Unsubscribe */ = {
+			isa = PBXGroup;
+			children = (
+				22C531FC1EAF9338007F57A8 /* IBSNUnsubscribe.h */,
+				22C531E21EAF9338007F57A8 /* IBSNUnsubscribe.m */,
+			);
+			name = Unsubscribe;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45291EAE059900D824E5 /* SearchGW */ = {
+			isa = PBXGroup;
+			children = (
+				22C531FB1EAF9338007F57A8 /* IBSNSearchGW.h */,
+				22C531EA1EAF9338007F57A8 /* IBSNSearchGW.m */,
+			);
+			name = SearchGW;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A452D1EAE062400D824E5 /* WillMsg */ = {
+			isa = PBXGroup;
+			children = (
+				22C531FA1EAF9338007F57A8 /* IBSNWillMsg.h */,
+				22C531D31EAF9338007F57A8 /* IBSNWillMsg.m */,
+			);
+			name = WillMsg;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45311EAE070500D824E5 /* WillMsgReq */ = {
+			isa = PBXGroup;
+			children = (
+				22C531F91EAF9338007F57A8 /* IBSNWillMsgReq.h */,
+				22C531F81EAF9338007F57A8 /* IBSNWillMsgReq.m */,
+			);
+			name = WillMsgReq;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45351EAE075200D824E5 /* WillMsgResp */ = {
+			isa = PBXGroup;
+			children = (
+				22C531F71EAF9338007F57A8 /* IBSNWillMsgResp.h */,
+				22C531E31EAF9338007F57A8 /* IBSNWillMsgResp.m */,
+			);
+			name = WillMsgResp;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45391EAE079E00D824E5 /* WillMsgUpd */ = {
+			isa = PBXGroup;
+			children = (
+				22C531F61EAF9338007F57A8 /* IBSNWillMsgUpd.h */,
+				22C531D41EAF9338007F57A8 /* IBSNWillMsgUpd.m */,
+			);
+			name = WillMsgUpd;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A453D1EAE087B00D824E5 /* WillTopic */ = {
+			isa = PBXGroup;
+			children = (
+				22C531F31EAF9338007F57A8 /* IBSNWillTopic.h */,
+				22C531D51EAF9338007F57A8 /* IBSNWillTopic.m */,
+			);
+			name = WillTopic;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A453E1EAE08E200D824E5 /* FullTopic */ = {
+			isa = PBXGroup;
+			children = (
+				22C532351EAF95A8007F57A8 /* IBSNFullTopic.h */,
+				22C532291EAF95A8007F57A8 /* IBSNFullTopic.m */,
+			);
+			name = FullTopic;
+			sourceTree = "<group>";
+		};
+		228A45421EAE0B9100D824E5 /* Topic */ = {
+			isa = PBXGroup;
+			children = (
+				22C5322C1EAF95A8007F57A8 /* IBSNTopic.h */,
+				22C532461EAF9610007F57A8 /* TopicType */,
+				228A453E1EAE08E200D824E5 /* FullTopic */,
+				228A45461EAE0BA900D824E5 /* IdentifierTopic */,
+				228A454A1EAE109900D824E5 /* ShortTopic */,
+			);
+			name = Topic;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45461EAE0BA900D824E5 /* IdentifierTopic */ = {
+			isa = PBXGroup;
+			children = (
+				22C532341EAF95A8007F57A8 /* IBSNIdentifierTopic.h */,
+				22C5322A1EAF95A8007F57A8 /* IBSNIdentifierTopic.m */,
+			);
+			name = IdentifierTopic;
+			sourceTree = "<group>";
+		};
+		228A454A1EAE109900D824E5 /* ShortTopic */ = {
+			isa = PBXGroup;
+			children = (
+				22C532331EAF95A8007F57A8 /* IBSNShortTopic.h */,
+				22C5322B1EAF95A8007F57A8 /* IBSNShortTopic.m */,
+			);
+			name = ShortTopic;
+			sourceTree = "<group>";
+		};
+		228A454E1EAE12D300D824E5 /* WillTopicReq */ = {
+			isa = PBXGroup;
+			children = (
+				22C531F21EAF9338007F57A8 /* IBSNWillTopicReq.h */,
+				22C531F11EAF9338007F57A8 /* IBSNWillTopicReq.m */,
+			);
+			name = WillTopicReq;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45521EAE131700D824E5 /* WillTopicResp */ = {
+			isa = PBXGroup;
+			children = (
+				22C531F51EAF9338007F57A8 /* IBSNWillTopicResp.h */,
+				22C531E41EAF9338007F57A8 /* IBSNWillTopicResp.m */,
+			);
+			name = WillTopicResp;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45561EAE137500D824E5 /* WillTopicUpd */ = {
+			isa = PBXGroup;
+			children = (
+				22C531F41EAF9338007F57A8 /* IBSNWillTopicUpd.h */,
+				22C531E51EAF9338007F57A8 /* IBSNWillTopicUpd.m */,
+			);
+			name = WillTopicUpd;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A455E1EAE23B100D824E5 /* ValuesValidator */ = {
+			isa = PBXGroup;
+			children = (
+				22C5322D1EAF95A8007F57A8 /* IBSNValuesValidator.h */,
+				22C5322E1EAF95A8007F57A8 /* IBSNValuesValidator.m */,
+			);
+			name = ValuesValidator;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45621EAE263B00D824E5 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				22C532311EAF95A8007F57A8 /* IBSNControls.h */,
+				22C532321EAF95A8007F57A8 /* IBSNControls.m */,
+			);
+			name = Controls;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		228A45661EAE28F700D824E5 /* Flags */ = {
+			isa = PBXGroup;
+			children = (
+				22C532271EAF95A8007F57A8 /* IBSNFlags.h */,
+				22C532281EAF95A8007F57A8 /* IBSNFlags.m */,
+			);
+			name = Flags;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
 		22A219FC1DF168C80063C9A8 /* LengthDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,40 +899,308 @@
 			name = MutableData;
 			sourceTree = "<group>";
 		};
-		22A21A071DF16C680063C9A8 /* Parser */ = {
+		22C5317B1EAF88D8007F57A8 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				22A21A041DF16C640063C9A8 /* IBParser.h */,
-				22A21A051DF16C640063C9A8 /* IBParser.m */,
+				22C5317C1EAF88E7007F57A8 /* MQTT */,
+				22C5317D1EAF88F7007F57A8 /* MQTT-SN */,
 			);
-			name = Parser;
+			path = Protocols;
 			sourceTree = "<group>";
 		};
-		22A21A0B1DF16F9F0063C9A8 /* Will */ = {
+		22C5317C1EAF88E7007F57A8 /* MQTT */ = {
 			isa = PBXGroup;
 			children = (
-				22A21A081DF16F9B0063C9A8 /* IBWill.h */,
-				22A21A091DF16F9B0063C9A8 /* IBWill.m */,
+				22C531801EAF89A9007F57A8 /* Messages */,
+				22C5317E1EAF8975007F57A8 /* Classes */,
+				22C5317F1EAF8983007F57A8 /* Parser */,
+			);
+			path = MQTT;
+			sourceTree = "<group>";
+		};
+		22C5317D1EAF88F7007F57A8 /* MQTT-SN */ = {
+			isa = PBXGroup;
+			children = (
+				22C531821EAF8B69007F57A8 /* Messages */,
+				22C531831EAF8B77007F57A8 /* Classes */,
+				22C531841EAF8B82007F57A8 /* Parser */,
+			);
+			path = "MQTT-SN";
+			sourceTree = "<group>";
+		};
+		22C5317E1EAF8975007F57A8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				22C531CB1EAF91D2007F57A8 /* Topic */,
+				22C531CC1EAF91DD007F57A8 /* Will */,
+				22C531CD1EAF91E8007F57A8 /* CountableMessage */,
+				22C531CE1EAF91F0007F57A8 /* QoS */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		22C5317F1EAF8983007F57A8 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				22C531CF1EAF9216007F57A8 /* IBParser.h */,
+				22C531D01EAF9216007F57A8 /* IBParser.m */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		22C531801EAF89A9007F57A8 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				22C531811EAF8AC3007F57A8 /* IBMQTTMessages.h */,
+				22C531861EAF90D2007F57A8 /* IBMessage.h */,
+				22C531BF1EAF9121007F57A8 /* Connect */,
+				22C531BE1EAF911C007F57A8 /* Connack */,
+				22C531C41EAF9146007F57A8 /* Publish */,
+				22C531BD1EAF9110007F57A8 /* Puback */,
+				22C531C51EAF914C007F57A8 /* Pubrec */,
+				22C531C61EAF9151007F57A8 /* Pubrel */,
+				22C531C31EAF9135007F57A8 /* Pubcomp */,
+				22C531C71EAF9156007F57A8 /* Suback */,
+				22C531C91EAF9160007F57A8 /* Unsuback */,
+				22C531C81EAF915B007F57A8 /* Subscribe */,
+				22C531CA1EAF9166007F57A8 /* Unsubscribe */,
+				22C531C11EAF912A007F57A8 /* Pingreq */,
+				22C531C21EAF9130007F57A8 /* Pingresp */,
+				22C531C01EAF9126007F57A8 /* Disconnect */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		22C531821EAF8B69007F57A8 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				22C531851EAF8C92007F57A8 /* IBMQTT-SNMessages.h */,
+				22C531ED1EAF9338007F57A8 /* IBSNMessage.h */,
+				228A44D01EADEA2D00D824E5 /* Advertise */,
+				228A44D11EADEA3000D824E5 /* Encapsulated */,
+				228A44D81EADEB8A00D824E5 /* GWInfo */,
+				228A44E01EADEF7C00D824E5 /* Regack */,
+				228A44E41EADF07700D824E5 /* Register */,
+				228A44EC1EADF3AB00D824E5 /* Connack */,
+				228A44F01EADF41800D824E5 /* Connect */,
+				228A44F41EADF69C00D824E5 /* Disconnect */,
+				228A44F81EADF77C00D824E5 /* Pingreq */,
+				228A44FC1EADF9DD00D824E5 /* Pingresp */,
+				228A45001EADFA3800D824E5 /* Puback */,
+				228A45041EADFB4700D824E5 /* Pubcomp */,
+				228A45081EADFBEB00D824E5 /* Publish */,
+				228A45111EAE00CF00D824E5 /* Pubrec */,
+				228A45151EAE011900D824E5 /* Pubrel */,
+				228A45191EAE016700D824E5 /* Suback */,
+				228A451D1EAE02CE00D824E5 /* Subscribe */,
+				228A45211EAE040600D824E5 /* Unsuback */,
+				228A45251EAE045E00D824E5 /* Unsubscribe */,
+				228A45291EAE059900D824E5 /* SearchGW */,
+				228A452D1EAE062400D824E5 /* WillMsg */,
+				228A45311EAE070500D824E5 /* WillMsgReq */,
+				228A45351EAE075200D824E5 /* WillMsgResp */,
+				228A45391EAE079E00D824E5 /* WillMsgUpd */,
+				228A453D1EAE087B00D824E5 /* WillTopic */,
+				228A454E1EAE12D300D824E5 /* WillTopicReq */,
+				228A45521EAE131700D824E5 /* WillTopicResp */,
+				228A45561EAE137500D824E5 /* WillTopicUpd */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		22C531831EAF8B77007F57A8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				228A45421EAE0B9100D824E5 /* Topic */,
+				228A44E51EADF30400D824E5 /* ResponseMessage */,
+				228A44D91EADEEC600D824E5 /* CountableMessage */,
+				228A450C1EADFCC800D824E5 /* QoS */,
+				228A455E1EAE23B100D824E5 /* ValuesValidator */,
+				228A45621EAE263B00D824E5 /* Controls */,
+				228A45661EAE28F700D824E5 /* Flags */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		22C531841EAF8B82007F57A8 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				22C532471EAF9625007F57A8 /* IBSNParser.h */,
+				22C532481EAF9625007F57A8 /* IBSNParser.m */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		22C531BD1EAF9110007F57A8 /* Puback */ = {
+			isa = PBXGroup;
+			children = (
+				22C531871EAF90D2007F57A8 /* IBPuback.m */,
+				22C531921EAF90D2007F57A8 /* IBPuback.h */,
+			);
+			name = Puback;
+			sourceTree = "<group>";
+		};
+		22C531BE1EAF911C007F57A8 /* Connack */ = {
+			isa = PBXGroup;
+			children = (
+				22C531881EAF90D2007F57A8 /* IBConnack.h */,
+				22C531891EAF90D2007F57A8 /* IBConnack.m */,
+			);
+			name = Connack;
+			sourceTree = "<group>";
+		};
+		22C531BF1EAF9121007F57A8 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				22C5318A1EAF90D2007F57A8 /* IBConnect.h */,
+				22C5318B1EAF90D2007F57A8 /* IBConnect.m */,
+			);
+			name = Connect;
+			sourceTree = "<group>";
+		};
+		22C531C01EAF9126007F57A8 /* Disconnect */ = {
+			isa = PBXGroup;
+			children = (
+				22C5318C1EAF90D2007F57A8 /* IBDisconnect.h */,
+				22C5318D1EAF90D2007F57A8 /* IBDisconnect.m */,
+			);
+			name = Disconnect;
+			sourceTree = "<group>";
+		};
+		22C531C11EAF912A007F57A8 /* Pingreq */ = {
+			isa = PBXGroup;
+			children = (
+				22C5318E1EAF90D2007F57A8 /* IBPingreq.h */,
+				22C5318F1EAF90D2007F57A8 /* IBPingreq.m */,
+			);
+			name = Pingreq;
+			sourceTree = "<group>";
+		};
+		22C531C21EAF9130007F57A8 /* Pingresp */ = {
+			isa = PBXGroup;
+			children = (
+				22C531901EAF90D2007F57A8 /* IBPingresp.h */,
+				22C531911EAF90D2007F57A8 /* IBPingresp.m */,
+			);
+			name = Pingresp;
+			sourceTree = "<group>";
+		};
+		22C531C31EAF9135007F57A8 /* Pubcomp */ = {
+			isa = PBXGroup;
+			children = (
+				22C531931EAF90D2007F57A8 /* IBPubcomp.h */,
+				22C531941EAF90D2007F57A8 /* IBPubcomp.m */,
+			);
+			name = Pubcomp;
+			sourceTree = "<group>";
+		};
+		22C531C41EAF9146007F57A8 /* Publish */ = {
+			isa = PBXGroup;
+			children = (
+				22C531951EAF90D2007F57A8 /* IBPublish.h */,
+				22C531961EAF90D2007F57A8 /* IBPublish.m */,
+			);
+			name = Publish;
+			sourceTree = "<group>";
+		};
+		22C531C51EAF914C007F57A8 /* Pubrec */ = {
+			isa = PBXGroup;
+			children = (
+				22C531971EAF90D2007F57A8 /* IBPubrec.h */,
+				22C531981EAF90D2007F57A8 /* IBPubrec.m */,
+			);
+			name = Pubrec;
+			sourceTree = "<group>";
+		};
+		22C531C61EAF9151007F57A8 /* Pubrel */ = {
+			isa = PBXGroup;
+			children = (
+				22C531991EAF90D2007F57A8 /* IBPubrel.h */,
+				22C5319A1EAF90D2007F57A8 /* IBPubrel.m */,
+			);
+			name = Pubrel;
+			sourceTree = "<group>";
+		};
+		22C531C71EAF9156007F57A8 /* Suback */ = {
+			isa = PBXGroup;
+			children = (
+				22C5319B1EAF90D2007F57A8 /* IBSuback.h */,
+				22C5319C1EAF90D2007F57A8 /* IBSuback.m */,
+			);
+			name = Suback;
+			sourceTree = "<group>";
+		};
+		22C531C81EAF915B007F57A8 /* Subscribe */ = {
+			isa = PBXGroup;
+			children = (
+				22C5319D1EAF90D2007F57A8 /* IBSubscribe.h */,
+				22C5319E1EAF90D2007F57A8 /* IBSubscribe.m */,
+			);
+			name = Subscribe;
+			sourceTree = "<group>";
+		};
+		22C531C91EAF9160007F57A8 /* Unsuback */ = {
+			isa = PBXGroup;
+			children = (
+				22C5319F1EAF90D2007F57A8 /* IBUnsuback.h */,
+				22C531A01EAF90D2007F57A8 /* IBUnsuback.m */,
+			);
+			name = Unsuback;
+			sourceTree = "<group>";
+		};
+		22C531CA1EAF9166007F57A8 /* Unsubscribe */ = {
+			isa = PBXGroup;
+			children = (
+				22C531A11EAF90D2007F57A8 /* IBUnsubscribe.h */,
+				22C531A21EAF90D2007F57A8 /* IBUnsubscribe.m */,
+			);
+			name = Unsubscribe;
+			sourceTree = "<group>";
+		};
+		22C531CB1EAF91D2007F57A8 /* Topic */ = {
+			isa = PBXGroup;
+			children = (
+				22C531B11EAF90F2007F57A8 /* IBTopic.m */,
+				22C531B21EAF90F2007F57A8 /* IBTopic.h */,
+			);
+			name = Topic;
+			sourceTree = "<group>";
+		};
+		22C531CC1EAF91DD007F57A8 /* Will */ = {
+			isa = PBXGroup;
+			children = (
+				22C531B31EAF90F2007F57A8 /* IBWill.h */,
+				22C531B81EAF90F2007F57A8 /* IBWill.m */,
 			);
 			name = Will;
 			sourceTree = "<group>";
 		};
-		22A21A111DF19BB30063C9A8 /* QoS */ = {
+		22C531CD1EAF91E8007F57A8 /* CountableMessage */ = {
 			isa = PBXGroup;
 			children = (
-				22A21A121DF19BF10063C9A8 /* IBQoS.h */,
-				22A21A131DF19BF10063C9A8 /* IBQoS.m */,
+				22C531B41EAF90F2007F57A8 /* IBCountableMessage.h */,
+				22C531B51EAF90F2007F57A8 /* IBCountableMessage.m */,
+			);
+			name = CountableMessage;
+			sourceTree = "<group>";
+		};
+		22C531CE1EAF91F0007F57A8 /* QoS */ = {
+			isa = PBXGroup;
+			children = (
+				22C531B61EAF90F2007F57A8 /* IBQoS.h */,
+				22C531B71EAF90F2007F57A8 /* IBQoS.m */,
 			);
 			name = QoS;
 			sourceTree = "<group>";
 		};
-		22A21A151DF1ABAF0063C9A8 /* Topic */ = {
+		22C532461EAF9610007F57A8 /* TopicType */ = {
 			isa = PBXGroup;
 			children = (
-				22A21A161DF1ABC00063C9A8 /* IBTopic.h */,
-				22A21A171DF1ABC00063C9A8 /* IBTopic.m */,
+				22C5322F1EAF95A8007F57A8 /* IBSNTopicType.h */,
+				22C532301EAF95A8007F57A8 /* IBSNTopicType.m */,
 			);
-			name = Topic;
+			name = TopicType;
+			path = "Protocols/MQTT-SN/Classes";
 			sourceTree = "<group>";
 		};
 		22C5C01C1DF061CE00790EF6 = {
@@ -470,10 +1227,10 @@
 		22C5C0271DF061CE00790EF6 /* iotbroker.cloud-client */ = {
 			isa = PBXGroup;
 			children = (
+				22C5317B1EAF88D8007F57A8 /* Protocols */,
 				22F6F7511E01521600FCC503 /* MQTT */,
 				220E2A821E044CC900056738 /* Timer */,
 				2262BD691DF8351400D5A83E /* Core data */,
-				2262BD8E1DF846A800D5A83E /* Parser */,
 				22F74DB41E03DC3000FB124D /* TCP */,
 				22C5C02B1DF061CE00790EF6 /* AppDelegate.h */,
 				22C5C02C1DF061CE00790EF6 /* AppDelegate.m */,
@@ -516,155 +1273,6 @@
 			path = "iotbroker.cloud-clientUITests";
 			sourceTree = "<group>";
 		};
-		22C5C0671DF0642400790EF6 /* Connect */ = {
-			isa = PBXGroup;
-			children = (
-				22C5C0641DF063FC00790EF6 /* IBConnect.h */,
-				22C5C0651DF063FC00790EF6 /* IBConnect.m */,
-			);
-			name = Connect;
-			sourceTree = "<group>";
-		};
-		22C5C0681DF0644600790EF6 /* Connack */ = {
-			isa = PBXGroup;
-			children = (
-				22C5C0691DF0646C00790EF6 /* IBConnack.h */,
-				22C5C06A1DF0646C00790EF6 /* IBConnack.m */,
-			);
-			name = Connack;
-			sourceTree = "<group>";
-		};
-		22C5C06C1DF0647C00790EF6 /* Disconnect */ = {
-			isa = PBXGroup;
-			children = (
-				22A21A191DF1AD1A0063C9A8 /* IBDisconnect.h */,
-				22A21A1A1DF1AD1A0063C9A8 /* IBDisconnect.m */,
-			);
-			name = Disconnect;
-			sourceTree = "<group>";
-		};
-		22C5C06D1DF0649100790EF6 /* Pingreq */ = {
-			isa = PBXGroup;
-			children = (
-				22A21A1C1DF1AD8C0063C9A8 /* IBPingreq.h */,
-				22A21A1D1DF1AD8C0063C9A8 /* IBPingreq.m */,
-			);
-			name = Pingreq;
-			sourceTree = "<group>";
-		};
-		22C5C06E1DF064A500790EF6 /* Pingresp */ = {
-			isa = PBXGroup;
-			children = (
-				22A21A1F1DF1ADF00063C9A8 /* IBPingresp.h */,
-				22A21A201DF1ADF00063C9A8 /* IBPingresp.m */,
-			);
-			name = Pingresp;
-			sourceTree = "<group>";
-		};
-		22C5C06F1DF064BA00790EF6 /* Puback */ = {
-			isa = PBXGroup;
-			children = (
-				22A21A221DF1AEB20063C9A8 /* IBPuback.h */,
-				22A21A231DF1AEB20063C9A8 /* IBPuback.m */,
-			);
-			name = Puback;
-			sourceTree = "<group>";
-		};
-		22C5C0701DF064C300790EF6 /* Pubcomp */ = {
-			isa = PBXGroup;
-			children = (
-				22A21A281DF1B2BD0063C9A8 /* IBPubcomp.h */,
-				22A21A291DF1B2BD0063C9A8 /* IBPubcomp.m */,
-			);
-			name = Pubcomp;
-			sourceTree = "<group>";
-		};
-		22C5C0711DF064D500790EF6 /* Publish */ = {
-			isa = PBXGroup;
-			children = (
-				22E3D9D51DF58007004C449F /* IBPublish.h */,
-				22E3D9D61DF58007004C449F /* IBPublish.m */,
-			);
-			name = Publish;
-			sourceTree = "<group>";
-		};
-		22C5C0721DF064E500790EF6 /* Pubrec */ = {
-			isa = PBXGroup;
-			children = (
-				22E3D9D81DF58208004C449F /* IBPubrec.h */,
-				22E3D9D91DF58208004C449F /* IBPubrec.m */,
-			);
-			name = Pubrec;
-			sourceTree = "<group>";
-		};
-		22C5C0731DF064EF00790EF6 /* Pubrel */ = {
-			isa = PBXGroup;
-			children = (
-				22E3D9DB1DF5828C004C449F /* IBPubrel.h */,
-				22E3D9DC1DF5828C004C449F /* IBPubrel.m */,
-			);
-			name = Pubrel;
-			sourceTree = "<group>";
-		};
-		22C5C0741DF064F500790EF6 /* Suback */ = {
-			isa = PBXGroup;
-			children = (
-				22E3D9DF1DF582F2004C449F /* IBSuback.h */,
-				22E3D9E01DF582F2004C449F /* IBSuback.m */,
-			);
-			name = Suback;
-			sourceTree = "<group>";
-		};
-		22C5C0751DF064FE00790EF6 /* Subscribe */ = {
-			isa = PBXGroup;
-			children = (
-				22E3D9E21DF583BC004C449F /* IBSubscribe.h */,
-				22E3D9E31DF583BC004C449F /* IBSubscribe.m */,
-			);
-			name = Subscribe;
-			sourceTree = "<group>";
-		};
-		22C5C0761DF0650D00790EF6 /* Unsuback */ = {
-			isa = PBXGroup;
-			children = (
-				22E3D9EE1DF58532004C449F /* IBUnsuback.h */,
-				22E3D9EF1DF58532004C449F /* IBUnsuback.m */,
-			);
-			name = Unsuback;
-			sourceTree = "<group>";
-		};
-		22C5C0771DF0651700790EF6 /* Unsubscribe */ = {
-			isa = PBXGroup;
-			children = (
-				22E3D9EB1DF58528004C449F /* IBUnsubscribe.h */,
-				22E3D9EC1DF58528004C449F /* IBUnsubscribe.m */,
-			);
-			name = Unsubscribe;
-			sourceTree = "<group>";
-		};
-		22C5C0781DF0683D00790EF6 /* Messages */ = {
-			isa = PBXGroup;
-			children = (
-				22C5C0791DF0686300790EF6 /* IBMessage.h */,
-				22E3D9DE1DF582C6004C449F /* CountableMessage */,
-				22C5C0671DF0642400790EF6 /* Connect */,
-				22C5C0681DF0644600790EF6 /* Connack */,
-				22C5C06C1DF0647C00790EF6 /* Disconnect */,
-				22C5C06D1DF0649100790EF6 /* Pingreq */,
-				22C5C06E1DF064A500790EF6 /* Pingresp */,
-				22C5C06F1DF064BA00790EF6 /* Puback */,
-				22C5C0701DF064C300790EF6 /* Pubcomp */,
-				22C5C0711DF064D500790EF6 /* Publish */,
-				22C5C0721DF064E500790EF6 /* Pubrec */,
-				22C5C0731DF064EF00790EF6 /* Pubrel */,
-				22C5C0741DF064F500790EF6 /* Suback */,
-				22C5C0751DF064FE00790EF6 /* Subscribe */,
-				22C5C0761DF0650D00790EF6 /* Unsuback */,
-				22C5C0771DF0651700790EF6 /* Unsubscribe */,
-			);
-			name = Messages;
-			sourceTree = "<group>";
-		};
 		22E104B51E0017990044AAFD /* AddTopicViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,15 +1299,6 @@
 				22E104BE1E0036270044AAFD /* IBAccountListTableViewCell.m */,
 			);
 			name = AccountListTableViewCell;
-			sourceTree = "<group>";
-		};
-		22E3D9DE1DF582C6004C449F /* CountableMessage */ = {
-			isa = PBXGroup;
-			children = (
-				22A21A251DF1AF670063C9A8 /* IBCountableMessage.h */,
-				22A21A261DF1AF670063C9A8 /* IBCountableMessage.m */,
-			);
-			name = CountableMessage;
 			sourceTree = "<group>";
 		};
 		22F2C6DB1DFAA7F1004FB400 /* CoreDataManager */ = {
@@ -760,19 +1359,19 @@
 			children = (
 				22F74DAE1E03DA4C00FB124D /* SocketDecoder */,
 				22F74DB21E03DAF500FB124D /* SocketEncoder */,
-				22F74DB81E03DD0500FB124D /* IBTransport */,
+				22F74DB81E03DD0500FB124D /* Transport */,
 				22F74DBC1E03DD2800FB124D /* SocketTransport */,
 			);
 			name = TCP;
 			sourceTree = "<group>";
 		};
-		22F74DB81E03DD0500FB124D /* IBTransport */ = {
+		22F74DB81E03DD0500FB124D /* Transport */ = {
 			isa = PBXGroup;
 			children = (
 				22F74DB51E03DC4200FB124D /* IBTransport.h */,
 				22F74DB61E03DC4200FB124D /* IBTransport.m */,
 			);
-			name = IBTransport;
+			name = Transport;
 			sourceTree = "<group>";
 		};
 		22F74DBC1E03DD2800FB124D /* SocketTransport */ = {
@@ -922,55 +1521,94 @@
 			files = (
 				22C5C0361DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodeld in Sources */,
 				2262BD8B1DF8356300D5A83E /* Message+CoreDataProperties.m in Sources */,
-				22E3D9F01DF58532004C449F /* IBUnsuback.m in Sources */,
+				22C531D11EAF9216007F57A8 /* IBParser.m in Sources */,
+				22C532231EAF9338007F57A8 /* IBSNAdvertise.m in Sources */,
+				22C5321C1EAF9338007F57A8 /* IBSNWillMsgResp.m in Sources */,
+				22C532221EAF9338007F57A8 /* IBSNSearchGW.m in Sources */,
+				22C532181EAF9338007F57A8 /* IBSNSuback.m in Sources */,
 				22E104BB1E00354C0044AAFD /* IBAccountListViewController.m in Sources */,
-				22A21A211DF1ADF00063C9A8 /* IBPingresp.m in Sources */,
-				22C5C0661DF063FC00790EF6 /* IBConnect.m in Sources */,
+				22C531BC1EAF90F2007F57A8 /* IBWill.m in Sources */,
+				22C532431EAF95A8007F57A8 /* IBSNQoS.m in Sources */,
+				22C531AD1EAF90D2007F57A8 /* IBSuback.m in Sources */,
+				22C531A31EAF90D2007F57A8 /* IBPuback.m in Sources */,
+				22C531A71EAF90D2007F57A8 /* IBPingreq.m in Sources */,
 				221736CC1DF9A823000684CF /* IBTopicsListTableViewCell.m in Sources */,
-				22A21A0A1DF16F9B0063C9A8 /* IBWill.m in Sources */,
-				22A21A241DF1AEB20063C9A8 /* IBPuback.m in Sources */,
+				22C531A61EAF90D2007F57A8 /* IBDisconnect.m in Sources */,
 				221736AD1DF953C2000684CF /* IBPickerView.m in Sources */,
 				22F74DB71E03DC4200FB124D /* IBTransport.m in Sources */,
+				22C5323F1EAF95A8007F57A8 /* IBSNShortTopic.m in Sources */,
 				22F74DB11E03DAF200FB124D /* IBSocketEncoder.m in Sources */,
-				22E3D9DA1DF58208004C449F /* IBPubrec.m in Sources */,
+				22C532141EAF9338007F57A8 /* IBSNPubrec.m in Sources */,
 				22E104BF1E0036270044AAFD /* IBAccountListTableViewCell.m in Sources */,
 				2262BD891DF8356300D5A83E /* Account+CoreDataProperties.m in Sources */,
-				22E3D9E11DF582F2004C449F /* IBSuback.m in Sources */,
+				22C531A81EAF90D2007F57A8 /* IBPingresp.m in Sources */,
+				22C532241EAF9338007F57A8 /* IBSNWillTopicReq.m in Sources */,
+				22C532411EAF95A8007F57A8 /* IBSNTopicType.m in Sources */,
+				22C531A51EAF90D2007F57A8 /* IBConnect.m in Sources */,
 				22F74DAD1E03DA4900FB124D /* IBSocketDecoder.m in Sources */,
+				22C531A91EAF90D2007F57A8 /* IBPubcomp.m in Sources */,
 				2262BD881DF8356300D5A83E /* Account+CoreDataClass.m in Sources */,
+				22C532401EAF95A8007F57A8 /* IBSNValuesValidator.m in Sources */,
+				22C5320C1EAF9338007F57A8 /* IBSNWillMsg.m in Sources */,
+				22C531BA1EAF90F2007F57A8 /* IBCountableMessage.m in Sources */,
+				22C5320D1EAF9338007F57A8 /* IBSNWillMsgUpd.m in Sources */,
 				220E2A811E04091D00056738 /* IBMessageTimer.m in Sources */,
 				22F2C6DA1DFAA7ED004FB400 /* IBCoreDataManager.m in Sources */,
-				22E3D9DD1DF5828C004C449F /* IBPubrel.m in Sources */,
 				22F6F7501E01521300FCC503 /* IBMQTT.m in Sources */,
-				22A21A141DF19BF10063C9A8 /* IBQoS.m in Sources */,
+				22C531AA1EAF90D2007F57A8 /* IBPublish.m in Sources */,
+				22C532261EAF9338007F57A8 /* IBSNPingresp.m in Sources */,
+				22C5321A1EAF9338007F57A8 /* IBSNUnsuback.m in Sources */,
+				22C5321D1EAF9338007F57A8 /* IBSNWillTopicResp.m in Sources */,
+				22C5323D1EAF95A8007F57A8 /* IBSNFullTopic.m in Sources */,
+				22C531AC1EAF90D2007F57A8 /* IBPubrel.m in Sources */,
 				221736B71DF98222000684CF /* IBSendMessageTableViewController.m in Sources */,
-				22A21A1E1DF1AD8C0063C9A8 /* IBPingreq.m in Sources */,
 				224494E91E07E239006831A3 /* IBAccountManager.m in Sources */,
 				22C5C02D1DF061CE00790EF6 /* AppDelegate.m in Sources */,
 				2262BD911DF85C7800D5A83E /* IBLoginTableViewController.m in Sources */,
-				22E3D9ED1DF58528004C449F /* IBUnsubscribe.m in Sources */,
 				22F2C6E51DFACAFA004FB400 /* IBTabBarController.m in Sources */,
+				22C532191EAF9338007F57A8 /* IBSNSubscribe.m in Sources */,
+				22C5320B1EAF9338007F57A8 /* IBSNPublish.m in Sources */,
 				2262BD8C1DF8356300D5A83E /* Topic+CoreDataClass.m in Sources */,
+				22C5321B1EAF9338007F57A8 /* IBSNUnsubscribe.m in Sources */,
+				22C532161EAF9338007F57A8 /* IBSNRegack.m in Sources */,
+				22C531B01EAF90D2007F57A8 /* IBUnsubscribe.m in Sources */,
+				22C532421EAF95A8007F57A8 /* IBSNControls.m in Sources */,
 				2262BD8D1DF8356300D5A83E /* Topic+CoreDataProperties.m in Sources */,
-				22A21A2A1DF1B2BD0063C9A8 /* IBPubcomp.m in Sources */,
+				22C5320F1EAF9338007F57A8 /* IBSNDisconnect.m in Sources */,
+				22C532131EAF9338007F57A8 /* IBSNPubcomp.m in Sources */,
+				22C531A41EAF90D2007F57A8 /* IBConnack.m in Sources */,
 				221736D11DF9A860000684CF /* IBMessagesListTableViewCell.m in Sources */,
-				22A21A061DF16C640063C9A8 /* IBParser.m in Sources */,
-				22E3D9E41DF583BC004C449F /* IBSubscribe.m in Sources */,
+				22C532151EAF9338007F57A8 /* IBSNPubrel.m in Sources */,
+				22C532171EAF9338007F57A8 /* IBSNRegister.m in Sources */,
 				22A21A021DF16AA40063C9A8 /* IBMutableData.m in Sources */,
+				22C532441EAF95A8007F57A8 /* IBSNResponseMessage.m in Sources */,
 				22E104B81E0017C10044AAFD /* IBAddTopicViewController.m in Sources */,
-				22A21A271DF1AF670063C9A8 /* IBCountableMessage.m in Sources */,
-				22A21A1B1DF1AD1A0063C9A8 /* IBDisconnect.m in Sources */,
-				22A21A181DF1ABC00063C9A8 /* IBTopic.m in Sources */,
+				22C532111EAF9338007F57A8 /* IBSNPingreq.m in Sources */,
 				2262BD8A1DF8356300D5A83E /* Message+CoreDataClass.m in Sources */,
+				22C531AB1EAF90D2007F57A8 /* IBPubrec.m in Sources */,
+				22C532451EAF95A8007F57A8 /* IBSNCountableMessage.m in Sources */,
+				22C532251EAF9338007F57A8 /* IBSNWillMsgReq.m in Sources */,
+				22C532491EAF9625007F57A8 /* IBSNParser.m in Sources */,
+				22C531AE1EAF90D2007F57A8 /* IBSubscribe.m in Sources */,
 				221736C01DF9975B000684CF /* IBTopicsListTableViewController.m in Sources */,
-				22C5C06B1DF0646C00790EF6 /* IBConnack.m in Sources */,
+				22C5320E1EAF9338007F57A8 /* IBSNWillTopic.m in Sources */,
 				22C5C02A1DF061CE00790EF6 /* main.m in Sources */,
-				22E3D9D71DF58007004C449F /* IBPublish.m in Sources */,
 				221736BD1DF98676000684CF /* IBMessagesListTableViewController.m in Sources */,
+				22C532101EAF9338007F57A8 /* IBSNEncapsulated.m in Sources */,
+				22C5321F1EAF9338007F57A8 /* IBSNConnack.m in Sources */,
 				22A219FF1DF168E60063C9A8 /* IBLengthDetails.m in Sources */,
+				22C532121EAF9338007F57A8 /* IBSNPuback.m in Sources */,
+				22C531AF1EAF90D2007F57A8 /* IBUnsuback.m in Sources */,
+				22C531BB1EAF90F2007F57A8 /* IBQoS.m in Sources */,
+				22C5323C1EAF95A8007F57A8 /* IBSNFlags.m in Sources */,
+				22C5323E1EAF95A8007F57A8 /* IBSNIdentifierTopic.m in Sources */,
+				22C531B91EAF90F2007F57A8 /* IBTopic.m in Sources */,
 				221736C71DF9A066000684CF /* IBDashBorderButton.m in Sources */,
 				2262BD9A1DF8638F00D5A83E /* IBLoadingViewController.m in Sources */,
 				22F74DBB1E03DD2400FB124D /* IBSocketTransport.m in Sources */,
+				22C532211EAF9338007F57A8 /* IBSNGWInfo.m in Sources */,
+				22C532201EAF9338007F57A8 /* IBSNConnect.m in Sources */,
+				22C5321E1EAF9338007F57A8 /* IBSNWillTopicUpd.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -51,7 +51,7 @@ static NSString *const IBChooseAccountPopover = @"IBChooseAccountPopover";
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    NSLog(@"size = %li", [self->_accountManager.coreDataManager getEntities:IBAccountEntity].count);
+    NSLog(@"size = %zd", [self->_accountManager.coreDataManager getEntities:IBAccountEntity].count);
     [self performSelectorInBackground:@selector(runLoadingMethod:) withObject:nil];
 }
 
@@ -85,15 +85,15 @@ static NSString *const IBChooseAccountPopover = @"IBChooseAccountPopover";
         
         NSLog(@"USERNAME : %@", account.username);
         NSLog(@"PASSWORD : %@", account.password);
-        NSLog(@"TOPICS : %li", account.topics.count);
-        NSLog(@"MESSAGES : %li", account.messages.count);
+        NSLog(@"TOPICS : %zd", account.topics.count);
+        NSLog(@"MESSAGES : %zd", account.messages.count);
 
         self->_mqtt.delegate = self;
         self->_mqtt.connectDelegate = self;
         
         if ([self->_accountManager isAccountAlreadyExist:account]) {
             [self->_accountManager setDefaultAccountWithUserame:account.username];
-            [self->_mqtt startWithHost:account.serverHost port:account.port];
+            [self->_mqtt startWithHost:account.serverHost port:(NSInteger)account.port];
         }
     }
 }

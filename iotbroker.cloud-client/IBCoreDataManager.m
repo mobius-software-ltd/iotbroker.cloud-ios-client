@@ -72,10 +72,10 @@
         return self->_persistentStoreCoordinator;
     }
     
-    //NSURL *urlForMacTest = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *urlForMacTest = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     NSURL *urlForIOS = [self applicationDocumentsDirectory];
     
-    NSURL *url = urlForIOS;
+    NSURL *url = urlForMacTest;
     
     NSURL *storeURL = [url URLByAppendingPathComponent:@"iotbroker_cloud_client.sqlite"];
     NSLog(@"URL : %@", storeURL.absoluteString);

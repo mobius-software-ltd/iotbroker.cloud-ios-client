@@ -26,7 +26,6 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     CGFloat r = 39.0/255.0, g = 164.0/255.0, b = 217.0/255.0;

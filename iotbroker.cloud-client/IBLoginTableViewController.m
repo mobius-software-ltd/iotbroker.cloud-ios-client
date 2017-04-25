@@ -183,7 +183,7 @@ static NSString *const IBLoginToMainSegue = @"IBLoginToMainSegue";
             NSLog(@"- %i",account.qos);
             if ([self isHostValid:self.serverHostField.text] == true) {
                 [self->_accountManager writeAccount:account];
-                [self->_mqtt startWithHost:account.serverHost port:account.port];
+                [self->_mqtt startWithHost:account.serverHost port:(NSInteger)account.port];
             } else {
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Host is incorrect" preferredStyle:UIAlertControllerStyleActionSheet];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
@@ -227,7 +227,7 @@ static NSString *const IBLoginToMainSegue = @"IBLoginToMainSegue";
 
 - (void) mqtt : (IBMQTT *) mqtt didFailWithError : (NSError *)error {
     if ([mqtt isEqual:self->_mqtt]) {
-        NSLog(@" >> Login : didFailWithError");
+        NSLog(@" >> Login : didFailWithError %@", error);
         
         if (self->_timer != nil) {
             [self->_timer stop];
@@ -292,11 +292,11 @@ static NSString *const IBLoginToMainSegue = @"IBLoginToMainSegue";
             self.clientIDField.text     = nil;
             self.serverHostField.text   = nil;
             self.portField.text         = nil;
-            self.cleanSessionSwitch.on  = nil;
+            self.cleanSessionSwitch.on  = false;
             self.keepaliveField.text    = nil;
             self.willField.text         = nil;
             self.willTopicField.text    = nil;
-            self.retainSwitch.on        = nil;
+            self.retainSwitch.on        = false;
             self.qosTextField.text      = nil;
         }
     }
