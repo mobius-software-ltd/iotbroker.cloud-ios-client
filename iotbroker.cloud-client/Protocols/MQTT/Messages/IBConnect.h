@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -19,6 +19,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "IBMQTTEnums.h"
 #import "IBMessage.h"
 #import "IBWill.h"
 
@@ -35,8 +36,8 @@
 @property (strong, nonatomic) IBWill *will;
 
 - (instancetype) init;
-- (instancetype) initWithUsername : (NSString *) username andPassword : (NSString *) password andClientID : (NSString *) clientID andCleanSession : (BOOL) isClean andWill : (IBWill *) will;
-+ (instancetype) connectWithUsername : (NSString *) username andPassword : (NSString *) password andClientID : (NSString *) clientID andCleanSession : (BOOL) isClean andWill : (IBWill *) will;
+- (instancetype) initWithUsername : (NSString *) username password : (NSString *) password clientID : (NSString *) clientID keepalive : (NSInteger) keepalive cleanSession : (BOOL) isClean andWill : (IBWill *) will;
++ (instancetype) connectWithUsername : (NSString *) username password : (NSString *) password clientID : (NSString *) clientID keepalive : (NSInteger) keepalive cleanSession : (BOOL) isClean andWill : (IBWill *) will;
 
 - (void) setCurrentProtocolLevel : (NSInteger) level;
 - (NSString *) getProtocolName;

@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -18,25 +18,19 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-#import <Foundation/Foundation.h>
+#import "IBLoginTableViewCell.h"
 
-typedef NS_ENUM(NSInteger, IBQualitiesOfService)
-{
-    IBAtMostOnce = 0,
-    IBAtLeastOnce = 1,
-    IBExactlyOnce = 2,
-    
-};
+@implementation IBLoginTableViewCell
 
-@interface IBQoS : NSObject
-{
-    Byte _value;
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
 }
 
-- (instancetype) initWithValue : (Byte) value;
-+ (instancetype) claculateSubscriberQos : (IBQoS *) subscriberQos andPublisherQos : (IBQoS *) publisherQos;
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
 
-- (NSInteger) getValue;
-- (BOOL) isValid;
+    // Configure the view for the selected state
+}
 
 @end

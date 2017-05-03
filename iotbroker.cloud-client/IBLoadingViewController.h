@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -18,17 +18,12 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-#import "IBMQTT.h"
 #import <UIKit/UIKit.h>
-#import "IBAccountManager.h"
-#import "IBAccountListViewController.h"
-#import "IBMessageTimer.h"
 
-@interface IBLoadingViewController : UIViewController <IBMQTTDelegate, IBMQTTConnectionMessageDelegate, IBAccountListDelegate, UIPopoverPresentationControllerDelegate>
-{
-    IBMQTT *_mqtt;
-    IBAccountManager *_accountManager;
-    IBMessageTimer *_timer;
-}
+typedef void(^IBLoadingCompletionHandler)(BOOL animated);
+
+@interface IBLoadingViewController : UIViewController
+
+- (void) pushViewController : (UINavigationController *) navigationController animated : (BOOL) animated withCompletionHandler : (IBLoadingCompletionHandler) completionHandler;
 
 @end

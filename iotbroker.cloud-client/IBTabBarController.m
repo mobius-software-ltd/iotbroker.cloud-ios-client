@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -19,21 +19,23 @@
  */
 
 #import "IBTabBarController.h"
+#import "IBTopicsListTableViewController.h"
+#import "IBSendMessageTableViewController.h"
+#import "IBMessagesListTableViewController.h"
+#import "IBAlertViewController.h"
+#import "IBMQTT.h"
+#import "IBMQTTSN.h"
 
-@interface IBTabBarController ()
+@interface IBTabBarController () <IBTopicsListControllerDelegate, IBSendMessageControllerDelegate, IBAddTopicDelegate, IBMessagesControllerDelegate, IBResponsesDelegate>
 
+@property (strong, nonatomic) id<IBRequests> requests;
+@property (strong, nonatomic) IBProgressHUDViewController *progressHUD;
 @end
 
 @implementation IBTabBarController
-{
-    NSTimer *_timer;
-    NSMutableDictionary *_publishTopics;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self->_mqtt = [IBMQTT sharedInstance];
     
     self.navigationController.navigationBar.translucent = false;
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
@@ -44,79 +46,221 @@
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ImageLogout"] style:UIBarButtonItemStylePlain target:self action:@selector(logout)];
     [self.navigationItem setRightBarButtonItem:logoutButton];
     
-    self->_accountManager = [IBAccountManager getInstance];
-    self->_currentAccount = [self->_accountManager readDefaultAccount];
-    self->_mqtt.publishInDelegate = self;
-    
-    self->_publishTopics = [NSMutableDictionary dictionary];
-    
-    if (self->_currentAccount != nil && self->_currentAccount.keepalive > 0) {
-        NSLog(@" >> keepalive = %i", self->_currentAccount.keepalive);
-        self->_timer = [NSTimer scheduledTimerWithTimeInterval: self->_currentAccount.keepalive target: self selector:@selector(timerMethod) userInfo: nil repeats:true];
+    [self setDelegateForViewControllers];
+    [self initializeConnection];
+}
+
+- (void) initializeConnection {
+
+    Account *account = [self->_accountManager readDefaultAccount];
+    if (account != nil) {
+        if (account.protocol == IBMqttProtocolType) {
+            self->_requests = [[IBMQTT alloc] initWithHost:account.serverHost port:account.port andResponseDelegate:self];
+        } else if (account.protocol == IBMqttSNProtocolType) {
+            self->_requests = [[IBMQTTSN alloc] initWithHost:account.serverHost port:account.port andResponseDelegate:self];
+        }
+        [self->_requests prepareToSendingRequest];
+        [self showProgressWithMessage:@"Connection..."];
     }
+}
+
+#pragma mark - Private methods -
+
+- (void) setDelegateForViewControllers {
+    for (UIViewController *item in [self viewControllers]) {
+        if ([item isKindOfClass:[IBTopicsListTableViewController class]]) {
+            ((IBTopicsListTableViewController *)item).delegate = self;
+        } else if ([item isKindOfClass:[IBSendMessageTableViewController class]]) {
+            ((IBSendMessageTableViewController *)item).delegate = self;
+        } else if ([item isKindOfClass:[IBMessagesListTableViewController class]]) {
+            ((IBMessagesListTableViewController *)item).delegate = self;
+        }
+    }
+}
+
+- (void) showProgressWithMessage : (NSString *) message {
+    self->_progressHUD = [self.tabBarDelegate getPreparedProgressHUD];
+    self->_progressHUD.parentController = self;
+    [self->_progressHUD showWithMessage:message];
+}
+
+- (void) closeProgress {
+    [self->_progressHUD close];
+}
+
+- (IBTopicsListTableViewController *) topicsListTableViewController {
+    for (UIViewController *item in [self viewControllers]) {
+        if ([item isKindOfClass:[IBTopicsListTableViewController class]]) {
+            return (IBTopicsListTableViewController *)item;
+        }
+    }
+    return nil;
 }
 
 - (void)logout {
+    [self->_accountManager unselectDefaultAccount];
+    [self->_requests disconnectWithDuration:0];
+    [self.navigationController popToRootViewControllerAnimated:true];
+    [self.tabBarDelegate tabBarControllerDidClickOnLogoutButton:self];
+}
+
+#pragma mark - IBTopicsListControllerDelegate -
+
+- (void)topicsListTableViewControllerDidLoad:(IBTopicsListTableViewController *)topicsListTableViewController {
+    topicsListTableViewController.topics = [self->_accountManager getTopicsForCurrentAccount];
+}
+
+- (void) topicsListTableViewControllerDidClickAddButton : (IBTopicsListTableViewController *) topicsListTableViewController {
+    [self.tabBarDelegate showAddTopicViewControllerOnViewController:self andSetDelegate:self];
+}
+
+- (void) topicsListTableViewController : (IBTopicsListTableViewController *) topicsListTableViewController didClickDeleteButtonWithTopic : (Topic *) topic {
+    [self->_requests unsubscribeFromTopic:topic];
+    [self showProgressWithMessage:@"Unsubscription..."];
+}
+
+#pragma mark - IBAddTopicDelegate -
+
+- (void) addTopicViewControllerClickOnAddButton : (IBAddTopicViewController *) controller {
+    Topic *topic = [self->_accountManager topic];
+    topic.topicName = controller.topicName;
+    topic.qos = (int32_t)controller.qosValue;
+    [self->_requests subscribeToTopic:topic];
+    self->_progressHUD = [self.tabBarDelegate getPreparedProgressHUD];
+    self->_progressHUD.parentController = self;
+    [self showProgressWithMessage:@"Subscription..."];
+}
+
+#pragma mark - IBSendMessageControllerDelegate -
+
+- (void)sendMessageTableViewControllerDidLoad:(IBSendMessageTableViewController *)sendMessageTableViewController {
+    sendMessageTableViewController.message = [self->_accountManager message];
+}
+
+- (BOOL) sendMessageTableViewController : (IBSendMessageTableViewController *) sendMessageTableViewController didClickSendButtonWithMessage : (Message *) message {
+
+    if ([message isValid] == true) {
+        [self->_requests publishMessage:message];
+        [self showProgressWithMessage:@"Publishion..."];
+
+        return true;
+    } else {
+        IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:@"Please fill in all fields" preferredStyle:UIAlertControllerStyleActionSheet];
+        [alert pushToNavigationControllerStack:self.navigationController];
+    }
+    return false;
+}
+
+#pragma mark - IBMessagesControllerDelegate -
+
+- (void)messagesListTableViewControllerDidLoad:(IBMessagesListTableViewController *)messagesListTableViewController {
+    [messagesListTableViewController setMessages:[self->_accountManager getMessagesForCurrentAccount]];
+}
+
+#pragma mark - IBResponsesDelegate -
+
+- (void) ready {
+    Account *account = [self->_accountManager readDefaultAccount];
+    if (account != nil) {
+        [self->_requests connectWithAccount:account];
+    }
+}
+
+- (void) connackWithCode : (NSInteger) returnCode {
+    if (returnCode == 0) {
+        [self closeProgress];
+    }
+}
+
+- (void) publishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag {
+    if (qos != IBExactlyOnce) {
+        Message *message = [self->_accountManager message];
+        message.topicName = name;
+        message.qos = (int32_t)qos;
+        message.content = content;
+        message.isDup = dup;
+        message.isRetain = retainFlag;
+        message.isIncoming = false;
+        [self->_accountManager addMessageForDefaultAccount:message];
+    }
+}
+
+- (void) pubackForPublishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag andReturnCode : (NSInteger) returnCode {
+    [self closeProgress];
+
+    Message *message = [self->_accountManager message];
+    message.topicName = name;
+    message.qos = (int32_t)qos;
+    message.content = content;
+    message.isDup = dup;
+    message.isRetain = retainFlag;
+    message.isIncoming = false;
+    [self->_accountManager addMessageForDefaultAccount:message];
+    IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Perfect" message:@"Message has been sending" preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert pushToNavigationControllerStack:self.navigationController];
+}
+
+- (void) pubrecForPublishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag {
+
+}
+
+- (void) pubrelForPublishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag {
+    [self closeProgress];
+
+    Message *message = [self->_accountManager message];
+    message.topicName = name;
+    message.qos = (int32_t)qos;
+    message.content = content;
+    message.isDup = dup;
+    message.isRetain = retainFlag;
+    message.isIncoming = true;
+    [self->_accountManager addMessageForDefaultAccount:message];
+}
+
+- (void) pubcompForPublishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag {
+    [self closeProgress];
+
+    Message *message = [self->_accountManager message];
+    message.topicName = name;
+    message.qos = (int32_t)qos;
+    message.content = content;
+    message.isDup = dup;
+    message.isRetain = retainFlag;
+    message.isIncoming = false;
+    [self->_accountManager addMessageForDefaultAccount:message];
+    IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Perfect" message:@"Message has been sending" preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert pushToNavigationControllerStack:self.navigationController];
+}
+
+- (void) subackForSubscribeWithTopicName:(NSString *)name qos:(NSInteger)qos returnCode:(NSInteger)returnCode {
+    [self closeProgress];
+
+    IBTopicsListTableViewController *topic = [self topicsListTableViewController];
+    Topic *item = [self->_accountManager topic];
+    item.topicName = name;
+    item.qos = (int32_t)qos;
+    [self->_accountManager addTopicToCurrentAccount:item];
+    [topic setTopics:[self->_accountManager getTopicsForCurrentAccount]];
+}
+
+- (void) unsubackForUnsubscribeWithTopicName:(NSString *)name {
+    [self closeProgress];
     
-    NSLog(@" >> bye : %@", self->_currentAccount.username);
+    IBTopicsListTableViewController *topic = [self topicsListTableViewController];
+    [self->_accountManager deleteTopicByTopicName:name];
+    topic.topics = [self->_accountManager getTopicsForCurrentAccount];
+}
+
+- (void) pingresp {
     
-    if (self->_currentAccount != nil) {
-        [self->_timer invalidate];
-        self->_timer = nil;
-        self->_currentAccount.isDefault = false;
-        if ([self->_accountManager.coreDataManager save] == true) {
-            [self->_mqtt disconnect];
-            [[self navigationController] setNavigationBarHidden:true animated:false];
-            [self.navigationController popToRootViewControllerAnimated:true];
-        }
-    }
 }
 
-- (void) timerMethod {
+- (void) disconnectWithDuration : (NSInteger) duration {
 
-    if ([self->_mqtt ping] == true) {
-        NSLog(@" >> ping ok");
-    }
 }
 
-#pragma mark - IBMQTTPublishInMessageDelegate
-
-- (void)publishRequestWithPacketID:(NSInteger)packetID topic:(IBTopic *)topic content:(NSData *)content isRetain:(BOOL)isRetain andIsDup:(BOOL)isDup {
-
-    if ([topic.qos getValue] == 1) {
-        if (isDup == false) {
-            [self->_accountManager addIncoming:true message:[[IBPublish alloc] initWithPacketID:packetID andTopic:topic andContent:content andIsRetain:isRetain andDup:isDup]];
-        }
-        [self->_mqtt pubackWithPacketID:packetID];
-    } else if ([topic.qos getValue] == 2) {
-        if (isDup == false) {
-            [self->_accountManager addIncoming:true message:[[IBPublish alloc] initWithPacketID:packetID andTopic:topic andContent:content andIsRetain:isRetain andDup:isDup]];
-        }
-        
-        if ([self->_mqtt pubrecWithPacketID:packetID] == false) {
-            self->_pubrecTimer = [[IBMessageTimer alloc] initWithTimeInterval:3.0 message:IBPubrecMessage timerFor:self->_mqtt withUserInfo:@(packetID)];
-        }
-    }
+- (void) error : (NSError *) error {
+    NSLog(@"Error %@", error);
 }
-
-- (void) publishReleaseReceivedWithPacketID : (NSInteger) packetID {
-    NSLog(@"---+ PUBREL");
-    
-    if (self->_pubrecTimer != nil) {
-        [self->_pubrecTimer stop];
-    }
-    [self->_mqtt pubcompWithPacketID:packetID];
-}
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

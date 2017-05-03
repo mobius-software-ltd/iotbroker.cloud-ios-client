@@ -1,16 +1,28 @@
-//
-//  IBSNFlags.m
-//  iotbroker.cloud-client
-//
-//  Created by MacOS on 24.04.17.
-//  Copyright © 2017 MobiusSoftware. All rights reserved.
-//
+/**
+ * Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */
 
 #import "IBSNFlags.h"
 
 @implementation IBSNFlags
 
-- (instancetype) initWithDup : (BOOL) dup qos : (IBSNQoS *) qos retainFlag : (BOOL) retainFlag will : (BOOL) will cleanSession : (BOOL) cleanSession topicType : (IBSNTopicType *) topicType {
+- (instancetype) initWithDup : (BOOL) dup qos : (IBQoS *) qos retainFlag : (BOOL) retainFlag will : (BOOL) will cleanSession : (BOOL) cleanSession topicType : (IBSNTopicType *) topicType {
     self = [super init];
     if (self != nil) {
         self->_dup = dup;
@@ -46,16 +58,16 @@
     BOOL will = [bitMask containsObject:@(IBWillFlag)];
     BOOL cleanSession = [bitMask containsObject:@(IBCleanSessionFlag)];
 
-    IBSNQoS *qos = nil;
+    IBQoS *qos = nil;
     
     if ([bitMask containsObject:@(IBQoSLevelOneFlag)]) {
-        qos = [[IBSNQoS alloc] initWithValue:IBLevelOne];
+        qos = [[IBQoS alloc] initWithValue:IBLevelOne];
     } else if ([bitMask containsObject:@(IBQoS2Flag)]) {
-        qos = [[IBSNQoS alloc] initWithValue:IBExactlyOnce];
+        qos = [[IBQoS alloc] initWithValue:IBExactlyOnce];
     } else if ([bitMask containsObject:@(IBQoS1Flag)]) {
-        qos = [[IBSNQoS alloc] initWithValue:IBAtLeastOnce];
+        qos = [[IBQoS alloc] initWithValue:IBAtLeastOnce];
     } else {
-        qos = [[IBSNQoS alloc] initWithValue:IBAtMostOnce];
+        qos = [[IBQoS alloc] initWithValue:IBAtMostOnce];
     }
 
     IBSNTopicType *topicType = nil;
@@ -227,7 +239,7 @@
     return [[IBSNFlags alloc] initWithDup:dup qos:qos retainFlag:retainFlag will:will cleanSession:cleanSession topicType:topicType];
 }
 
-+ (Byte) encodeWithDup : (BOOL) dup qos : (IBSNQoS *) qos retainFlag : (BOOL) retainFlag will : (BOOL) will cleanSession : (BOOL) cleanSession topicType : (IBSNTopicType *) topicType {
++ (Byte) encodeWithDup : (BOOL) dup qos : (IBQoS *) qos retainFlag : (BOOL) retainFlag will : (BOOL) will cleanSession : (BOOL) cleanSession topicType : (IBSNTopicType *) topicType {
 
     Byte flagsByte = 0;
     

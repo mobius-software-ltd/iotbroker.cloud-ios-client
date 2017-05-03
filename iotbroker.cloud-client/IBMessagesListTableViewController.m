@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -19,6 +19,7 @@
  */
 
 #import "IBMessagesListTableViewController.h"
+#import "IBMessagesListTableViewCell.h"
 
 @implementation IBMessagesListTableViewController
 
@@ -33,25 +34,19 @@
     
     tableView.rowHeight = UITableViewAutomaticDimension;
     tableView.estimatedRowHeight = 100;
-    
-    self->_accountManager = [IBAccountManager getInstance];
-    
-    NSArray *messagesFromDatabase = [self->_accountManager getMessagesForCurrentAccount];
-    if (messagesFromDatabase != nil) {
-        self->_massages = [NSMutableArray arrayWithArray:messagesFromDatabase];
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.topItem.title = @"Incoming messages list";
-    
-    NSArray *messagesFromDatabase = [self->_accountManager getMessagesForCurrentAccount];
-    if (messagesFromDatabase != nil) {
-        self->_massages = [NSMutableArray arrayWithArray:messagesFromDatabase];
-    }
-    [self.tableView reloadData];
+    [self.delegate messagesListTableViewControllerDidLoad:self];
+}
 
+- (void)setMessages:(NSArray<Message *> *)messages {
+    self->_messages = messages;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
 
 #pragma mark - Table view data source
@@ -61,15 +56,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self->_massages.count;
+    return self->_messages.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     IBMessagesListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    Message *item = [self->_massages objectAtIndex:indexPath.row];
+        
+    Message *item = [self->_messages objectAtIndex:indexPath.row];
     
     if (item.isIncoming == true) {
         [cell setMessageType:IBIncomingMessage];

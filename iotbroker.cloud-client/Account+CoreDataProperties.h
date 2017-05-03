@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -19,6 +19,7 @@
  */
 
 #import "Account+CoreDataClass.h"
+#import "IBProtocolTypeEnum.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,17 +29,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) BOOL cleanSession;
 @property (nullable, nonatomic, copy) NSString *clientID;
-@property (nonatomic) int32_t iD;
 @property (nonatomic) BOOL isDefault;
 @property (nonatomic) BOOL isRetain;
 @property (nonatomic) int32_t keepalive;
 @property (nullable, nonatomic, copy) NSString *password;
+@property (nonatomic) int64_t port;
 @property (nonatomic) int32_t qos;
 @property (nullable, nonatomic, copy) NSString *serverHost;
 @property (nullable, nonatomic, copy) NSString *username;
 @property (nullable, nonatomic, copy) NSString *will;
 @property (nullable, nonatomic, copy) NSString *willTopic;
-@property (nonatomic) int64_t port;
+@property (nonatomic) int16_t protocol;
 @property (nullable, nonatomic, retain) NSSet<Message *> *messages;
 @property (nullable, nonatomic, retain) NSSet<Topic *> *topics;
 
@@ -55,6 +56,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeTopicsObject:(Topic *)value;
 - (void)addTopics:(NSSet<Topic *> *)values;
 - (void)removeTopics:(NSSet<Topic *> *)values;
+
+@end
+
+@interface Account (CoreDataValueValidation)
+
+- (BOOL) isValid;
 
 @end
 

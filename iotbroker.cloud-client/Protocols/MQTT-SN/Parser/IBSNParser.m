@@ -1,10 +1,22 @@
-//
-//  IBSNParser.m
-//  iotbroker.cloud-client
-//
-//  Created by MacOS on 24.04.17.
-//  Copyright © 2017 MobiusSoftware. All rights reserved.
-//
+/**
+ * Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */
 
 #import "IBSNParser.h"
 #import "IBSNValuesValidator.h"
@@ -20,7 +32,7 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
 
 #pragma mark - ENCODE IBSNMESSAGE TO DATA -
 
-+ (NSMutableData *) encode : (id<IBSNMessage>) message {
++ (NSMutableData *) encode : (id<IBMessage>) message {
     
     NSMutableData *data = [NSMutableData data];
     
@@ -90,14 +102,14 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
         {
             IBSNRegister *registerSN = (IBSNRegister *)message;
             [data appendShort:registerSN.topicID];
-            [data appendShort:registerSN.messageID];
+            [data appendShort:registerSN.packetID];
             [data appendData:[registerSN.topicName dataUsingEncoding:IBStringEncoding]];
         } break;
         case IBRegackMessage:
         {
             IBSNRegack *regack = (IBSNRegack *)message;
             [data appendShort:regack.topicID];
-            [data appendShort:regack.messageID];
+            [data appendShort:regack.packetID];
             [data appendByte:regack.returnCode];
         } break;
         case IBPublishMessage:
@@ -106,14 +118,14 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
             Byte publishFlagsByte = [IBSNFlags encodeWithDup:publish.isDup qos:[publish.topic getQoS] retainFlag:publish.isRetainFlag will:false cleanSession:false topicType:[publish.topic getType]];
             [data appendByte:publishFlagsByte];
             [data appendData:[publish.topic encode]];
-            [data appendShort:publish.messageID];
+            [data appendShort:publish.packetID];
             [data appendData:publish.content];
         } break;
         case IBPubackMessage:
         {
             IBSNPuback *puback = (IBSNPuback *)message;
             [data appendShort:puback.topicID];
-            [data appendShort:puback.messageID];
+            [data appendShort:puback.packetID];
             [data appendByte:puback.returnCode];
         } break;
         case IBPubrecMessage:
@@ -121,15 +133,15 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
         case IBPubcompMessage:
         case IBUnsubackMessage:
         {
-            IBSNCountableMessage *contableMessage = (IBSNCountableMessage *)message;
-            [data appendShort:contableMessage.messageID];
+            IBCountableMessage *contableMessage = (IBCountableMessage *)message;
+            [data appendShort:contableMessage.packetID];
         } break;
         case IBSubscribeMessage:
         {
             IBSNSubscribe *subscribe = (IBSNSubscribe *)message;
             Byte subscribeFlags = [IBSNFlags encodeWithDup:subscribe.isDup qos:[subscribe.topic getQoS] retainFlag:false will:false cleanSession:false topicType:[subscribe.topic getType]];
             [data appendByte:subscribeFlags];
-            [data appendShort:subscribe.messageID];
+            [data appendShort:subscribe.packetID];
             [data appendData:[subscribe.topic encode]];
         } break;
         case IBSubackMessage:
@@ -138,7 +150,7 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
             Byte subackByte = [IBSNFlags encodeWithDup:false qos:suback.allowedQos retainFlag:false will:false cleanSession:false topicType:nil];
             [data appendByte:subackByte];
             [data appendShort:suback.topicID];
-            [data appendShort:suback.messageID];
+            [data appendShort:suback.packetID];
             [data appendByte:suback.returnCode];
         } break;
         case IBUnsubscribeMessage:
@@ -146,7 +158,7 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
             IBSNUnsubscribe *unsubscribe = (IBSNUnsubscribe *)message;
             Byte unsubscribeFlags = [IBSNFlags encodeWithDup:false qos:nil retainFlag:false will:false cleanSession:false topicType:[unsubscribe.topic getType]];
             [data appendByte:unsubscribeFlags];
-            [data appendShort:unsubscribe.messageID];
+            [data appendShort:unsubscribe.packetID];
             [data appendData:[unsubscribe.topic encode]];
         } break;
         case IBPingreqMessage:
@@ -200,11 +212,11 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
 
 #pragma mark - DECODE DATA TO IBSNMESSAGE -
 
-+ (id<IBSNMessage>) decode : (NSMutableData *) data {
++ (id<IBMessage>) decode : (NSMutableData *) data {
 
     [data clearNumber];
     
-    id<IBSNMessage> message = nil;
+    id<IBMessage> message = nil;
 
     NSInteger messageLength = [IBSNParser decodeContentLength:data];
     NSInteger bytesLeft = messageLength - [data getByteNumber];
@@ -300,16 +312,16 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
                 @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid topicID value %zd", type, registerTopicID] userInfo:nil];
             }
             bytesLeft -= 2;
-            NSInteger registerMessageID = [data readShort];
-            if (![IBSNValuesValidator validateRegistrationTopicID:registerMessageID]) {
-                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid messageID %zd", type, registerMessageID] userInfo:nil];
+            NSInteger registerPacketID = [data readShort];
+            if (![IBSNValuesValidator validateRegistrationTopicID:registerPacketID]) {
+                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid packetID %zd", type, registerPacketID] userInfo:nil];
             }
             bytesLeft -= 2;
             if (![IBSNValuesValidator canReadData:data withBytesLeft:bytesLeft]) {
                 @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd must contain a valid topic", type] userInfo:nil];
             }
             NSString *registerTopicName = [data readStringWithLength:bytesLeft];
-            message = [[IBSNRegister alloc] initWithTopicID:registerTopicID messageID:registerMessageID andTopicName:registerTopicName];
+            message = [[IBSNRegister alloc] initWithTopicID:registerTopicID packetID:registerPacketID andTopicName:registerTopicName];
         } break;
         case IBRegackMessage:
         {
@@ -317,12 +329,12 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
             if (![IBSNValuesValidator validateRegistrationTopicID:regackTopicID]) {
                 @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid topicID value %zd", type, regackTopicID] userInfo:nil];
             }
-            NSInteger regackMessageID = [data readShort];
-            if (![IBSNValuesValidator validateMessageID:regackMessageID]) {
-                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid messageID %zd", type, regackMessageID] userInfo:nil];
+            NSInteger regackPacketID = [data readShort];
+            if (![IBSNValuesValidator validatePacketID:regackPacketID]) {
+                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid packetID %zd", type, regackPacketID] userInfo:nil];
             }
             IBSNReturnCode returnCode = [data readByte];
-            message = [[IBSNRegack alloc] initWithTopicID:regackTopicID messageID:regackMessageID returnCode:returnCode];
+            message = [[IBSNRegack alloc] initWithTopicID:regackTopicID packetID:regackPacketID returnCode:returnCode];
         } break;
         case IBPublishMessage:
         {
@@ -330,12 +342,12 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
             bytesLeft--;
             NSInteger publishTopicID = [data readShort];
             bytesLeft -= 2;
-            NSInteger publishMessageID = [data readShort];
+            NSInteger publishPacketID = [data readShort];
             bytesLeft -= 2;
-            if (publishFlags.qos.value != IBAtMostOnce && publishMessageID == 0) {
-                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"invalid PUBLISH QoS-0 messageID: %zd", publishMessageID] userInfo:nil];
+            if (publishFlags.qos.value != IBAtMostOnce && publishPacketID == 0) {
+                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"invalid PUBLISH QoS-0 packetID: %zd", publishPacketID] userInfo:nil];
             }
-            id<IBSNTopic> publishTopic = nil;
+            id<IBTopic> publishTopic = nil;
             if (publishFlags.topicType.value == IBShortTopicType) {
                 publishTopic = [[IBSNShortTopic alloc] initWithValue:[@(publishTopicID) stringValue] andQoS:publishFlags.qos];
             } else {
@@ -349,7 +361,7 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
                 NSString *publishContentString = [data readStringWithLength:bytesLeft];
                 publishContent = [publishContentString dataUsingEncoding:IBStringEncoding];
             }
-            message = [[IBSNPublish alloc] initWithMessageID:publishMessageID topic:publishTopic content:publishContent dup:publishFlags.isDup retainFlag:publishFlags.isRetainFlag];
+            message = [[IBSNPublish alloc] initWithPacketID:publishPacketID topic:publishTopic content:publishContent dup:publishFlags.isDup retainFlag:publishFlags.isRetainFlag];
         } break;
         case IBPubackMessage:
         {
@@ -357,44 +369,44 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
             if (![IBSNValuesValidator validateTopicID:pubackTopicID]) {
                 @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid topicID value %zd", type, pubackTopicID] userInfo:nil];
             }
-            NSInteger pubackMessageID = [data readShort];
-            if (![IBSNValuesValidator validateMessageID:pubackMessageID]) {
-                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid messageID %zd", type, pubackMessageID] userInfo:nil];
+            NSInteger pubackPacketID = [data readShort];
+            if (![IBSNValuesValidator validatePacketID:pubackPacketID]) {
+                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid packetID %zd", type, pubackPacketID] userInfo:nil];
             }
             IBSNReturnCode returnCode = [data readByte];
-            message = [[IBSNPuback alloc] initWithTopicID:pubackTopicID messageID:pubackMessageID andReturnCode:returnCode];
+            message = [[IBSNPuback alloc] initWithTopicID:pubackTopicID packetID:pubackPacketID andReturnCode:returnCode];
         } break;
         case IBPubrecMessage:
         {
-            NSInteger pubrecMessageID = [data readShort];
-            if (![IBSNValuesValidator validateMessageID:pubrecMessageID]) {
-                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid messageID %zd", type, pubrecMessageID] userInfo:nil];
+            NSInteger pubrecPacketID = [data readShort];
+            if (![IBSNValuesValidator validatePacketID:pubrecPacketID]) {
+                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid packetID %zd", type, pubrecPacketID] userInfo:nil];
             }
-            message = [[IBSNPubrec alloc] initWithMessageID:pubrecMessageID];
+            message = [[IBSNPubrec alloc] initWithPacketID:pubrecPacketID];
         } break;
         case IBPubrelMessage:
         {
-            NSInteger pubrelMessageID = [data readShort];
-            if (![IBSNValuesValidator validateMessageID:pubrelMessageID]) {
-                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid messageID %zd", type, pubrelMessageID] userInfo:nil];
+            NSInteger pubrelPacketID = [data readShort];
+            if (![IBSNValuesValidator validatePacketID:pubrelPacketID]) {
+                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid packetID %zd", type, pubrelPacketID] userInfo:nil];
             }
-            message = [[IBSNPubrel alloc] initWithMessageID:pubrelMessageID];
+            message = [[IBSNPubrel alloc] initWithPacketID:pubrelPacketID];
         } break;
         case IBPubcompMessage:
         {
-            NSInteger pubcompMessageID = [data readShort];
-            if (![IBSNValuesValidator validateMessageID:pubcompMessageID]) {
-                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid messageID %zd", type, pubcompMessageID] userInfo:nil];
+            NSInteger pubcompPacketID = [data readShort];
+            if (![IBSNValuesValidator validatePacketID:pubcompPacketID]) {
+                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid packetID %zd", type, pubcompPacketID] userInfo:nil];
             }
-            message = [[IBSNPubcomp alloc] initWithMessageID:pubcompMessageID];
+            message = [[IBSNPubcomp alloc] initWithPacketID:pubcompPacketID];
         } break;
         case IBSubscribeMessage:
         {
             IBSNFlags *subscribeFlags = [IBSNFlags decodeWithData:[data readByte] andMessageType:type];
             bytesLeft--;
-            NSInteger subscribeMessageID = [data readShort];
-            if (subscribeMessageID == 0) {
-                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid messageID %zd", type, subscribeMessageID] userInfo:nil];
+            NSInteger subscribePacketID = [data readShort];
+            if (subscribePacketID == 0) {
+                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid packetID %zd", type, subscribePacketID] userInfo:nil];
 
             }
             bytesLeft -= 2;
@@ -402,7 +414,7 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
                 @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid topic encoding", type] userInfo:nil];
             }
             
-            id<IBSNTopic> topic = nil;
+            id<IBTopic> topic = nil;
                         
             switch (subscribeFlags.topicType.value) {
                 case IBNamedTopicType:
@@ -424,7 +436,7 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
                     topic = [[IBSNShortTopic alloc] initWithValue:subscribeTopicShortName andQoS:subscribeFlags.qos];
                 } break;
             }
-            message = [[IBSNSubscribe alloc] initWithMessageID:subscribeMessageID topic:topic dup:subscribeFlags.isDup];
+            message = [[IBSNSubscribe alloc] initWithPacketID:subscribePacketID topic:topic dup:subscribeFlags.isDup];
         } break;
         case IBSubackMessage:
         {
@@ -433,25 +445,25 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
             if (![IBSNValuesValidator validateTopicID:subackTopicID]) {
                 @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid topicID value %zd", type, subackTopicID] userInfo:nil];
             }
-            NSInteger subackMessageID = [data readShort];
-            if (![IBSNValuesValidator validateMessageID:subackMessageID]) {
-                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid messageID %zd", type, subackMessageID] userInfo:nil];
+            NSInteger subackPacketID = [data readShort];
+            if (![IBSNValuesValidator validatePacketID:subackPacketID]) {
+                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid packetID %zd", type, subackPacketID] userInfo:nil];
             }
             IBSNReturnCode returnCode = [data readByte];
-            message = [[IBSNSuback alloc] initWithTopicID:subackTopicID messageID:subackMessageID returnCode:returnCode lowedQos:subackFlags.qos];
+            message = [[IBSNSuback alloc] initWithTopicID:subackTopicID packetID:subackPacketID returnCode:returnCode lowedQos:subackFlags.qos];
         } break;
         case IBUnsubscribeMessage:
         {
             IBSNFlags *unsubscribeFlags = [IBSNFlags decodeWithData:[data readByte] andMessageType:type];
             bytesLeft--;
-            NSInteger unsubscribeMessageID = [data readShort];
-            if (![IBSNValuesValidator validateMessageID:unsubscribeMessageID]) {
-                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid messageID %zd", type, unsubscribeMessageID] userInfo:nil];
+            NSInteger unsubscribePacketID = [data readShort];
+            if (![IBSNValuesValidator validatePacketID:unsubscribePacketID]) {
+                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid packetID %zd", type, unsubscribePacketID] userInfo:nil];
 
             }
             bytesLeft -= 2;
             
-            id<IBSNTopic> topic = nil;
+            id<IBTopic> topic = nil;
         
             switch (unsubscribeFlags.topicType.value) {
                 case IBNamedTopicType:
@@ -473,15 +485,15 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
                     topic = [[IBSNShortTopic alloc] initWithValue:unsubscribeTopicShortName andQoS:unsubscribeFlags.qos];
                 } break;
             }
-            message = [[IBSNUnsubscribe alloc] initWithMessageID:unsubscribeMessageID topic:topic];
+            message = [[IBSNUnsubscribe alloc] initWithPacketID:unsubscribePacketID topic:topic];
         } break;
         case IBUnsubackMessage:
         {
-            NSInteger unsubackMessageID = [data readShort];
-            if (![IBSNValuesValidator validateMessageID:unsubackMessageID]) {
-                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid messageID %zd", type, unsubackMessageID] userInfo:nil];
+            NSInteger unsubackPacketID = [data readShort];
+            if (![IBSNValuesValidator validatePacketID:unsubackPacketID]) {
+                @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid packetID %zd", type, unsubackPacketID] userInfo:nil];
             }
-            message = [[IBSNUnsuback alloc] initWithMessageID:unsubackMessageID];
+            message = [[IBSNUnsuback alloc] initWithPacketID:unsubackPacketID];
         } break;
         case IBPingreqMessage:
         {
@@ -543,7 +555,7 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
             
             NSData *subdata = [data subdataWithRange:NSMakeRange([data getByteNumber] - 1, data.length - [data getByteNumber] + 1)];
             NSMutableData *messageData = [NSMutableData dataWithData:subdata];
-            id<IBSNMessage> encapsulatedMessage = [IBSNParser decode:messageData];
+            id<IBMessage> encapsulatedMessage = [IBSNParser decode:messageData];
             
             message = [[IBSNEncapsulated alloc] initWithRadius:control.radius wirelessNodeID:wirelessNodeID andMessage:encapsulatedMessage];
         } break;

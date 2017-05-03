@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -22,7 +22,7 @@
 
 @implementation IBPublish
 
-- (instancetype) initWithPacketID : (NSInteger) packetID andTopic : (IBTopic *) topic andContent : (NSData *) data andIsRetain : (BOOL) isRetain andDup : (BOOL) dup {
+- (instancetype) initWithPacketID : (NSInteger) packetID andTopic : (IBMQTTTopic *) topic andContent : (NSData *) data andIsRetain : (BOOL) isRetain andDup : (BOOL) dup {
 
     self = [super init];
     if (self != nil) {
@@ -41,7 +41,7 @@
     return self;
 }
 
-- (IBMessages) getMessageType {
+- (NSInteger) getMessageType {
     return IBPublishMessage;
 }
 

@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -18,17 +18,22 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-#import "IBMQTT.h"
-#import <UIKit/UIKit.h>
-#import "IBPickerView.h"
-#import "IBAccountManager.h"
-#import "IBMessageTimer.h"
+#import <Foundation/Foundation.h>
 
-@interface IBLoginTableViewController : UITableViewController <IBMQTTDelegate, IBMQTTConnectionMessageDelegate, IBPickerViewDelegate, UITextFieldDelegate>
+typedef NS_ENUM(NSInteger, IBProtocolsType)
 {
-    IBMQTT *_mqtt;
-    IBAccountManager *_accountManager;
-    IBMessageTimer *_timer;
-}
+    IBMqttProtocolType = 0,
+    IBMqttSNProtocolType = 1,
+};
+
+static NSString *const IBMqttName = @"MQTT";
+static NSString *const IBMqttSNName = @"MQTT-SN";
+
+@interface IBProtocolTypeEnum : NSObject
+
+@property (assign, nonatomic) IBProtocolsType type;
+
+- (NSString *) nameByValue;
+- (IBProtocolsType) valueByName : (NSString *) name;
 
 @end

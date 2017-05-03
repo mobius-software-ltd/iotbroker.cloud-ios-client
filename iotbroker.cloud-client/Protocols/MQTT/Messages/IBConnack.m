@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -41,7 +41,7 @@
     return 2;
 }
 
-- (IBMessages) getMessageType {
+- (NSInteger) getMessageType {
     return IBConnackMessage;
 }
 

@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -18,17 +18,24 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-#import "IBMQTT.h"
 #import <UIKit/UIKit.h>
 #import "IBAccountManager.h"
-#import "IBMessageTimer.h"
+#import "IBAddTopicViewController.h"
+#import "IBProgressHUDViewController.h"
 
-@interface IBTabBarController : UITabBarController <IBMQTTPublishInMessageDelegate>
-{
-    IBMQTT *_mqtt;
-    Account *_currentAccount;
-    IBAccountManager *_accountManager;
-    IBMessageTimer *_pubrecTimer;
-}
+@class IBTabBarController;
+
+@protocol IBTabBarControllerDelegate <NSObject>
+
+- (IBAddTopicViewController *) showAddTopicViewControllerOnViewController : (UIViewController *) controller andSetDelegate : (id<IBAddTopicDelegate>) delegate;
+- (void) tabBarControllerDidClickOnLogoutButton : (IBTabBarController *) controller;
+- (IBProgressHUDViewController *) getPreparedProgressHUD;
+
+@end
+
+@interface IBTabBarController : UITabBarController
+
+@property (weak, nonatomic) id<IBTabBarControllerDelegate> tabBarDelegate;
+@property (strong, nonatomic) IBAccountManager *accountManager;
 
 @end

@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -28,18 +28,36 @@
 
 @dynamic cleanSession;
 @dynamic clientID;
-@dynamic iD;
 @dynamic isDefault;
 @dynamic isRetain;
 @dynamic keepalive;
 @dynamic password;
+@dynamic port;
 @dynamic qos;
 @dynamic serverHost;
 @dynamic username;
 @dynamic will;
 @dynamic willTopic;
-@dynamic port;
+@dynamic protocol;
 @dynamic messages;
 @dynamic topics;
+
+@end
+
+@implementation Account (CoreDataValueValidation)
+
+- (BOOL) isValid {
+    
+    if (self.protocol == IBMqttProtocolType) {
+        if (self.username.length == 0 || self.password.length == 0 || self.clientID.length == 0 || self.port == 0 || self.keepalive == 0 || self.will.length == 0 || self.willTopic.length == 0) {
+            return false;
+        }
+    } else {
+        if (self.clientID.length == 0 || self.port == 0 || self.keepalive == 0) {
+            return false;
+        }
+    }
+    return true;
+}
 
 @end

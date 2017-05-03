@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -31,7 +31,7 @@
     return self;
 }
 
-- (IBMessages) getMessageType {
+- (NSInteger) getMessageType {
     return IBSubscribeMessage;
 }
 
@@ -40,7 +40,7 @@
     NSInteger length = 0;
     length += (self.packetID != 0)? 2 : 0;
     
-    for (IBTopic *item in self.topics) {
+    for (IBMQTTTopic *item in self.topics) {
         length += item.name.length + 3;
     }
     return length;

@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -19,17 +19,20 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "IBPickerView.h"
-#import "IBMQTT.h"
-#import "IBMessageTimer.h"
-#import "IBAccountManager.h"
+#import "Message+CoreDataClass.h"
 
-@interface IBSendMessageTableViewController : UITableViewController <IBMQTTDelegate, IBMQTTPublishOutMessageDelegate, IBPickerViewDelegate, UITextFieldDelegate>
-{
-    IBPickerView *_qosPickerView;
-    IBMessageTimer *_publishTimer;
-    IBAccountManager *_accountManager;
-    IBMQTT *_mqtt;
-}
+@class IBSendMessageTableViewController;
+
+@protocol IBSendMessageControllerDelegate <NSObject>
+
+- (BOOL) sendMessageTableViewController : (IBSendMessageTableViewController *) sendMessageTableViewController didClickSendButtonWithMessage : (Message *) message;
+- (void) sendMessageTableViewControllerDidLoad : (IBSendMessageTableViewController *) sendMessageTableViewController;
+
+@end
+
+@interface IBSendMessageTableViewController : UITableViewController
+
+@property (weak, nonatomic) id<IBSendMessageControllerDelegate> delegate;
+@property (strong, nonatomic) Message *message;
 
 @end

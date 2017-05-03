@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -20,26 +20,16 @@
 
 #import "IBLoadingViewController.h"
 
-static NSString *const IBLoginSegue = @"IBLoginSegue";
-static NSString *const IBMainSegue = @"IBMainSegue";
-static NSString *const IBChooseAccountPopover = @"IBChooseAccountPopover";
-
 @interface IBLoadingViewController ()
 
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+@property (assign, nonatomic) BOOL animated;
 
 @end
 
 @implementation IBLoadingViewController
 {
-    NSArray<Account *> *_accounts;
-    IBAccountListViewController *_popoverViewController;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self->_accountManager = [IBAccountManager getInstance];
-    self->_mqtt = [IBMQTT sharedInstance];
+    IBLoadingCompletionHandler _loadingHandler;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -50,10 +40,16 @@ static NSString *const IBChooseAccountPopover = @"IBChooseAccountPopover";
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    NSLog(@"size = %zd", [self->_accountManager.coreDataManager getEntities:IBAccountEntity].count);
     [self performSelectorInBackground:@selector(runLoadingMethod:) withObject:nil];
 }
+
+- (void) pushViewController : (UINavigationController *) navigationController animated : (BOOL) animated withCompletionHandler : (IBLoadingCompletionHandler) completionHandler {
+    self->_animated = animated;
+    self->_loadingHandler = completionHandler;
+    [navigationController pushViewController:self animated:animated];
+}
+
+#pragma mark - Private method -
 
 - (void) runLoadingMethod : (NSObject *) object {
     
@@ -66,108 +62,10 @@ static NSString *const IBChooseAccountPopover = @"IBChooseAccountPopover";
     }
     
     dispatch_sync(dispatch_get_main_queue(), ^{
- 
-        self->_accounts = [self->_accountManager.coreDataManager getEntities:IBAccountEntity];
-        
-        if (self->_accounts.count > 0) {
-            [self performSegueWithIdentifier:IBChooseAccountPopover sender:self];
-        } else {
-            [self performSegueWithIdentifier:IBLoginSegue sender:self];
+        if (self->_loadingHandler != nil) {
+            self->_loadingHandler(self->_animated);
+            self->_loadingHandler = nil;
         }
-    });
-}
-
-#pragma mark - IBAccountListDelegate
-
-- (void)didSelectedAccount:(Account *)account {
-    
-    if (account != nil && self->_popoverViewController != nil) {
-        NSLog(@"USERNAME : %@", account.username);
-        NSLog(@"PASSWORD : %@", account.password);
-        NSLog(@"TOPICS : %zd", account.topics.count);
-        NSLog(@"MESSAGES : %zd", account.messages.count);
-
-        self->_mqtt.delegate = self;
-        self->_mqtt.connectDelegate = self;
-        
-        if ([self->_accountManager isAccountAlreadyExist:account]) {
-            [self->_accountManager setDefaultAccountWithUserame:account.username];
-            [self->_mqtt startWithHost:account.serverHost port:(NSInteger)account.port];
-        }
-    }
-}
-
-- (void)didClickToCreateNewAccount {
-
-    [self->_popoverViewController dismissViewControllerAnimated:true completion:nil];
-    [self performSegueWithIdentifier:IBLoginSegue sender:self];
-}
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
-    if ([segue.identifier isEqualToString:IBLoginSegue]) {
-    
-    } else if ([segue.identifier isEqualToString:IBMainSegue]) {
-    
-    } else if ([segue.identifier isEqualToString:IBChooseAccountPopover]) {
-        self->_popoverViewController = [segue destinationViewController];
-        self->_popoverViewController.accounts = self->_accounts;
-        self->_popoverViewController.ibDelegate = self;
-        self->_popoverViewController.preferredContentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
-        if ([self->_popoverViewController popoverPresentationController] != nil) {
-            UIPopoverPresentationController *popover = [self->_popoverViewController popoverPresentationController];
-            popover.delegate = self;
-        }
-    }
-}
-
-#pragma mark - UIPopoverPresentationControllerDelegate
-
-- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
-    return UIModalPresentationNone;
-}
-
-- (BOOL)popoverPresentationControllerShouldDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
-    return false;
-}
-
-#pragma mark - IBMQTTDelegate
-
-- (void) mqttDidOpen : (IBMQTT *) mqtt  {
-    NSLog(@" >> Loading : mqttDidOpen");
-    
-    Account *account = [self->_accountManager readDefaultAccount];
-    if ([self->_mqtt connectWithAccount:account] == false) {
-        self->_timer = [[IBMessageTimer alloc] initWithTimeInterval:3.0 connectTimerFor:self->_mqtt withAccount:account];
-    }
-}
-
-- (void) mqttDidDisconnect : (IBMQTT *) mqtt {
-    NSLog(@" >> Loading : mqttDidDisconnect");
-
-    if (self->_timer != nil) {
-        [self->_timer stop];
-    }
-}
-
-- (void) mqtt : (IBMQTT *) mqtt didFailWithError : (NSError *)error {
-    NSLog(@" >> Loading : didFailWithError %@", error);
-
-}
-
-#pragma mark - IBMQTTConnectionMessageDelegate
-
-- (void) connectionAcknowledgmentReceivedWithCode:(IBConnectReturnCode)code andSessionPresent:(BOOL)sessionPresent {
-
-    [self->_timer stop];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        [self->_popoverViewController dismissViewControllerAnimated:true completion:nil];
-        self->_popoverViewController = nil;
-        [self performSegueWithIdentifier:IBMainSegue sender:self];
     });
 }
 

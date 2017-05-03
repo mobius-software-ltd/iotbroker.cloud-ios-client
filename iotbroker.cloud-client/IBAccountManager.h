@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -29,16 +29,24 @@
 
 + (instancetype) getInstance;
 
-- (void) setDefaultAccountWithUserame : (NSString *) name;
-- (Account *) accountByUsername : (NSString *) name;
+- (NSArray<Account *> *) accounts;
+
+- (Account *) account;
+- (Topic *) topic;
+- (Message *) message;
+
+- (void) setDefaultAccountWithClientID : (NSString *) clientID;
+- (Account *) accountByClientID : (NSString *) clientID;
 - (Account *) readDefaultAccount;
 - (void) writeAccount : (Account *) account;
 - (BOOL) isAccountAlreadyExist : (Account *) account;
 
-- (void) addTopicToCurrentAccount : (IBTopic *) topic;
+- (void) addTopicToCurrentAccount : (Topic *) topic;
 - (void) deleteTopicByTopicName : (NSString *) name;
 
-- (void) addIncoming : (BOOL) incoming message : (IBPublish *) message;
+- (void) unselectDefaultAccount;
+
+- (void) addMessageForDefaultAccount : (Message *) message;
 
 - (NSArray *) getTopicsForCurrentAccount;
 - (NSArray *) getMessagesForCurrentAccount;

@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -18,13 +18,20 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-#import "IBMessagesListTableViewCell.h"
-#import "IBAccountManager.h"
+#import <UIKit/UIKit.h>
+#import "Message+CoreDataClass.h"
+
+@class IBMessagesListTableViewController;
+
+@protocol IBMessagesControllerDelegate <NSObject>
+
+- (void) messagesListTableViewControllerDidLoad : (IBMessagesListTableViewController *) messagesListTableViewController;
+
+@end
 
 @interface IBMessagesListTableViewController : UITableViewController
-{
-    IBAccountManager *_accountManager;
-    NSMutableArray *_massages;
-}
+
+@property (weak, nonatomic) id<IBMessagesControllerDelegate> delegate;
+@property (strong, nonatomic) NSArray<Message *> *messages;
 
 @end

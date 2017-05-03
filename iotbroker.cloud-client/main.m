@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -56,7 +56,12 @@
 #import "IBSNIdentifierTopic.h"
 #import "IBSNControls.h"
 
-void test(id<IBSNMessage> message) {
+#import "IBMQTTSN.h"
+#import "IBUDPSocket.h"
+#import "IBSocketTransport.h"
+#import "IBMQTT.h"
+
+void test(id<IBMessage> message) {
 
     NSLog(@" ------------------ %zd ------------------ ", [message getMessageType]);
     NSData *data = [IBSNParser encode:message];
@@ -67,46 +72,66 @@ void test(id<IBSNMessage> message) {
 
 }
 /*
- 
- IBAdvertiseMessage      = 0,
- IBSearchGWMessage       = 1,
- IBGWInfoMessage         = 2,
- IBConnectMessage        = 4,
- IBConnackMessage        = 5,
- IBWillTopicReqMessage   = 6,
- IBWillTopicMessage      = 7,
- IBWillMsgReqMessage     = 8,
- IBWillMsgMessage        = 9,
- IBRegisterMessage       = 10,
- IBRegackMessage         = 11,
- IBPublishMessage        = 12,
- IBPubackMessage         = 13,
- IBPubcompMessage        = 14,
- IBPubrecMessage         = 15,
- IBPubrelMessage         = 16,
- IBSubscribeMessage      = 18,
- IBSubackMessage         = 19,
- IBUnsubscribeMessage    = 20,
- IBUnsubackMessage       = 21,
- IBPingreqMessage        = 22,
- IBPingrespMessage       = 23,
- IBDisconnectMessage     = 24,
- IBWillTopicUpdMessage   = 26,
- IBWillTopicRespMessage  = 27,
- 
- IBWillMsgUpdMessage     = 28,
- IBWillMsgRespMessage    = 29,
- IBEncapsulatedMessage   = 254,
- 
- */
+@interface IBTestClass : NSObject <IBResponsesDelegate>
+
+@end
+
+@implementation IBTestClass
+{
+    id<IBRequests> _requests;
+}
+
+- (instancetype) init {
+    self = [super init];
+    if (self != nil) {
+        self->_requests = [[IBMQTT alloc] initWithHost:@"198.41.30.241" port:1883 andResponseDelegate:self];
+        [self->_requests prepareToSendingRequest];
+    }
+    return self;
+}
+
+- (void) ready {
+    IBWill *will = [[IBWill alloc] initWithTopic:[[IBMQTTTopic alloc] initWithName:@"topic" andQoS:[[IBQoS alloc] initWithValue:2]] content:[@"HELLO" dataUsingEncoding:NSUTF8StringEncoding] andIsRetain:true];
+
+    [self->_requests connectWithUsername:@"hello" password:@"123" clientID:@"client" keepalive:7 cleanSession:true andWill:will];
+}
+
+- (void)connackWithCode:(NSInteger)returnCode {
+    NSLog(@"CODE = %zd", returnCode);
+}
+
+@end
+*/
 int main(int argc, char * argv[]) {
     
+    //IBTestClass *test = [[IBTestClass alloc] init];
     
-    id<IBSNMessage> message = nil;
+    /*
+    IBPuback *puback = [[IBPuback alloc] initWithPacketID:2];
+    IBConnack *connack = [[IBConnack alloc] init];
+    IBConnect *connect = [IBConnect connectWithUsername:@"user" password:@"pass" clientID:@"client" keepalive:10 cleanSession:true andWill:[[IBWill alloc] initWithTopic:[[IBMQTTTopic alloc] initWithName:@"hello" andQoS:[[IBQoS alloc] initWithValue:2]] content:[@"DATA" dataUsingEncoding:NSUTF8StringEncoding] andIsRetain:true]];
+    
+    NSMutableData *packets = [NSMutableData data];
+    [packets appendData:[IBParser encode:puback]];    [packets appendData:[IBParser encode:connack]];
+    [packets appendData:[IBParser encode:connect]];
+    
+    do {
+        NSMutableData *data = [IBParser next:&packets];
+        id<IBMessage> message = [IBParser decode:data];
+        NSLog(@"%li, %li, %li", [message getMessageType], data.length, packets.length);
+        
+    } while (packets.length > 0);
+    */
+    
+    
+    
+
+    /*
+    id<IBMessage> message = nil;
     
     NSData *content = [@"hello content" dataUsingEncoding:NSUTF8StringEncoding];
-    IBSNFullTopic *topic = [[IBSNFullTopic alloc] initWithValue:@"hello topic" andQoS:[[IBSNQoS alloc] initWithValue:2]];
-    IBSNQoS *qos = [[IBSNQoS alloc] initWithValue:3];
+    IBSNFullTopic *topic = [[IBSNFullTopic alloc] initWithValue:@"hello topic" andQoS:[[IBQoS alloc] initWithValue:2]];
+    IBQoS *qos = [[IBQoS alloc] initWithValue:3];
     IBSNIdentifierTopic *idTopic = [[IBSNIdentifierTopic alloc] initWithValue:234 andQoS:qos];
     
     message = [[IBSNAdvertise alloc] initWithGatewayID:23 andDuration:34];                                              test(message);
@@ -118,17 +143,17 @@ int main(int argc, char * argv[]) {
     message = [[IBSNWillTopic alloc] initWithTopic:topic andRetainFlag:true];                                           test(message);
     message = [[IBSNWillMsgReq alloc] init];                                                                            test(message);
     message = [[IBSNWillMsg alloc] initWithContent:[@"hello content" dataUsingEncoding:NSUTF8StringEncoding]];          test(message);
-    message = [[IBSNRegister alloc] initWithTopicID:43 messageID:23 andTopicName:@"topic name"];                        test(message);
-    message = [[IBSNRegack alloc] initWithTopicID:6 messageID:3 returnCode:IBCongestionReturnCode];                     test(message);
-    message = [[IBSNPublish alloc] initWithMessageID:65 topic:idTopic content:content dup:false retainFlag:false];      test(message);
-    message = [[IBSNPuback alloc] initWithTopicID:23 messageID:9 andReturnCode:IBInvalidTopicIDReturnCode];             test(message);
-    message = [[IBSNPubcomp alloc] initWithMessageID:65];                                                               test(message);
-    message = [[IBSNPubrec alloc] initWithMessageID:43];                                                                test(message);
-    message = [[IBSNPubrel alloc] initWithMessageID:20];                                                                test(message);
-    message = [[IBSNSubscribe alloc] initWithMessageID:3 topic:topic dup:false];                                        test(message);
-    message = [[IBSNSuback alloc] initWithTopicID:75 messageID:25 returnCode:IBInvalidTopicIDReturnCode lowedQos:qos];  test(message);
-    message = [[IBSNUnsubscribe alloc] initWithMessageID:54 topic:topic];                                               test(message);
-    message = [[IBSNUnsuback alloc] initWithMessageID:4];                                                               test(message);
+    message = [[IBSNRegister alloc] initWithTopicID:43 packetID:23 andTopicName:@"topic name"];                        test(message);
+    message = [[IBSNRegack alloc] initWithTopicID:6 packetID:3 returnCode:IBCongestionReturnCode];                     test(message);
+    message = [[IBSNPublish alloc] initWithPacketID:65 topic:idTopic content:content dup:false retainFlag:false];      test(message);
+    message = [[IBSNPuback alloc] initWithTopicID:23 packetID:9 andReturnCode:IBInvalidTopicIDReturnCode];             test(message);
+    message = [[IBSNPubcomp alloc] initWithPacketID:65];                                                               test(message);
+    message = [[IBSNPubrec alloc] initWithPacketID:43];                                                                test(message);
+    message = [[IBSNPubrel alloc] initWithPacketID:20];                                                                test(message);
+    message = [[IBSNSubscribe alloc] initWithPacketID:3 topic:topic dup:false];                                        test(message);
+    message = [[IBSNSuback alloc] initWithTopicID:75 packetID:25 returnCode:IBInvalidTopicIDReturnCode lowedQos:qos];  test(message);
+    message = [[IBSNUnsubscribe alloc] initWithPacketID:54 topic:topic];                                               test(message);
+    message = [[IBSNUnsuback alloc] initWithPacketID:4];                                                               test(message);
     message = [[IBSNPingreq alloc] initWithClientID:@"username"];                                                       test(message);
     message = [[IBSNPingresp alloc] init];                                                                              test(message);
     message = [[IBSNDisconnect alloc] initWithDuration:45];                                                             test(message);
@@ -136,9 +161,9 @@ int main(int argc, char * argv[]) {
     message = [[IBSNWillTopicResp alloc] initWithReturnCode:IBCongestionReturnCode];                                    test(message);
     message = [[IBSNWillMsgUpd alloc] initWithContent:content];                                                         test(message);
     message = [[IBSNWillMsgResp alloc] initWithReturnCode:IBCongestionReturnCode];                                      test(message);
-    message = [[IBSNEncapsulated alloc] initWithRadius:IBRadius1 wirelessNodeID:@"someNodeID" andMessage:[[IBSNPingreq alloc] initWithClientID:@"username111"]];          test(message);
-
+    //message = [[IBSNEncapsulated alloc] initWithRadius:IBRadius1 wirelessNodeID:@"someNodeID" andMessage:[[IBSNPingreq alloc] initWithClientID:@"username111"]];          test(message);
+*/
     @autoreleasepool {
-        return 0;//UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }

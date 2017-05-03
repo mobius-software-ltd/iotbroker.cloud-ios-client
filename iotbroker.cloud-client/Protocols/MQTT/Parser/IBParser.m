@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -22,11 +22,11 @@
 
 @implementation IBParser
 
-#pragma mark - PREPARE NEXT PACKAGE -
+#pragma mark - PREPARE NEXT PACKET -
 
-- (NSMutableData *) next : (NSMutableData *) buffer {
-
-    Byte fixedHeader = [buffer readByte];
++ (NSMutableData *) next : (NSMutableData **) buffer {
+    
+    Byte fixedHeader = [*buffer readByte];
     Byte messageType = ((fixedHeader >> 4) & 0xf);
     
     if (messageType == 0) {
@@ -41,33 +41,81 @@
         case IBPingreqMessage:
         case IBPingrespMessage:
         case IBDisconnectMessage:
+        {
             range.location = 0;
             range.length = 2;
-            return [NSMutableData dataWithData:[buffer subdataWithRange:range]];
-            break;
+            NSMutableData *returnValue = [NSMutableData dataWithData:[*buffer subdataWithRange:range]];
+            [*buffer replaceBytesInRange:range withBytes:NULL length:0];
+            return returnValue;
+        }   break;
         default:
-            length = [IBLengthDetails decodeLength:buffer];
+        {
+            length = [IBLengthDetails decodeLength:*buffer];
             if (length != nil) {
                 if (length.length == 0) {
                     return nil;
                 }
                 
                 NSInteger result = length.length + length.size + 1;
-                if (result <= buffer.length) {
+                if (result <= (*buffer).length) {
                     range.location = 0;
                     range.length = result;
-                    [buffer clearNumber];
-                    return [NSMutableData dataWithData:[buffer subdataWithRange:range]];
+                    [*buffer clearNumber];
+                    NSMutableData *returnValue = [NSMutableData dataWithData:[*buffer subdataWithRange:range]];
+                    
+                    [*buffer replaceBytesInRange:range withBytes:NULL length:0];
+                    return returnValue;
                 }
             }
-            break;
+        } break;
     }
     return nil;
 }
 
++ (NSRange) packetRange : (NSMutableData *) buffer {
+    
+    Byte fixedHeader = [buffer readByte];
+    Byte messageType = ((fixedHeader >> 4) & 0xf);
+    
+    if (messageType == 0) {
+        return NSMakeRange(0, 0);
+    }
+    
+    IBLengthDetails *length = nil;
+    
+    NSRange range = {0, 0};
+    
+    switch (messageType) {
+        case IBPingreqMessage:
+        case IBPingrespMessage:
+        case IBDisconnectMessage:
+            range.location = 0;
+            range.length = 2;
+            return range;
+            break;
+        default:
+            length = [IBLengthDetails decodeLength:buffer];
+            if (length != nil) {
+                if (length.length == 0) {
+                    return NSMakeRange(0, 0);
+                }
+                
+                NSInteger result = length.length + length.size + 1;
+                if (result <= buffer.length) {
+                    range.location = 0;
+                    range.length = length.length;
+                    [buffer clearNumber];
+                    return range;
+                }
+            }
+            break;
+    }
+    return NSMakeRange(0, 0);
+}
+
 #pragma mark - ENCODE IBMESSAGE TO DATA -
 
-- (NSMutableData *) encode : (id<IBMessage>) message {
++ (NSMutableData *) encode : (id<IBMessage>) message {
     
     NSInteger length = [message getLength];
     NSMutableData *buffer = [NSMutableData data];
@@ -83,7 +131,7 @@
         
         [buffer appendByte:(messageType << 4)];
         
-        [buffer appendData:[self getBufferByLength:length]];
+        [buffer appendData:[IBParser getBufferByLength:length]];
 
         [buffer appendShort:4];
         
@@ -100,7 +148,7 @@
         }
         if ([connect isWillFlag] == true) {                         // Will
             contentFlags += 4;
-            contentFlags += [connect.will.topic.qos getValue] << 3; // QOS
+            contentFlags += connect.will.topic.qos.value << 3; // QOS
             if (connect.will.isRetain == true) {                    // Retain
                 contentFlags += 0x20;
             }
@@ -149,7 +197,7 @@
         
         IBConnack *connack = (IBConnack *)message;
         [buffer appendByte:(messageType << 4)];
-        [buffer appendData:[self getBufferByLength:length]];
+        [buffer appendData:[IBParser getBufferByLength:length]];
         [buffer appendByte:(Byte)connack.sessionPresentValue];
         [buffer appendByte:(Byte)connack.returnCode];
         
@@ -158,16 +206,16 @@
         IBPublish *publish = (IBPublish *)message;
         Byte firstByte = (Byte)(messageType << 4);
         firstByte |= (publish.dup == true)? 8 : 0;
-        firstByte |= ([publish.topic.qos getValue] << 1);
+        firstByte |= (publish.topic.qos.value << 1);
         firstByte |= (publish.isRetain == true)? 1 : 0;
         
         [buffer appendByte:firstByte];
-        [buffer appendData:[self getBufferByLength:length]];
+        [buffer appendData:[IBParser getBufferByLength:length]];
         
         [buffer appendShort:[publish.topic length]];
         [buffer appendData:[publish.topic.name dataUsingEncoding:NSUTF8StringEncoding]];
         
-        switch ([publish.topic.qos getValue]) {
+        switch (publish.topic.qos.value) {
             case IBAtMostOnce:
                 if (publish.packetID != 0) {
                     @throw [NSException exceptionWithName:@"PUBLISH" reason:@"publish qos-0 must not contain packetID" userInfo:nil];
@@ -180,6 +228,9 @@
                 }
                 [buffer appendShort:publish.packetID];
                 break;
+            case IBLevelOne:
+                @throw [NSException exceptionWithName:@"PUBLISH" reason:@"publish qos-3 not support in MQTT" userInfo:nil];
+
         }
         [buffer appendData:publish.content];
         
@@ -187,7 +238,7 @@
         
         IBPuback *puback = (IBPuback *)message;
         [buffer appendByte:(messageType << 4)];
-        [buffer appendData:[self getBufferByLength:length]];
+        [buffer appendData:[IBParser getBufferByLength:length]];
         if (puback.packetID == 0) {
             @throw [NSException exceptionWithName:@"PUBACK" reason:@"puback must contain packetID" userInfo:nil];
         }
@@ -197,7 +248,7 @@
         
         IBPubrec *pubrec = (IBPubrec *)message;
         [buffer appendByte:(messageType << 4)];
-        [buffer appendData:[self getBufferByLength:length]];
+        [buffer appendData:[IBParser getBufferByLength:length]];
         if (pubrec.packetID == 0) {
             @throw [NSException exceptionWithName:@"PUBREC" reason:@"pubrec must contain packetID" userInfo:nil];
         }
@@ -207,7 +258,7 @@
         
         IBPubrel *pubrel = (IBPubrel *)message;
         [buffer appendByte:(messageType << 4 | 0x2)];
-        [buffer appendData:[self getBufferByLength:length]];
+        [buffer appendData:[IBParser getBufferByLength:length]];
         if (pubrel.packetID == 0) {
             @throw [NSException exceptionWithName:@"PUBREL" reason:@"pubrel must contain packetID" userInfo:nil];
         }
@@ -217,7 +268,7 @@
         
         IBPubcomp *pubcomp = (IBPubcomp *)message;
         [buffer appendByte:(messageType << 4)];
-        [buffer appendData:[self getBufferByLength:length]];
+        [buffer appendData:[IBParser getBufferByLength:length]];
         if (pubcomp.packetID == 0) {
             @throw [NSException exceptionWithName:@"PUBCOMP" reason:@"pubcomp must contain packetID" userInfo:nil];
         }
@@ -227,23 +278,23 @@
 
         IBSubscribe *subscribe = (IBSubscribe *)message;
         [buffer appendByte:(messageType << 4 | 0x2)];
-        [buffer appendData:[self getBufferByLength:length]];
+        [buffer appendData:[IBParser getBufferByLength:length]];
         if (subscribe.packetID == 0) {
             @throw [NSException exceptionWithName:@"SUBSCRIBE" reason:@"subscribe must contain packetID" userInfo:nil];
         }
         [buffer appendShort:subscribe.packetID];
         
-        for (IBTopic *item in subscribe.topics) {
+        for (IBMQTTTopic *item in subscribe.topics) {
             [buffer appendShort:[item.name length]];
             [buffer appendData:[item.name dataUsingEncoding:NSUTF8StringEncoding]];
-            [buffer appendByte:[item.qos getValue]];
+            [buffer appendByte:item.qos.value];
         }
         
     } else if (messageType == IBSubackMessage) {
         
         IBSuback *suback = (IBSuback *)message;
         [buffer appendByte:(messageType << 4)];
-        [buffer appendData:[self getBufferByLength:length]];
+        [buffer appendData:[IBParser getBufferByLength:length]];
         if (suback.packetID == 0) {
             @throw [NSException exceptionWithName:@"SUBACK" reason:@"suback must contain packetID" userInfo:nil];
         }
@@ -257,7 +308,7 @@
         
         IBUnsubscribe *unsubscribe = (IBUnsubscribe *)message;
         [buffer appendByte:(messageType << 4 | 0x2)];
-        [buffer appendData:[self getBufferByLength:length]];
+        [buffer appendData:[IBParser getBufferByLength:length]];
         if (unsubscribe.packetID == 0) {
             @throw [NSException exceptionWithName:@"UNSUBSCRIBE" reason:@"unsubscribe must contain packetID" userInfo:nil];
         }
@@ -272,7 +323,7 @@
         
         IBUnsuback *unsuback = (IBUnsuback *)message;
         [buffer appendByte:(messageType << 4)];
-        [buffer appendData:[self getBufferByLength:length]];
+        [buffer appendData:[IBParser getBufferByLength:length]];
         if (unsuback.packetID == 0) {
             @throw [NSException exceptionWithName:@"UNSUBACK" reason:@"unsuback must contain packetID" userInfo:nil];
         }
@@ -281,7 +332,7 @@
     } else if (messageType == IBPingreqMessage || messageType == IBPingrespMessage || messageType == IBDisconnectMessage) {
         
         [buffer appendByte:(messageType << 4)];
-        [buffer appendData:[self getBufferByLength:length]];
+        [buffer appendData:[IBParser getBufferByLength:length]];
         
     } else {
         NSLog(@"\n\n\n E: UNKNOWN TYPE! \n\n\n");
@@ -294,7 +345,7 @@
 
 #pragma mark - DECODE DATA TO IBMESSAGE -
 
-- (id<IBMessage>) decode : (NSMutableData *) buffer {
++ (id<IBMessage>) decode : (NSMutableData *) buffer {
     
     [buffer clearNumber];
     
@@ -327,13 +378,13 @@
         NSInteger willQoSFlag   = (((contentFlags & 0x1f) >> 3) & 3);
         IBQoS *willQos = [[IBQoS alloc] initWithValue:willQoSFlag];
         
-        if ([willQos isValid] != true) {
-            @throw [NSException exceptionWithName:@"CONNECT" reason:[NSString stringWithFormat:@"will QoS set to %zd", [willQos getValue]] userInfo:nil];
+        if ([willQos isValidForMqtt] != true) {
+            @throw [NSException exceptionWithName:@"CONNECT" reason:[NSString stringWithFormat:@"will QoS set to %zd", willQos.value] userInfo:nil];
         }
         
         BOOL willFlag           = (((contentFlags >> 2) & 1) == 1) ? true : false;
         
-        if ([willQos getValue] > 0 && !willFlag) {
+        if (willQos.value > 0 && !willFlag) {
             @throw [NSException exceptionWithName:@"CONNECT" reason:@"will retain set, willFlag not set" userInfo:nil];
         }
         
@@ -357,7 +408,7 @@
         NSInteger cliendIDLength = [buffer readShort];
         NSString *clientID = [buffer readStringWithLength:cliendIDLength];
         
-        if ([self verifyString:clientID] != true) {
+        if ([IBParser verifyString:clientID] != true) {
             @throw [NSException exceptionWithName:@"CONNECT" reason:@"ClientID contains restricted characters: U+0000, U+D000-U+DFFF" userInfo:nil];
         }
         
@@ -372,7 +423,7 @@
             NSInteger willTopicNameLength = [buffer readShort];
             NSString *willTopicName = [buffer readStringWithLength:willTopicNameLength];
 
-            if ([self verifyString:willTopicName] != true) {
+            if ([IBParser verifyString:willTopicName] != true) {
                 @throw [NSException exceptionWithName:@"CONNECT" reason:@"WillTopic contains one or more restricted characters: U+0000, U+D000-U+DFFF" userInfo:nil];
             }
             
@@ -384,7 +435,7 @@
                 @throw [NSException exceptionWithName:@"CONNECT" reason:@"WillTopic contains invalid will encoding" userInfo:nil];
             }
             
-            IBTopic *topic = [[IBTopic alloc] initWithName:willTopicName andQoS:willQos];
+            IBMQTTTopic *topic = [[IBMQTTTopic alloc] initWithName:willTopicName andQoS:willQos];
             will = [[IBWill alloc] initWithTopic:topic content:willMessage andIsRetain:willRetainFlag];
             
             if ([will isValid] == false) {
@@ -397,7 +448,7 @@
             NSInteger usernameLength = [buffer readShort];
             username = [buffer readStringWithLength:usernameLength];
             
-            if ([self verifyString:username] != true) {
+            if ([IBParser verifyString:username] != true) {
                 @throw [NSException exceptionWithName:@"CONNECT" reason:@"username contains one or more restricted characters: U+0000, U+D000-U+DFFF" userInfo:nil];
             }
         }
@@ -407,7 +458,7 @@
             NSInteger passwordLength = [buffer readShort];
             password = [buffer readStringWithLength:passwordLength];
             
-            if ([self verifyString:password] != true) {
+            if ([IBParser verifyString:password] != true) {
                 @throw [NSException exceptionWithName:@"CONNECT" reason:@"password contains one or more restricted characters: U+0000, U+D000-U+DFFF" userInfo:nil];
             }
         }
@@ -456,11 +507,11 @@
         
         IBQoS *qos = [[IBQoS alloc] initWithValue:((fixedHeader & 0x07) >> 1)];
         
-        if ([qos isValid] == false) {
+        if ([qos isValidForMqtt] == false) {
             @throw [NSException exceptionWithName:@"PUBLISH" reason:@"invalid QoS value" userInfo:nil];
         }
         
-        if (dup == true && [qos getValue] == IBAtMostOnce) {
+        if (dup == true && qos.value == IBAtMostOnce) {
             @throw [NSException exceptionWithName:@"PUBLISH" reason:@"PUBLISH, QoS-0 dup flag present" userInfo:nil];
         }
         
@@ -469,7 +520,7 @@
         NSInteger topicNameLength = [buffer readShort];
         NSString *topicName = [buffer readStringWithLength:topicNameLength];
         
-        if ([self verifyString:topicName] != true) {
+        if ([IBParser verifyString:topicName] != true) {
             @throw [NSException exceptionWithName:@"PUBLISH" reason:@"Publish-topic contains one or more restricted characters: U+0000, U+D000-U+DFFF" userInfo:nil];
         }
         
@@ -477,7 +528,7 @@
         
         NSInteger packetID = 0;
         
-        if ([qos getValue] != IBAtMostOnce) {
+        if (qos.value != IBAtMostOnce) {
             
             packetID = [buffer readShort];
             if (packetID < 0 || packetID > 65535) {
@@ -493,9 +544,9 @@
             data = [string dataUsingEncoding:NSUTF8StringEncoding];
         }
         
-        NSLog(@"packet ID = %zd, Topic name = %@, qos = %zd, data = %@, is return = %i", packetID, topicName, [qos getValue], [NSString stringWithCString:[data bytes] encoding:NSUTF8StringEncoding], isRetain);
+        NSLog(@"packet ID = %zd, Topic name = %@, qos = %zd, data = %@, is return = %i", packetID, topicName, qos.value, [NSString stringWithCString:[data bytes] encoding:NSUTF8StringEncoding], isRetain);
         
-        message = [[IBPublish alloc] initWithPacketID:packetID andTopic:[[IBTopic alloc] initWithName:topicName andQoS:qos] andContent:data andIsRetain:isRetain andDup:dup];
+        message = [[IBPublish alloc] initWithPacketID:packetID andTopic:[[IBMQTTTopic alloc] initWithName:topicName andQoS:qos] andContent:data andIsRetain:isRetain andDup:dup];
         
     } else if (messageType == IBPubackMessage) {
         
@@ -520,7 +571,7 @@
     } else if (messageType == IBSubscribeMessage) {
         
         NSInteger subscribeID = [buffer readShort];
-        NSMutableArray<IBTopic *> *subscriptions = [NSMutableArray array];
+        NSMutableArray<IBMQTTTopic *> *subscriptions = [NSMutableArray array];
         
         while ([buffer getByteNumber] < [buffer length]) {
 
@@ -529,15 +580,15 @@
             NSString *topic = [buffer readStringWithLength:topicLength];
             IBQoS *qos = [[IBQoS alloc] initWithValue:[buffer readByte]];
 
-            if ([qos isValid] == false) {
+            if ([qos isValidForMqtt] == false) {
                 @throw [NSException exceptionWithName:@"SUBSCRIBE" reason:@"Subscribe qos must be in range from 0 to 2" userInfo:nil];
 
             }
-            if ([self verifyString:topic] != true) {
+            if ([IBParser verifyString:topic] != true) {
                 @throw [NSException exceptionWithName:@"SUBSCRIBE" reason:@"Subscribe topic contains one or more restricted characters: U+0000, U+D000-U+DFFF" userInfo:nil];
             }
 
-            IBTopic *subscription = [[IBTopic alloc] initWithName:topic andQoS:qos];
+            IBMQTTTopic *subscription = [[IBMQTTTopic alloc] initWithName:topic andQoS:qos];
             [subscriptions addObject:subscription];
         }
         
@@ -576,7 +627,7 @@
             NSInteger topicLength = [buffer readShort];
             NSString *topic = [buffer readStringWithLength:topicLength];
             
-            if ([self verifyString:topic] != true) {
+            if ([IBParser verifyString:topic] != true) {
                 @throw [NSException exceptionWithName:@"UNSUBSCRIBE" reason:@"Unsubscribe topic contains one or more restricted characters: U+0000, U+D000-U+DFFF" userInfo:nil];
             }
                         
@@ -619,7 +670,7 @@
 
 #pragma mark - Private methods -
 
-- (NSMutableData *) getBufferByLength : (NSInteger) length {
++ (NSMutableData *) getBufferByLength : (NSInteger) length {
     
     NSMutableData *data = [NSMutableData data];
     NSInteger lng = length;
@@ -644,7 +695,7 @@
     return buffer;
 }
 
-- (BOOL) verifyString : (NSString *) topic {
++ (BOOL) verifyString : (NSString *) topic {
 
     char nilCharacter = '\0';
     

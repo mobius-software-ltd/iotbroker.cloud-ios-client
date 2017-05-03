@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -18,42 +18,27 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-#import "IBQoS.h"
+#import "IBCountableMessage.h"
 
-@implementation IBQoS
+@implementation IBCountableMessage
 
-- (instancetype) initWithValue : (Byte) value {
+- (instancetype) initWithPacketID : (NSInteger) packetID {
     
     self = [super init];
     if (self != nil) {
-        self->_value = value;
+        self->_packetID = packetID;
     }
     return self;
 }
 
-+ (instancetype) claculateSubscriberQos : (IBQoS *) subscriberQos andPublisherQos : (IBQoS *) publisherQos {
-    
-    if ([subscriberQos getValue] == [publisherQos getValue]) {
-        return subscriberQos;
-    }
-    
-    if ([subscriberQos getValue] > [publisherQos getValue]) {
-        return publisherQos;
-    } else {
-        return subscriberQos;
-    }
+- (NSInteger) getLength {
+    @throw [NSException exceptionWithName:@"ABSTRACT CLASS ERROR" reason:@"METHOD OF ABSTRACT CLASS WAS CALLED (getLength)" userInfo:nil];
+    return 0;
 }
 
-- (NSInteger) getValue {
-    return self->_value;
-}
-
-- (BOOL) isValid {
-    
-    if (self->_value == IBAtMostOnce || self->_value == IBAtLeastOnce || self->_value == IBExactlyOnce) {
-        return true;
-    }
-    return false;
+- (NSInteger) getMessageType {
+    @throw [NSException exceptionWithName:@"ABSTRACT CLASS ERROR" reason:@"METHOD OF ABSTRACT CLASS WAS CALLED (getMessageType)" userInfo:nil];
+    return 0;
 }
 
 @end

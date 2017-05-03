@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -19,19 +19,20 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "IBCoreDataManager.h"
-#import "IBAccountListTableViewCell.h"
+#import "Account+CoreDataClass.h"
+
+@class IBAccountListViewController;
 
 @protocol IBAccountListDelegate <NSObject>
 
-- (void) didSelectedAccount : (Account *) account;
-- (void) didClickToCreateNewAccount;
+- (void) accountListViewController : (IBAccountListViewController *) accountList didSelectedAccount : (Account *) account;
+- (void) accountListViewControllerDidClickToCreateNewAccount : (IBAccountListViewController *) accountList;
 
 @end
 
-@interface IBAccountListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface IBAccountListViewController : UIViewController 
 
-@property (weak, nonatomic) id<IBAccountListDelegate> ibDelegate;
+@property (weak, nonatomic) id<IBAccountListDelegate> delegate;
 @property (strong, nonatomic) NSArray<Account *> *accounts;
 
 @end

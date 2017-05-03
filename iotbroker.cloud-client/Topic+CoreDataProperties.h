@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -27,10 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<Topic *> *)fetchRequest;
 
-@property (nonatomic) int32_t iD;
-@property (nullable, nonatomic, copy) NSString *topicName;
 @property (nonatomic) int32_t qos;
+@property (nullable, nonatomic, copy) NSString *topicName;
 @property (nullable, nonatomic, retain) Account *account;
+
+@end
+
+@interface Topic (CoreDataValueValidation)
+
+- (BOOL) isValid;
 
 @end
 

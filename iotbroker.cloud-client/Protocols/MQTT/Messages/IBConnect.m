@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -39,7 +39,7 @@ static NSInteger const IBHeaderBytesLength = 10;
     return self;
 }
 
-- (instancetype) initWithUsername : (NSString *) username andPassword : (NSString *) password andClientID : (NSString *) clientID andCleanSession : (BOOL) isClean andWill : (IBWill *) will {
+- (instancetype) initWithUsername : (NSString *) username password : (NSString *) password clientID : (NSString *) clientID keepalive : (NSInteger) keepalive cleanSession : (BOOL) isClean andWill : (IBWill *) will {
 
     self = [super init];
     if (self != nil) {
@@ -49,17 +49,17 @@ static NSInteger const IBHeaderBytesLength = 10;
         self.clientID = clientID;
         self.cleanSession = isClean;
         self.will = will;
-        self.keepalive = 10;
+        self.keepalive = keepalive;
     }
     return self;
 }
 
-+ (instancetype) connectWithUsername : (NSString *) username andPassword : (NSString *) password andClientID : (NSString *) clientID andCleanSession : (BOOL) isClean andWill : (IBWill *) will {
++ (instancetype) connectWithUsername : (NSString *) username password : (NSString *) password clientID : (NSString *) clientID keepalive : (NSInteger) keepalive cleanSession : (BOOL) isClean andWill : (IBWill *) will {
     
-    return [[IBConnect alloc] initWithUsername:username andPassword:password andClientID:clientID andCleanSession:isClean andWill:will];
+    return [[IBConnect alloc] initWithUsername:username password:password clientID:clientID keepalive:keepalive cleanSession:isClean andWill:will];
 }
 
-- (IBMessages) getMessageType {
+- (NSInteger) getMessageType {
     return IBConnectMessage;
 }
 

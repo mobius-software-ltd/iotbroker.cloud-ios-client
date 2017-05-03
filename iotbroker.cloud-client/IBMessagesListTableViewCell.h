@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -20,12 +20,10 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum {
-
-    IBIncomingMessage,
-    IBOutgoingMessage
-    
-} IBMessageType;
+typedef NS_ENUM(NSInteger, IBUIMessageType) {
+    IBIncomingMessage = 0,
+    IBOutgoingMessage,
+};
 
 @interface IBMessagesListTableViewCell : UITableViewCell
 
@@ -36,6 +34,6 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIView *qosBackgroundView;
 @property (weak, nonatomic) IBOutlet UIView *messageTypeBackgroundView;
 
-- (void) setMessageType : (IBMessageType) type;
+- (void) setMessageType : (IBUIMessageType) type;
 
 @end

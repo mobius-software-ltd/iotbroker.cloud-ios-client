@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -25,9 +25,9 @@
 
 @interface IBParser : NSObject
 
-- (NSMutableData *) next : (NSMutableData *) buffer;
-
-- (NSMutableData *) encode : (id<IBMessage>) message;
-- (id<IBMessage>) decode : (NSMutableData *) buffer;
++ (NSMutableData *) next : (NSMutableData **) buffer;
++ (NSRange) packetRange : (NSMutableData *) buffer;
++ (NSMutableData *) encode : (id<IBMessage>) message;
++ (id<IBMessage>) decode : (NSMutableData *) buffer;
 
 @end

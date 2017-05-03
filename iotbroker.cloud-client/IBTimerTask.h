@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -18,28 +18,21 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-#import "IBTopic.h"
+#import <Foundation/Foundation.h>
+#import "IBMessage.h"
+#import "IBRequests.h"
 
-static NSString *const IBSeparator = @":";
+@interface IBTimerTask : NSObject
 
-@implementation IBTopic
+@property (strong, nonatomic) id<IBMessage> message;
+@property (strong, nonatomic) id<IBRequests> request;
+@property (assign, nonatomic) NSInteger period;
+@property (assign, nonatomic) BOOL status;
+@property (strong, nonatomic) NSTimer *timer;
 
-- (instancetype) initWithName : (NSString *) name andQoS : (IBQoS *) qos {
-    
-    self = [super init];
-    if (self != nil) {
-        self.name = name;
-        self.qos = qos;
-    }
-    return self;
-}
+- (instancetype) initWithMessage : (id<IBMessage>) message request : (id<IBRequests>) request andPeriod : (NSInteger) period;
 
-- (NSString *) toString {
-    return [NSString stringWithFormat:@"%@%@%zd", self.name, IBSeparator, self.qos.getValue];
-}
-
-- (NSInteger) length {
-    return self.name.length ;
-}
+- (void) start;
+- (void) stop;
 
 @end

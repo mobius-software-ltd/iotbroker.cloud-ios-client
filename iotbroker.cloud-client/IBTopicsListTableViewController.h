@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -18,25 +18,22 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-#import "IBTopicsListTableViewCell.h"
-#import "IBAddTopicViewController.h"
-#import "IBDashBorderButton.h"
-#import "IBAccountManager.h"
-#import "IBMessageTimer.h"
-#import "IBPickerView.h"
-#import "IBTopic.h"
-#import "IBMQTT.h"
+#import <UIKit/UIKit.h>
+#import "Topic+CoreDataClass.h"
 
-@interface IBTopicsListTableViewController : UITableViewController <IBMQTTDelegate, IBMQTTSubscribeMessageDelegate, IBPickerViewDelegate, IBAddTopicDelegate, UIPopoverPresentationControllerDelegate>
-{
-    NSMutableArray<IBTopic *> *_topics;
-    IBPickerView *_qosPickerView;
-    IBAccountManager *_accountManager;
-    IBMessageTimer *_subTimer;
-    IBMessageTimer *_unsubTimer;
-    IBMQTT *_mqtt;
-}
+@class IBTopicsListTableViewController;
 
-@property (weak, nonatomic) IBOutlet IBDashBorderButton *addTopicButton;
+@protocol IBTopicsListControllerDelegate <NSObject>
+
+- (void) topicsListTableViewControllerDidClickAddButton : (IBTopicsListTableViewController *) topicsListTableViewController;
+- (void) topicsListTableViewController : (IBTopicsListTableViewController *) topicsListTableViewController didClickDeleteButtonWithTopic : (Topic *) topic;
+- (void) topicsListTableViewControllerDidLoad : (IBTopicsListTableViewController *) topicsListTableViewController;
+
+@end
+
+@interface IBTopicsListTableViewController : UITableViewController 
+
+@property (weak, nonatomic) id<IBTopicsListControllerDelegate> delegate;
+@property (strong, nonatomic) NSArray<Topic *> *topics;
 
 @end

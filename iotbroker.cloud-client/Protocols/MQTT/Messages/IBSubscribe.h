@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -19,10 +19,11 @@
  */
 
 #import "IBCountableMessage.h"
-#import "IBTopic.h"
+#import "IBMQTTEnums.h"
+#import "IBMQTTTopic.h"
 
 @interface IBSubscribe : IBCountableMessage
 
-@property (strong, nonatomic) NSMutableArray<IBTopic *> *topics;
+@property (strong, nonatomic) NSMutableArray<IBMQTTTopic *> *topics;
 
 @end

@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -22,7 +22,7 @@
 
 @interface IBAccountListTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *protocolLabel;
 @property (weak, nonatomic) IBOutlet UILabel *clientIDLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hostLabel;
 @property (weak, nonatomic) IBOutlet UILabel *portLabel;

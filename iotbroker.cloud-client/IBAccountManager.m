@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -39,21 +39,37 @@
     return sharedAccountManager;
 }
 
-- (void) setDefaultAccountWithUserame : (NSString *) name {
+- (NSArray<Account *> *) accounts {
+    return [self->_coreDataManager getEntities:IBAccountEntity];
+}
+
+- (Account *) account {
+    return (Account *)[self->_coreDataManager entity:IBAccountEntity];
+}
+
+- (Topic *) topic {
+    return (Topic *)[self->_coreDataManager entity:IBTopicEntity];
+}
+
+- (Message *) message {
+    return (Message *)[self->_coreDataManager entity:IBMessageEntity];
+}
+
+- (void) setDefaultAccountWithClientID : (NSString *) clientID {
     
-    Account *account = [self accountByUsername:name];
+    Account *account = [self accountByClientID:clientID];
     [account setIsDefault:true];
     
     [self->_coreDataManager save];
 }
 
-- (Account *) accountByUsername : (NSString *) name {
+- (Account *) accountByClientID : (NSString *) clientID {
     
     Account *account = nil;
-    if (name != nil) {
+    if (clientID != nil) {
         NSArray *accounts = [self->_coreDataManager getEntities:IBAccountEntity];
         for (Account *item in accounts) {
-            if ([name isEqualToString:item.username]) {
+            if ([clientID isEqualToString:item.clientID]) {
                 account = item;
             }
         }
@@ -82,12 +98,13 @@
         Account *newAccount = nil;
         
         if ([self isAccountAlreadyExist:account] == true) {
-            newAccount = [self accountByUsername:account.username];
+            newAccount = [self accountByClientID:account.clientID];
         } else {
             newAccount = (Account *)[self->_coreDataManager entityForInserting:IBAccountEntity];
         }
         
         if (newAccount != nil) {
+            [newAccount setProtocol:account.protocol];
             [newAccount setUsername:account.username];
             [newAccount setPassword:account.password];
             [newAccount setClientID:account.clientID];
@@ -114,7 +131,7 @@
     
     if (accounts.count != 0) {
         for (Account *item in accounts) {
-            if ([item.username isEqualToString:account.username]) {
+            if ([item.clientID isEqualToString:account.clientID]) {
                 result = true;
             }
         }
@@ -122,19 +139,18 @@
     return result;
 }
 
-- (void) addTopicToCurrentAccount : (IBTopic *) topic {
+- (void) addTopicToCurrentAccount : (Topic *) topic {
 
     if (topic != nil) {
         Topic *topicToAdd = (Topic *)[self->_coreDataManager entityForInserting:IBTopicEntity];
+        
+        [topicToAdd setTopicName:topic.topicName];
+        [topicToAdd setQos:(int32_t)topic.qos];
         
         Account *currentAccount = [self readDefaultAccount];
         if ([self readDefaultAccount] != nil) {
             [currentAccount addTopicsObject:topicToAdd];
         }
-        
-        [topicToAdd setTopicName:topic.name];
-        [topicToAdd setQos:(int32_t)[topic.qos getValue]];
-        
         [self->_coreDataManager save];
     }
 }
@@ -154,21 +170,27 @@
     }
 }
 
-- (void) addIncoming : (BOOL) incoming message : (IBPublish *) message {
+- (void) unselectDefaultAccount {
+    
+    Account *account = [self readDefaultAccount];
+    account.isDefault = false;
+    [self->_coreDataManager save];
+}
+
+- (void) addMessageForDefaultAccount : (Message *) message {
 
     if (message != nil) {
         Message *messageToAdd = (Message *)[self->_coreDataManager entityForInserting:IBMessageEntity];
+        
+        [messageToAdd setContent:message.content];
+        [messageToAdd setQos:(int32_t)message.qos];
+        [messageToAdd setTopicName:message.topicName];
+        [messageToAdd setIsIncoming:message.isIncoming];
         
         Account *currentAccount = [self readDefaultAccount];
         if ([self readDefaultAccount] != nil) {
             [currentAccount addMessagesObject:messageToAdd];
         }
-        
-        [messageToAdd setID:(int32_t)message.packetID];
-        [messageToAdd setContent:message.content];
-        [messageToAdd setQos:(int32_t)[message.topic.qos getValue]];
-        [messageToAdd setTopicName:message.topic.name];
-        [messageToAdd setIsIncoming:incoming];
         
         [self->_coreDataManager save];
     }
@@ -187,8 +209,7 @@
         }
         
         for (Topic *item in array) {
-            IBTopic *topic = [[IBTopic alloc] initWithName:item.topicName andQoS:[[IBQoS alloc] initWithValue:item.qos]];
-            [topics addObject:topic];
+            [topics addObject:item];
         }
         return topics;
     }

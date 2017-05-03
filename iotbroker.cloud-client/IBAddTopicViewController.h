@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -19,20 +19,20 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "IBPickerView.h"
+
+@class IBAddTopicViewController;
 
 @protocol IBAddTopicDelegate <NSObject>
 
-- (void) topic : (NSString *) topic andQosValue : (NSInteger) valueToAdd;
+- (void) addTopicViewControllerClickOnAddButton : (IBAddTopicViewController *) controller;
 
 @end
 
-@interface IBAddTopicViewController : UIViewController <IBPickerViewDelegate, UITextFieldDelegate>
-{
-    IBPickerView *_pickerView;
-}
+@interface IBAddTopicViewController : UIViewController
 
 @property (weak, nonatomic) id<IBAddTopicDelegate> delegate;
+@property (strong, nonatomic) NSString *topicName;
+@property (assign, nonatomic) NSInteger qosValue;
 
 @end
 

@@ -1,6 +1,6 @@
 /**
  * Mobius Software LTD
- * Copyright 2015-2016, Mobius Software LTD
+ * Copyright 2015-2017, Mobius Software LTD
  *
  * This is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as
@@ -19,15 +19,15 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "IBTopic.h"
+#import "IBMQTTTopic.h"
 
 @interface IBWill : NSObject
 
-@property (strong, nonatomic) IBTopic *topic;
+@property (strong, nonatomic) IBMQTTTopic *topic;
 @property (strong, nonatomic) NSData *content;
 @property (assign, nonatomic) BOOL isRetain;
 
-- (instancetype) initWithTopic : (IBTopic *) topic content : (NSData *) content andIsRetain : (BOOL) retain;
+- (instancetype) initWithTopic : (IBMQTTTopic *) topic content : (NSData *) content andIsRetain : (BOOL) retain;
 
 - (NSInteger) retrieveLength;
 - (BOOL) isValid;
