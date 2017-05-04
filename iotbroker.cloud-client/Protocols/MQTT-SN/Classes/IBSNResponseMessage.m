@@ -30,6 +30,10 @@
     return self;
 }
 
+- (NSInteger)getMessageType {
+    return -1;
+}
+
 - (NSInteger)getLength {
     return 3;
 }

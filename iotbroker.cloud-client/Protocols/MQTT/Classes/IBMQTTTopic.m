@@ -34,6 +34,10 @@ static NSString *const IBSeparator = @":";
     return self;
 }
 
+- (IBSNTopicType *)getType {
+    return nil;
+}
+
 - (IBQoS *)getQoS {
     return self->_qos;
 }
