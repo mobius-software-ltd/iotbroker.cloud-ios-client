@@ -36,7 +36,7 @@
 }
 
 - (NSData *)encode {
-    short number = (short)self->_qos.value;
+    short number = htons(self->_value);
     return [NSData dataWithBytes:&number length:sizeof(short)];
 }
 

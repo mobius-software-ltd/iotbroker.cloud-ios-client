@@ -28,6 +28,7 @@
 
 @property (strong, nonatomic, readonly) IBTimerTask *connect;
 @property (strong, nonatomic, readonly) IBTimerTask *ping;
+@property (strong, nonatomic, readonly) IBTimerTask *registerPacket;
 @property (strong, nonatomic, readonly) id<IBRequests> request;
 
 - (instancetype) initWithRequest : (id<IBRequests>) request;
@@ -37,6 +38,9 @@
 
 - (void) startPingTimerWithKeepAlive : (NSInteger) keepAlive;
 - (void) stopPingTimer;
+
+- (void) startRegisterTimer: (id<IBMessage>) message;
+- (void) stopRegisterTimer;
 
 - (void) startMessageTimer : (id<IBMessage>) message;
 

@@ -141,7 +141,9 @@
 
     if ([message isValid] == true) {
         [self->_requests publishMessage:message];
-        [self showProgressWithMessage:@"Publishion..."];
+        if (message.qos != IBAtMostOnce) {
+            [self showProgressWithMessage:@"Publishion..."];
+        }
 
         return true;
     } else {

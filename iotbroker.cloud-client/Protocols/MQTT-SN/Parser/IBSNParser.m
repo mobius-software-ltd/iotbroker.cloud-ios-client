@@ -201,7 +201,7 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
             [data appendData:[IBSNParser encode:encapsulated.message]];
         } break;
     }
-    
+        
     if (type != IBEncapsulatedMessage && [message getLength] != data.length) {
         @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"invalid message encoding: expected length = %zd actual = %zd", [message getLength], [data length]] userInfo:nil];
     }
@@ -348,6 +348,7 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
                 @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"invalid PUBLISH QoS-0 packetID: %zd", publishPacketID] userInfo:nil];
             }
             id<IBTopic> publishTopic = nil;
+            
             if (publishFlags.topicType.value == IBShortTopicType) {
                 publishTopic = [[IBSNShortTopic alloc] initWithValue:[@(publishTopicID) stringValue] andQoS:publishFlags.qos];
             } else {

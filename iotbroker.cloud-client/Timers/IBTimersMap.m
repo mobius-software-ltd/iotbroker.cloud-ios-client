@@ -20,6 +20,7 @@
 
 #import "IBTimersMap.h"
 #import "IBCountableMessage.h"
+#import "IBSNRegister.h"
 
 static NSInteger const IBMessageResendPeriod = 3;
 static NSInteger const IBMaxValue = 65535;
@@ -34,6 +35,7 @@ static NSInteger const IBFirstID = 1;
         self->_request = request;
         self->_connect = nil;
         self->_ping = nil;
+        self->_registerPacket = nil;
         self->_counter = 0;
     }
     return self;
@@ -78,6 +80,27 @@ static NSInteger const IBFirstID = 1;
     if (self->_ping != nil) {
         [self->_ping stop];
         self->_ping = nil;
+    }
+}
+
+- (void) startRegisterTimer: (id<IBMessage>) message {
+    if (self->_registerPacket != nil) {
+        [self->_registerPacket stop];
+    }
+    
+    IBCountableMessage *countableMessage = (IBCountableMessage *)message;
+    if (countableMessage.packetID == 0) {
+        countableMessage.packetID = [self getNewPacketID];
+    }
+    
+    self->_registerPacket = [[IBTimerTask alloc] initWithMessage:message request:self->_request andPeriod:IBMessageResendPeriod];
+    [self->_registerPacket start];
+}
+
+- (void) stopRegisterTimer {
+    if (self->_registerPacket != nil) {
+        [self->_registerPacket stop];
+        self->_registerPacket = nil;
     }
 }
 

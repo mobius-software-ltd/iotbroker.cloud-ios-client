@@ -26,6 +26,7 @@
 #import "IBMutableData.h"
 #import "IBSNWillTopic.h"
 #import "IBSNShortTopic.h"
+#import "IBSNIdentifierTopic.h"
 
 @interface IBMQTTSN () <IBInternetProtocolDelegate>
 
@@ -86,7 +87,7 @@
     IBSNFullTopic *topic = [[IBSNFullTopic alloc] initWithValue:message.topicName andQoS:QoS];
     IBSNRegister *registerPacket = [[IBSNRegister alloc] initWithTopicID:0 packetID:0 andTopicName:message.topicName];
     self->_forPublish = [[IBSNPublish alloc] initWithPacketID:0 topic:topic content:message.content dup:message.isDup retainFlag:message.isRetain];
-    [self->_timers startMessageTimer:registerPacket];
+    [self->_timers startRegisterTimer:registerPacket];
 }
 
 - (void) subscribeToTopic : (Topic *) topic {
@@ -148,7 +149,9 @@
             case IBConnackMessage:
             {
                 IBSNConnack *connack = (IBSNConnack *)message;
+                [self->_timers stopConnectTimer];
                 [self.delegate connackWithCode:connack.returnCode];
+                [self->_timers startPingTimerWithKeepAlive:self->_keepalive];
             } break;
             case IBWillTopicReqMessage:
             {
@@ -173,15 +176,17 @@
             case IBRegackMessage:
             {
                 IBSNRegack *regack = (IBSNRegack *)message;
-                IBSNRegister *registerPacket = [self->_timers removeTimerWithPacketID:@(regack.topicID)];
-                if (registerPacket.topicID != regack.topicID) {
-                    return;
-                }
+                [self->_timers stopRegisterTimer];
+                
                 if (regack.returnCode == IBAcceptedReturnCode) {
-                    IBSNShortTopic *topic = [[IBSNShortTopic alloc] initWithValue:[@(regack.topicID) stringValue] andQoS:[self->_forPublish.topic getQoS]];
+                    IBSNIdentifierTopic *topic = [[IBSNIdentifierTopic alloc] initWithValue:regack.topicID andQoS:[self->_forPublish.topic getQoS]];
                     self->_forPublish.packetID = regack.packetID;
                     self->_forPublish.topic = topic;
-                    [self->_timers startMessageTimer:self->_forPublish];
+                    if ([self->_forPublish.topic getQoS].value == IBAtMostOnce) {
+                        [self sendMessage:self->_forPublish];
+                    } else {
+                        [self->_timers startMessageTimer:self->_forPublish];
+                    }
                 }
             } break;
             case IBPublishMessage:
@@ -237,7 +242,7 @@
                 [self.delegate pubcompForPublishWithTopicName:name qos:[publish.topic getQoS].value content:publish.content dup:publish.dup retainFlag:publish.retainFlag];
                 [self->_publishPackets removeObjectForKey:@(pubcomp.packetID)];
             } break;
-            case IBSubscribeMessage:        NSLog(@" > Error: SNUNSubscribe message has been received");    break;
+            case IBSubscribeMessage:        NSLog(@" > Error: SNSubscribe message has been received");      break;
             case IBSubackMessage:
             {
                 IBSNSuback *suback = (IBSNSuback *)message;
@@ -245,14 +250,14 @@
                 NSString *name = [[NSString alloc] initWithData:[subscribe.topic encode] encoding:NSUTF8StringEncoding];
                 [self.delegate subackForSubscribeWithTopicName:name qos:[subscribe.topic getQoS].value returnCode:suback.returnCode];
             } break;
-            case IBUnsubscribeMessage:
+            case IBUnsubscribeMessage:      NSLog(@" > Error: SNUnsubscribe message has been received");    break;
+            case IBUnsubackMessage:
             {
                 IBSNUnsuback *unsuback = (IBSNUnsuback *)message;
                 IBSNUnsubscribe *unsubscribe = [self->_timers removeTimerWithPacketID:@(unsuback.packetID)];
                 NSString *name = [[NSString alloc] initWithData:[unsubscribe.topic encode] encoding:NSUTF8StringEncoding];
                 [self.delegate unsubackForUnsubscribeWithTopicName:name];
             } break;
-            case IBUnsubackMessage:         NSLog(@" > Error: SNUnsubscribe message has been received");    break;
             case IBPingreqMessage:          NSLog(@" > Error: SNPingreq message has been received");        break;
             case IBPingrespMessage:
             {
