@@ -69,6 +69,8 @@
         NSLog(@"Error receiving: %@", error);
         return;
     }
+    
+    self->_state = IBTransportOpen;
     [self.delegate internetProtocolDidStart:self];
 }
 

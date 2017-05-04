@@ -8,27 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		015F422EA1D7A5DEA8470010 /* Pods_iotbroker_cloud_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 488B0E9AFE7E719102170D94 /* Pods_iotbroker_cloud_client.framework */; };
-		221736AD1DF953C2000684CF /* IBPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 221736AC1DF953C2000684CF /* IBPickerView.m */; };
-		221736B71DF98222000684CF /* IBSendMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 221736B61DF98222000684CF /* IBSendMessageTableViewController.m */; };
-		221736BD1DF98676000684CF /* IBMessagesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 221736BC1DF98676000684CF /* IBMessagesListTableViewController.m */; };
-		221736C01DF9975B000684CF /* IBTopicsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 221736BF1DF9975B000684CF /* IBTopicsListTableViewController.m */; };
-		221736C71DF9A066000684CF /* IBDashBorderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 221736C61DF9A066000684CF /* IBDashBorderButton.m */; };
-		221736CC1DF9A823000684CF /* IBTopicsListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 221736CB1DF9A823000684CF /* IBTopicsListTableViewCell.m */; };
-		221736D11DF9A860000684CF /* IBMessagesListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 221736D01DF9A860000684CF /* IBMessagesListTableViewCell.m */; };
-		2217D1A41EB9C65B00E3801C /* IBLoginTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D1A31EB9C65B00E3801C /* IBLoginTableViewCell.m */; };
-		2217D1A91EB9CCF000E3801C /* IBProtocolTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D1A81EB9CCF000E3801C /* IBProtocolTypeViewController.m */; };
-		2217D1AD1EB9E0C300E3801C /* IBProtocolTypeEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D1AC1EB9E0C300E3801C /* IBProtocolTypeEnum.m */; };
-		2217D1B11EBA1C1800E3801C /* IBProgressHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D1B01EBA1C1800E3801C /* IBProgressHUDViewController.m */; };
-		224494E91E07E239006831A3 /* IBAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 224494E81E07E239006831A3 /* IBAccountManager.m */; };
-		2262BD881DF8356300D5A83E /* Account+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2262BD7D1DF8356300D5A83E /* Account+CoreDataClass.m */; };
-		2262BD891DF8356300D5A83E /* Account+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2262BD7F1DF8356300D5A83E /* Account+CoreDataProperties.m */; };
-		2262BD8A1DF8356300D5A83E /* Message+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2262BD811DF8356300D5A83E /* Message+CoreDataClass.m */; };
-		2262BD8B1DF8356300D5A83E /* Message+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2262BD831DF8356300D5A83E /* Message+CoreDataProperties.m */; };
-		2262BD8C1DF8356300D5A83E /* Topic+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2262BD851DF8356300D5A83E /* Topic+CoreDataClass.m */; };
-		2262BD8D1DF8356300D5A83E /* Topic+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2262BD871DF8356300D5A83E /* Topic+CoreDataProperties.m */; };
-		2262BD9A1DF8638F00D5A83E /* IBLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2262BD991DF8638F00D5A83E /* IBLoadingViewController.m */; };
-		22A219FF1DF168E60063C9A8 /* IBLengthDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A219FE1DF168E60063C9A8 /* IBLengthDetails.m */; };
-		22A21A021DF16AA40063C9A8 /* IBMutableData.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A21A011DF16AA40063C9A8 /* IBMutableData.m */; };
+		2217D8E61EBB127500A636E7 /* IBSocketTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8E11EBB127500A636E7 /* IBSocketTransport.m */; };
+		2217D8E71EBB127500A636E7 /* IBSocketDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8E31EBB127500A636E7 /* IBSocketDecoder.m */; };
+		2217D8E81EBB127500A636E7 /* IBSocketEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8E51EBB127500A636E7 /* IBSocketEncoder.m */; };
+		2217D8EE1EBB12F200A636E7 /* IBTimersMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8EB1EBB12F200A636E7 /* IBTimersMap.m */; };
+		2217D8EF1EBB12F200A636E7 /* IBTimerTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8ED1EBB12F200A636E7 /* IBTimerTask.m */; };
+		2217D8FE1EBB160700A636E7 /* Account+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8F31EBB160700A636E7 /* Account+CoreDataProperties.m */; };
+		2217D8FF1EBB160700A636E7 /* Topic+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8F51EBB160700A636E7 /* Topic+CoreDataProperties.m */; };
+		2217D9001EBB160700A636E7 /* Message+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8F61EBB160700A636E7 /* Message+CoreDataProperties.m */; };
+		2217D9011EBB160700A636E7 /* Account+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8F91EBB160700A636E7 /* Account+CoreDataClass.m */; };
+		2217D9021EBB160700A636E7 /* Message+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8FB1EBB160700A636E7 /* Message+CoreDataClass.m */; };
+		2217D9031EBB160700A636E7 /* Topic+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8FD1EBB160700A636E7 /* Topic+CoreDataClass.m */; };
+		2217D90A1EBB163F00A636E7 /* IBAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9041EBB163F00A636E7 /* IBAccountManager.m */; };
+		2217D90B1EBB163F00A636E7 /* IBCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9071EBB163F00A636E7 /* IBCoreDataManager.m */; };
+		2217D90C1EBB163F00A636E7 /* iotbroker_cloud_client.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9081EBB163F00A636E7 /* iotbroker_cloud_client.xcdatamodeld */; };
+		2217D9361EBB177F00A636E7 /* IBCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9141EBB177F00A636E7 /* IBCoordinator.m */; };
+		2217D9371EBB177F00A636E7 /* IBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9171EBB177F00A636E7 /* IBLoginViewController.m */; };
+		2217D9381EBB177F00A636E7 /* IBProtocolTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9191EBB177F00A636E7 /* IBProtocolTypeViewController.m */; };
+		2217D9391EBB177F00A636E7 /* IBAccountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D91B1EBB177F00A636E7 /* IBAccountListViewController.m */; };
+		2217D93A1EBB177F00A636E7 /* IBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D91C1EBB177F00A636E7 /* IBTabBarController.m */; };
+		2217D93B1EBB177F00A636E7 /* IBMessagesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D91D1EBB177F00A636E7 /* IBMessagesListTableViewController.m */; };
+		2217D93C1EBB177F00A636E7 /* IBProgressHUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D91F1EBB177F00A636E7 /* IBProgressHUDViewController.m */; };
+		2217D93D1EBB177F00A636E7 /* IBSendMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9201EBB177F00A636E7 /* IBSendMessageTableViewController.m */; };
+		2217D93E1EBB177F00A636E7 /* IBTopicsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9231EBB177F00A636E7 /* IBTopicsListTableViewController.m */; };
+		2217D93F1EBB177F00A636E7 /* IBAccountListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9241EBB177F00A636E7 /* IBAccountListTableViewCell.m */; };
+		2217D9401EBB177F00A636E7 /* IBAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9271EBB177F00A636E7 /* IBAlertViewController.m */; };
+		2217D9411EBB177F00A636E7 /* IBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9291EBB177F00A636E7 /* IBRootViewController.m */; };
+		2217D9421EBB177F00A636E7 /* IBAddTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D92B1EBB177F00A636E7 /* IBAddTopicViewController.m */; };
+		2217D9431EBB177F00A636E7 /* IBLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D92D1EBB177F00A636E7 /* IBLoadingViewController.m */; };
+		2217D9441EBB177F00A636E7 /* IBLoginTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D92E1EBB177F00A636E7 /* IBLoginTableViewCell.m */; };
+		2217D9451EBB177F00A636E7 /* IBTopicsListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9311EBB177F00A636E7 /* IBTopicsListTableViewCell.m */; };
+		2217D9461EBB177F00A636E7 /* IBMessagesListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9341EBB177F00A636E7 /* IBMessagesListTableViewCell.m */; };
+		2217D95C1EBB188F00A636E7 /* IBDashBorderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9591EBB188F00A636E7 /* IBDashBorderButton.m */; };
+		2217D95D1EBB188F00A636E7 /* IBPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D95B1EBB188F00A636E7 /* IBPickerView.m */; };
+		2217D9641EBB18B700A636E7 /* IBProtocolTypeEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D95F1EBB18B700A636E7 /* IBProtocolTypeEnum.m */; };
+		2217D9651EBB18B700A636E7 /* IBLengthDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9611EBB18B700A636E7 /* IBLengthDetails.m */; };
+		2217D9661EBB18B700A636E7 /* IBMutableData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9631EBB18B700A636E7 /* IBMutableData.m */; };
 		22C531A31EAF90D2007F57A8 /* IBPuback.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531871EAF90D2007F57A8 /* IBPuback.m */; };
 		22C531A41EAF90D2007F57A8 /* IBConnack.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531891EAF90D2007F57A8 /* IBConnack.m */; };
 		22C531A51EAF90D2007F57A8 /* IBConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5318B1EAF90D2007F57A8 /* IBConnect.m */; };
@@ -83,34 +98,19 @@
 		22C532421EAF95A8007F57A8 /* IBSNControls.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C532321EAF95A8007F57A8 /* IBSNControls.m */; };
 		22C532441EAF95A8007F57A8 /* IBSNResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C532391EAF95A8007F57A8 /* IBSNResponseMessage.m */; };
 		22C532491EAF9625007F57A8 /* IBSNParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C532481EAF9625007F57A8 /* IBSNParser.m */; };
-		22C5324C1EAF9AF0007F57A8 /* IBCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5324B1EAF9AF0007F57A8 /* IBCoordinator.m */; };
 		22C5C02A1DF061CE00790EF6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0291DF061CE00790EF6 /* main.m */; };
 		22C5C02D1DF061CE00790EF6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C02C1DF061CE00790EF6 /* AppDelegate.m */; };
 		22C5C0331DF061CE00790EF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C5C0311DF061CE00790EF6 /* Main.storyboard */; };
-		22C5C0361DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0341DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodeld */; };
 		22C5C0381DF061CE00790EF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C5C0371DF061CE00790EF6 /* Assets.xcassets */; };
 		22C5C03B1DF061CE00790EF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C5C0391DF061CE00790EF6 /* LaunchScreen.storyboard */; };
 		22C5C0461DF061CE00790EF6 /* iotbroker_cloud_clientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0451DF061CE00790EF6 /* iotbroker_cloud_clientTests.m */; };
 		22C5C0511DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0501DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m */; };
-		22C8A2DE1EB34259000DAB1F /* IBAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C8A2DD1EB34259000DAB1F /* IBAlertViewController.m */; };
-		22C8A2E51EB385EC000DAB1F /* IBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C8A2E41EB385EC000DAB1F /* IBLoginViewController.m */; };
-		22E104B81E0017C10044AAFD /* IBAddTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E104B71E0017C10044AAFD /* IBAddTopicViewController.m */; };
-		22E104BB1E00354C0044AAFD /* IBAccountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E104BA1E00354C0044AAFD /* IBAccountListViewController.m */; };
-		22E104BF1E0036270044AAFD /* IBAccountListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E104BE1E0036270044AAFD /* IBAccountListTableViewCell.m */; };
 		22ED8B441EB092F9006A0C98 /* IBMQTTSN.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B431EB092F9006A0C98 /* IBMQTTSN.m */; };
-		22ED8B4C1EB09D49006A0C98 /* IBTimerTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B4B1EB09D49006A0C98 /* IBTimerTask.m */; };
-		22ED8B521EB0A547006A0C98 /* IBTimersMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B511EB0A547006A0C98 /* IBTimersMap.m */; };
 		22ED8B561EB0B8B0006A0C98 /* IBMQTT.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B551EB0B8B0006A0C98 /* IBMQTT.m */; };
 		22ED8B5E1EB0D00E006A0C98 /* IBQoS.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B591EB0D00E006A0C98 /* IBQoS.m */; };
 		22ED8B5F1EB0D00E006A0C98 /* IBCountableMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B5B1EB0D00E006A0C98 /* IBCountableMessage.m */; };
-		22ED8B6B1EB0D6A7006A0C98 /* IBSocketDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B641EB0D6A7006A0C98 /* IBSocketDecoder.m */; };
-		22ED8B6C1EB0D6A7006A0C98 /* IBSocketEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B651EB0D6A7006A0C98 /* IBSocketEncoder.m */; };
-		22ED8B6D1EB0D6A7006A0C98 /* IBSocketTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B661EB0D6A7006A0C98 /* IBSocketTransport.m */; };
 		22ED8B761EB0D745006A0C98 /* IBUDPSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B751EB0D745006A0C98 /* IBUDPSocket.m */; };
-		22EE50261EB204C300EB9946 /* IBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EE50251EB204C300EB9946 /* IBRootViewController.m */; };
-		22F2C6DA1DFAA7ED004FB400 /* IBCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F2C6D91DFAA7ED004FB400 /* IBCoreDataManager.m */; };
 		22F2C6E21DFAC397004FB400 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F2C6E11DFAC397004FB400 /* CoreData.framework */; };
-		22F2C6E51DFACAFA004FB400 /* IBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F2C6E41DFACAFA004FB400 /* IBTabBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,48 +132,77 @@
 
 /* Begin PBXFileReference section */
 		0589C7D167EA1F54ED0C102B /* Pods-iotbroker.cloud-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iotbroker.cloud-client.release.xcconfig"; path = "Pods/Target Support Files/Pods-iotbroker.cloud-client/Pods-iotbroker.cloud-client.release.xcconfig"; sourceTree = "<group>"; };
-		221736AB1DF953C2000684CF /* IBPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPickerView.h; sourceTree = "<group>"; };
-		221736AC1DF953C2000684CF /* IBPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPickerView.m; sourceTree = "<group>"; };
-		221736B51DF98222000684CF /* IBSendMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSendMessageTableViewController.h; sourceTree = "<group>"; };
-		221736B61DF98222000684CF /* IBSendMessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBSendMessageTableViewController.m; sourceTree = "<group>"; };
-		221736BB1DF98676000684CF /* IBMessagesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBMessagesListTableViewController.h; sourceTree = "<group>"; };
-		221736BC1DF98676000684CF /* IBMessagesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBMessagesListTableViewController.m; sourceTree = "<group>"; };
-		221736BE1DF9975B000684CF /* IBTopicsListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTopicsListTableViewController.h; sourceTree = "<group>"; };
-		221736BF1DF9975B000684CF /* IBTopicsListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTopicsListTableViewController.m; sourceTree = "<group>"; };
-		221736C51DF9A066000684CF /* IBDashBorderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBDashBorderButton.h; sourceTree = "<group>"; };
-		221736C61DF9A066000684CF /* IBDashBorderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBDashBorderButton.m; sourceTree = "<group>"; };
-		221736CA1DF9A823000684CF /* IBTopicsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTopicsListTableViewCell.h; sourceTree = "<group>"; };
-		221736CB1DF9A823000684CF /* IBTopicsListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTopicsListTableViewCell.m; sourceTree = "<group>"; };
-		221736CF1DF9A860000684CF /* IBMessagesListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBMessagesListTableViewCell.h; sourceTree = "<group>"; };
-		221736D01DF9A860000684CF /* IBMessagesListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBMessagesListTableViewCell.m; sourceTree = "<group>"; };
-		2217D1A21EB9C65B00E3801C /* IBLoginTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLoginTableViewCell.h; sourceTree = "<group>"; };
-		2217D1A31EB9C65B00E3801C /* IBLoginTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLoginTableViewCell.m; sourceTree = "<group>"; };
-		2217D1A71EB9CCF000E3801C /* IBProtocolTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBProtocolTypeViewController.h; sourceTree = "<group>"; };
-		2217D1A81EB9CCF000E3801C /* IBProtocolTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBProtocolTypeViewController.m; sourceTree = "<group>"; };
-		2217D1AB1EB9E0C300E3801C /* IBProtocolTypeEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBProtocolTypeEnum.h; sourceTree = "<group>"; };
-		2217D1AC1EB9E0C300E3801C /* IBProtocolTypeEnum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBProtocolTypeEnum.m; sourceTree = "<group>"; };
-		2217D1AF1EBA1C1800E3801C /* IBProgressHUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBProgressHUDViewController.h; sourceTree = "<group>"; };
-		2217D1B01EBA1C1800E3801C /* IBProgressHUDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBProgressHUDViewController.m; sourceTree = "<group>"; };
-		224494E71E07E239006831A3 /* IBAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAccountManager.h; sourceTree = "<group>"; };
-		224494E81E07E239006831A3 /* IBAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAccountManager.m; sourceTree = "<group>"; };
-		2262BD7C1DF8356300D5A83E /* Account+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Account+CoreDataClass.h"; sourceTree = "<group>"; };
-		2262BD7D1DF8356300D5A83E /* Account+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Account+CoreDataClass.m"; sourceTree = "<group>"; };
-		2262BD7E1DF8356300D5A83E /* Account+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Account+CoreDataProperties.h"; sourceTree = "<group>"; };
-		2262BD7F1DF8356300D5A83E /* Account+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Account+CoreDataProperties.m"; sourceTree = "<group>"; };
-		2262BD801DF8356300D5A83E /* Message+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Message+CoreDataClass.h"; sourceTree = "<group>"; };
-		2262BD811DF8356300D5A83E /* Message+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Message+CoreDataClass.m"; sourceTree = "<group>"; };
-		2262BD821DF8356300D5A83E /* Message+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Message+CoreDataProperties.h"; sourceTree = "<group>"; };
-		2262BD831DF8356300D5A83E /* Message+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Message+CoreDataProperties.m"; sourceTree = "<group>"; };
-		2262BD841DF8356300D5A83E /* Topic+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Topic+CoreDataClass.h"; sourceTree = "<group>"; };
-		2262BD851DF8356300D5A83E /* Topic+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Topic+CoreDataClass.m"; sourceTree = "<group>"; };
-		2262BD861DF8356300D5A83E /* Topic+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Topic+CoreDataProperties.h"; sourceTree = "<group>"; };
-		2262BD871DF8356300D5A83E /* Topic+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Topic+CoreDataProperties.m"; sourceTree = "<group>"; };
-		2262BD981DF8638F00D5A83E /* IBLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLoadingViewController.h; sourceTree = "<group>"; };
-		2262BD991DF8638F00D5A83E /* IBLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLoadingViewController.m; sourceTree = "<group>"; };
-		22A219FD1DF168E60063C9A8 /* IBLengthDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLengthDetails.h; sourceTree = "<group>"; };
-		22A219FE1DF168E60063C9A8 /* IBLengthDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLengthDetails.m; sourceTree = "<group>"; };
-		22A21A001DF16AA40063C9A8 /* IBMutableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBMutableData.h; sourceTree = "<group>"; };
-		22A21A011DF16AA40063C9A8 /* IBMutableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBMutableData.m; sourceTree = "<group>"; };
+		2217D8E01EBB127500A636E7 /* IBSocketTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSocketTransport.h; sourceTree = "<group>"; };
+		2217D8E11EBB127500A636E7 /* IBSocketTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBSocketTransport.m; sourceTree = "<group>"; };
+		2217D8E21EBB127500A636E7 /* IBSocketDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSocketDecoder.h; sourceTree = "<group>"; };
+		2217D8E31EBB127500A636E7 /* IBSocketDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBSocketDecoder.m; sourceTree = "<group>"; };
+		2217D8E41EBB127500A636E7 /* IBSocketEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSocketEncoder.h; sourceTree = "<group>"; };
+		2217D8E51EBB127500A636E7 /* IBSocketEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBSocketEncoder.m; sourceTree = "<group>"; };
+		2217D8EA1EBB12F200A636E7 /* IBTimersMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBTimersMap.h; path = Timers/IBTimersMap.h; sourceTree = "<group>"; };
+		2217D8EB1EBB12F200A636E7 /* IBTimersMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBTimersMap.m; path = Timers/IBTimersMap.m; sourceTree = "<group>"; };
+		2217D8EC1EBB12F200A636E7 /* IBTimerTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBTimerTask.h; path = Timers/IBTimerTask.h; sourceTree = "<group>"; };
+		2217D8ED1EBB12F200A636E7 /* IBTimerTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBTimerTask.m; path = Timers/IBTimerTask.m; sourceTree = "<group>"; };
+		2217D8F21EBB160700A636E7 /* Account+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Account+CoreDataProperties.h"; sourceTree = "<group>"; };
+		2217D8F31EBB160700A636E7 /* Account+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Account+CoreDataProperties.m"; sourceTree = "<group>"; };
+		2217D8F41EBB160700A636E7 /* Topic+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Topic+CoreDataProperties.h"; sourceTree = "<group>"; };
+		2217D8F51EBB160700A636E7 /* Topic+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Topic+CoreDataProperties.m"; sourceTree = "<group>"; };
+		2217D8F61EBB160700A636E7 /* Message+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Message+CoreDataProperties.m"; sourceTree = "<group>"; };
+		2217D8F71EBB160700A636E7 /* Message+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Message+CoreDataProperties.h"; sourceTree = "<group>"; };
+		2217D8F81EBB160700A636E7 /* Account+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Account+CoreDataClass.h"; sourceTree = "<group>"; };
+		2217D8F91EBB160700A636E7 /* Account+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Account+CoreDataClass.m"; sourceTree = "<group>"; };
+		2217D8FA1EBB160700A636E7 /* Message+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Message+CoreDataClass.h"; sourceTree = "<group>"; };
+		2217D8FB1EBB160700A636E7 /* Message+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Message+CoreDataClass.m"; sourceTree = "<group>"; };
+		2217D8FC1EBB160700A636E7 /* Topic+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Topic+CoreDataClass.h"; sourceTree = "<group>"; };
+		2217D8FD1EBB160700A636E7 /* Topic+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Topic+CoreDataClass.m"; sourceTree = "<group>"; };
+		2217D9041EBB163F00A636E7 /* IBAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAccountManager.m; sourceTree = "<group>"; };
+		2217D9051EBB163F00A636E7 /* IBAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAccountManager.h; sourceTree = "<group>"; };
+		2217D9061EBB163F00A636E7 /* IBCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCoreDataManager.h; sourceTree = "<group>"; };
+		2217D9071EBB163F00A636E7 /* IBCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBCoreDataManager.m; sourceTree = "<group>"; };
+		2217D9091EBB163F00A636E7 /* iotbroker_cloud_client.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iotbroker_cloud_client.xcdatamodel; sourceTree = "<group>"; };
+		2217D9141EBB177F00A636E7 /* IBCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBCoordinator.m; sourceTree = "<group>"; };
+		2217D9151EBB177F00A636E7 /* IBLoginTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLoginTableViewCell.h; sourceTree = "<group>"; };
+		2217D9161EBB177F00A636E7 /* IBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLoginViewController.h; sourceTree = "<group>"; };
+		2217D9171EBB177F00A636E7 /* IBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLoginViewController.m; sourceTree = "<group>"; };
+		2217D9181EBB177F00A636E7 /* IBProtocolTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBProtocolTypeViewController.h; sourceTree = "<group>"; };
+		2217D9191EBB177F00A636E7 /* IBProtocolTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBProtocolTypeViewController.m; sourceTree = "<group>"; };
+		2217D91A1EBB177F00A636E7 /* IBAccountListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAccountListTableViewCell.h; sourceTree = "<group>"; };
+		2217D91B1EBB177F00A636E7 /* IBAccountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAccountListViewController.m; sourceTree = "<group>"; };
+		2217D91C1EBB177F00A636E7 /* IBTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTabBarController.m; sourceTree = "<group>"; };
+		2217D91D1EBB177F00A636E7 /* IBMessagesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBMessagesListTableViewController.m; sourceTree = "<group>"; };
+		2217D91E1EBB177F00A636E7 /* IBProgressHUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBProgressHUDViewController.h; sourceTree = "<group>"; };
+		2217D91F1EBB177F00A636E7 /* IBProgressHUDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBProgressHUDViewController.m; sourceTree = "<group>"; };
+		2217D9201EBB177F00A636E7 /* IBSendMessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBSendMessageTableViewController.m; sourceTree = "<group>"; };
+		2217D9211EBB177F00A636E7 /* IBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTabBarController.h; sourceTree = "<group>"; };
+		2217D9221EBB177F00A636E7 /* IBTopicsListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTopicsListTableViewController.h; sourceTree = "<group>"; };
+		2217D9231EBB177F00A636E7 /* IBTopicsListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTopicsListTableViewController.m; sourceTree = "<group>"; };
+		2217D9241EBB177F00A636E7 /* IBAccountListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAccountListTableViewCell.m; sourceTree = "<group>"; };
+		2217D9251EBB177F00A636E7 /* IBAccountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAccountListViewController.h; sourceTree = "<group>"; };
+		2217D9261EBB177F00A636E7 /* IBAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAlertViewController.h; sourceTree = "<group>"; };
+		2217D9271EBB177F00A636E7 /* IBAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAlertViewController.m; sourceTree = "<group>"; };
+		2217D9281EBB177F00A636E7 /* IBRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBRootViewController.h; sourceTree = "<group>"; };
+		2217D9291EBB177F00A636E7 /* IBRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBRootViewController.m; sourceTree = "<group>"; };
+		2217D92A1EBB177F00A636E7 /* IBAddTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAddTopicViewController.h; sourceTree = "<group>"; };
+		2217D92B1EBB177F00A636E7 /* IBAddTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAddTopicViewController.m; sourceTree = "<group>"; };
+		2217D92C1EBB177F00A636E7 /* IBLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLoadingViewController.h; sourceTree = "<group>"; };
+		2217D92D1EBB177F00A636E7 /* IBLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLoadingViewController.m; sourceTree = "<group>"; };
+		2217D92E1EBB177F00A636E7 /* IBLoginTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLoginTableViewCell.m; sourceTree = "<group>"; };
+		2217D92F1EBB177F00A636E7 /* IBSendMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSendMessageTableViewController.h; sourceTree = "<group>"; };
+		2217D9301EBB177F00A636E7 /* IBTopicsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTopicsListTableViewCell.h; sourceTree = "<group>"; };
+		2217D9311EBB177F00A636E7 /* IBTopicsListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTopicsListTableViewCell.m; sourceTree = "<group>"; };
+		2217D9321EBB177F00A636E7 /* IBCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCoordinator.h; sourceTree = "<group>"; };
+		2217D9331EBB177F00A636E7 /* IBMessagesListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBMessagesListTableViewCell.h; sourceTree = "<group>"; };
+		2217D9341EBB177F00A636E7 /* IBMessagesListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBMessagesListTableViewCell.m; sourceTree = "<group>"; };
+		2217D9351EBB177F00A636E7 /* IBMessagesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBMessagesListTableViewController.h; sourceTree = "<group>"; };
+		2217D9581EBB188F00A636E7 /* IBDashBorderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBDashBorderButton.h; sourceTree = "<group>"; };
+		2217D9591EBB188F00A636E7 /* IBDashBorderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBDashBorderButton.m; sourceTree = "<group>"; };
+		2217D95A1EBB188F00A636E7 /* IBPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBPickerView.h; sourceTree = "<group>"; };
+		2217D95B1EBB188F00A636E7 /* IBPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPickerView.m; sourceTree = "<group>"; };
+		2217D95E1EBB18B700A636E7 /* IBProtocolTypeEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBProtocolTypeEnum.h; sourceTree = "<group>"; };
+		2217D95F1EBB18B700A636E7 /* IBProtocolTypeEnum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBProtocolTypeEnum.m; sourceTree = "<group>"; };
+		2217D9601EBB18B700A636E7 /* IBLengthDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLengthDetails.h; sourceTree = "<group>"; };
+		2217D9611EBB18B700A636E7 /* IBLengthDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLengthDetails.m; sourceTree = "<group>"; };
+		2217D9621EBB18B700A636E7 /* IBMutableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBMutableData.h; sourceTree = "<group>"; };
+		2217D9631EBB18B700A636E7 /* IBMutableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBMutableData.m; sourceTree = "<group>"; };
 		22C531811EAF8AC3007F57A8 /* IBMQTTMessages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBMQTTMessages.h; sourceTree = "<group>"; };
 		22C531851EAF8C92007F57A8 /* IBMQTT-SNMessages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IBMQTT-SNMessages.h"; sourceTree = "<group>"; };
 		22C531871EAF90D2007F57A8 /* IBPuback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPuback.m; sourceTree = "<group>"; };
@@ -284,14 +313,11 @@
 		22C532391EAF95A8007F57A8 /* IBSNResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSNResponseMessage.m; path = "Protocols/MQTT-SN/Classes/IBSNResponseMessage.m"; sourceTree = "<group>"; };
 		22C532471EAF9625007F57A8 /* IBSNParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSNParser.h; sourceTree = "<group>"; };
 		22C532481EAF9625007F57A8 /* IBSNParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBSNParser.m; sourceTree = "<group>"; };
-		22C5324A1EAF9AF0007F57A8 /* IBCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCoordinator.h; sourceTree = "<group>"; };
-		22C5324B1EAF9AF0007F57A8 /* IBCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBCoordinator.m; sourceTree = "<group>"; };
 		22C5C0251DF061CE00790EF6 /* iotbroker.cloud-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iotbroker.cloud-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C5C0291DF061CE00790EF6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		22C5C02B1DF061CE00790EF6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		22C5C02C1DF061CE00790EF6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		22C5C0321DF061CE00790EF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		22C5C0351DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iotbroker_cloud_client.xcdatamodel; sourceTree = "<group>"; };
 		22C5C0371DF061CE00790EF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22C5C03A1DF061CE00790EF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22C5C03C1DF061CE00790EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -301,27 +327,13 @@
 		22C5C04C1DF061CE00790EF6 /* iotbroker.cloud-clientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iotbroker.cloud-clientUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C5C0501DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iotbroker_cloud_clientUITests.m; sourceTree = "<group>"; };
 		22C5C0521DF061CE00790EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22C8A2DC1EB34259000DAB1F /* IBAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAlertViewController.h; sourceTree = "<group>"; };
-		22C8A2DD1EB34259000DAB1F /* IBAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAlertViewController.m; sourceTree = "<group>"; };
-		22C8A2E31EB385EC000DAB1F /* IBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLoginViewController.h; sourceTree = "<group>"; };
-		22C8A2E41EB385EC000DAB1F /* IBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLoginViewController.m; sourceTree = "<group>"; };
-		22E104B61E0017C10044AAFD /* IBAddTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAddTopicViewController.h; sourceTree = "<group>"; };
-		22E104B71E0017C10044AAFD /* IBAddTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAddTopicViewController.m; sourceTree = "<group>"; };
-		22E104B91E00354C0044AAFD /* IBAccountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAccountListViewController.h; sourceTree = "<group>"; };
-		22E104BA1E00354C0044AAFD /* IBAccountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAccountListViewController.m; sourceTree = "<group>"; };
-		22E104BD1E0036270044AAFD /* IBAccountListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAccountListTableViewCell.h; sourceTree = "<group>"; };
-		22E104BE1E0036270044AAFD /* IBAccountListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAccountListTableViewCell.m; sourceTree = "<group>"; };
 		22ED8B3B1EB0847D006A0C98 /* IBRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBRequests.h; sourceTree = "<group>"; };
 		22ED8B3C1EB084A4006A0C98 /* IBResponsesDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBResponsesDelegate.h; sourceTree = "<group>"; };
 		22ED8B421EB092F9006A0C98 /* IBMQTTSN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBMQTTSN.h; sourceTree = "<group>"; };
 		22ED8B431EB092F9006A0C98 /* IBMQTTSN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBMQTTSN.m; sourceTree = "<group>"; };
 		22ED8B481EB093E1006A0C98 /* IBInternetProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBInternetProtocol.h; sourceTree = "<group>"; };
-		22ED8B4A1EB09D49006A0C98 /* IBTimerTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTimerTask.h; sourceTree = "<group>"; };
-		22ED8B4B1EB09D49006A0C98 /* IBTimerTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTimerTask.m; sourceTree = "<group>"; };
 		22ED8B4E1EB0A147006A0C98 /* IBMQTT-SNEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IBMQTT-SNEnums.h"; sourceTree = "<group>"; };
 		22ED8B4F1EB0A173006A0C98 /* IBMQTTEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBMQTTEnums.h; sourceTree = "<group>"; };
-		22ED8B501EB0A547006A0C98 /* IBTimersMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTimersMap.h; sourceTree = "<group>"; };
-		22ED8B511EB0A547006A0C98 /* IBTimersMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTimersMap.m; sourceTree = "<group>"; };
 		22ED8B541EB0B8B0006A0C98 /* IBMQTT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBMQTT.h; sourceTree = "<group>"; };
 		22ED8B551EB0B8B0006A0C98 /* IBMQTT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBMQTT.m; sourceTree = "<group>"; };
 		22ED8B581EB0D00E006A0C98 /* IBQoS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBQoS.h; sourceTree = "<group>"; };
@@ -330,21 +342,9 @@
 		22ED8B5B1EB0D00E006A0C98 /* IBCountableMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBCountableMessage.m; sourceTree = "<group>"; };
 		22ED8B5C1EB0D00E006A0C98 /* IBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBMessage.h; sourceTree = "<group>"; };
 		22ED8B5D1EB0D00E006A0C98 /* IBCountableMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCountableMessage.h; sourceTree = "<group>"; };
-		22ED8B641EB0D6A7006A0C98 /* IBSocketDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSocketDecoder.m; path = "iotbroker.cloud-client/InternetProtocolsImplementation/IBSocketDecoder.m"; sourceTree = SOURCE_ROOT; };
-		22ED8B651EB0D6A7006A0C98 /* IBSocketEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSocketEncoder.m; path = "iotbroker.cloud-client/InternetProtocolsImplementation/IBSocketEncoder.m"; sourceTree = SOURCE_ROOT; };
-		22ED8B661EB0D6A7006A0C98 /* IBSocketTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBSocketTransport.m; path = "iotbroker.cloud-client/InternetProtocolsImplementation/IBSocketTransport.m"; sourceTree = SOURCE_ROOT; };
-		22ED8B681EB0D6A7006A0C98 /* IBSocketDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSocketDecoder.h; path = "iotbroker.cloud-client/InternetProtocolsImplementation/IBSocketDecoder.h"; sourceTree = SOURCE_ROOT; };
-		22ED8B691EB0D6A7006A0C98 /* IBSocketEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSocketEncoder.h; path = "iotbroker.cloud-client/InternetProtocolsImplementation/IBSocketEncoder.h"; sourceTree = SOURCE_ROOT; };
-		22ED8B6A1EB0D6A7006A0C98 /* IBSocketTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBSocketTransport.h; path = "iotbroker.cloud-client/InternetProtocolsImplementation/IBSocketTransport.h"; sourceTree = SOURCE_ROOT; };
 		22ED8B741EB0D745006A0C98 /* IBUDPSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBUDPSocket.h; sourceTree = "<group>"; };
 		22ED8B751EB0D745006A0C98 /* IBUDPSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBUDPSocket.m; sourceTree = "<group>"; };
-		22EE50241EB204C300EB9946 /* IBRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBRootViewController.h; sourceTree = "<group>"; };
-		22EE50251EB204C300EB9946 /* IBRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBRootViewController.m; sourceTree = "<group>"; };
-		22F2C6D81DFAA7ED004FB400 /* IBCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCoreDataManager.h; sourceTree = "<group>"; };
-		22F2C6D91DFAA7ED004FB400 /* IBCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBCoreDataManager.m; sourceTree = "<group>"; };
 		22F2C6E11DFAC397004FB400 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		22F2C6E31DFACAFA004FB400 /* IBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTabBarController.h; sourceTree = "<group>"; };
-		22F2C6E41DFACAFA004FB400 /* IBTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTabBarController.m; sourceTree = "<group>"; };
 		488B0E9AFE7E719102170D94 /* Pods_iotbroker_cloud_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iotbroker_cloud_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A016733DB13CAF666DB499F0 /* Pods-iotbroker.cloud-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iotbroker.cloud-client.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iotbroker.cloud-client/Pods-iotbroker.cloud-client.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -376,191 +376,311 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		221736AE1DF953CB000684CF /* PickerView */ = {
+		2217D8E91EBB12C900A636E7 /* Timers */ = {
 			isa = PBXGroup;
 			children = (
-				221736AB1DF953C2000684CF /* IBPickerView.h */,
-				221736AC1DF953C2000684CF /* IBPickerView.m */,
+				22ED8B4D1EB09D4C006A0C98 /* TimerTask */,
+				22ED8B531EB0A549006A0C98 /* TimersMap */,
 			);
-			name = PickerView;
+			path = Timers;
 			sourceTree = "<group>";
 		};
-		221736B81DF98225000684CF /* SendMessageTableViewController */ = {
+		2217D8F01EBB132700A636E7 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				221736B51DF98222000684CF /* IBSendMessageTableViewController.h */,
-				221736B61DF98222000684CF /* IBSendMessageTableViewController.m */,
+				2217D9081EBB163F00A636E7 /* iotbroker_cloud_client.xcdatamodeld */,
+				2217D90E1EBB165100A636E7 /* AccountManager */,
+				2217D90D1EBB164900A636E7 /* CoreDataManager */,
+				2217D8F11EBB134800A636E7 /* Entities */,
 			);
-			name = SendMessageTableViewController;
+			path = CoreData;
 			sourceTree = "<group>";
 		};
-		221736B91DF98231000684CF /* Main */ = {
+		2217D8F11EBB134800A636E7 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				22F2C6E61DFACAFF004FB400 /* TabBarController */,
-				221736C11DF9976F000684CF /* TopicsListTableViewController */,
-				221736B81DF98225000684CF /* SendMessageTableViewController */,
-				221736BA1DF98652000684CF /* MessagesListTableViewController */,
+				2217D8F21EBB160700A636E7 /* Account+CoreDataProperties.h */,
+				2217D8F31EBB160700A636E7 /* Account+CoreDataProperties.m */,
+				2217D8F41EBB160700A636E7 /* Topic+CoreDataProperties.h */,
+				2217D8F51EBB160700A636E7 /* Topic+CoreDataProperties.m */,
+				2217D8F61EBB160700A636E7 /* Message+CoreDataProperties.m */,
+				2217D8F71EBB160700A636E7 /* Message+CoreDataProperties.h */,
+				2217D8F81EBB160700A636E7 /* Account+CoreDataClass.h */,
+				2217D8F91EBB160700A636E7 /* Account+CoreDataClass.m */,
+				2217D8FA1EBB160700A636E7 /* Message+CoreDataClass.h */,
+				2217D8FB1EBB160700A636E7 /* Message+CoreDataClass.m */,
+				2217D8FC1EBB160700A636E7 /* Topic+CoreDataClass.h */,
+				2217D8FD1EBB160700A636E7 /* Topic+CoreDataClass.m */,
 			);
-			name = Main;
+			path = Entities;
 			sourceTree = "<group>";
 		};
-		221736BA1DF98652000684CF /* MessagesListTableViewController */ = {
+		2217D90D1EBB164900A636E7 /* CoreDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				221736CE1DF9A83D000684CF /* Cell */,
-				221736BB1DF98676000684CF /* IBMessagesListTableViewController.h */,
-				221736BC1DF98676000684CF /* IBMessagesListTableViewController.m */,
+				2217D9061EBB163F00A636E7 /* IBCoreDataManager.h */,
+				2217D9071EBB163F00A636E7 /* IBCoreDataManager.m */,
 			);
-			name = MessagesListTableViewController;
+			name = CoreDataManager;
 			sourceTree = "<group>";
 		};
-		221736C11DF9976F000684CF /* TopicsListTableViewController */ = {
+		2217D90E1EBB165100A636E7 /* AccountManager */ = {
 			isa = PBXGroup;
 			children = (
-				221736CD1DF9A827000684CF /* Cell */,
-				221736BE1DF9975B000684CF /* IBTopicsListTableViewController.h */,
-				221736BF1DF9975B000684CF /* IBTopicsListTableViewController.m */,
-			);
-			name = TopicsListTableViewController;
-			sourceTree = "<group>";
-		};
-		221736C81DF9A06B000684CF /* DashBorderButton */ = {
-			isa = PBXGroup;
-			children = (
-				221736C51DF9A066000684CF /* IBDashBorderButton.h */,
-				221736C61DF9A066000684CF /* IBDashBorderButton.m */,
-			);
-			name = DashBorderButton;
-			sourceTree = "<group>";
-		};
-		221736C91DF9A7CD000684CF /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				221736AE1DF953CB000684CF /* PickerView */,
-				221736C81DF9A06B000684CF /* DashBorderButton */,
-			);
-			name = UI;
-			sourceTree = "<group>";
-		};
-		221736CD1DF9A827000684CF /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				221736CA1DF9A823000684CF /* IBTopicsListTableViewCell.h */,
-				221736CB1DF9A823000684CF /* IBTopicsListTableViewCell.m */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
-		221736CE1DF9A83D000684CF /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				221736CF1DF9A860000684CF /* IBMessagesListTableViewCell.h */,
-				221736D01DF9A860000684CF /* IBMessagesListTableViewCell.m */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
-		2217D1A51EB9C65F00E3801C /* LoginTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				2217D1A21EB9C65B00E3801C /* IBLoginTableViewCell.h */,
-				2217D1A31EB9C65B00E3801C /* IBLoginTableViewCell.m */,
-			);
-			name = LoginTableViewCell;
-			sourceTree = "<group>";
-		};
-		2217D1A61EB9CCD500E3801C /* ProtocolTypeViewController */ = {
-			isa = PBXGroup;
-			children = (
-				2217D1A71EB9CCF000E3801C /* IBProtocolTypeViewController.h */,
-				2217D1A81EB9CCF000E3801C /* IBProtocolTypeViewController.m */,
-			);
-			name = ProtocolTypeViewController;
-			sourceTree = "<group>";
-		};
-		2217D1AA1EB9E0A600E3801C /* ProtocolTypeEnum */ = {
-			isa = PBXGroup;
-			children = (
-				2217D1AB1EB9E0C300E3801C /* IBProtocolTypeEnum.h */,
-				2217D1AC1EB9E0C300E3801C /* IBProtocolTypeEnum.m */,
-			);
-			name = ProtocolTypeEnum;
-			sourceTree = "<group>";
-		};
-		2217D1AE1EBA1BFD00E3801C /* ProgressHUDViewController */ = {
-			isa = PBXGroup;
-			children = (
-				2217D1AF1EBA1C1800E3801C /* IBProgressHUDViewController.h */,
-				2217D1B01EBA1C1800E3801C /* IBProgressHUDViewController.m */,
-			);
-			name = ProgressHUDViewController;
-			sourceTree = "<group>";
-		};
-		224494EA1E07E243006831A3 /* AccountManager */ = {
-			isa = PBXGroup;
-			children = (
-				224494E71E07E239006831A3 /* IBAccountManager.h */,
-				224494E81E07E239006831A3 /* IBAccountManager.m */,
+				2217D9051EBB163F00A636E7 /* IBAccountManager.h */,
+				2217D9041EBB163F00A636E7 /* IBAccountManager.m */,
 			);
 			name = AccountManager;
 			sourceTree = "<group>";
 		};
-		2262BD691DF8351400D5A83E /* Core data */ = {
+		2217D90F1EBB168000A636E7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2262BD7C1DF8356300D5A83E /* Account+CoreDataClass.h */,
-				2262BD7D1DF8356300D5A83E /* Account+CoreDataClass.m */,
-				2262BD7E1DF8356300D5A83E /* Account+CoreDataProperties.h */,
-				2262BD7F1DF8356300D5A83E /* Account+CoreDataProperties.m */,
-				2262BD801DF8356300D5A83E /* Message+CoreDataClass.h */,
-				2262BD811DF8356300D5A83E /* Message+CoreDataClass.m */,
-				2262BD821DF8356300D5A83E /* Message+CoreDataProperties.h */,
-				2262BD831DF8356300D5A83E /* Message+CoreDataProperties.m */,
-				2262BD841DF8356300D5A83E /* Topic+CoreDataClass.h */,
-				2262BD851DF8356300D5A83E /* Topic+CoreDataClass.m */,
-				2262BD861DF8356300D5A83E /* Topic+CoreDataProperties.h */,
-				2262BD871DF8356300D5A83E /* Topic+CoreDataProperties.m */,
-				22C5C0341DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodeld */,
-				22F2C6DB1DFAA7F1004FB400 /* CoreDataManager */,
-				224494EA1E07E243006831A3 /* AccountManager */,
+				2217D9671EBB18BF00A636E7 /* ProtocolTypeEnum */,
+				2217D9681EBB18C400A636E7 /* LengthDetails */,
+				2217D9691EBB18CC00A636E7 /* MutableData */,
 			);
-			name = "Core data";
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		2262BD921DF85C8500D5A83E /* Login */ = {
+		2217D9111EBB16F800A636E7 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				2217D1A51EB9C65F00E3801C /* LoginTableViewCell */,
-				22C8A2DF1EB385BE000DAB1F /* LoginViewController */,
-				2217D1A61EB9CCD500E3801C /* ProtocolTypeViewController */,
+				2217D9131EBB170A00A636E7 /* View controllers */,
+				2217D9121EBB16F800A636E7 /* Custom controls */,
 			);
-			name = Login;
+			path = UI;
 			sourceTree = "<group>";
 		};
-		2262BD931DF85C8C00D5A83E /* View Controllers */ = {
+		2217D9121EBB16F800A636E7 /* Custom controls */ = {
 			isa = PBXGroup;
 			children = (
-				2217D1AE1EBA1BFD00E3801C /* ProgressHUDViewController */,
-				22C8A2DB1EB34223000DAB1F /* AlertViewController */,
-				22EE50231EB203C900EB9946 /* RootViewController */,
-				22E104BC1E0035540044AAFD /* AccountListViewController */,
-				22E104B51E0017990044AAFD /* AddTopicViewController */,
-				2262BD941DF8626600D5A83E /* LoadingViewController */,
-				2262BD921DF85C8500D5A83E /* Login */,
-				221736B91DF98231000684CF /* Main */,
-				22C5324D1EAF9AF4007F57A8 /* Coordinator */,
+				2217D96A1EBB18F000A636E7 /* DashBorderButton */,
+				2217D96B1EBB18F600A636E7 /* PickerView */,
 			);
-			name = "View Controllers";
+			path = "Custom controls";
 			sourceTree = "<group>";
 		};
-		2262BD941DF8626600D5A83E /* LoadingViewController */ = {
+		2217D9131EBB170A00A636E7 /* View controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2262BD981DF8638F00D5A83E /* IBLoadingViewController.h */,
-				2262BD991DF8638F00D5A83E /* IBLoadingViewController.m */,
+				2217D94B1EBB17ED00A636E7 /* Coordinator */,
+				2217D9541EBB185200A636E7 /* LoginTableViewCell */,
+				2217D94C1EBB17F700A636E7 /* LoginViewController */,
+				2217D94D1EBB17FE00A636E7 /* ProtocolTypeViewController */,
+				2217D9561EBB187000A636E7 /* AccountListTableViewCell */,
+				2217D9571EBB188500A636E7 /* AccountListViewController  */,
+				2217D94E1EBB180600A636E7 /* TabBarController */,
+				2217D9551EBB186400A636E7 /* MessagesListTableViewController */,
+				2217D9471EBB17AB00A636E7 /* ProgressHUDViewController */,
+				2217D9501EBB181B00A636E7 /* TopicsListTableViewController */,
+				2217D94F1EBB181200A636E7 /* AlertViewController */,
+				2217D9521EBB184000A636E7 /* RootViewController */,
+				2217D9511EBB183A00A636E7 /* AddTopicViewController */,
+				2217D9531EBB184700A636E7 /* LoadingViewController */,
+				2217D94A1EBB17E200A636E7 /* SendMessageTableViewController */,
+				2217D9491EBB17BF00A636E7 /* TopicsListTableViewCell */,
+				2217D9481EBB17B400A636E7 /* MessagesListTableViewCell */,
+			);
+			path = "View controllers";
+			sourceTree = "<group>";
+		};
+		2217D9471EBB17AB00A636E7 /* ProgressHUDViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2217D91E1EBB177F00A636E7 /* IBProgressHUDViewController.h */,
+				2217D91F1EBB177F00A636E7 /* IBProgressHUDViewController.m */,
+			);
+			name = ProgressHUDViewController;
+			sourceTree = "<group>";
+		};
+		2217D9481EBB17B400A636E7 /* MessagesListTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2217D9331EBB177F00A636E7 /* IBMessagesListTableViewCell.h */,
+				2217D9341EBB177F00A636E7 /* IBMessagesListTableViewCell.m */,
+			);
+			name = MessagesListTableViewCell;
+			sourceTree = "<group>";
+		};
+		2217D9491EBB17BF00A636E7 /* TopicsListTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2217D9301EBB177F00A636E7 /* IBTopicsListTableViewCell.h */,
+				2217D9311EBB177F00A636E7 /* IBTopicsListTableViewCell.m */,
+			);
+			name = TopicsListTableViewCell;
+			sourceTree = "<group>";
+		};
+		2217D94A1EBB17E200A636E7 /* SendMessageTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2217D92F1EBB177F00A636E7 /* IBSendMessageTableViewController.h */,
+				2217D9201EBB177F00A636E7 /* IBSendMessageTableViewController.m */,
+			);
+			name = SendMessageTableViewController;
+			sourceTree = "<group>";
+		};
+		2217D94B1EBB17ED00A636E7 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2217D9321EBB177F00A636E7 /* IBCoordinator.h */,
+				2217D9141EBB177F00A636E7 /* IBCoordinator.m */,
+			);
+			name = Coordinator;
+			sourceTree = "<group>";
+		};
+		2217D94C1EBB17F700A636E7 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2217D9161EBB177F00A636E7 /* IBLoginViewController.h */,
+				2217D9171EBB177F00A636E7 /* IBLoginViewController.m */,
+			);
+			name = LoginViewController;
+			sourceTree = "<group>";
+		};
+		2217D94D1EBB17FE00A636E7 /* ProtocolTypeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2217D9181EBB177F00A636E7 /* IBProtocolTypeViewController.h */,
+				2217D9191EBB177F00A636E7 /* IBProtocolTypeViewController.m */,
+			);
+			name = ProtocolTypeViewController;
+			sourceTree = "<group>";
+		};
+		2217D94E1EBB180600A636E7 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				2217D9211EBB177F00A636E7 /* IBTabBarController.h */,
+				2217D91C1EBB177F00A636E7 /* IBTabBarController.m */,
+			);
+			name = TabBarController;
+			sourceTree = "<group>";
+		};
+		2217D94F1EBB181200A636E7 /* AlertViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2217D9261EBB177F00A636E7 /* IBAlertViewController.h */,
+				2217D9271EBB177F00A636E7 /* IBAlertViewController.m */,
+			);
+			name = AlertViewController;
+			sourceTree = "<group>";
+		};
+		2217D9501EBB181B00A636E7 /* TopicsListTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2217D9221EBB177F00A636E7 /* IBTopicsListTableViewController.h */,
+				2217D9231EBB177F00A636E7 /* IBTopicsListTableViewController.m */,
+			);
+			name = TopicsListTableViewController;
+			sourceTree = "<group>";
+		};
+		2217D9511EBB183A00A636E7 /* AddTopicViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2217D92A1EBB177F00A636E7 /* IBAddTopicViewController.h */,
+				2217D92B1EBB177F00A636E7 /* IBAddTopicViewController.m */,
+			);
+			name = AddTopicViewController;
+			sourceTree = "<group>";
+		};
+		2217D9521EBB184000A636E7 /* RootViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2217D9281EBB177F00A636E7 /* IBRootViewController.h */,
+				2217D9291EBB177F00A636E7 /* IBRootViewController.m */,
+			);
+			name = RootViewController;
+			sourceTree = "<group>";
+		};
+		2217D9531EBB184700A636E7 /* LoadingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2217D92C1EBB177F00A636E7 /* IBLoadingViewController.h */,
+				2217D92D1EBB177F00A636E7 /* IBLoadingViewController.m */,
 			);
 			name = LoadingViewController;
+			sourceTree = "<group>";
+		};
+		2217D9541EBB185200A636E7 /* LoginTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2217D9151EBB177F00A636E7 /* IBLoginTableViewCell.h */,
+				2217D92E1EBB177F00A636E7 /* IBLoginTableViewCell.m */,
+			);
+			name = LoginTableViewCell;
+			sourceTree = "<group>";
+		};
+		2217D9551EBB186400A636E7 /* MessagesListTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2217D9351EBB177F00A636E7 /* IBMessagesListTableViewController.h */,
+				2217D91D1EBB177F00A636E7 /* IBMessagesListTableViewController.m */,
+			);
+			name = MessagesListTableViewController;
+			sourceTree = "<group>";
+		};
+		2217D9561EBB187000A636E7 /* AccountListTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2217D91A1EBB177F00A636E7 /* IBAccountListTableViewCell.h */,
+				2217D9241EBB177F00A636E7 /* IBAccountListTableViewCell.m */,
+			);
+			name = AccountListTableViewCell;
+			sourceTree = "<group>";
+		};
+		2217D9571EBB188500A636E7 /* AccountListViewController  */ = {
+			isa = PBXGroup;
+			children = (
+				2217D9251EBB177F00A636E7 /* IBAccountListViewController.h */,
+				2217D91B1EBB177F00A636E7 /* IBAccountListViewController.m */,
+			);
+			name = "AccountListViewController ";
+			sourceTree = "<group>";
+		};
+		2217D9671EBB18BF00A636E7 /* ProtocolTypeEnum */ = {
+			isa = PBXGroup;
+			children = (
+				2217D95E1EBB18B700A636E7 /* IBProtocolTypeEnum.h */,
+				2217D95F1EBB18B700A636E7 /* IBProtocolTypeEnum.m */,
+			);
+			name = ProtocolTypeEnum;
+			sourceTree = "<group>";
+		};
+		2217D9681EBB18C400A636E7 /* LengthDetails */ = {
+			isa = PBXGroup;
+			children = (
+				2217D9601EBB18B700A636E7 /* IBLengthDetails.h */,
+				2217D9611EBB18B700A636E7 /* IBLengthDetails.m */,
+			);
+			name = LengthDetails;
+			sourceTree = "<group>";
+		};
+		2217D9691EBB18CC00A636E7 /* MutableData */ = {
+			isa = PBXGroup;
+			children = (
+				2217D9621EBB18B700A636E7 /* IBMutableData.h */,
+				2217D9631EBB18B700A636E7 /* IBMutableData.m */,
+			);
+			name = MutableData;
+			sourceTree = "<group>";
+		};
+		2217D96A1EBB18F000A636E7 /* DashBorderButton */ = {
+			isa = PBXGroup;
+			children = (
+				2217D9581EBB188F00A636E7 /* IBDashBorderButton.h */,
+				2217D9591EBB188F00A636E7 /* IBDashBorderButton.m */,
+			);
+			name = DashBorderButton;
+			sourceTree = "<group>";
+		};
+		2217D96B1EBB18F600A636E7 /* PickerView */ = {
+			isa = PBXGroup;
+			children = (
+				2217D95A1EBB188F00A636E7 /* IBPickerView.h */,
+				2217D95B1EBB188F00A636E7 /* IBPickerView.m */,
+			);
+			name = PickerView;
 			sourceTree = "<group>";
 		};
 		228A44D01EADEA2D00D824E5 /* Advertise */ = {
@@ -922,24 +1042,6 @@
 			path = ../../..;
 			sourceTree = "<group>";
 		};
-		22A219FC1DF168C80063C9A8 /* LengthDetails */ = {
-			isa = PBXGroup;
-			children = (
-				22A219FD1DF168E60063C9A8 /* IBLengthDetails.h */,
-				22A219FE1DF168E60063C9A8 /* IBLengthDetails.m */,
-			);
-			name = LengthDetails;
-			sourceTree = "<group>";
-		};
-		22A21A031DF16AFB0063C9A8 /* MutableData */ = {
-			isa = PBXGroup;
-			children = (
-				22A21A001DF16AA40063C9A8 /* IBMutableData.h */,
-				22A21A011DF16AA40063C9A8 /* IBMutableData.m */,
-			);
-			name = MutableData;
-			sourceTree = "<group>";
-		};
 		22C5317B1EAF88D8007F57A8 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -1223,15 +1325,6 @@
 			path = "Protocols/MQTT-SN/Classes";
 			sourceTree = "<group>";
 		};
-		22C5324D1EAF9AF4007F57A8 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				22C5324A1EAF9AF0007F57A8 /* IBCoordinator.h */,
-				22C5324B1EAF9AF0007F57A8 /* IBCoordinator.m */,
-			);
-			name = Coordinator;
-			sourceTree = "<group>";
-		};
 		22C5C01C1DF061CE00790EF6 = {
 			isa = PBXGroup;
 			children = (
@@ -1257,14 +1350,15 @@
 		22C5C0271DF061CE00790EF6 /* iotbroker.cloud-client */ = {
 			isa = PBXGroup;
 			children = (
-				22ED8B491EB09D37006A0C98 /* TIMER */,
+				2217D9111EBB16F800A636E7 /* UI */,
+				2217D90F1EBB168000A636E7 /* Classes */,
+				2217D8F01EBB132700A636E7 /* CoreData */,
+				2217D8E91EBB12C900A636E7 /* Timers */,
 				22ED8B471EB093CD006A0C98 /* InternetProtocolsImplementation */,
 				22ED8B3A1EB0843E006A0C98 /* ProtocolsImplementation */,
 				22C5317B1EAF88D8007F57A8 /* Protocols */,
-				2262BD691DF8351400D5A83E /* Core data */,
 				22C5C02B1DF061CE00790EF6 /* AppDelegate.h */,
 				22C5C02C1DF061CE00790EF6 /* AppDelegate.m */,
-				2262BD931DF85C8C00D5A83E /* View Controllers */,
 				22C5C0311DF061CE00790EF6 /* Main.storyboard */,
 				22C5C0371DF061CE00790EF6 /* Assets.xcassets */,
 				22C5C0391DF061CE00790EF6 /* LaunchScreen.storyboard */,
@@ -1277,10 +1371,6 @@
 		22C5C0281DF061CE00790EF6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2217D1AA1EB9E0A600E3801C /* ProtocolTypeEnum */,
-				221736C91DF9A7CD000684CF /* UI */,
-				22A219FC1DF168C80063C9A8 /* LengthDetails */,
-				22A21A031DF16AFB0063C9A8 /* MutableData */,
 				22C5C0291DF061CE00790EF6 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1302,52 +1392,6 @@
 				22C5C0521DF061CE00790EF6 /* Info.plist */,
 			);
 			path = "iotbroker.cloud-clientUITests";
-			sourceTree = "<group>";
-		};
-		22C8A2DB1EB34223000DAB1F /* AlertViewController */ = {
-			isa = PBXGroup;
-			children = (
-				22C8A2DC1EB34259000DAB1F /* IBAlertViewController.h */,
-				22C8A2DD1EB34259000DAB1F /* IBAlertViewController.m */,
-			);
-			name = AlertViewController;
-			sourceTree = "<group>";
-		};
-		22C8A2DF1EB385BE000DAB1F /* LoginViewController */ = {
-			isa = PBXGroup;
-			children = (
-				22C8A2E31EB385EC000DAB1F /* IBLoginViewController.h */,
-				22C8A2E41EB385EC000DAB1F /* IBLoginViewController.m */,
-			);
-			name = LoginViewController;
-			sourceTree = "<group>";
-		};
-		22E104B51E0017990044AAFD /* AddTopicViewController */ = {
-			isa = PBXGroup;
-			children = (
-				22E104B61E0017C10044AAFD /* IBAddTopicViewController.h */,
-				22E104B71E0017C10044AAFD /* IBAddTopicViewController.m */,
-			);
-			name = AddTopicViewController;
-			sourceTree = "<group>";
-		};
-		22E104BC1E0035540044AAFD /* AccountListViewController */ = {
-			isa = PBXGroup;
-			children = (
-				22E104C01E00362D0044AAFD /* AccountListTableViewCell */,
-				22E104B91E00354C0044AAFD /* IBAccountListViewController.h */,
-				22E104BA1E00354C0044AAFD /* IBAccountListViewController.m */,
-			);
-			name = AccountListViewController;
-			sourceTree = "<group>";
-		};
-		22E104C01E00362D0044AAFD /* AccountListTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				22E104BD1E0036270044AAFD /* IBAccountListTableViewCell.h */,
-				22E104BE1E0036270044AAFD /* IBAccountListTableViewCell.m */,
-			);
-			name = AccountListTableViewCell;
 			sourceTree = "<group>";
 		};
 		22ED8B3A1EB0843E006A0C98 /* ProtocolsImplementation */ = {
@@ -1389,31 +1433,24 @@
 			path = InternetProtocolsImplementation;
 			sourceTree = "<group>";
 		};
-		22ED8B491EB09D37006A0C98 /* TIMER */ = {
-			isa = PBXGroup;
-			children = (
-				22ED8B4D1EB09D4C006A0C98 /* TimerTask */,
-				22ED8B531EB0A549006A0C98 /* TimersMap */,
-			);
-			name = TIMER;
-			sourceTree = "<group>";
-		};
 		22ED8B4D1EB09D4C006A0C98 /* TimerTask */ = {
 			isa = PBXGroup;
 			children = (
-				22ED8B4A1EB09D49006A0C98 /* IBTimerTask.h */,
-				22ED8B4B1EB09D49006A0C98 /* IBTimerTask.m */,
+				2217D8EC1EBB12F200A636E7 /* IBTimerTask.h */,
+				2217D8ED1EBB12F200A636E7 /* IBTimerTask.m */,
 			);
 			name = TimerTask;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		22ED8B531EB0A549006A0C98 /* TimersMap */ = {
 			isa = PBXGroup;
 			children = (
-				22ED8B501EB0A547006A0C98 /* IBTimersMap.h */,
-				22ED8B511EB0A547006A0C98 /* IBTimersMap.m */,
+				2217D8EA1EBB12F200A636E7 /* IBTimersMap.h */,
+				2217D8EB1EBB12F200A636E7 /* IBTimersMap.m */,
 			);
 			name = TimersMap;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		22ED8B571EB0CDE5006A0C98 /* Classes */ = {
@@ -1458,8 +1495,8 @@
 		22ED8B701EB0D6DF006A0C98 /* SocketDecoder */ = {
 			isa = PBXGroup;
 			children = (
-				22ED8B681EB0D6A7006A0C98 /* IBSocketDecoder.h */,
-				22ED8B641EB0D6A7006A0C98 /* IBSocketDecoder.m */,
+				2217D8E21EBB127500A636E7 /* IBSocketDecoder.h */,
+				2217D8E31EBB127500A636E7 /* IBSocketDecoder.m */,
 			);
 			name = SocketDecoder;
 			sourceTree = "<group>";
@@ -1467,8 +1504,8 @@
 		22ED8B711EB0D6EA006A0C98 /* SocketEncoder */ = {
 			isa = PBXGroup;
 			children = (
-				22ED8B691EB0D6A7006A0C98 /* IBSocketEncoder.h */,
-				22ED8B651EB0D6A7006A0C98 /* IBSocketEncoder.m */,
+				2217D8E41EBB127500A636E7 /* IBSocketEncoder.h */,
+				2217D8E51EBB127500A636E7 /* IBSocketEncoder.m */,
 			);
 			name = SocketEncoder;
 			sourceTree = "<group>";
@@ -1476,8 +1513,8 @@
 		22ED8B721EB0D6EF006A0C98 /* SocketTransport */ = {
 			isa = PBXGroup;
 			children = (
-				22ED8B6A1EB0D6A7006A0C98 /* IBSocketTransport.h */,
-				22ED8B661EB0D6A7006A0C98 /* IBSocketTransport.m */,
+				2217D8E01EBB127500A636E7 /* IBSocketTransport.h */,
+				2217D8E11EBB127500A636E7 /* IBSocketTransport.m */,
 			);
 			name = SocketTransport;
 			sourceTree = "<group>";
@@ -1499,24 +1536,6 @@
 			name = UDPSocket;
 			sourceTree = "<group>";
 		};
-		22EE50231EB203C900EB9946 /* RootViewController */ = {
-			isa = PBXGroup;
-			children = (
-				22EE50241EB204C300EB9946 /* IBRootViewController.h */,
-				22EE50251EB204C300EB9946 /* IBRootViewController.m */,
-			);
-			name = RootViewController;
-			sourceTree = "<group>";
-		};
-		22F2C6DB1DFAA7F1004FB400 /* CoreDataManager */ = {
-			isa = PBXGroup;
-			children = (
-				22F2C6D81DFAA7ED004FB400 /* IBCoreDataManager.h */,
-				22F2C6D91DFAA7ED004FB400 /* IBCoreDataManager.m */,
-			);
-			name = CoreDataManager;
-			sourceTree = "<group>";
-		};
 		22F2C6E01DFAC397004FB400 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1524,15 +1543,6 @@
 				488B0E9AFE7E719102170D94 /* Pods_iotbroker_cloud_client.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		22F2C6E61DFACAFF004FB400 /* TabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				22F2C6E31DFACAFA004FB400 /* IBTabBarController.h */,
-				22F2C6E41DFACAFA004FB400 /* IBTabBarController.m */,
-			);
-			name = TabBarController;
 			sourceTree = "<group>";
 		};
 		F953D14044569FC0763B8522 /* Pods */ = {
@@ -1731,103 +1741,103 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22C5C0361DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodeld in Sources */,
-				2262BD8B1DF8356300D5A83E /* Message+CoreDataProperties.m in Sources */,
-				22ED8B6B1EB0D6A7006A0C98 /* IBSocketDecoder.m in Sources */,
 				22ED8B561EB0B8B0006A0C98 /* IBMQTT.m in Sources */,
 				22C531D11EAF9216007F57A8 /* IBParser.m in Sources */,
 				22C532231EAF9338007F57A8 /* IBSNAdvertise.m in Sources */,
+				2217D9651EBB18B700A636E7 /* IBLengthDetails.m in Sources */,
 				22C5321C1EAF9338007F57A8 /* IBSNWillMsgResp.m in Sources */,
 				22C532221EAF9338007F57A8 /* IBSNSearchGW.m in Sources */,
 				22C532181EAF9338007F57A8 /* IBSNSuback.m in Sources */,
-				22E104BB1E00354C0044AAFD /* IBAccountListViewController.m in Sources */,
 				22C531BC1EAF90F2007F57A8 /* IBWill.m in Sources */,
-				22ED8B4C1EB09D49006A0C98 /* IBTimerTask.m in Sources */,
+				2217D9461EBB177F00A636E7 /* IBMessagesListTableViewCell.m in Sources */,
+				2217D8E71EBB127500A636E7 /* IBSocketDecoder.m in Sources */,
+				2217D9031EBB160700A636E7 /* Topic+CoreDataClass.m in Sources */,
 				22C531AD1EAF90D2007F57A8 /* IBSuback.m in Sources */,
 				22C531A31EAF90D2007F57A8 /* IBPuback.m in Sources */,
 				22C531A71EAF90D2007F57A8 /* IBPingreq.m in Sources */,
-				221736CC1DF9A823000684CF /* IBTopicsListTableViewCell.m in Sources */,
 				22C531A61EAF90D2007F57A8 /* IBDisconnect.m in Sources */,
-				221736AD1DF953C2000684CF /* IBPickerView.m in Sources */,
+				2217D9661EBB18B700A636E7 /* IBMutableData.m in Sources */,
 				22C5323F1EAF95A8007F57A8 /* IBSNShortTopic.m in Sources */,
-				22C8A2DE1EB34259000DAB1F /* IBAlertViewController.m in Sources */,
 				22C532141EAF9338007F57A8 /* IBSNPubrec.m in Sources */,
-				22E104BF1E0036270044AAFD /* IBAccountListTableViewCell.m in Sources */,
-				2262BD891DF8356300D5A83E /* Account+CoreDataProperties.m in Sources */,
+				2217D9401EBB177F00A636E7 /* IBAlertViewController.m in Sources */,
 				22ED8B761EB0D745006A0C98 /* IBUDPSocket.m in Sources */,
 				22C531A81EAF90D2007F57A8 /* IBPingresp.m in Sources */,
+				2217D9431EBB177F00A636E7 /* IBLoadingViewController.m in Sources */,
+				2217D9391EBB177F00A636E7 /* IBAccountListViewController.m in Sources */,
 				22C532241EAF9338007F57A8 /* IBSNWillTopicReq.m in Sources */,
+				2217D93C1EBB177F00A636E7 /* IBProgressHUDViewController.m in Sources */,
 				22C532411EAF95A8007F57A8 /* IBSNTopicType.m in Sources */,
 				22C531A51EAF90D2007F57A8 /* IBConnect.m in Sources */,
 				22C531A91EAF90D2007F57A8 /* IBPubcomp.m in Sources */,
-				2262BD881DF8356300D5A83E /* Account+CoreDataClass.m in Sources */,
 				22C532401EAF95A8007F57A8 /* IBSNValuesValidator.m in Sources */,
 				22C5320C1EAF9338007F57A8 /* IBSNWillMsg.m in Sources */,
 				22C5320D1EAF9338007F57A8 /* IBSNWillMsgUpd.m in Sources */,
-				22F2C6DA1DFAA7ED004FB400 /* IBCoreDataManager.m in Sources */,
 				22C531AA1EAF90D2007F57A8 /* IBPublish.m in Sources */,
 				22C532261EAF9338007F57A8 /* IBSNPingresp.m in Sources */,
 				22C5321A1EAF9338007F57A8 /* IBSNUnsuback.m in Sources */,
 				22C5321D1EAF9338007F57A8 /* IBSNWillTopicResp.m in Sources */,
 				22C5323D1EAF95A8007F57A8 /* IBSNFullTopic.m in Sources */,
 				22C531AC1EAF90D2007F57A8 /* IBPubrel.m in Sources */,
-				22EE50261EB204C300EB9946 /* IBRootViewController.m in Sources */,
-				221736B71DF98222000684CF /* IBSendMessageTableViewController.m in Sources */,
-				224494E91E07E239006831A3 /* IBAccountManager.m in Sources */,
+				2217D95D1EBB188F00A636E7 /* IBPickerView.m in Sources */,
+				2217D9451EBB177F00A636E7 /* IBTopicsListTableViewCell.m in Sources */,
 				22C5C02D1DF061CE00790EF6 /* AppDelegate.m in Sources */,
-				22C8A2E51EB385EC000DAB1F /* IBLoginViewController.m in Sources */,
-				2217D1A41EB9C65B00E3801C /* IBLoginTableViewCell.m in Sources */,
-				22ED8B6D1EB0D6A7006A0C98 /* IBSocketTransport.m in Sources */,
-				22F2C6E51DFACAFA004FB400 /* IBTabBarController.m in Sources */,
+				2217D8E81EBB127500A636E7 /* IBSocketEncoder.m in Sources */,
 				22C532191EAF9338007F57A8 /* IBSNSubscribe.m in Sources */,
+				2217D9361EBB177F00A636E7 /* IBCoordinator.m in Sources */,
 				22C5320B1EAF9338007F57A8 /* IBSNPublish.m in Sources */,
-				2262BD8C1DF8356300D5A83E /* Topic+CoreDataClass.m in Sources */,
 				22C5321B1EAF9338007F57A8 /* IBSNUnsubscribe.m in Sources */,
+				2217D8FE1EBB160700A636E7 /* Account+CoreDataProperties.m in Sources */,
 				22C532161EAF9338007F57A8 /* IBSNRegack.m in Sources */,
+				2217D93F1EBB177F00A636E7 /* IBAccountListTableViewCell.m in Sources */,
 				22C531B01EAF90D2007F57A8 /* IBUnsubscribe.m in Sources */,
+				2217D9641EBB18B700A636E7 /* IBProtocolTypeEnum.m in Sources */,
 				22C532421EAF95A8007F57A8 /* IBSNControls.m in Sources */,
-				2262BD8D1DF8356300D5A83E /* Topic+CoreDataProperties.m in Sources */,
 				22C5320F1EAF9338007F57A8 /* IBSNDisconnect.m in Sources */,
 				22C532131EAF9338007F57A8 /* IBSNPubcomp.m in Sources */,
 				22C531A41EAF90D2007F57A8 /* IBConnack.m in Sources */,
-				22ED8B521EB0A547006A0C98 /* IBTimersMap.m in Sources */,
-				221736D11DF9A860000684CF /* IBMessagesListTableViewCell.m in Sources */,
+				2217D90B1EBB163F00A636E7 /* IBCoreDataManager.m in Sources */,
 				22C532151EAF9338007F57A8 /* IBSNPubrel.m in Sources */,
 				22C532171EAF9338007F57A8 /* IBSNRegister.m in Sources */,
-				22A21A021DF16AA40063C9A8 /* IBMutableData.m in Sources */,
+				2217D93E1EBB177F00A636E7 /* IBTopicsListTableViewController.m in Sources */,
 				22C532441EAF95A8007F57A8 /* IBSNResponseMessage.m in Sources */,
-				22E104B81E0017C10044AAFD /* IBAddTopicViewController.m in Sources */,
 				22C532111EAF9338007F57A8 /* IBSNPingreq.m in Sources */,
 				22ED8B5E1EB0D00E006A0C98 /* IBQoS.m in Sources */,
-				22ED8B6C1EB0D6A7006A0C98 /* IBSocketEncoder.m in Sources */,
-				2262BD8A1DF8356300D5A83E /* Message+CoreDataClass.m in Sources */,
+				2217D8EF1EBB12F200A636E7 /* IBTimerTask.m in Sources */,
 				22ED8B5F1EB0D00E006A0C98 /* IBCountableMessage.m in Sources */,
 				22C531AB1EAF90D2007F57A8 /* IBPubrec.m in Sources */,
 				22ED8B441EB092F9006A0C98 /* IBMQTTSN.m in Sources */,
 				22C532251EAF9338007F57A8 /* IBSNWillMsgReq.m in Sources */,
-				2217D1AD1EB9E0C300E3801C /* IBProtocolTypeEnum.m in Sources */,
+				2217D8EE1EBB12F200A636E7 /* IBTimersMap.m in Sources */,
 				22C532491EAF9625007F57A8 /* IBSNParser.m in Sources */,
+				2217D95C1EBB188F00A636E7 /* IBDashBorderButton.m in Sources */,
+				2217D9421EBB177F00A636E7 /* IBAddTopicViewController.m in Sources */,
 				22C531AE1EAF90D2007F57A8 /* IBSubscribe.m in Sources */,
-				22C5324C1EAF9AF0007F57A8 /* IBCoordinator.m in Sources */,
-				221736C01DF9975B000684CF /* IBTopicsListTableViewController.m in Sources */,
 				22C5320E1EAF9338007F57A8 /* IBSNWillTopic.m in Sources */,
 				22C5C02A1DF061CE00790EF6 /* main.m in Sources */,
-				221736BD1DF98676000684CF /* IBMessagesListTableViewController.m in Sources */,
+				2217D93A1EBB177F00A636E7 /* IBTabBarController.m in Sources */,
+				2217D93B1EBB177F00A636E7 /* IBMessagesListTableViewController.m in Sources */,
 				22C532101EAF9338007F57A8 /* IBSNEncapsulated.m in Sources */,
+				2217D8E61EBB127500A636E7 /* IBSocketTransport.m in Sources */,
 				22C5321F1EAF9338007F57A8 /* IBSNConnack.m in Sources */,
-				22A219FF1DF168E60063C9A8 /* IBLengthDetails.m in Sources */,
-				2217D1B11EBA1C1800E3801C /* IBProgressHUDViewController.m in Sources */,
+				2217D8FF1EBB160700A636E7 /* Topic+CoreDataProperties.m in Sources */,
 				22C532121EAF9338007F57A8 /* IBSNPuback.m in Sources */,
+				2217D93D1EBB177F00A636E7 /* IBSendMessageTableViewController.m in Sources */,
+				2217D9001EBB160700A636E7 /* Message+CoreDataProperties.m in Sources */,
 				22C531AF1EAF90D2007F57A8 /* IBUnsuback.m in Sources */,
+				2217D90A1EBB163F00A636E7 /* IBAccountManager.m in Sources */,
+				2217D90C1EBB163F00A636E7 /* iotbroker_cloud_client.xcdatamodeld in Sources */,
 				22C5323C1EAF95A8007F57A8 /* IBSNFlags.m in Sources */,
 				22C5323E1EAF95A8007F57A8 /* IBSNIdentifierTopic.m in Sources */,
 				22C531B91EAF90F2007F57A8 /* IBMQTTTopic.m in Sources */,
-				221736C71DF9A066000684CF /* IBDashBorderButton.m in Sources */,
-				2262BD9A1DF8638F00D5A83E /* IBLoadingViewController.m in Sources */,
+				2217D9411EBB177F00A636E7 /* IBRootViewController.m in Sources */,
 				22C532211EAF9338007F57A8 /* IBSNGWInfo.m in Sources */,
+				2217D9441EBB177F00A636E7 /* IBLoginTableViewCell.m in Sources */,
+				2217D9021EBB160700A636E7 /* Message+CoreDataClass.m in Sources */,
+				2217D9371EBB177F00A636E7 /* IBLoginViewController.m in Sources */,
 				22C532201EAF9338007F57A8 /* IBSNConnect.m in Sources */,
 				22C5321E1EAF9338007F57A8 /* IBSNWillTopicUpd.m in Sources */,
-				2217D1A91EB9CCF000E3801C /* IBProtocolTypeViewController.m in Sources */,
+				2217D9011EBB160700A636E7 /* Account+CoreDataClass.m in Sources */,
+				2217D9381EBB177F00A636E7 /* IBProtocolTypeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2094,12 +2104,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		22C5C0341DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodeld */ = {
+		2217D9081EBB163F00A636E7 /* iotbroker_cloud_client.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				22C5C0351DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodel */,
+				2217D9091EBB163F00A636E7 /* iotbroker_cloud_client.xcdatamodel */,
 			);
-			currentVersion = 22C5C0351DF061CE00790EF6 /* iotbroker_cloud_client.xcdatamodel */;
+			currentVersion = 2217D9091EBB163F00A636E7 /* iotbroker_cloud_client.xcdatamodel */;
 			path = iotbroker_cloud_client.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
