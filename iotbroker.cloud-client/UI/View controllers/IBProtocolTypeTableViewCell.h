@@ -19,18 +19,9 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "IBProtocolTypeEnum.h"
 
-@class IBProtocolTypeViewController;
+@interface IBProtocolTypeTableViewCell : UITableViewCell
 
-@protocol IBProtocolTypeViewControllerDelegate <NSObject>
-
-- (void) protocolTypeViewController : (IBProtocolTypeViewController *) protocolTypeViewController didSelectProtocol : (IBProtocolsType) type;
-
-@end
-
-@interface IBProtocolTypeViewController : UIViewController
-
-@property (weak, nonatomic) id<IBProtocolTypeViewControllerDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UILabel *protocolName;
 
 @end

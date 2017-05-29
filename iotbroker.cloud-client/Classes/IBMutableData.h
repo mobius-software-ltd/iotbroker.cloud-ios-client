@@ -27,6 +27,7 @@
 - (void) appendShort : (short) value;
 - (NSInteger) readShort;
 - (NSString *) readStringWithLength : (NSInteger) length;
+- (NSInteger) numberWithLength : (NSInteger) length;
 - (void) clearNumber;
 - (NSInteger) getByteNumber;
 

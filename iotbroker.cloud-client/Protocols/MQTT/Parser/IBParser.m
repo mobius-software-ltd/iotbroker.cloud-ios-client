@@ -72,47 +72,6 @@
     return nil;
 }
 
-+ (NSRange) packetRange : (NSMutableData *) buffer {
-    
-    Byte fixedHeader = [buffer readByte];
-    Byte messageType = ((fixedHeader >> 4) & 0xf);
-    
-    if (messageType == 0) {
-        return NSMakeRange(0, 0);
-    }
-    
-    IBLengthDetails *length = nil;
-    
-    NSRange range = {0, 0};
-    
-    switch (messageType) {
-        case IBPingreqMessage:
-        case IBPingrespMessage:
-        case IBDisconnectMessage:
-            range.location = 0;
-            range.length = 2;
-            return range;
-            break;
-        default:
-            length = [IBLengthDetails decodeLength:buffer];
-            if (length != nil) {
-                if (length.length == 0) {
-                    return NSMakeRange(0, 0);
-                }
-                
-                NSInteger result = length.length + length.size + 1;
-                if (result <= buffer.length) {
-                    range.location = 0;
-                    range.length = length.length;
-                    [buffer clearNumber];
-                    return range;
-                }
-            }
-            break;
-    }
-    return NSMakeRange(0, 0);
-}
-
 #pragma mark - ENCODE IBMESSAGE TO DATA -
 
 + (NSMutableData *) encode : (id<IBMessage>) message {

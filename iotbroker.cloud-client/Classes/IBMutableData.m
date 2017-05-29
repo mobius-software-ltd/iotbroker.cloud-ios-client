@@ -65,6 +65,21 @@ NSInteger byteNumber = 0;
     return string;
 }
 
+- (NSInteger) numberWithLength : (NSInteger) length {
+    
+    NSInteger number = 0;
+    NSData *data = [self subdataWithRange:NSMakeRange([self getByteNumber], length)];
+    Byte *bytes = (Byte *)[data bytes];
+    
+    for (int i = 0; i < length; i++) {
+        number <<= 8;
+        number |= bytes[i] & 0x00FF;
+    }
+    byteNumber += length;
+    
+    return number;
+}
+
 - (void) clearNumber {
     byteNumber = 0;
 }

@@ -18,19 +18,19 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-#import <UIKit/UIKit.h>
-#import "IBProtocolTypeEnum.h"
+#import "IBProtocolTypeTableViewCell.h"
 
-@class IBProtocolTypeViewController;
+@implementation IBProtocolTypeTableViewCell
 
-@protocol IBProtocolTypeViewControllerDelegate <NSObject>
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
 
-- (void) protocolTypeViewController : (IBProtocolTypeViewController *) protocolTypeViewController didSelectProtocol : (IBProtocolsType) type;
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
 
-@end
-
-@interface IBProtocolTypeViewController : UIViewController
-
-@property (weak, nonatomic) id<IBProtocolTypeViewControllerDelegate> delegate;
+    // Configure the view for the selected state
+}
 
 @end

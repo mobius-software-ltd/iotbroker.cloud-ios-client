@@ -21,6 +21,7 @@
 #import "IBTimersMap.h"
 #import "IBCountableMessage.h"
 #import "IBSNRegister.h"
+#import "IBCoMessage.h"
 
 static NSInteger const IBMessageResendPeriod = 3;
 static NSInteger const IBMaxValue = 65535;
@@ -104,6 +105,16 @@ static NSInteger const IBFirstID = 1;
     }
 }
 
+- (void) startCoAPMessageTimer: (id<IBMessage>) coapMessage {
+
+    IBTimerTask *timerTask = [[IBTimerTask alloc] initWithMessage:coapMessage request:self->_request andPeriod:IBMessageResendPeriod];
+
+    IBCoMessage *message = (IBCoMessage *)coapMessage;
+    [self->_timersDictionary setObject:timerTask forKey:@(message.token)];
+    
+    [timerTask start];
+}
+
 - (void) startMessageTimer : (id<IBMessage>) message {
     
     IBTimerTask *timerTask = [[IBTimerTask alloc] initWithMessage:message request:self->_request andPeriod:IBMessageResendPeriod];
@@ -123,7 +134,7 @@ static NSInteger const IBFirstID = 1;
 }
 
 - (id<IBMessage>) removeTimerWithPacketID : (NSNumber *) packetID {
-
+    
     IBTimerTask *timerTask = [self->_timersDictionary objectForKey:packetID];
     id<IBMessage> message = timerTask.message;
     

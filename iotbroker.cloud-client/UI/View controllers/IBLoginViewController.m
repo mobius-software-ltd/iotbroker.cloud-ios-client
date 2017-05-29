@@ -106,31 +106,40 @@ static NSString *const IBQoSCell            = @"qosCell";
 
 - (void) setCellsArraysWithProtocolType : (IBProtocolsType) type {
 
-    self->_registerInfoSectionCells = [NSMutableArray array];
-    self->_settingsSectionCells = [NSMutableArray array];
+    IBProtocolTypeEnum *protocolType = [[IBProtocolTypeEnum alloc] init];
+    protocolType.type = type;
     
+    self->_registerInfoSectionCells = [NSMutableArray array];
     [self->_registerInfoSectionCells addObject:IBProtocolCell];
+    
     if (type == IBMqttProtocolType) {
         [self->_registerInfoSectionCells addObject:IBUsernameCell];
         [self->_registerInfoSectionCells addObject:IBPasswordCell];
-    }
-    [self->_registerInfoSectionCells addObject:IBClientIDCell];
-    [self->_registerInfoSectionCells addObject:IBServerHostCell];
-    [self->_registerInfoSectionCells addObject:IBPortCell];
-    [self->_settingsSectionCells addObject:IBCleanSessionCell];
-    [self->_settingsSectionCells addObject:IBKeepaliveCell];
-    if (type == IBMqttProtocolType) {
+        [self->_registerInfoSectionCells addObject:IBClientIDCell];
+        [self->_registerInfoSectionCells addObject:IBServerHostCell];
+        [self->_registerInfoSectionCells addObject:IBPortCell];
+        self->_settingsSectionCells = [NSMutableArray array];
+        [self->_settingsSectionCells addObject:IBCleanSessionCell];
+        [self->_settingsSectionCells addObject:IBKeepaliveCell];
         [self->_settingsSectionCells addObject:IBWillCell];
         [self->_settingsSectionCells addObject:IBWillTopicCell];
-    }
-    [self->_settingsSectionCells addObject:IBRetainCell];
-    [self->_settingsSectionCells addObject:IBQoSCell];
-    
-    if (type == IBMqttProtocolType) {
-        self.protocolField.text = IBMqttName;
+        [self->_settingsSectionCells addObject:IBRetainCell];
+        [self->_settingsSectionCells addObject:IBQoSCell];
     } else if (type == IBMqttSNProtocolType) {
-        self.protocolField.text = IBMqttSNName;
+        [self->_registerInfoSectionCells addObject:IBClientIDCell];
+        [self->_registerInfoSectionCells addObject:IBServerHostCell];
+        [self->_registerInfoSectionCells addObject:IBPortCell];
+        self->_settingsSectionCells = [NSMutableArray array];
+        [self->_settingsSectionCells addObject:IBCleanSessionCell];
+        [self->_settingsSectionCells addObject:IBKeepaliveCell];
+        [self->_settingsSectionCells addObject:IBRetainCell];
+        [self->_settingsSectionCells addObject:IBQoSCell];
+    } else if (type == IBCoAPProtocolType) {
+        [self->_registerInfoSectionCells addObject:IBServerHostCell];
+        [self->_registerInfoSectionCells addObject:IBPortCell];
+        self->_settingsSectionCells = nil;
     }
+    self.protocolField.text = [protocolType nameByValue];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -190,7 +199,10 @@ static NSString *const IBQoSCell            = @"qosCell";
 #pragma mark - UITableViewDataSource -
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    if (self->_registerInfoSectionCells != nil && self->_settingsSectionCells != nil) {
+        return 2;
+    }
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -18,19 +18,16 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-#import <UIKit/UIKit.h>
-#import "IBProtocolTypeEnum.h"
+#import <Foundation/Foundation.h>
+#import "IBRequests.h"
+#import "IBResponsesDelegate.h"
+#import "IBInternetProtocol.h"
 
-@class IBProtocolTypeViewController;
+@interface IBCoAP : NSObject <IBRequests>
 
-@protocol IBProtocolTypeViewControllerDelegate <NSObject>
+@property (weak, nonatomic, readonly) id<IBResponsesDelegate> delegate;
+@property (strong, nonatomic, readonly) id<IBInternetProtocol> internetProtocol;
 
-- (void) protocolTypeViewController : (IBProtocolTypeViewController *) protocolTypeViewController didSelectProtocol : (IBProtocolsType) type;
-
-@end
-
-@interface IBProtocolTypeViewController : UIViewController
-
-@property (weak, nonatomic) id<IBProtocolTypeViewControllerDelegate> delegate;
+- (instancetype) initWithHost : (NSString *) host port : (NSInteger) port andResponseDelegate : (id<IBResponsesDelegate>) delegate;
 
 @end

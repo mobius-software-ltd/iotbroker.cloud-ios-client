@@ -31,6 +31,7 @@
         self->_dictionary = [NSMutableDictionary dictionary];
         [self->_dictionary setValue:@(IBMqttProtocolType) forKey:IBMqttName];
         [self->_dictionary setValue:@(IBMqttSNProtocolType) forKey:IBMqttSNName];
+        [self->_dictionary setValue:@(IBCoAPProtocolType) forKey:IBCoAPName];
 
     }
     return self;
@@ -48,6 +49,10 @@
 
 - (IBProtocolsType) valueByName : (NSString *) name {
     return [[self->_dictionary objectForKey:name] integerValue];
+}
+
+- (NSDictionary *) items {
+    return self->_dictionary;
 }
 
 @end

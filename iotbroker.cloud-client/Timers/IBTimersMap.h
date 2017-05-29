@@ -42,6 +42,8 @@
 - (void) startRegisterTimer: (id<IBMessage>) message;
 - (void) stopRegisterTimer;
 
+- (void) startCoAPMessageTimer: (id<IBMessage>) coapMessage;
+
 - (void) startMessageTimer : (id<IBMessage>) message;
 
 - (id<IBMessage>) removeTimerWithPacketID : (NSNumber *) packetID;

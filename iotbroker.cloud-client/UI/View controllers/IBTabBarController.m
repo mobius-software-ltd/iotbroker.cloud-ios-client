@@ -25,6 +25,7 @@
 #import "IBAlertViewController.h"
 #import "IBMQTT.h"
 #import "IBMQTTSN.h"
+#import "IBCoAP.h"
 
 @interface IBTabBarController () <IBTopicsListControllerDelegate, IBSendMessageControllerDelegate, IBAddTopicDelegate, IBMessagesControllerDelegate, IBResponsesDelegate>
 
@@ -58,9 +59,11 @@
             self->_requests = [[IBMQTT alloc] initWithHost:account.serverHost port:account.port andResponseDelegate:self];
         } else if (account.protocol == IBMqttSNProtocolType) {
             self->_requests = [[IBMQTTSN alloc] initWithHost:account.serverHost port:account.port andResponseDelegate:self];
+        } else if (account.protocol == IBCoAPProtocolType) {
+            self->_requests = [[IBCoAP alloc] initWithHost:account.serverHost port:account.port andResponseDelegate:self];
         }
-        [self->_requests prepareToSendingRequest];
         [self showProgressWithMessage:@"Connection..."];
+        [self->_requests prepareToSendingRequest];
     }
 }
 
@@ -82,10 +85,16 @@
     self->_progressHUD = [self.tabBarDelegate getPreparedProgressHUD];
     self->_progressHUD.parentController = self;
     [self->_progressHUD showWithMessage:message];
+    for (UITabBarItem *item in self.tabBar.items) {
+        [item setEnabled:false];
+    }
 }
 
 - (void) closeProgress {
     [self->_progressHUD close];
+    for (UITabBarItem *item in self.tabBar.items) {
+        [item setEnabled:true];
+    }
 }
 
 - (IBTopicsListTableViewController *) topicsListTableViewController {

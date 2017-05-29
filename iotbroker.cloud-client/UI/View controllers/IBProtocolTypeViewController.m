@@ -19,12 +19,13 @@
  */
 
 #import "IBProtocolTypeViewController.h"
+#import "IBProtocolTypeTableViewCell.h"
 
-@interface IBProtocolTypeViewController ()
+@interface IBProtocolTypeViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
-@property (weak, nonatomic) IBOutlet UIButton *mqttButton;
-@property (weak, nonatomic) IBOutlet UIButton *mqttsnButton;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSDictionary *items;
 
 @end
 
@@ -38,6 +39,11 @@
     NSInteger radius = (NSInteger)self.view.frame.size.width / 30;
     
     self.mainView.layer.cornerRadius = radius;
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self.tableView sizeToFit];
+    self->_items = [[[IBProtocolTypeEnum alloc] init] items];
     
     [self showAnimate];
 }
@@ -65,14 +71,30 @@
     }];
 }
 
-- (IBAction) buttonDidClick:(id)sender {
+#pragma mark - UITableViewDataSource -
 
-    if ([sender isEqual:self.mqttButton]) {
-        [self.delegate protocolTypeViewController:self didClickOnMqttButton:IBMqttProtocolType];
-    } else if ([sender isEqual:self.mqttsnButton]) {
-        [self.delegate protocolTypeViewController:self didClickOnMqttButton:IBMqttSNProtocolType];
-    }
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self->_items.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    IBProtocolTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    
+    cell.protocolName.text = self->_items.allKeys[indexPath.row];
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate -
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self removeAnimate];
+    IBProtocolsType type = [self->_items.allValues[indexPath.row] integerValue];
+    [self.delegate protocolTypeViewController:self didSelectProtocol:type];
 }
 
 @end

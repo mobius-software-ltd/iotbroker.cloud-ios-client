@@ -66,6 +66,7 @@
     
     if (![self->_udpSocket beginReceiving:&error]) {
         self->_state = IBTransportClosed;
+        [self.udpSocket close];
         NSLog(@"Error receiving: %@", error);
         return;
     }
@@ -96,7 +97,7 @@
 }
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didSendDataWithTag:(long)tag{
-    NSLog(@"Send");
+    NSLog(@"Did send message via udp protocol");
 }
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didNotSendDataWithTag:(long)tag dueToError:(NSError *)error {
@@ -104,7 +105,6 @@
 }
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data fromAddress:(NSData *)address withFilterContext:(nullable id)filterContext {
-    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     [self.delegate internetProtocol:self didReceiveMessage:data];
 }
 

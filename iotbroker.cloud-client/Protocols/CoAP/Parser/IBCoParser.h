@@ -18,19 +18,13 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
 
-#import <UIKit/UIKit.h>
-#import "IBProtocolTypeEnum.h"
+#import <Foundation/Foundation.h>
+#import "IBCoMessage.h"
+#import "IBMutableData.h"
 
-@class IBProtocolTypeViewController;
+@interface IBCoParser : NSObject
 
-@protocol IBProtocolTypeViewControllerDelegate <NSObject>
-
-- (void) protocolTypeViewController : (IBProtocolTypeViewController *) protocolTypeViewController didSelectProtocol : (IBProtocolsType) type;
-
-@end
-
-@interface IBProtocolTypeViewController : UIViewController
-
-@property (weak, nonatomic) id<IBProtocolTypeViewControllerDelegate> delegate;
++ (id<IBMessage>) decode : (NSMutableData *) data;
++ (NSMutableData *) encode : (id<IBMessage>) message;
 
 @end

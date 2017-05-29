@@ -26,7 +26,6 @@
 @interface IBParser : NSObject
 
 + (NSMutableData *) next : (NSMutableData **) buffer;
-+ (NSRange) packetRange : (NSMutableData *) buffer;
 + (NSMutableData *) encode : (id<IBMessage>) message;
 + (id<IBMessage>) decode : (NSMutableData *) buffer;
 

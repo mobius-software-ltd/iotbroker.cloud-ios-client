@@ -24,10 +24,12 @@ typedef NS_ENUM(NSInteger, IBProtocolsType)
 {
     IBMqttProtocolType = 0,
     IBMqttSNProtocolType = 1,
+    IBCoAPProtocolType = 2,
 };
 
 static NSString *const IBMqttName = @"MQTT";
 static NSString *const IBMqttSNName = @"MQTT-SN";
+static NSString *const IBCoAPName = @"CoAP";
 
 @interface IBProtocolTypeEnum : NSObject
 
@@ -35,5 +37,7 @@ static NSString *const IBMqttSNName = @"MQTT-SN";
 
 - (NSString *) nameByValue;
 - (IBProtocolsType) valueByName : (NSString *) name;
+
+- (NSDictionary *) items;
 
 @end
