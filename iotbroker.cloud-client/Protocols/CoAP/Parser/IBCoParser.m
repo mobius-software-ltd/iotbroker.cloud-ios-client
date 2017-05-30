@@ -36,8 +36,6 @@ static int const IB15OptionFaildConstant = 15;
     
     Byte version = (zeroByte >> 6) & 0x3;
     
-    NSLog(@" %i", version);
-    
     if (version != message.version) {
         return nil;
     }
@@ -55,19 +53,10 @@ static int const IB15OptionFaildConstant = 15;
     
     NSInteger previousOptionDelta = 0;
     
-    NSLog(@"_%zd", message.code);
-    NSLog(@"%zd", message.token);
-    NSLog(@"%zd", message.type);
-    NSLog(@"%zd", message.messageID);
-    NSLog(@"%@_", message.payload);
-    
     while ([buffer getByteNumber] < [buffer length]) {
         Byte optionByte = [buffer readByte];
         Byte optionDelta = (optionByte >> 4) & 0xF;
         Byte optionLength = optionByte & 0xF;
-        
-        NSLog(@"Option Delta = %zd", optionDelta);
-        NSLog(@"Option Length = %zd", optionLength);
         
         if (optionDelta == IB15OptionFaildConstant) {
             if (optionLength != IB15OptionFaildConstant) {
@@ -118,7 +107,6 @@ static int const IB15OptionFaildConstant = 15;
     if ([buffer getByteNumber] < [buffer length]) {
         NSInteger length = [buffer length] - [buffer getByteNumber];
         message.payload = [buffer readStringWithLength:length];
-        NSLog(@"STRING = %@", message.payload);
     }
     return message;
 }
@@ -157,7 +145,7 @@ static int const IB15OptionFaildConstant = 15;
             }
             else if ([key intValue] == IBBlock2Option || [key intValue] == IBUriPortOption  || [key intValue] == IBContentFormatOption  ||
                      [key intValue] == IBMaxAgeOption || [key intValue] == IBAcceptOption   || [key intValue] == IBSize1Option          ||
-                     [key intValue] == IBSize2Option)   {
+                     [key intValue] == IBSize2Option  || [key intValue] == IBObserveOption) {
                 valueForKey = [self hexStringFromInt:[[valueArray objectAtIndex:i] intValue]];
             }
             else {

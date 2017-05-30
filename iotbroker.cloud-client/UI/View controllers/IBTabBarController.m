@@ -47,8 +47,8 @@
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ImageLogout"] style:UIBarButtonItemStylePlain target:self action:@selector(logout)];
     [self.navigationItem setRightBarButtonItem:logoutButton];
     
-    [self setDelegateForViewControllers];
     [self initializeConnection];
+    [self setDelegateForViewControllers];
 }
 
 - (void) initializeConnection {
@@ -70,11 +70,14 @@
 #pragma mark - Private methods -
 
 - (void) setDelegateForViewControllers {
+    
+    Account *account = [self->_accountManager readDefaultAccount];
     for (UIViewController *item in [self viewControllers]) {
         if ([item isKindOfClass:[IBTopicsListTableViewController class]]) {
             ((IBTopicsListTableViewController *)item).delegate = self;
         } else if ([item isKindOfClass:[IBSendMessageTableViewController class]]) {
             ((IBSendMessageTableViewController *)item).delegate = self;
+            ((IBSendMessageTableViewController *)item).protocol = account.protocol;
         } else if ([item isKindOfClass:[IBMessagesListTableViewController class]]) {
             ((IBMessagesListTableViewController *)item).delegate = self;
         }
@@ -104,6 +107,17 @@
         }
     }
     return nil;
+}
+
+- (void) addTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content isDup : (BOOL) isDup isRetain : (BOOL) isRetain isIncoming : (BOOL) isIncoming  {
+    Message *message = [self->_accountManager message];
+    message.topicName = name;
+    message.qos = (int32_t)qos;
+    message.content = content;
+    message.isDup = dup;
+    message.isRetain = isRetain;
+    message.isIncoming = isIncoming;
+    [self->_accountManager addMessageForDefaultAccount:message];
 }
 
 - (void)logout {
@@ -185,60 +199,31 @@
 
 - (void) publishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag {
     if (qos != IBExactlyOnce) {
-        Message *message = [self->_accountManager message];
-        message.topicName = name;
-        message.qos = (int32_t)qos;
-        message.content = content;
-        message.isDup = dup;
-        message.isRetain = retainFlag;
-        message.isIncoming = false;
-        [self->_accountManager addMessageForDefaultAccount:message];
+        [self addTopicName:name qos:qos content:content isDup:dup isRetain:retainFlag isIncoming:true];
     }
 }
 
 - (void) pubackForPublishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag andReturnCode : (NSInteger) returnCode {
     [self closeProgress];
+    [self addTopicName:name qos:qos content:content isDup:dup isRetain:retainFlag isIncoming:false];
 
-    Message *message = [self->_accountManager message];
-    message.topicName = name;
-    message.qos = (int32_t)qos;
-    message.content = content;
-    message.isDup = dup;
-    message.isRetain = retainFlag;
-    message.isIncoming = false;
-    [self->_accountManager addMessageForDefaultAccount:message];
     IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Perfect" message:@"Message has been sending" preferredStyle:UIAlertControllerStyleActionSheet];
     [alert pushToNavigationControllerStack:self.navigationController];
 }
 
 - (void) pubrecForPublishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag {
-
+    // Pubrec
 }
 
 - (void) pubrelForPublishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag {
     [self closeProgress];
-
-    Message *message = [self->_accountManager message];
-    message.topicName = name;
-    message.qos = (int32_t)qos;
-    message.content = content;
-    message.isDup = dup;
-    message.isRetain = retainFlag;
-    message.isIncoming = true;
-    [self->_accountManager addMessageForDefaultAccount:message];
+    [self addTopicName:name qos:qos content:content isDup:dup isRetain:retainFlag isIncoming:true];
 }
 
 - (void) pubcompForPublishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag {
     [self closeProgress];
+    [self addTopicName:name qos:qos content:content isDup:dup isRetain:retainFlag isIncoming:false];
 
-    Message *message = [self->_accountManager message];
-    message.topicName = name;
-    message.qos = (int32_t)qos;
-    message.content = content;
-    message.isDup = dup;
-    message.isRetain = retainFlag;
-    message.isIncoming = false;
-    [self->_accountManager addMessageForDefaultAccount:message];
     IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Perfect" message:@"Message has been sending" preferredStyle:UIAlertControllerStyleActionSheet];
     [alert pushToNavigationControllerStack:self.navigationController];
 }
@@ -263,11 +248,11 @@
 }
 
 - (void) pingresp {
-    
+    // Pingresp
 }
 
 - (void) disconnectWithDuration : (NSInteger) duration {
-
+    // Disconnect
 }
 
 - (void) error : (NSError *) error {

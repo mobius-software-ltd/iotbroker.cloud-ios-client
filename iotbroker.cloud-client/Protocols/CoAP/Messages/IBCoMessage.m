@@ -38,7 +38,7 @@
     return [[IBCoMessage alloc] initWithMethod:method confirmableFlag:isCon tokenFlag:isToken andPayload:payload];
 }
 
-- (instancetype) initWithMethod : (IBCoAPMethods) method confirmableFlag : (BOOL) isCon tokenFlag : (BOOL) isToken andPayload : (NSString *) payload {
+- (instancetype) initWithMethod : (NSInteger) method confirmableFlag : (BOOL) isCon tokenFlag : (BOOL) isToken andPayload : (NSString *) payload {
     self = [self init];
     if (self != nil) {
         self->_code = method;

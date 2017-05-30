@@ -66,23 +66,37 @@
 }
 
 - (void) connectWithAccount : (Account *) account {
-    
+
 }
 
 - (void) publishMessage : (Message *) message {
     
-    NSString *content = @"hello";
-    IBCoMessage *coapMessage = [IBCoMessage method:IBPOSTMethod confirmableFlag:true tokenFlag:true andPayload:content];
+    NSString *content = [[NSString alloc] initWithData:message.content encoding:NSUTF8StringEncoding];
+    IBCoMessage *coapMessage = [IBCoMessage method:IBPUTMethod confirmableFlag:true tokenFlag:true andPayload:content];
+    //[coapMessage addOption:IBUriPathOption withValue:@"topic"];
+    [coapMessage addOption:IBUriPathOption withValue:message.topicName];
     coapMessage.type = IBConfirmableType;
     [self startSendTimerWithMessage:coapMessage];
 }
 
 - (void) subscribeToTopic : (Topic *) topic {
-    
+ 
+    IBCoMessage *coapMessage = [IBCoMessage method:IBGETMethod confirmableFlag:true tokenFlag:true andPayload:nil];
+    [coapMessage addOption:IBObserveOption withValue:[@(0) stringValue]];
+    //[coapMessage addOption:IBUriPathOption withValue:@"topic"];
+    [coapMessage addOption:IBUriPathOption withValue:topic.topicName];
+    coapMessage.type = IBConfirmableType;
+    [self startSendTimerWithMessage:coapMessage];
 }
 
 - (void) unsubscribeFromTopic : (Topic *) topic {
     
+    IBCoMessage *coapMessage = [IBCoMessage method:IBGETMethod confirmableFlag:true tokenFlag:true andPayload:nil];
+    [coapMessage addOption:IBObserveOption withValue:[@(1) stringValue]];
+    //[coapMessage addOption:IBUriPathOption withValue:@"topic"];
+    [coapMessage addOption:IBUriPathOption withValue:topic.topicName];
+    coapMessage.type = IBConfirmableType;
+    [self startSendTimerWithMessage:coapMessage];
 }
 
 - (void) pingreq {
@@ -134,6 +148,19 @@
         return;
     }
     
+    if (message.code == IBPOSTMethod || message.code == IBPUTMethod) {
+        NSString *topic = [[[message optionDictionary] objectForKey:[@(IBUriPathOption) stringValue]] lastObject];
+        NSData *content = [message.payload dataUsingEncoding:NSUTF8StringEncoding];
+        
+        [self.delegate publishWithTopicName:topic qos:0 content:content dup:false retainFlag:false];
+        IBCoMessage *ack = [[IBCoMessage alloc] initWithMethod:IBMethodNotAllowedResponseCode confirmableFlag:false tokenFlag:true andPayload:nil];
+        [ack addOption:IBContentFormatOption withValue:@"text/plain"];
+        ack.type = IBAcknowledgmentType;
+        ack.messageID = message.messageID;
+        ack.token = message.token;
+        [self sendMessage:ack];
+    }
+    
     switch (message.type) {
         case IBConfirmableType:
         {
@@ -143,11 +170,32 @@
         case IBNonConfirmableType:
         {
             [self->_timers removeTimerWithPacketID:@(message.token)];
-            message.type = IBResetType;
         }   break;
         case IBAcknowledgmentType:
         {
-            [self->_timers removeTimerWithPacketID:@(message.token)];
+            IBCoMessage *ack = [self->_timers removeTimerWithPacketID:@(message.token)];
+            
+            if ((NSInteger)message.code == IBContentResponseCode) {
+                NSString *topic = [[[ack optionDictionary] objectForKey:[@(IBUriPathOption) stringValue]] lastObject];
+                NSData *content = [message.payload dataUsingEncoding:NSUTF8StringEncoding];
+                
+                [self.delegate publishWithTopicName:topic qos:0 content:content dup:false retainFlag:false];
+            }
+            if (ack.code == IBGETMethod) {
+                NSInteger observeOptionValue = [[[[ack optionDictionary] objectForKey:[@(IBObserveOption) stringValue]] lastObject] integerValue];
+                NSString *topic = [[[ack optionDictionary] objectForKey:[@(IBUriPathOption) stringValue]] lastObject];
+
+                if (observeOptionValue == 0) {
+                    [self.delegate subackForSubscribeWithTopicName:topic qos:0 returnCode:0];
+                } else if (observeOptionValue == 1) {
+                    [self.delegate unsubackForUnsubscribeWithTopicName:topic];
+                }
+            } else if (ack.code == IBPUTMethod) {
+                NSArray *values = [[ack optionDictionary] objectForKey:[@(IBUriPathOption) stringValue]];
+                NSString *topic = [values lastObject];
+                NSData *content = [ack.payload dataUsingEncoding:NSUTF8StringEncoding];
+                [self.delegate pubackForPublishWithTopicName:topic qos:0 content:content dup:false retainFlag:false andReturnCode:0];
+            }
         }   break;
         case IBResetType:
         {

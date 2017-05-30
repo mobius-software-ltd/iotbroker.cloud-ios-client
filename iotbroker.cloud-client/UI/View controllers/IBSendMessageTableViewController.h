@@ -19,6 +19,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "IBProtocolTypeEnum.h"
 #import "Message+CoreDataClass.h"
 
 @class IBSendMessageTableViewController;
@@ -34,5 +35,6 @@
 
 @property (weak, nonatomic) id<IBSendMessageControllerDelegate> delegate;
 @property (strong, nonatomic) Message *message;
+@property (assign, nonatomic) IBProtocolsType protocol;
 
 @end

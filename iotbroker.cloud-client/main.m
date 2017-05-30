@@ -25,29 +25,6 @@
 
 int main(int argc, char * argv[]) {
     
-    //IBCoMessage *message = [IBCoMessage method:IBPOSTMethod confirmableFlag:true tokenFlag:true andPayload:@"text"];
-    //message.token = 1793507472;
-    //message.type = IBConfirmableType;
-    //message.messageID = 17836;
-        
-    //[message addOption:IBUriPathOption withValue:@"hello"];
-    /*
-    IBCoMessage *message1 = [IBCoParser decode:[IBCoParser encode:message]];
-
-    NSLog(@"_%zd", message1.code);
-    NSLog(@"%zd", message1.token);
-    NSLog(@"%zd", message1.type);
-    NSLog(@"%zd", message1.messageID);
-    NSLog(@"%@_", message1.payload);
-     */
-    
-    //IBCoAP *coap = [[IBCoAP alloc] initWithHost:@"134.102.218.18" port:5683 andResponseDelegate:nil];
-    ///[coap prepareToSendingRequest];
-    //[coap publishMessage:nil];
-    
-    
-    
-    
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }

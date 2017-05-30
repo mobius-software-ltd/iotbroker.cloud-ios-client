@@ -43,6 +43,7 @@ static NSString *const IBAddTopicPopover = @"IBAddTopicPopover";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.topItem.title = @"Topics list";
+    [self.delegate topicsListTableViewControllerDidLoad:self];
 }
 
 - (IBAction) addTopicButtonDidClick:(id)sender {

@@ -60,6 +60,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.topItem.title = @"Send message";
+    [self.delegate sendMessageTableViewControllerDidLoad:self];
 }
 
 - (IBAction) sendButtonClick : (id) sender {
@@ -107,6 +108,9 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.protocol == IBCoAPProtocolType) {
+        return 2;
+    }
     return 5;
 }
 

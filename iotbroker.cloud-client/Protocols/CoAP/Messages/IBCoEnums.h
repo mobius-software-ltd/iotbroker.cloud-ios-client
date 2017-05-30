@@ -69,6 +69,7 @@ typedef NS_ENUM (NSInteger, IBCoAPOptionDefinitions)
     IBUriHostOption         = 3,
     IBETagOption            = 4,
     IBIfNoneMatchOption     = 5,
+    IBObserveOption         = 6,
     IBUriPortOption         = 7,
     IBLocationPathOption    = 8,
     IBUriPathOption         = 11,

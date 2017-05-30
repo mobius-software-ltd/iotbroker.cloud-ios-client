@@ -503,8 +503,6 @@
             data = [string dataUsingEncoding:NSUTF8StringEncoding];
         }
         
-        NSLog(@"packet ID = %zd, Topic name = %@, qos = %zd, data = %@, is return = %i", packetID, topicName, qos.value, [NSString stringWithCString:[data bytes] encoding:NSUTF8StringEncoding], isRetain);
-        
         message = [[IBPublish alloc] initWithPacketID:packetID andTopic:[[IBMQTTTopic alloc] initWithName:topicName andQoS:qos] andContent:data andIsRetain:isRetain andDup:dup];
         
     } else if (messageType == IBPubackMessage) {

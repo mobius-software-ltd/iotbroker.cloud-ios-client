@@ -38,7 +38,7 @@
 @property (assign, nonatomic) BOOL isResponse;
 
 + (instancetype) method : (IBCoAPMethods) method confirmableFlag : (BOOL) isCon tokenFlag : (BOOL) isToken andPayload : (NSString *) payload;
-- (instancetype) initWithMethod : (IBCoAPMethods) method confirmableFlag : (BOOL) isCon tokenFlag : (BOOL) isToken andPayload : (NSString *) payload;
+- (instancetype) initWithMethod : (NSInteger) method confirmableFlag : (BOOL) isCon tokenFlag : (BOOL) isToken andPayload : (NSString *) payload;
 
 - (void) addOption : (IBCoAPOptionDefinitions) option withValue : (NSString *) value;
 - (NSDictionary *) optionDictionary;
