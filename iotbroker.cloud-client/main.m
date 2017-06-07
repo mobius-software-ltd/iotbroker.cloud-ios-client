@@ -23,7 +23,84 @@
 #import "IBCoParser.h"
 #import "IBCoAP.h"
 
+#import "IBSocketTransport.h"
+
+@interface Test : NSObject <IBInternetProtocolDelegate>
+
+@end
+
+@implementation Test
+{
+    IBSocketTransport *_tcpSocket;
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self != nil) {
+        self->_tcpSocket = [[IBSocketTransport alloc] initWithHost:@"198.41.30.241" andPort:1883];
+        self->_tcpSocket.delegate = self;
+        [self->_tcpSocket start];
+    }
+    return self;
+}
+
+- (void) internetProtocolDidStart : (id<IBInternetProtocol>) internetProtocol {
+    NSLog(@"----------%@---------", internetProtocol);
+    
+    
+    NSMutableData *data = [NSMutableData data];
+    
+    NSString *protocol = @"AMQP";
+    
+    Byte m1 = 0xb1;
+    [data appendBytes:&m1 length:1];
+    Byte size = 4;
+    [data appendBytes:&size length:1];
+    [data appendBytes:[[protocol dataUsingEncoding:NSUTF8StringEncoding] bytes] length:protocol.length];
+
+    Byte protocolID = 0;
+    
+    Byte m2 = 0x50;
+    [data appendBytes:&m2 length:1];
+    [data appendBytes:&protocolID length:1];
+    
+    Byte major = 1;
+    
+    [data appendBytes:&m2 length:1];
+    [data appendBytes:&major length:1];
+    
+    Byte minor = 0;
+    
+    [data appendBytes:&m2 length:1];
+    [data appendBytes:&minor length:1];
+    
+    Byte revision = 0;
+    
+    [data appendBytes:&m2 length:1];
+    [data appendBytes:&revision length:1];
+    
+    [data appendBytes:[[@"HELLO!!!" dataUsingEncoding:NSUTF8StringEncoding] bytes] length:8];
+    
+    [internetProtocol sendData:data];
+}
+
+- (void) internetProtocolDidStop  : (id<IBInternetProtocol>) internetProtocol {
+    
+}
+
+- (void) internetProtocol : (id<IBInternetProtocol>) internetProtocol didReceiveMessage : (NSData *) message {
+    
+}
+
+- (void) internetProtocol : (id<IBInternetProtocol>) internetProtocol didFailWithError  : (NSError *) error {
+    
+}
+
+@end
+
 int main(int argc, char * argv[]) {
+    
+    Test *test = [[Test alloc] init];
     
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));

@@ -26,6 +26,21 @@
 - (Byte) readByte;
 - (void) appendShort : (short) value;
 - (NSInteger) readShort;
+
+- (void) appendInt : (NSInteger) value;
+- (int) readInt;
+
+- (void) appendUInt24 : (int) value;
+- (int) readUInt24;
+
+- (void) appendLong : (NSInteger) value;
+- (NSInteger) readLong;
+
+- (void) appendFloat : (float) value;
+- (float) readFloat;
+- (void) appendDouble : (double) value;
+- (double) readDouble;
+
 - (NSString *) readStringWithLength : (NSInteger) length;
 - (NSInteger) numberWithLength : (NSInteger) length;
 - (void) clearNumber;

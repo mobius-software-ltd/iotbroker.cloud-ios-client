@@ -50,7 +50,7 @@
 - (void)start {
     self.state = IBTransportOpening;
     
-    NSError* connectError;
+    NSError *connectError;
     
     CFReadStreamRef readStream;
     CFWriteStreamRef writeStream;

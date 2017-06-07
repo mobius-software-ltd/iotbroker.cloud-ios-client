@@ -53,6 +53,100 @@ NSInteger byteNumber = 0;
     return value;
 }
 
+- (void) appendUInt24 : (int) value {
+
+    int length = 3;
+    
+    Byte *bytes = malloc(sizeof(Byte) * length);
+    
+    for (int i = 0, bitShift = 16; i < length; i++, bitShift -= 8) {
+        if (bitShift == 0) {
+            bytes[i] = (Byte)(value & 0x00FF);
+        } else {
+            bytes[i] = (Byte)((value >> bitShift) & 0x00FF);
+        }
+    }
+    [self appendBytes:bytes length:length];
+}
+
+- (int) readUInt24 {
+
+    int length = 3;
+    
+    NSInteger value = 0;
+    NSData *subData = [self subdataWithRange:NSMakeRange(byteNumber, length)];
+    Byte *bytes = (Byte *)[subData bytes];
+
+    for (int i = 0; i < length; i++) {
+        value <<= 8;
+        value |= bytes[i] & 0x00FF;
+    }
+    byteNumber += length;
+    
+    return (int)value;
+}
+
+- (void) appendInt : (NSInteger) value {
+    
+    int number = (int)value;
+    
+    value = htonl(number);
+    [self appendBytes:&value length:sizeof(int)];
+}
+
+- (int) readInt {
+
+    int value = 0;
+    
+    value = (int)[self numberWithLength:sizeof(int)];
+
+    return value;
+}
+
+- (void) appendLong : (NSInteger) value {
+    
+    long number = value;
+    
+    value = htonll(number);
+    [self appendBytes:&value length:sizeof(long)];
+}
+
+- (NSInteger) readLong {
+    
+    int value = 0;
+    
+    value = (int)[self numberWithLength:sizeof(long)];
+    
+    return value;
+}
+
+
+- (void) appendFloat : (float) value {
+
+    [self appendBytes:&value length:sizeof(float)];
+}
+
+- (float) readFloat {
+
+    int length = sizeof(float);
+    NSData *data = [self subdataWithRange:NSMakeRange(byteNumber, length)];
+    byteNumber += length;
+    return ((float *)[data bytes])[0];
+}
+
+- (void) appendDouble : (double) value {
+
+    [self appendBytes:&value length:sizeof(double)];
+}
+
+- (double) readDouble {
+
+    int length = sizeof(double);
+    NSData *data = [self subdataWithRange:NSMakeRange(byteNumber, length)];
+    byteNumber += length;
+    return ((double *)[data bytes])[0];
+}
+
 - (NSString *) readStringWithLength : (NSInteger) length {
     
     NSMutableString *string = [NSMutableString string];
