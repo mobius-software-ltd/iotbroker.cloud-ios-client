@@ -60,4 +60,10 @@
     return self->_dictionary;
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+    
+    IBAMQPSectionCode *copy = [IBAMQPSectionCode enumWithSectionCode:self.value];
+    return copy;
+}
+
 @end

@@ -1,19 +1,19 @@
 //
-//  IBDeliveryAnnotation.m
+//  IBAMQPDeliveryAnnotation.m
 //  iotbroker.cloud-client
 //
 //  Created by MacOS on 09.06.17.
 //  Copyright © 2017 MobiusSoftware. All rights reserved.
 //
 
-#import "IBDeliveryAnnotation.h"
+#import "IBAMQPDeliveryAnnotation.h"
 #import "IBAMQPUnwrapper.h"
 #import "IBAMQPWrapper.h"
 #import "IBAMQPTLVList.h"
 #import "IBAMQPTLVFixed.h"
 #import "IBAMQPDescribedConstructor.h"
 
-@implementation IBDeliveryAnnotation
+@implementation IBAMQPDeliveryAnnotation
 
 - (IBTLVAMQP *)value {
 

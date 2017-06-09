@@ -1,5 +1,5 @@
 //
-//  IBDeliveryAnnotation.h
+//  IBAMQPDeliveryAnnotation.h
 //  iotbroker.cloud-client
 //
 //  Created by MacOS on 09.06.17.
@@ -10,7 +10,7 @@
 #import "IBAMQPSection.h"
 #import "IBAMQPSymbol.h"
 
-@interface IBDeliveryAnnotation : NSObject <IBAMQPSection>
+@interface IBAMQPDeliveryAnnotation : NSObject <IBAMQPSection>
 
 @property (strong, nonatomic) NSMutableDictionary<IBAMQPSymbol *, NSObject *> *annotations;
 

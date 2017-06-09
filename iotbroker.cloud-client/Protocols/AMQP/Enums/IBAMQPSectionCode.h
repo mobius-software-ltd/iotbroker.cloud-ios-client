@@ -21,7 +21,7 @@ typedef NS_ENUM(Byte, IBAMQPSectionCodes)
     IBAMQPFooterSectionCode                 = 0x78,
 };
 
-@interface IBAMQPSectionCode : NSObject
+@interface IBAMQPSectionCode : NSObject <NSCopying>
 
 @property (assign, nonatomic) IBAMQPSectionCodes value;
 

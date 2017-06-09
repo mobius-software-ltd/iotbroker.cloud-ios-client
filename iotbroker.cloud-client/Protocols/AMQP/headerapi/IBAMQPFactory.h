@@ -10,9 +10,15 @@
 #import "IBAMQPOutcome.h"
 #import "IBAMQPTLVList.h"
 #import "IBAMQPState.h"
+#import "IBAMQPHeader.h"
+#import "IBMutableData.h"
+#import "IBAMQPSection.h"
 
 @interface IBAMQPFactory : NSObject
 
++ (IBAMQPHeader *) amqp : (NSMutableData *) data;
++ (IBAMQPHeader *) sasl : (NSMutableData *) data;
++ (id<IBAMQPSection>) section : (NSMutableData *) data;
 + (id<IBAMQPOutcome>) outcome : (IBAMQPTLVList *) list;
 + (id<IBAMQPState>) state : (IBAMQPTLVList *) list;
 
