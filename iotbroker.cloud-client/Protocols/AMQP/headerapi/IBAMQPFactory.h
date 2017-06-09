@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "IBAMQPOutcome.h"
 #import "IBAMQPTLVList.h"
+#import "IBAMQPState.h"
 
 @interface IBAMQPFactory : NSObject
 
 + (id<IBAMQPOutcome>) outcome : (IBAMQPTLVList *) list;
++ (id<IBAMQPState>) state : (IBAMQPTLVList *) list;
 
 @end

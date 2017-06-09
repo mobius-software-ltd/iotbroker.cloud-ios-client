@@ -15,6 +15,11 @@
 
 @implementation IBAMQPAttach
 
+@synthesize code = _code;
+@synthesize doff = _doff;
+@synthesize type = _type;
+@synthesize chanel = _chanel;
+
 - (instancetype)init {
     IBAMQPHeaderCode *code = [IBAMQPHeaderCode enumWithHeaderCode:IBAMQPAttachHeaderCode];
     self = [super initWithCode:code];

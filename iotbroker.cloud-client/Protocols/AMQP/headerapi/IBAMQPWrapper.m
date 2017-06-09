@@ -310,9 +310,7 @@
     IBAMQPTLVMap *map = [[IBAMQPTLVMap alloc] init];
     for (NSObject *key in value.allKeys) {
         NSObject *valueItem = [value objectForKey:key];
-        
-        NSLog(@" --- %@ - %@ ---", [self wrapObject:key withType:keyType], [self wrapObject:valueItem withType:valueType]);
-        
+                
         [map putElementWithKey:[self wrapObject:key withType:keyType]
                       andValue:[self wrapObject:valueItem withType:valueType]];
     }
