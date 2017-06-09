@@ -1,5 +1,5 @@
 //
-//  IBAMQPing.h
+//  IBAMQPPing.h
 //  iotbroker.cloud-client
 //
 //  Created by MacOS on 07.06.17.
@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "IBAMQPHeader.h"
 
-@interface IBAMQPing : IBAMQPHeader
+@interface IBAMQPPing : IBAMQPHeader
 
 @end

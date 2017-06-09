@@ -96,7 +96,7 @@
 		2289A1DF1EE84A65009B98AA /* IBAMQPStringID.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1DE1EE84A65009B98AA /* IBAMQPStringID.m */; };
 		2289A1E21EE84A78009B98AA /* IBAMQPUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1E11EE84A78009B98AA /* IBAMQPUUID.m */; };
 		2289A1E61EE84B81009B98AA /* IBAMQPHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1E51EE84B81009B98AA /* IBAMQPHeader.m */; };
-		2289A1E91EE84E03009B98AA /* IBAMQPing.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1E81EE84E03009B98AA /* IBAMQPing.m */; };
+		2289A1E91EE84E03009B98AA /* IBAMQPPing.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1E81EE84E03009B98AA /* IBAMQPPing.m */; };
 		2289A1EC1EE84F05009B98AA /* IBAMQPProtoHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1EB1EE84F05009B98AA /* IBAMQPProtoHeader.m */; };
 		2289A1EF1EE8520A009B98AA /* IBAMQPWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1EE1EE8520A009B98AA /* IBAMQPWrapper.m */; };
 		22C531A31EAF90D2007F57A8 /* IBPuback.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531871EAF90D2007F57A8 /* IBPuback.m */; };
@@ -160,6 +160,7 @@
 		22C5C03B1DF061CE00790EF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C5C0391DF061CE00790EF6 /* LaunchScreen.storyboard */; };
 		22C5C0461DF061CE00790EF6 /* iotbroker_cloud_clientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0451DF061CE00790EF6 /* iotbroker_cloud_clientTests.m */; };
 		22C5C0511DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0501DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m */; };
+		22C728061EEAF78800D2F277 /* IBAMQPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C728051EEAF78800D2F277 /* IBAMQPParser.m */; };
 		22DE14311EDFFFB300A9CDA7 /* iotbroker.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DE14301EDFFFB300A9CDA7 /* iotbroker.m */; };
 		22ED8B441EB092F9006A0C98 /* IBMQTTSN.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B431EB092F9006A0C98 /* IBMQTTSN.m */; };
 		22ED8B561EB0B8B0006A0C98 /* IBMQTT.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B551EB0B8B0006A0C98 /* IBMQTT.m */; };
@@ -387,8 +388,8 @@
 		2289A1E11EE84A78009B98AA /* IBAMQPUUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPUUID.m; sourceTree = "<group>"; };
 		2289A1E41EE84B81009B98AA /* IBAMQPHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPHeader.h; sourceTree = "<group>"; };
 		2289A1E51EE84B81009B98AA /* IBAMQPHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPHeader.m; sourceTree = "<group>"; };
-		2289A1E71EE84E03009B98AA /* IBAMQPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPing.h; sourceTree = "<group>"; };
-		2289A1E81EE84E03009B98AA /* IBAMQPing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPing.m; sourceTree = "<group>"; };
+		2289A1E71EE84E03009B98AA /* IBAMQPPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPPing.h; sourceTree = "<group>"; };
+		2289A1E81EE84E03009B98AA /* IBAMQPPing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPPing.m; sourceTree = "<group>"; };
 		2289A1EA1EE84F05009B98AA /* IBAMQPProtoHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPProtoHeader.h; sourceTree = "<group>"; };
 		2289A1EB1EE84F05009B98AA /* IBAMQPProtoHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPProtoHeader.m; sourceTree = "<group>"; };
 		2289A1ED1EE8520A009B98AA /* IBAMQPWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPWrapper.h; sourceTree = "<group>"; };
@@ -517,6 +518,8 @@
 		22C5C04C1DF061CE00790EF6 /* iotbroker.cloud-clientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iotbroker.cloud-clientUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C5C0501DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iotbroker_cloud_clientUITests.m; sourceTree = "<group>"; };
 		22C5C0521DF061CE00790EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22C728041EEAF78800D2F277 /* IBAMQPParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPParser.h; sourceTree = "<group>"; };
+		22C728051EEAF78800D2F277 /* IBAMQPParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPParser.m; sourceTree = "<group>"; };
 		22DE14301EDFFFB300A9CDA7 /* iotbroker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iotbroker.m; sourceTree = "<group>"; };
 		22ED8B3B1EB0847D006A0C98 /* IBRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBRequests.h; sourceTree = "<group>"; };
 		22ED8B3C1EB084A4006A0C98 /* IBResponsesDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBResponsesDelegate.h; sourceTree = "<group>"; };
@@ -1116,8 +1119,8 @@
 			children = (
 				2289A1E41EE84B81009B98AA /* IBAMQPHeader.h */,
 				2289A1E51EE84B81009B98AA /* IBAMQPHeader.m */,
-				2289A1E71EE84E03009B98AA /* IBAMQPing.h */,
-				2289A1E81EE84E03009B98AA /* IBAMQPing.m */,
+				2289A1E71EE84E03009B98AA /* IBAMQPPing.h */,
+				2289A1E81EE84E03009B98AA /* IBAMQPPing.m */,
 				2289A1EA1EE84F05009B98AA /* IBAMQPProtoHeader.h */,
 				2289A1EB1EE84F05009B98AA /* IBAMQPProtoHeader.m */,
 				2289A1ED1EE8520A009B98AA /* IBAMQPWrapper.h */,
@@ -1844,6 +1847,15 @@
 			path = "iotbroker.cloud-clientUITests";
 			sourceTree = "<group>";
 		};
+		22C728031EEAF75000D2F277 /* parser */ = {
+			isa = PBXGroup;
+			children = (
+				22C728041EEAF78800D2F277 /* IBAMQPParser.h */,
+				22C728051EEAF78800D2F277 /* IBAMQPParser.m */,
+			);
+			path = parser;
+			sourceTree = "<group>";
+		};
 		22ED8B3A1EB0843E006A0C98 /* ProtocolsImplementation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1999,6 +2011,7 @@
 		22F3083A1EE6E285008AF92F /* AMQP */ = {
 			isa = PBXGroup;
 			children = (
+				22C728031EEAF75000D2F277 /* parser */,
 				224BEFB01EEAA2290033961F /* headersasl */,
 				224BEF931EEA860E0033961F /* sections */,
 				221AE5D61EE99CFA009C0A09 /* terminus */,
@@ -2421,7 +2434,7 @@
 				22C531AB1EAF90D2007F57A8 /* IBPubrec.m in Sources */,
 				22ED8B441EB092F9006A0C98 /* IBMQTTSN.m in Sources */,
 				22C532251EAF9338007F57A8 /* IBSNWillMsgReq.m in Sources */,
-				2289A1E91EE84E03009B98AA /* IBAMQPing.m in Sources */,
+				2289A1E91EE84E03009B98AA /* IBAMQPPing.m in Sources */,
 				22F308641EE6E285008AF92F /* IBAMQPTerminusDurability.m in Sources */,
 				2217D8EE1EBB12F200A636E7 /* IBTimersMap.m in Sources */,
 				22C532491EAF9625007F57A8 /* IBSNParser.m in Sources */,
@@ -2452,6 +2465,7 @@
 				224BEF921EEA7F7C0033961F /* IBAMQPTarget.m in Sources */,
 				224BEFB61EEAA5080033961F /* IBAMQPSASLInit.m in Sources */,
 				2289A1EF1EE8520A009B98AA /* IBAMQPWrapper.m in Sources */,
+				22C728061EEAF78800D2F277 /* IBAMQPParser.m in Sources */,
 				22C5323C1EAF95A8007F57A8 /* IBSNFlags.m in Sources */,
 				22C5323E1EAF95A8007F57A8 /* IBSNIdentifierTopic.m in Sources */,
 				2289A1DC1EE849E8009B98AA /* IBAMQPLongID.m in Sources */,
