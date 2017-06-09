@@ -31,6 +31,12 @@
 #import "IBAMQPProperties.h"
 #import "IBAMQPSequence.h"
 #import "IBAMQPValue.h"
+#import "IBAMQPStateCode.h"
+#import "IBAMQPAccepted.h"
+#import "IBAMQPModified.h"
+#import "IBAMQPReceived.h"
+#import "IBAMQPRejected.h"
+#import "IBAMQPReleased.h"
 
 @implementation IBAMQPFactory
 
@@ -117,13 +123,59 @@
         case IBAMQPPropertiesSectionCode:               section = [[IBAMQPProperties alloc] init];              break;
         case IBAMQPSequenceSectionCode:                 section = [[IBAMQPSequence alloc] init];                break;
         case IBAMQPValueSectionCode:                    section = [[IBAMQPValue alloc] init];                   break;
+        
         default:
+        @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
+
             break;
     }
     
     [section fill:value];
     
     return section;
+}
+
++ (id<IBAMQPState>) state : (IBAMQPTLVList *) list {
+
+    id<IBAMQPState> state = nil;
+
+    Byte byteCode = list.constructor.descriptorCode;
+    IBAMQPStateCode *code = [IBAMQPStateCode enumWithStateCode:byteCode];
+    
+    switch (code.value) {
+        case IBAMQPAcceptedStateCode:   state = [[IBAMQPAccepted alloc] init];   break;
+        case IBAMQPModifiedStateCode:   state = [[IBAMQPModified alloc] init];   break;
+        case IBAMQPReceivedStateCode:   state = [[IBAMQPReceived alloc] init];   break;
+        case IBAMQPRejectedStateCode:   state = [[IBAMQPRejected alloc] init];   break;
+        case IBAMQPReleasedStateCode:   state = [[IBAMQPReleased alloc] init];   break;
+
+        default:
+        @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
+            break;
+    }
+    
+    return state;
+}
+
++ (id<IBAMQPOutcome>) outcome : (IBAMQPTLVList *) list {
+    
+    id<IBAMQPOutcome> outcome = nil;
+
+    Byte byteCode = list.constructor.descriptorCode;
+    IBAMQPStateCode *code = [IBAMQPStateCode enumWithStateCode:byteCode];
+
+    switch (code.value) {
+        case IBAMQPAcceptedStateCode:   outcome = [[IBAMQPAccepted alloc] init];  break;
+        case IBAMQPModifiedStateCode:   outcome = [[IBAMQPModified alloc] init];  break;
+        case IBAMQPRejectedStateCode:   outcome = [[IBAMQPRejected alloc] init];  break;
+        case IBAMQPReleasedStateCode:   outcome = [[IBAMQPReleased alloc] init];  break;
+
+        default:
+        @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
+            break;
+    }
+    
+    return outcome;
 }
 
 @end

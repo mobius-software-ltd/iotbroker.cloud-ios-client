@@ -19,7 +19,7 @@
 + (IBAMQPHeader *) amqp : (NSMutableData *) data;
 + (IBAMQPHeader *) sasl : (NSMutableData *) data;
 + (id<IBAMQPSection>) section : (NSMutableData *) data;
-+ (id<IBAMQPOutcome>) outcome : (IBAMQPTLVList *) list;
 + (id<IBAMQPState>) state : (IBAMQPTLVList *) list;
++ (id<IBAMQPOutcome>) outcome : (IBAMQPTLVList *) list;
 
 @end
