@@ -10,8 +10,16 @@
 
 @implementation IBAMQPSimpleConstructor
 
-- (instancetype) initWithType : (IBAMQPType *) type {
+- (instancetype) init {
     self = [super init];
+    if (self != nil) {
+        self->_type = [[IBAMQPType alloc] init];
+    }
+    return self;
+}
+
+- (instancetype) initWithType : (IBAMQPType *) type {
+    self = [self init];
     if (self != nil) {
         self->_type = type;
     }

@@ -44,10 +44,31 @@
 		2217D9641EBB18B700A636E7 /* IBProtocolTypeEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D95F1EBB18B700A636E7 /* IBProtocolTypeEnum.m */; };
 		2217D9651EBB18B700A636E7 /* IBLengthDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9611EBB18B700A636E7 /* IBLengthDetails.m */; };
 		2217D9661EBB18B700A636E7 /* IBMutableData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D9631EBB18B700A636E7 /* IBMutableData.m */; };
+		221AE5C81EE94315009C0A09 /* IBAMQPUnwrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AE5C71EE94315009C0A09 /* IBAMQPUnwrapper.m */; };
+		221AE5CB1EE986B3009C0A09 /* IBAMQPError.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AE5CA1EE986B3009C0A09 /* IBAMQPError.m */; };
+		221AE5CE1EE9948B009C0A09 /* IBAMQPModified.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AE5CD1EE9948B009C0A09 /* IBAMQPModified.m */; };
+		221AE5D11EE999ED009C0A09 /* IBAMQPFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AE5D01EE999ED009C0A09 /* IBAMQPFactory.m */; };
+		221AE5D51EE99B12009C0A09 /* IBAMQPAttach.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AE5D41EE99B12009C0A09 /* IBAMQPAttach.m */; };
+		221AE5D91EE99D0C009C0A09 /* IBAMQPSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AE5D81EE99D0C009C0A09 /* IBAMQPSource.m */; };
 		222722141ED829490098D40F /* IBCoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 222722131ED829490098D40F /* IBCoParser.m */; };
 		222722181ED829930098D40F /* IBCoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 222722171ED829930098D40F /* IBCoMessage.m */; };
 		2227221D1ED86A0E0098D40F /* IBCoAP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2227221C1ED86A0E0098D40F /* IBCoAP.m */; };
 		22280FA21EDC46A300D56252 /* IBProtocolTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22280FA11EDC46A300D56252 /* IBProtocolTypeTableViewCell.m */; };
+		224BEF921EEA7F7C0033961F /* IBAMQPTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEF911EEA7F7C0033961F /* IBAMQPTarget.m */; };
+		224BEF971EEA87530033961F /* IBAMQPData.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEF961EEA87530033961F /* IBAMQPData.m */; };
+		224BEF9A1EEA89050033961F /* IBAMQPFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEF991EEA89050033961F /* IBAMQPFooter.m */; };
+		224BEF9D1EEA8C620033961F /* IBAMQPSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEF9C1EEA8C620033961F /* IBAMQPSequence.m */; };
+		224BEFA01EEA8ED60033961F /* IBAMQPValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEF9F1EEA8ED60033961F /* IBAMQPValue.m */; };
+		224BEFA31EEA90440033961F /* IBAMQPApplicationProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFA21EEA90440033961F /* IBAMQPApplicationProperties.m */; };
+		224BEFA61EEA93310033961F /* IBAMQPProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFA51EEA93310033961F /* IBAMQPProperties.m */; };
+		224BEFA91EEA9B540033961F /* IBDeliveryAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFA81EEA9B540033961F /* IBDeliveryAnnotation.m */; };
+		224BEFAC1EEA9D3E0033961F /* IBAMQPMessageAnnotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFAB1EEA9D3E0033961F /* IBAMQPMessageAnnotations.m */; };
+		224BEFAF1EEA9F1F0033961F /* IBAMQPMessageHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFAE1EEA9F1F0033961F /* IBAMQPMessageHeader.m */; };
+		224BEFB31EEAA2920033961F /* IBAMQPSASLChallenge.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFB21EEAA2920033961F /* IBAMQPSASLChallenge.m */; };
+		224BEFB61EEAA5080033961F /* IBAMQPSASLInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFB51EEAA5080033961F /* IBAMQPSASLInit.m */; };
+		224BEFB91EEAA7450033961F /* IBAMQPSASLMechanisms.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFB81EEAA7450033961F /* IBAMQPSASLMechanisms.m */; };
+		224BEFBC1EEAA8D80033961F /* IBAMQPSASLOutcome.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFBB1EEAA8D80033961F /* IBAMQPSASLOutcome.m */; };
+		224BEFBF1EEAABE10033961F /* IBAMQPSASLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFBE1EEAABE10033961F /* IBAMQPSASLResponse.m */; };
 		2289A1A81EE7E8EF009B98AA /* IBAMQPTLVList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1A71EE7E8EF009B98AA /* IBAMQPTLVList.m */; };
 		2289A1AB1EE7F332009B98AA /* IBAMQPTLVMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1AA1EE7F332009B98AA /* IBAMQPTLVMap.m */; };
 		2289A1AF1EE7FAB1009B98AA /* IBAMQPTLVArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1AE1EE7FAB1009B98AA /* IBAMQPTLVArray.m */; };
@@ -249,6 +270,18 @@
 		2217D9611EBB18B700A636E7 /* IBLengthDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLengthDetails.m; sourceTree = "<group>"; };
 		2217D9621EBB18B700A636E7 /* IBMutableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBMutableData.h; sourceTree = "<group>"; };
 		2217D9631EBB18B700A636E7 /* IBMutableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBMutableData.m; sourceTree = "<group>"; };
+		221AE5C61EE94315009C0A09 /* IBAMQPUnwrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPUnwrapper.h; sourceTree = "<group>"; };
+		221AE5C71EE94315009C0A09 /* IBAMQPUnwrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPUnwrapper.m; sourceTree = "<group>"; };
+		221AE5C91EE986B3009C0A09 /* IBAMQPError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPError.h; sourceTree = "<group>"; };
+		221AE5CA1EE986B3009C0A09 /* IBAMQPError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPError.m; sourceTree = "<group>"; };
+		221AE5CC1EE9948B009C0A09 /* IBAMQPModified.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPModified.h; sourceTree = "<group>"; };
+		221AE5CD1EE9948B009C0A09 /* IBAMQPModified.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPModified.m; sourceTree = "<group>"; };
+		221AE5CF1EE999ED009C0A09 /* IBAMQPFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPFactory.h; sourceTree = "<group>"; };
+		221AE5D01EE999ED009C0A09 /* IBAMQPFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPFactory.m; sourceTree = "<group>"; };
+		221AE5D31EE99B12009C0A09 /* IBAMQPAttach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPAttach.h; sourceTree = "<group>"; };
+		221AE5D41EE99B12009C0A09 /* IBAMQPAttach.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPAttach.m; sourceTree = "<group>"; };
+		221AE5D71EE99D0C009C0A09 /* IBAMQPSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPSource.h; sourceTree = "<group>"; };
+		221AE5D81EE99D0C009C0A09 /* IBAMQPSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPSource.m; sourceTree = "<group>"; };
 		222722121ED829490098D40F /* IBCoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCoParser.h; sourceTree = "<group>"; };
 		222722131ED829490098D40F /* IBCoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBCoParser.m; sourceTree = "<group>"; };
 		222722161ED829930098D40F /* IBCoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCoMessage.h; sourceTree = "<group>"; };
@@ -258,6 +291,37 @@
 		2227221C1ED86A0E0098D40F /* IBCoAP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBCoAP.m; sourceTree = "<group>"; };
 		22280FA01EDC46A300D56252 /* IBProtocolTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBProtocolTypeTableViewCell.h; sourceTree = "<group>"; };
 		22280FA11EDC46A300D56252 /* IBProtocolTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBProtocolTypeTableViewCell.m; sourceTree = "<group>"; };
+		224BEF901EEA7F7C0033961F /* IBAMQPTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPTarget.h; sourceTree = "<group>"; };
+		224BEF911EEA7F7C0033961F /* IBAMQPTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPTarget.m; sourceTree = "<group>"; };
+		224BEF941EEA86A40033961F /* IBAMQPSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPSection.h; sourceTree = "<group>"; };
+		224BEF951EEA87530033961F /* IBAMQPData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPData.h; sourceTree = "<group>"; };
+		224BEF961EEA87530033961F /* IBAMQPData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPData.m; sourceTree = "<group>"; };
+		224BEF981EEA89050033961F /* IBAMQPFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPFooter.h; sourceTree = "<group>"; };
+		224BEF991EEA89050033961F /* IBAMQPFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPFooter.m; sourceTree = "<group>"; };
+		224BEF9B1EEA8C620033961F /* IBAMQPSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPSequence.h; sourceTree = "<group>"; };
+		224BEF9C1EEA8C620033961F /* IBAMQPSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPSequence.m; sourceTree = "<group>"; };
+		224BEF9E1EEA8ED60033961F /* IBAMQPValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPValue.h; sourceTree = "<group>"; };
+		224BEF9F1EEA8ED60033961F /* IBAMQPValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPValue.m; sourceTree = "<group>"; };
+		224BEFA11EEA90440033961F /* IBAMQPApplicationProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPApplicationProperties.h; sourceTree = "<group>"; };
+		224BEFA21EEA90440033961F /* IBAMQPApplicationProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPApplicationProperties.m; sourceTree = "<group>"; };
+		224BEFA41EEA93310033961F /* IBAMQPProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPProperties.h; sourceTree = "<group>"; };
+		224BEFA51EEA93310033961F /* IBAMQPProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPProperties.m; sourceTree = "<group>"; };
+		224BEFA71EEA9B540033961F /* IBDeliveryAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBDeliveryAnnotation.h; sourceTree = "<group>"; };
+		224BEFA81EEA9B540033961F /* IBDeliveryAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBDeliveryAnnotation.m; sourceTree = "<group>"; };
+		224BEFAA1EEA9D3E0033961F /* IBAMQPMessageAnnotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPMessageAnnotations.h; sourceTree = "<group>"; };
+		224BEFAB1EEA9D3E0033961F /* IBAMQPMessageAnnotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPMessageAnnotations.m; sourceTree = "<group>"; };
+		224BEFAD1EEA9F1F0033961F /* IBAMQPMessageHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPMessageHeader.h; sourceTree = "<group>"; };
+		224BEFAE1EEA9F1F0033961F /* IBAMQPMessageHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPMessageHeader.m; sourceTree = "<group>"; };
+		224BEFB11EEAA2920033961F /* IBAMQPSASLChallenge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPSASLChallenge.h; sourceTree = "<group>"; };
+		224BEFB21EEAA2920033961F /* IBAMQPSASLChallenge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPSASLChallenge.m; sourceTree = "<group>"; };
+		224BEFB41EEAA5080033961F /* IBAMQPSASLInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPSASLInit.h; sourceTree = "<group>"; };
+		224BEFB51EEAA5080033961F /* IBAMQPSASLInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPSASLInit.m; sourceTree = "<group>"; };
+		224BEFB71EEAA7450033961F /* IBAMQPSASLMechanisms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPSASLMechanisms.h; sourceTree = "<group>"; };
+		224BEFB81EEAA7450033961F /* IBAMQPSASLMechanisms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPSASLMechanisms.m; sourceTree = "<group>"; };
+		224BEFBA1EEAA8D80033961F /* IBAMQPSASLOutcome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPSASLOutcome.h; sourceTree = "<group>"; };
+		224BEFBB1EEAA8D80033961F /* IBAMQPSASLOutcome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPSASLOutcome.m; sourceTree = "<group>"; };
+		224BEFBD1EEAABE10033961F /* IBAMQPSASLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPSASLResponse.h; sourceTree = "<group>"; };
+		224BEFBE1EEAABE10033961F /* IBAMQPSASLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPSASLResponse.m; sourceTree = "<group>"; };
 		2289A1A61EE7E8EF009B98AA /* IBAMQPTLVList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPTLVList.h; sourceTree = "<group>"; };
 		2289A1A71EE7E8EF009B98AA /* IBAMQPTLVList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPTLVList.m; sourceTree = "<group>"; };
 		2289A1A91EE7F332009B98AA /* IBAMQPTLVMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPTLVMap.h; sourceTree = "<group>"; };
@@ -825,6 +889,26 @@
 			name = PickerView;
 			sourceTree = "<group>";
 		};
+		221AE5D21EE99AD0009C0A09 /* headeramqp */ = {
+			isa = PBXGroup;
+			children = (
+				221AE5D31EE99B12009C0A09 /* IBAMQPAttach.h */,
+				221AE5D41EE99B12009C0A09 /* IBAMQPAttach.m */,
+			);
+			path = headeramqp;
+			sourceTree = "<group>";
+		};
+		221AE5D61EE99CFA009C0A09 /* terminus */ = {
+			isa = PBXGroup;
+			children = (
+				221AE5D71EE99D0C009C0A09 /* IBAMQPSource.h */,
+				221AE5D81EE99D0C009C0A09 /* IBAMQPSource.m */,
+				224BEF901EEA7F7C0033961F /* IBAMQPTarget.h */,
+				224BEF911EEA7F7C0033961F /* IBAMQPTarget.m */,
+			);
+			path = terminus;
+			sourceTree = "<group>";
+		};
 		222722101ED829130098D40F /* CoAP */ = {
 			isa = PBXGroup;
 			children = (
@@ -871,6 +955,49 @@
 			name = ProtocolTypeTableViewCell;
 			sourceTree = "<group>";
 		};
+		224BEF931EEA860E0033961F /* sections */ = {
+			isa = PBXGroup;
+			children = (
+				224BEF941EEA86A40033961F /* IBAMQPSection.h */,
+				224BEF951EEA87530033961F /* IBAMQPData.h */,
+				224BEF961EEA87530033961F /* IBAMQPData.m */,
+				224BEF981EEA89050033961F /* IBAMQPFooter.h */,
+				224BEF991EEA89050033961F /* IBAMQPFooter.m */,
+				224BEF9B1EEA8C620033961F /* IBAMQPSequence.h */,
+				224BEF9C1EEA8C620033961F /* IBAMQPSequence.m */,
+				224BEF9E1EEA8ED60033961F /* IBAMQPValue.h */,
+				224BEF9F1EEA8ED60033961F /* IBAMQPValue.m */,
+				224BEFA11EEA90440033961F /* IBAMQPApplicationProperties.h */,
+				224BEFA21EEA90440033961F /* IBAMQPApplicationProperties.m */,
+				224BEFA41EEA93310033961F /* IBAMQPProperties.h */,
+				224BEFA51EEA93310033961F /* IBAMQPProperties.m */,
+				224BEFA71EEA9B540033961F /* IBDeliveryAnnotation.h */,
+				224BEFA81EEA9B540033961F /* IBDeliveryAnnotation.m */,
+				224BEFAA1EEA9D3E0033961F /* IBAMQPMessageAnnotations.h */,
+				224BEFAB1EEA9D3E0033961F /* IBAMQPMessageAnnotations.m */,
+				224BEFAD1EEA9F1F0033961F /* IBAMQPMessageHeader.h */,
+				224BEFAE1EEA9F1F0033961F /* IBAMQPMessageHeader.m */,
+			);
+			path = sections;
+			sourceTree = "<group>";
+		};
+		224BEFB01EEAA2290033961F /* headersasl */ = {
+			isa = PBXGroup;
+			children = (
+				224BEFB11EEAA2920033961F /* IBAMQPSASLChallenge.h */,
+				224BEFB21EEAA2920033961F /* IBAMQPSASLChallenge.m */,
+				224BEFB41EEAA5080033961F /* IBAMQPSASLInit.h */,
+				224BEFB51EEAA5080033961F /* IBAMQPSASLInit.m */,
+				224BEFB71EEAA7450033961F /* IBAMQPSASLMechanisms.h */,
+				224BEFB81EEAA7450033961F /* IBAMQPSASLMechanisms.m */,
+				224BEFBA1EEAA8D80033961F /* IBAMQPSASLOutcome.h */,
+				224BEFBB1EEAA8D80033961F /* IBAMQPSASLOutcome.m */,
+				224BEFBD1EEAABE10033961F /* IBAMQPSASLResponse.h */,
+				224BEFBE1EEAABE10033961F /* IBAMQPSASLResponse.m */,
+			);
+			path = headersasl;
+			sourceTree = "<group>";
+		};
 		2289A1A51EE7E8CF009B98AA /* compound */ = {
 			isa = PBXGroup;
 			children = (
@@ -906,6 +1033,10 @@
 				2289A1C01EE830A6009B98AA /* IBAMQPRejected.m */,
 				2289A1C21EE830E8009B98AA /* IBAMQPReleased.h */,
 				2289A1C31EE830E8009B98AA /* IBAMQPReleased.m */,
+				221AE5C91EE986B3009C0A09 /* IBAMQPError.h */,
+				221AE5CA1EE986B3009C0A09 /* IBAMQPError.m */,
+				221AE5CC1EE9948B009C0A09 /* IBAMQPModified.h */,
+				221AE5CD1EE9948B009C0A09 /* IBAMQPModified.m */,
 			);
 			path = described;
 			sourceTree = "<group>";
@@ -951,6 +1082,10 @@
 				2289A1EB1EE84F05009B98AA /* IBAMQPProtoHeader.m */,
 				2289A1ED1EE8520A009B98AA /* IBAMQPWrapper.h */,
 				2289A1EE1EE8520A009B98AA /* IBAMQPWrapper.m */,
+				221AE5C61EE94315009C0A09 /* IBAMQPUnwrapper.h */,
+				221AE5C71EE94315009C0A09 /* IBAMQPUnwrapper.m */,
+				221AE5CF1EE999ED009C0A09 /* IBAMQPFactory.h */,
+				221AE5D01EE999ED009C0A09 /* IBAMQPFactory.m */,
 			);
 			path = headerapi;
 			sourceTree = "<group>";
@@ -1824,6 +1959,10 @@
 		22F3083A1EE6E285008AF92F /* AMQP */ = {
 			isa = PBXGroup;
 			children = (
+				224BEFB01EEAA2290033961F /* headersasl */,
+				224BEF931EEA860E0033961F /* sections */,
+				221AE5D61EE99CFA009C0A09 /* terminus */,
+				221AE5D21EE99AD0009C0A09 /* headeramqp */,
 				2289A1E31EE84B6A009B98AA /* headerapi */,
 				2289A1CB1EE8354F009B98AA /* wrappers */,
 				22F308671EE6E2B1008AF92F /* TLV */,
@@ -2127,33 +2266,43 @@
 				22C532231EAF9338007F57A8 /* IBSNAdvertise.m in Sources */,
 				2217D9651EBB18B700A636E7 /* IBLengthDetails.m in Sources */,
 				22C5321C1EAF9338007F57A8 /* IBSNWillMsgResp.m in Sources */,
+				224BEFBF1EEAABE10033961F /* IBAMQPSASLResponse.m in Sources */,
 				222722141ED829490098D40F /* IBCoParser.m in Sources */,
 				22F308591EE6E285008AF92F /* IBAMQPSimpleConstructor.m in Sources */,
 				22C532221EAF9338007F57A8 /* IBSNSearchGW.m in Sources */,
 				22F308651EE6E285008AF92F /* IBAMQPTerminusExpiryPolicy.m in Sources */,
 				22C532181EAF9338007F57A8 /* IBSNSuback.m in Sources */,
 				2289A1C11EE830A6009B98AA /* IBAMQPRejected.m in Sources */,
+				221AE5CE1EE9948B009C0A09 /* IBAMQPModified.m in Sources */,
 				22C531BC1EAF90F2007F57A8 /* IBWill.m in Sources */,
 				2217D9461EBB177F00A636E7 /* IBMessagesListTableViewCell.m in Sources */,
 				22F3085B1EE6E285008AF92F /* IBAMQPErrorCode.m in Sources */,
 				222722181ED829930098D40F /* IBCoMessage.m in Sources */,
+				224BEFB31EEAA2920033961F /* IBAMQPSASLChallenge.m in Sources */,
 				2217D8E71EBB127500A636E7 /* IBSocketDecoder.m in Sources */,
 				2217D9031EBB160700A636E7 /* Topic+CoreDataClass.m in Sources */,
 				22F3085E1EE6E285008AF92F /* IBAMQPReceiverSettleMode.m in Sources */,
+				224BEFBC1EEAA8D80033961F /* IBAMQPSASLOutcome.m in Sources */,
+				221AE5D11EE999ED009C0A09 /* IBAMQPFactory.m in Sources */,
 				22C531AD1EAF90D2007F57A8 /* IBSuback.m in Sources */,
+				224BEF9D1EEA8C620033961F /* IBAMQPSequence.m in Sources */,
 				22F3086E1EE6E68C008AF92F /* IBAMQPDescribedConstructor.m in Sources */,
 				2289A1BE1EE8305D009B98AA /* IBAMQPReceived.m in Sources */,
 				2289A1CA1EE8337E009B98AA /* IBAMQPDynamicNodeProperty.m in Sources */,
 				22C531A31EAF90D2007F57A8 /* IBPuback.m in Sources */,
+				224BEFAC1EEA9D3E0033961F /* IBAMQPMessageAnnotations.m in Sources */,
 				2289A1B21EE80D43009B98AA /* IBAMQPTLVFactory.m in Sources */,
+				221AE5C81EE94315009C0A09 /* IBAMQPUnwrapper.m in Sources */,
 				22C531A71EAF90D2007F57A8 /* IBPingreq.m in Sources */,
 				22C531A61EAF90D2007F57A8 /* IBDisconnect.m in Sources */,
+				221AE5CB1EE986B3009C0A09 /* IBAMQPError.m in Sources */,
 				2217D9661EBB18B700A636E7 /* IBMutableData.m in Sources */,
 				22C5323F1EAF95A8007F57A8 /* IBSNShortTopic.m in Sources */,
 				22F3085C1EE6E285008AF92F /* IBAMQPHeaderCode.m in Sources */,
 				22C532141EAF9338007F57A8 /* IBSNPubrec.m in Sources */,
 				22F3086B1EE6E2D3008AF92F /* IBTLVAMQP.m in Sources */,
 				2289A1C41EE830E8009B98AA /* IBAMQPReleased.m in Sources */,
+				221AE5D51EE99B12009C0A09 /* IBAMQPAttach.m in Sources */,
 				2217D9401EBB177F00A636E7 /* IBAlertViewController.m in Sources */,
 				22ED8B761EB0D745006A0C98 /* IBUDPSocket.m in Sources */,
 				2289A1D91EE848B2009B98AA /* IBAMQPBinaryID.m in Sources */,
@@ -2178,6 +2327,7 @@
 				22C5321A1EAF9338007F57A8 /* IBSNUnsuback.m in Sources */,
 				22C5321D1EAF9338007F57A8 /* IBSNWillTopicResp.m in Sources */,
 				22C5323D1EAF95A8007F57A8 /* IBSNFullTopic.m in Sources */,
+				224BEFA91EEA9B540033961F /* IBDeliveryAnnotation.m in Sources */,
 				22C531AC1EAF90D2007F57A8 /* IBPubrel.m in Sources */,
 				2217D95D1EBB188F00A636E7 /* IBPickerView.m in Sources */,
 				2217D9451EBB177F00A636E7 /* IBTopicsListTableViewCell.m in Sources */,
@@ -2185,6 +2335,7 @@
 				2289A1AF1EE7FAB1009B98AA /* IBAMQPTLVArray.m in Sources */,
 				2217D8E81EBB127500A636E7 /* IBSocketEncoder.m in Sources */,
 				2289A1D41EE8468F009B98AA /* IBAMQPSymbol.m in Sources */,
+				224BEFB91EEAA7450033961F /* IBAMQPSASLMechanisms.m in Sources */,
 				22F308611EE6E285008AF92F /* IBAMQPSectionCode.m in Sources */,
 				22C532191EAF9338007F57A8 /* IBSNSubscribe.m in Sources */,
 				2289A1B81EE82B51009B98AA /* IBAMQPAccepted.m in Sources */,
@@ -2192,6 +2343,8 @@
 				2217D9361EBB177F00A636E7 /* IBCoordinator.m in Sources */,
 				22C5320B1EAF9338007F57A8 /* IBSNPublish.m in Sources */,
 				22C5321B1EAF9338007F57A8 /* IBSNUnsubscribe.m in Sources */,
+				224BEFA61EEA93310033961F /* IBAMQPProperties.m in Sources */,
+				221AE5D91EE99D0C009C0A09 /* IBAMQPSource.m in Sources */,
 				2217D8FE1EBB160700A636E7 /* Account+CoreDataProperties.m in Sources */,
 				22C532161EAF9338007F57A8 /* IBSNRegack.m in Sources */,
 				2217D93F1EBB177F00A636E7 /* IBAccountListTableViewCell.m in Sources */,
@@ -2209,9 +2362,11 @@
 				22F308761EE6FB56008AF92F /* IBAMQPTLVNull.m in Sources */,
 				22C532171EAF9338007F57A8 /* IBSNRegister.m in Sources */,
 				2217D93E1EBB177F00A636E7 /* IBTopicsListTableViewController.m in Sources */,
+				224BEFA31EEA90440033961F /* IBAMQPApplicationProperties.m in Sources */,
 				22C532441EAF95A8007F57A8 /* IBSNResponseMessage.m in Sources */,
 				2227221D1ED86A0E0098D40F /* IBCoAP.m in Sources */,
 				22C532111EAF9338007F57A8 /* IBSNPingreq.m in Sources */,
+				224BEF971EEA87530033961F /* IBAMQPData.m in Sources */,
 				22ED8B5E1EB0D00E006A0C98 /* IBQoS.m in Sources */,
 				2217D8EF1EBB12F200A636E7 /* IBTimerTask.m in Sources */,
 				22ED8B5F1EB0D00E006A0C98 /* IBCountableMessage.m in Sources */,
@@ -2228,13 +2383,16 @@
 				2217D9421EBB177F00A636E7 /* IBAddTopicViewController.m in Sources */,
 				22C531AE1EAF90D2007F57A8 /* IBSubscribe.m in Sources */,
 				22C5320E1EAF9338007F57A8 /* IBSNWillTopic.m in Sources */,
+				224BEFA01EEA8ED60033961F /* IBAMQPValue.m in Sources */,
 				22C5C02A1DF061CE00790EF6 /* main.m in Sources */,
 				2217D93A1EBB177F00A636E7 /* IBTabBarController.m in Sources */,
 				22F308721EE6ED12008AF92F /* IBAMQPTLVVariable.m in Sources */,
 				2217D93B1EBB177F00A636E7 /* IBMessagesListTableViewController.m in Sources */,
 				22C532101EAF9338007F57A8 /* IBSNEncapsulated.m in Sources */,
 				2217D8E61EBB127500A636E7 /* IBSocketTransport.m in Sources */,
+				224BEFAF1EEA9F1F0033961F /* IBAMQPMessageHeader.m in Sources */,
 				22C5321F1EAF9338007F57A8 /* IBSNConnack.m in Sources */,
+				224BEF9A1EEA89050033961F /* IBAMQPFooter.m in Sources */,
 				2217D8FF1EBB160700A636E7 /* Topic+CoreDataProperties.m in Sources */,
 				22C532121EAF9338007F57A8 /* IBSNPuback.m in Sources */,
 				2217D93D1EBB177F00A636E7 /* IBSendMessageTableViewController.m in Sources */,
@@ -2244,6 +2402,8 @@
 				2217D90A1EBB163F00A636E7 /* IBAccountManager.m in Sources */,
 				22F308621EE6E285008AF92F /* IBAMQPSendCode.m in Sources */,
 				2217D90C1EBB163F00A636E7 /* iotbroker_cloud_client.xcdatamodeld in Sources */,
+				224BEF921EEA7F7C0033961F /* IBAMQPTarget.m in Sources */,
+				224BEFB61EEAA5080033961F /* IBAMQPSASLInit.m in Sources */,
 				2289A1EF1EE8520A009B98AA /* IBAMQPWrapper.m in Sources */,
 				22C5323C1EAF95A8007F57A8 /* IBSNFlags.m in Sources */,
 				22C5323E1EAF95A8007F57A8 /* IBSNIdentifierTopic.m in Sources */,

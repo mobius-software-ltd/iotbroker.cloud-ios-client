@@ -53,4 +53,10 @@
     return true;
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+
+    IBAMQPSymbol *copy = [[IBAMQPSymbol alloc] initWithString:self.value];
+    return copy;
+}
+
 @end

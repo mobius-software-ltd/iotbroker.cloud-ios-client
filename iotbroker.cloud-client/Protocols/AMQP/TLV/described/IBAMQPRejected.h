@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "IBAMQPOutcome.h"
 #import "IBAMQPState.h"
+#import "IBAMQPError.h"
 
 @interface IBAMQPRejected : NSObject <IBAMQPOutcome, IBAMQPState>
+
+@property (strong, nonatomic) IBAMQPError *error;
 
 @end

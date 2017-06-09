@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface IBAMQPSymbol : NSObject
+@interface IBAMQPSymbol : NSObject <NSCopying>
 
 @property (strong, nonatomic) NSString *value;
 

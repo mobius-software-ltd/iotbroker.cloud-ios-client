@@ -8,14 +8,35 @@
 
 #import <Foundation/Foundation.h>
 #import "IBTLVAMQP.h"
-#import "IBAMQPTLVArray.h"
-#import "IBAMQPTLVMap.h"
-#import "IBAMQPTLVNull.h"
-#import "IBAMQPTLVFixed.h"
 #import "IBAMQPDecimal.h"
 #import "IBAMQPSymbol.h"
-#import "IBAMQPTLVVariable.h"
 
 @interface IBAMQPWrapper : NSObject
+
++ (IBTLVAMQP *) wrapObject : (id) object withType : (IBAMQPTypes) type;
+
++ (IBTLVAMQP *) wrapBOOL : (BOOL) value;
++ (IBTLVAMQP *) wrapUByte : (short) value;
++ (IBTLVAMQP *) wrapByte : (Byte) value;
++ (IBTLVAMQP *) wrapUInt : (NSInteger) value;
++ (IBTLVAMQP *) wrapInt : (NSInteger) value;
++ (IBTLVAMQP *) wrapULong : (long) value;
++ (IBTLVAMQP *) wrapLong : (long) value;
++ (IBTLVAMQP *) wrapBinary : (NSData *) value;
++ (IBTLVAMQP *) wrapUUID : (NSUUID *) value;
++ (IBTLVAMQP *) wrapUShort : (short) value;
++ (IBTLVAMQP *) wrapShort : (short) value;
++ (IBTLVAMQP *) wrapDouble : (double) value;
++ (IBTLVAMQP *) wrapFloat : (float) value;
++ (IBTLVAMQP *) wrapChar : (char) value;
++ (IBTLVAMQP *) wrapTimestamp : (NSDate *) value;
++ (IBTLVAMQP *) wrapDecimal32 : (IBAMQPDecimal *) value;
++ (IBTLVAMQP *) wrapDecimal64 : (IBAMQPDecimal *) value;
++ (IBTLVAMQP *) wrapDecimal128 : (IBAMQPDecimal *) value;
++ (IBTLVAMQP *) wrapString : (NSString *) value;
++ (IBTLVAMQP *) wrapSymbol : (IBAMQPSymbol *) value;
++ (IBTLVAMQP *) wrapList : (NSArray *) value withType : (IBAMQPTypes) type;
++ (IBTLVAMQP *) wrapMap : (NSDictionary *) value withKeyType : (IBAMQPTypes) keyType valueType : (IBAMQPTypes) valueType;
++ (IBTLVAMQP *) wrapArray : (NSArray *) value withType : (IBAMQPTypes) type;
 
 @end

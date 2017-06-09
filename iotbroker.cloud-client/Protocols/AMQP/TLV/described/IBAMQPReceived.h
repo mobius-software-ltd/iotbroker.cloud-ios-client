@@ -11,6 +11,7 @@
 
 @interface IBAMQPReceived : NSObject <IBAMQPState>
 
-
+@property (strong, nonatomic) NSNumber *sectionNumber;
+@property (strong, nonatomic) NSNumber *sectionOffset;
 
 @end

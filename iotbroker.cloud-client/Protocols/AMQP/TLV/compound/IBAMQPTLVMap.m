@@ -11,9 +11,10 @@
 @implementation IBAMQPTLVMap
 
 - (instancetype)init {
-    IBAMQPType *type = [IBAMQPType enumWithType:IBAMQPList8Type];
+    IBAMQPType *type = [IBAMQPType enumWithType:IBAMQPMap8Type];
     self = [super initWithConstructor:[[IBAMQPSimpleConstructor alloc] initWithType:type]];
     if (self != nil) {
+        self->_map = [NSMutableDictionary dictionary];
         self->_width = 1;
         self->_count = 1;
         self->_size = 0;

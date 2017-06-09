@@ -17,6 +17,7 @@
     IBAMQPType *type = [IBAMQPType enumWithType:IBAMQPList0Type];
     self = [super initWithConstructor:[[IBAMQPSimpleConstructor alloc] initWithType:type]];
     if (self != nil) {
+        self->_list = [NSMutableArray array];
         self->_width = 0;
         self->_count = 0;
         self->_size = 0;

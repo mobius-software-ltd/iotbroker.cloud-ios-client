@@ -12,7 +12,7 @@
 
 @interface IBAMQPSimpleConstructor : NSObject
 
-@property (assign, nonatomic) IBAMQPType *type;
+@property (strong, nonatomic) IBAMQPType *type;
 @property (strong, nonatomic, readonly) NSMutableData *data;
 @property (assign, nonatomic, readonly) NSInteger length;
 @property (assign, nonatomic, readonly) Byte descriptorCode;
