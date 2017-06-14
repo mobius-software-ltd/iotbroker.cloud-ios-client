@@ -125,8 +125,8 @@
 }
 
 - (void)decoderDidOpen:(IBSocketDecoder *)sender {
-    self.state = IBTransportOpen;
-    [self.delegate internetProtocolDidStart:self];
+    self.state = IBTransportOpening;
+    //[self.delegate internetProtocolDidStart:self];
 }
 
 - (void)encoderDidOpen:(IBSocketEncoder *)sender {

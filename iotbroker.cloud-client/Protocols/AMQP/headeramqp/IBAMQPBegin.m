@@ -15,15 +15,23 @@
 
 @implementation IBAMQPBegin
 
-@synthesize code = _code;
-@synthesize doff = _doff;
-@synthesize type = _type;
-@synthesize chanel = _chanel;
-
 - (instancetype)init {
     IBAMQPHeaderCode *code = [IBAMQPHeaderCode enumWithHeaderCode:IBAMQPBeginHeaderCode];
     self = [self initWithCode:code];
     return self;
+}
+
+- (NSInteger) getLength {
+    
+    int length = 8;
+    IBAMQPTLVList *arguments = [self arguments];
+    length += arguments.length;
+    
+    return length;
+}
+
+- (NSInteger) getMessageType {
+    return IBAMQPBeginHeaderCode;
 }
 
 - (IBAMQPTLVList *)arguments {
@@ -141,7 +149,7 @@
 
 - (void) addOfferedCapability : (NSArray<NSString *> *) array  {
     if (self->_offeredCapabilities == nil) {
-        self->_desiredCapabilities = [NSMutableArray array];
+        self->_offeredCapabilities = [NSMutableArray array];
     }
     for (NSString *capability in array) {
         [self->_offeredCapabilities addObject:[[IBAMQPSymbol alloc] initWithString:capability]];

@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "IBMutableData.h"
 #import "IBAMQPHeader.h"
+#import "IBAMQPTransfer.h"
+#import "IBAMQPFactory.h"
+#import "IBAMQPProtoHeader.h"
+#import "IBAMQPPing.h"
 
 @interface IBAMQPParser : NSObject
 

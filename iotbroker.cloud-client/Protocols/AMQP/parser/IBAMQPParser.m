@@ -7,20 +7,42 @@
 //
 
 #import "IBAMQPParser.h"
-#import "IBAMQPTransfer.h"
-#import "IBAMQPFactory.h"
-#import "IBAMQPProtoHeader.h"
-#import "IBAMQPPing.h"
 
 @implementation IBAMQPParser
 
-//+ (NSInteger) next : (NSMutableData *) buffer {
++ (NSInteger) next : (NSMutableData *) buffer {
     
-//}
+    NSInteger length = [buffer readInt];
+    if (length == 1095586128) {
+        NSInteger protocolId = [buffer readByte];
+        NSInteger versionMajor = [buffer readByte];
+        NSInteger versionMinor = [buffer readByte];
+        NSInteger versionRevision = [buffer readByte];
+        if ((protocolId == IBAMQPProtocolHeader  || protocolId == IBAMQPProtocolHeaderTLS || protocolId == IBAMQPProtocolHeaderSASL) && versionMajor == 1 && versionMinor == 0 && versionRevision == 0) {
+            [buffer clearNumber];
+            return 8;
+        } else {
+            [buffer clearNumber];
+            return -1;
+        }
+    }
+    [buffer clearNumber];
+    return length;
+}
 
 + (IBAMQPHeader *) decode : (NSMutableData *) buffer {
+        
+    if ([[buffer readStringWithLength:4] isEqualToString:IBAMQPProtocolName]) {
+        IBAMQPProtoHeader *protoHeader = [[IBAMQPProtoHeader alloc] init];
+        protoHeader.protocolID = [buffer readByte];
+        protoHeader.versionMajor = [buffer readByte];
+        protoHeader.versionMinor = [buffer readByte];
+        protoHeader.versionRevision = [buffer readByte];
+        return protoHeader;
+    }
+    [buffer clearNumber];
     
-    long length = [buffer readInt] & 0xffffffff;
+    NSInteger length = [buffer readInt] & 0xffffffffL;
     int doff = [buffer readByte] & 0xff;
     int type = [buffer readByte] & 0xff;
     int chennel = [buffer readShort] & 0xffff;
@@ -35,7 +57,8 @@
         }
     }
     
-    if (length == 1095586128 && doff == 3 && (type == 0 || type == 1) && chennel == 0) {
+
+    if (length == 1095586128 && (doff == 3 || doff == 0) && type == 1 && chennel == 0) {
         if ((buffer.length - [buffer getByteNumber]) == 0) {
             return [[IBAMQPPing alloc] init];
         } else {
@@ -45,6 +68,8 @@
         }
     }
     
+    NSLog(@"DECODE LENGTH = %zd", length);
+    //NSLog(@" %zd - %zd = %zd --- (%zd)", buffer.length, [buffer getByteNumber], (buffer.length - [buffer getByteNumber]), length);
     if (length != (buffer.length - [buffer getByteNumber]) + 8) {
         @throw [NSException exceptionWithName:[[self class] description]
                                        reason:@"Received malformed header with invalid length"
@@ -80,29 +105,17 @@
         [data appendByte:header.doff];
         [data appendByte:header.type];
         [data appendShort:header.chanel];
+        return data;
     }
     
-    int length = 8;
-    
-    IBAMQPTLVList *arguments = [header arguments];
-    length += arguments.length;
-    
-    NSMutableArray<id<IBAMQPSection>> *sections = nil;
-    
-    if (header.type == IBAMQPTransferHeaderCode) {
-        sections = [NSMutableArray arrayWithArray:((IBAMQPTransfer *)header).sections.allValues];
-        for (id<IBAMQPSection> section in sections) {
-            length += section.value.length;
-        }
-    }
-    
-    [data appendInt:length];
+    [data appendInt:[header getLength]];
     [data appendByte:header.doff];
     [data appendByte:header.type];
     [data appendShort:header.chanel];
-    [data appendData:arguments.data];
+    [data appendData:[header arguments].data];
     
-    if (sections != nil) {
+    if (header.type == IBAMQPTransferHeaderCode) {
+        NSMutableArray<id<IBAMQPSection>> *sections = [NSMutableArray arrayWithArray:((IBAMQPTransfer *)header).sections.allValues];
         for (id<IBAMQPSection> section in sections) {
             [data appendData:section.value.data];
         }

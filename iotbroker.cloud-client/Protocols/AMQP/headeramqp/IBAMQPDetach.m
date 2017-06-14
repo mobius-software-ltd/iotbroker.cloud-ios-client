@@ -15,15 +15,23 @@
 
 @implementation IBAMQPDetach
 
-@synthesize code = _code;
-@synthesize doff = _doff;
-@synthesize type = _type;
-@synthesize chanel = _chanel;
-
 - (instancetype)init {
     IBAMQPHeaderCode *code = [IBAMQPHeaderCode enumWithHeaderCode:IBAMQPDetachHeaderCode];
     self = [super initWithCode:code];
     return self;
+}
+
+- (NSInteger) getLength {
+    
+    int length = 8;
+    IBAMQPTLVList *arguments = [self arguments];
+    length += arguments.length;
+    
+    return length;
+}
+
+- (NSInteger) getMessageType {
+    return IBAMQPDetachHeaderCode;
 }
 
 - (IBAMQPTLVList *)arguments {

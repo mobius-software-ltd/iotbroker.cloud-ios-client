@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "IBAMQPHeaderCode.h"
 #import "IBAMQPTLVList.h"
+#import "IBMessage.h"
 
-@interface IBAMQPHeader : NSObject
+@interface IBAMQPHeader : NSObject <IBMessage>
 
 @property (strong, nonatomic) IBAMQPHeaderCode *code;
 

@@ -9,7 +9,7 @@
 #import "IBAMQPHeader.h"
 #import "IBAMQPSymbol.h"
 
-@interface IBAMQPOpen : IBAMQPHeader
+@interface IBAMQPOpen : IBAMQPHeader 
 
 @property (strong, nonatomic) NSString *containerId;
 @property (strong, nonatomic) NSString *hostname;

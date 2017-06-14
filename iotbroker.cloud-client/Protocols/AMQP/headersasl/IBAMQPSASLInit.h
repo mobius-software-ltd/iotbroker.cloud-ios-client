@@ -10,7 +10,7 @@
 #import "IBAMQPSymbol.h"
 #import "IBMutableData.h"
 
-@interface IBAMQPSASLInit : IBAMQPHeader
+@interface IBAMQPSASLInit : IBAMQPHeader 
 
 @property (strong, nonatomic) IBAMQPSymbol *mechanism;
 @property (strong, nonatomic) NSMutableData *initialResponse;

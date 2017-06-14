@@ -15,15 +15,23 @@
 
 @implementation IBAMQPAttach
 
-@synthesize code = _code;
-@synthesize doff = _doff;
-@synthesize type = _type;
-@synthesize chanel = _chanel;
-
 - (instancetype)init {
     IBAMQPHeaderCode *code = [IBAMQPHeaderCode enumWithHeaderCode:IBAMQPAttachHeaderCode];
     self = [super initWithCode:code];
     return self;
+}
+
+- (NSInteger) getLength {
+    
+    int length = 8;
+    IBAMQPTLVList *arguments = [self arguments];
+    length += arguments.length;
+    
+    return length;
+}
+
+- (NSInteger) getMessageType {
+    return IBAMQPAttachHeaderCode;
 }
 
 - (IBAMQPTLVList *)arguments {
@@ -38,7 +46,7 @@
     if (self->_handle == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
-    [list addElementWithIndex:1 element:[IBAMQPWrapper wrapString:self->_name]];
+    [list addElementWithIndex:1 element:[IBAMQPWrapper wrapUInt:[self->_handle unsignedIntValue]]];
     
     if (self->_role == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
@@ -64,7 +72,7 @@
         [list addElementWithIndex:8 element:[IBAMQPWrapper wrapBOOL:[self->_incompleteUnsettled boolValue]]];
     }
     if (self->_initialDeliveryCount != nil) {
-        [list addElementWithIndex:9 element:[IBAMQPWrapper wrapUInt:[self->_incompleteUnsettled unsignedIntValue]]];
+        [list addElementWithIndex:9 element:[IBAMQPWrapper wrapUInt:[self->_initialDeliveryCount unsignedIntValue]]];
     } else if (self->_role.value == IBAMQPSenderRoleCode) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
@@ -216,7 +224,7 @@
 
 - (void) addOfferedCapability : (NSArray<NSString *> *) array  {
     if (self->_offeredCapabilities == nil) {
-        self->_desiredCapabilities = [NSMutableArray array];
+        self->_offeredCapabilities = [NSMutableArray array];
     }
     for (NSString *capability in array) {
         [self->_offeredCapabilities addObject:[[IBAMQPSymbol alloc] initWithString:capability]];

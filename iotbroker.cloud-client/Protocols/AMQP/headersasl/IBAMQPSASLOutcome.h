@@ -10,7 +10,7 @@
 #import "IBAMQPSASLCode.h"
 #import "IBMutableData.h"
 
-@interface IBAMQPSASLOutcome : IBAMQPHeader
+@interface IBAMQPSASLOutcome : IBAMQPHeader 
 
 @property (strong, nonatomic) IBAMQPSASLCode *outcomeCode;
 @property (strong, nonatomic) NSMutableData *additionalData;

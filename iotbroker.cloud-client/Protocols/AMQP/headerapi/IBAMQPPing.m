@@ -17,6 +17,14 @@
     return self;
 }
 
+- (NSInteger) getLength {
+    return 8;
+}
+
+- (NSInteger) getMessageType {
+    return IBAMQPPingHeaderCode;
+}
+
 - (IBAMQPTLVList *)arguments {
     return nil;
 }

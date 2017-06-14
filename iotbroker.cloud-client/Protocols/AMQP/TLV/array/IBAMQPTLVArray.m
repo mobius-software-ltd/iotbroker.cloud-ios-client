@@ -41,7 +41,7 @@
 }
 
 - (void) addElement : (IBTLVAMQP *) element {
-    if (element.length == 0) {
+    if (self->_elements.count == 0) {
         self->_elementContructor = element.constructor;
         self->_size += self->_width;
         self->_size += self->_elementContructor.length;
@@ -67,7 +67,7 @@
     }
     
     NSMutableData *countData = [NSMutableData data];
-
+    
     if (self->_width == 1) {
         [countData appendByte:(Byte)self->_count];
     } else if (self->_width == 4) {
@@ -79,7 +79,9 @@
     NSMutableData *tlvData = [NSMutableData data];
     
     for (IBTLVAMQP *item in self->_elements) {
-        tlvData = item.data;
+        NSInteger valueLength = item.data.length - elementConstructorData.length;
+        NSData *subData = [item.data subdataWithRange:NSMakeRange(elementConstructorData.length, valueLength)];
+        tlvData = [NSMutableData dataWithData:subData];
         [valueData appendData:tlvData];
     }
     

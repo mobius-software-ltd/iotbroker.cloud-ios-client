@@ -7,12 +7,6 @@
 //
 
 #import "IBAMQPWrapper.h"
-#import "IBAMQPTLVList.h"
-#import "IBAMQPTLVArray.h"
-#import "IBAMQPTLVMap.h"
-#import "IBAMQPTLVNull.h"
-#import "IBAMQPTLVFixed.h"
-#import "IBAMQPTLVVariable.h"
 
 @implementation IBAMQPWrapper
 
@@ -167,14 +161,14 @@
     return [[IBAMQPTLVFixed alloc] initWithType:type andValue:data];
 }
 
-+ (IBTLVAMQP *) wrapBinary : (NSData *) value {
++ (IBAMQPTLVVariable *) wrapBinary : (NSData *) value {
 
     if (value == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
     IBAMQPType *type = [[IBAMQPType alloc] init];
     type.value = (value.length > 255) ? IBAMQPBinary32Type : IBAMQPBinary8Type;
-    return [[IBAMQPTLVFixed alloc] initWithType:type andValue:[NSMutableData dataWithData:value]];
+    return [[IBAMQPTLVVariable alloc] initWithType:type andValue:[NSMutableData dataWithData:value]];
 }
 
 + (IBTLVAMQP *) wrapUUID : (NSUUID *) value {
@@ -187,8 +181,7 @@
     return [[IBAMQPTLVFixed alloc] initWithType:type andValue:[NSMutableData dataWithData:data]];
 }
 
-+ (IBTLVAMQP *) wrapUShort : (short) value {
-
++ (IBTLVAMQP *) wrapUShort : (unsigned short) value {
     if (value < 0) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
@@ -268,18 +261,19 @@
     return [[IBAMQPTLVFixed alloc] initWithType:type andValue:value.value];
 }
 
-+ (IBTLVAMQP *) wrapString : (NSString *) value {
++ (IBAMQPTLVVariable *) wrapString : (NSString *) value {
     
     if (value == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
     IBAMQPType *type = [[IBAMQPType alloc] init];
+
     type.value = (value.length > 255) ? IBAMQPString32Type : IBAMQPString8Type;
     NSMutableData *data = [NSMutableData dataWithData:[value dataUsingEncoding:NSUTF8StringEncoding]];
-    return [[IBAMQPTLVFixed alloc] initWithType:type andValue:data];
+    return [[IBAMQPTLVVariable alloc] initWithType:type andValue:data];
 }
 
-+ (IBTLVAMQP *) wrapSymbol : (IBAMQPSymbol *) value {
++ (IBAMQPTLVVariable *) wrapSymbol : (IBAMQPSymbol *) value {
 
     if (value == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
@@ -287,10 +281,10 @@
     IBAMQPType *type = [[IBAMQPType alloc] init];
     NSMutableData *data = [NSMutableData dataWithData:[value.value dataUsingEncoding:NSUTF8StringEncoding]];
     type.value = (data.length > 255) ? IBAMQPSymbol32Type : IBAMQPSymbol8Type;
-    return [[IBAMQPTLVFixed alloc] initWithType:type andValue:data];
+    return [[IBAMQPTLVVariable alloc] initWithType:type andValue:data];
 }
 
-+ (IBTLVAMQP *) wrapList : (NSArray *) value withType : (IBAMQPTypes) type {
++ (IBAMQPTLVList *) wrapList : (NSArray *) value withType : (IBAMQPTypes) type {
 
     if (value == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
@@ -302,7 +296,7 @@
     return list;
 }
 
-+ (IBTLVAMQP *) wrapMap : (NSDictionary *) value withKeyType : (IBAMQPTypes) keyType valueType : (IBAMQPTypes) valueType {
++ (IBAMQPTLVMap *) wrapMap : (NSDictionary *) value withKeyType : (IBAMQPTypes) keyType valueType : (IBAMQPTypes) valueType {
     
     if (value == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
@@ -310,14 +304,17 @@
     IBAMQPTLVMap *map = [[IBAMQPTLVMap alloc] init];
     for (NSObject *key in value.allKeys) {
         NSObject *valueItem = [value objectForKey:key];
-                
-        [map putElementWithKey:[self wrapObject:key withType:keyType]
-                      andValue:[self wrapObject:valueItem withType:valueType]];
+
+        IBTLVAMQP *k = [self wrapObject:key withType:keyType];
+        IBTLVAMQP *v = [self wrapObject:valueItem withType:valueType];
+        
+        [map putElementWithKey:k
+                      andValue:v];
     }
     return map;
 }
 
-+ (IBTLVAMQP *) wrapArray : (NSArray *) value withType : (IBAMQPTypes) type {
++ (IBAMQPTLVArray *) wrapArray : (NSArray *) value withType : (IBAMQPTypes) type {
     
     if (value == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
@@ -326,6 +323,7 @@
     for (NSObject *object in value) {
         [array addElement:[self wrapObject:object withType:type]];
     }
+
     return array;
 }
 

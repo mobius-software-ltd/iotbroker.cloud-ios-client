@@ -7,6 +7,8 @@
 //
 
 #import "IBAMQPTLVMap.h"
+#import "IBAMQPTLVNull.h"
+#import "IBAMQPTLVVariable.h"
 
 @implementation IBAMQPTLVMap
 
@@ -16,8 +18,8 @@
     if (self != nil) {
         self->_map = [NSMutableDictionary dictionary];
         self->_width = 1;
-        self->_count = 1;
-        self->_size = 0;
+        self->_size = 1;
+        self->_count = 0;
     }
     return self;
 }
@@ -38,7 +40,9 @@
 }
 
 - (void) putElementWithKey : (IBTLVAMQP *) key andValue : (IBTLVAMQP *) value {
+    
     [self->_map setObject:value forKey:key];
+    
     self->_size += key.length + value.length;
     self->_count++;
     [self update];
@@ -66,11 +70,11 @@
 - (NSMutableData *)data {
     
     NSMutableData *sizeData = [NSMutableData data];
-    
+
     if (self->_width == 1) {
         [sizeData appendByte:(Byte)self->_size];
     } else {
-        [sizeData appendInt:self->_size];
+        [sizeData appendInt:(int)self->_size];
     }
     
     NSMutableData *countData = [NSMutableData data];
@@ -78,23 +82,18 @@
     if (self->_width == 1) {
         [countData appendByte:(Byte)(self->_count * 2)];
     } else {
-        [countData appendInt:(self->_count * 2)];
+        [countData appendInt:(int)(self->_count * 2)];
     }
     
     NSMutableData *valueData = [NSMutableData data];
     
-    NSMutableData *keyData = [NSMutableData data];
-    NSMutableData *valData = [NSMutableData data];
-    
-    for (IBTLVAMQP *key in self->_map.allKeys) {
-        keyData = key.data;
-        valData = [self->_map objectForKey:key].data;
-        [valueData appendData:keyData];
-        [valueData appendData:valData];
-    }
+    [self->_map enumerateKeysAndObjectsUsingBlock:^(IBTLVAMQP * _Nonnull key, IBTLVAMQP * _Nonnull obj, BOOL * _Nonnull stop) {
+        [valueData appendData:key.data];
+        [valueData appendData:obj.data];
+    }];
     
     NSMutableData *bytes = [NSMutableData data];
-    
+
     [bytes appendData:self.constructor.data];
     
     if (self->_size > 0) {
@@ -102,7 +101,12 @@
         [bytes appendData:countData];
         [bytes appendData:valueData];
     }
+    
     return bytes;
+}
+
+- (NSInteger)length {
+    return self.constructor.length + self->_width + self->_size;
 }
 
 - (NSMutableData *)value {

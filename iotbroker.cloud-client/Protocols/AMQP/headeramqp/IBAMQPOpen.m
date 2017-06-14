@@ -15,15 +15,23 @@
 
 @implementation IBAMQPOpen
 
-@synthesize code = _code;
-@synthesize doff = _doff;
-@synthesize type = _type;
-@synthesize chanel = _chanel;
-
 - (instancetype)init {
     IBAMQPHeaderCode *code = [IBAMQPHeaderCode enumWithHeaderCode:IBAMQPOpenHeaderCode];
     self = [self initWithCode:code];
     return self;
+}
+
+- (NSInteger) getLength {
+    
+    int length = 8;
+    IBAMQPTLVList *arguments = [self arguments];
+    length += arguments.length;
+    
+    return length;
+}
+
+- (NSInteger) getMessageType {
+    return IBAMQPOpenHeaderCode;
 }
 
 - (IBAMQPTLVList *)arguments {
@@ -62,17 +70,20 @@
     if (self->_properties != nil) {
         [list addElementWithIndex:9 element:[IBAMQPWrapper wrapMap:self->_properties withKeyType:0 valueType:0]];
     }
-    
+
     NSMutableData *data = [NSMutableData data];
-    [data appendByte:self.code.value];
+
+    [data appendByte:(Byte)self.code.value];
+    
     IBAMQPType *type = [IBAMQPType enumWithType:IBAMQPSmallULongType];
     IBAMQPTLVFixed *fixed = [[IBAMQPTLVFixed alloc] initWithType:type andValue:data];
     
     IBAMQPType *constructorType = [[IBAMQPType alloc] initWithType:list.type];
+
     IBAMQPDescribedConstructor *constructor = [[IBAMQPDescribedConstructor alloc] initWithType:constructorType andDescriptor:fixed];
-    
+
     list.constructor = constructor;
-    
+        
     return list;
 }
 
@@ -170,7 +181,7 @@
 
 - (void) addOfferedCapability : (NSArray<NSString *> *) array  {
     if (self->_offeredCapabilities == nil) {
-        self->_desiredCapabilities = [NSMutableArray array];
+        self->_offeredCapabilities = [NSMutableArray array];
     }
     for (NSString *capability in array) {
         [self->_offeredCapabilities addObject:[[IBAMQPSymbol alloc] initWithString:capability]];
@@ -198,9 +209,9 @@
 
     NSMutableString *string = [NSMutableString string];
     
-    [string appendString:[NSString stringWithFormat:@"\nDoff: %zd", self->_doff]];
-    [string appendString:[NSString stringWithFormat:@"\nType: %zd", self->_type]];
-    [string appendString:[NSString stringWithFormat:@"\nChannel: %zd", self->_chanel]];
+    [string appendString:[NSString stringWithFormat:@"\nDoff: %zd", self.doff]];
+    [string appendString:[NSString stringWithFormat:@"\nType: %zd", self.type]];
+    [string appendString:[NSString stringWithFormat:@"\nChannel: %zd", self.chanel]];
     
     [string appendString:[NSString stringWithFormat:@"\nArguments"]];
     

@@ -32,6 +32,7 @@
         [self->_dictionary setValue:@(IBMqttProtocolType) forKey:IBMqttName];
         [self->_dictionary setValue:@(IBMqttSNProtocolType) forKey:IBMqttSNName];
         [self->_dictionary setValue:@(IBCoAPProtocolType) forKey:IBCoAPName];
+        [self->_dictionary setValue:@(IBAMQPProtocolType) forKey:IBAMQPName];
 
     }
     return self;

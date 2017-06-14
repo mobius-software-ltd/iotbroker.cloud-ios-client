@@ -19,10 +19,10 @@
     IBAMQPTLVList *list = [IBAMQPTLVList alloc];
     
     if (self->_sectionNumber != nil) {
-        [list addElementWithIndex:0 element:[IBAMQPWrapper wrapObject:self->_sectionNumber withType:IBAMQPUIntType]];
+        [list addElementWithIndex:0 element:[IBAMQPWrapper wrapUInt:[self->_sectionNumber unsignedIntValue]]];
     }
     if (self->_sectionOffset != nil) {
-        [list addElementWithIndex:1 element:[IBAMQPWrapper wrapObject:self->_sectionNumber withType:IBAMQPULongType]];
+        [list addElementWithIndex:1 element:[IBAMQPWrapper wrapULong:[self->_sectionOffset unsignedLongValue]]];
     }
     
     NSMutableData *data = [NSMutableData data];

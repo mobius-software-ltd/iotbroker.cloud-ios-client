@@ -24,6 +24,12 @@
 
 NSInteger byteNumber = 0;
 
++ (instancetype)data {
+    NSMutableData *data = [[NSMutableData alloc] init];
+    [data clearNumber];
+    return data;
+}
+
 - (void) appendByte : (Byte) byte {
     [self appendBytes:&byte length:1];
 }

@@ -9,7 +9,7 @@
 #import "IBAMQPHeader.h"
 #import "IBAMQPError.h"
 
-@interface IBAMQPEnd : IBAMQPHeader
+@interface IBAMQPEnd : IBAMQPHeader 
 
 @property (strong, nonatomic) IBAMQPError *error;
 

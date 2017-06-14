@@ -15,18 +15,27 @@
 
 @implementation IBAMQPSASLInit
 
-@synthesize code = _code;
-@synthesize doff = _doff;
-@synthesize type = _type;
-@synthesize chanel = _chanel;
-
 - (instancetype)init {
     IBAMQPHeaderCode *code = [IBAMQPHeaderCode enumWithHeaderCode:IBAMQPInitHeaderCode];
     self = [super initWithCode:code];
     if (self != nil) {
         self->_mechanism = [[IBAMQPSymbol alloc] init];
+        self.type = 1;
     }
     return self;
+}
+
+- (NSInteger) getLength {
+    
+    int length = 8;
+    IBAMQPTLVList *arguments = [self arguments];
+    length += arguments.length;
+    
+    return length;
+}
+
+- (NSInteger) getMessageType {
+    return IBAMQPInitHeaderCode;
 }
 
 - (IBAMQPTLVList *)arguments {
@@ -45,7 +54,6 @@
     if (self->_hostName != nil) {
         [list addElementWithIndex:2 element:[IBAMQPWrapper wrapString:self->_hostName]];
     }
-    
     
     NSMutableData *data = [NSMutableData data];
     [data appendByte:0x41];

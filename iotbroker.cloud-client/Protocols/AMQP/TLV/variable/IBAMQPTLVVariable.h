@@ -8,7 +8,7 @@
 
 #import "IBTLVAMQP.h"
 
-@interface IBAMQPTLVVariable : IBTLVAMQP
+@interface IBAMQPTLVVariable : IBTLVAMQP <NSCopying>
 
 @property (assign, nonatomic) NSInteger width;
 

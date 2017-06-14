@@ -55,7 +55,7 @@
 
 - (id)copyWithZone:(NSZone *)zone {
 
-    IBAMQPSymbol *copy = [[IBAMQPSymbol alloc] initWithString:self.value];
+    IBAMQPSymbol *copy = [[IBAMQPSymbol alloc] initWithString:self->_value];
     return copy;
 }
 

@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "IBAMQPHeader.h"
 
-@interface IBAMQPPing : IBAMQPHeader
+@interface IBAMQPPing : IBAMQPHeader 
 
 @end

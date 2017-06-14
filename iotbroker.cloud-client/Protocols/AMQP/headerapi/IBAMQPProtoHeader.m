@@ -33,6 +33,16 @@ NSString *const IBAMQPProtocolName = @"AMQP";
     return self;
 }
 
+- (NSInteger) getLength {
+    
+    int length = 8;
+    return length;
+}
+
+- (NSInteger) getMessageType {
+    return 0;
+}
+
 - (NSMutableData *)bytes {
     
     NSMutableData *data = [NSMutableData data];

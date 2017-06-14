@@ -16,15 +16,28 @@
 
 @implementation IBAMQPTransfer
 
-@synthesize code = _code;
-@synthesize doff = _doff;
-@synthesize type = _type;
-@synthesize chanel = _chanel;
-
 - (instancetype)init {
     IBAMQPHeaderCode *code = [IBAMQPHeaderCode enumWithHeaderCode:IBAMQPTransferHeaderCode];
     self = [self initWithCode:code];
     return self;
+}
+
+- (NSInteger) getLength {
+    
+    int length = 8;
+    IBAMQPTLVList *arguments = [self arguments];
+    length += arguments.length;
+    
+    NSMutableArray<id<IBAMQPSection>> *sections = [NSMutableArray arrayWithArray:self.sections.allValues];
+    for (id<IBAMQPSection> section in sections) {
+        length += section.value.length;
+    }
+    
+    return length;
+}
+
+- (NSInteger) getMessageType {
+    return IBAMQPTransferHeaderCode;
 }
 
 - (IBAMQPTLVList *)arguments {
@@ -34,37 +47,37 @@
     if (self->_handle == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
-    [list addElementWithIndex:0 element:[IBAMQPWrapper wrapObject:self->_handle withType:IBAMQPUIntType]];
+    [list addElementWithIndex:0 element:[IBAMQPWrapper wrapUInt:[self->_handle unsignedIntValue]]];
     
     if (self->_deliveryId != nil) {
-        [list addElementWithIndex:1 element:[IBAMQPWrapper wrapObject:self->_deliveryId withType:IBAMQPUIntType]];
+        [list addElementWithIndex:1 element:[IBAMQPWrapper wrapUInt:[self->_deliveryId unsignedIntValue]]];
     }
     if (self->_deliveryTag != nil) {
         [list addElementWithIndex:2 element:[IBAMQPWrapper wrapBinary:self->_deliveryTag]];
     }
     if (self->_messageFormat != nil) {
-        [list addElementWithIndex:3 element:[IBAMQPWrapper wrapObject:self->_messageFormat withType:IBAMQPUIntType]];
+        [list addElementWithIndex:3 element:[IBAMQPWrapper wrapUInt:[self->_messageFormat encode]]];
     }
     if (self->_settled != nil) {
-        [list addElementWithIndex:4 element:[IBAMQPWrapper wrapObject:self->_settled withType:IBAMQPBooleanType]];
+        [list addElementWithIndex:4 element:[IBAMQPWrapper wrapBOOL:[self->_settled boolValue]]];
     }
     if (self->_more != nil) {
-        [list addElementWithIndex:5 element:[IBAMQPWrapper wrapObject:self->_more withType:IBAMQPBooleanType]];
+        [list addElementWithIndex:5 element:[IBAMQPWrapper wrapBOOL:[self->_more boolValue]]];
     }
     if (self->_rcvSettleMode != nil) {
-        [list addElementWithIndex:6 element:[IBAMQPWrapper wrapObject:self->_rcvSettleMode withType:IBAMQPUByteType]];
+        [list addElementWithIndex:6 element:[IBAMQPWrapper wrapUByte:self->_rcvSettleMode.value]];
     }
     if (self->_state != nil) {
         [list addElementWithIndex:7 element:self->_state.list];
     }
     if (self->_resume != nil) {
-        [list addElementWithIndex:8 element:[IBAMQPWrapper wrapObject:self->_resume withType:IBAMQPBooleanType]];
+        [list addElementWithIndex:8 element:[IBAMQPWrapper wrapBOOL:[self->_resume boolValue]]];
     }
     if (self->_aborted != nil) {
-        [list addElementWithIndex:9 element:[IBAMQPWrapper wrapObject:self->_aborted withType:IBAMQPBooleanType]];
+        [list addElementWithIndex:9 element:[IBAMQPWrapper wrapBOOL:[self->_aborted boolValue]]];
     }
     if (self->_batchable != nil) {
-        [list addElementWithIndex:10 element:[IBAMQPWrapper wrapObject:self->_batchable withType:IBAMQPBooleanType]];
+        [list addElementWithIndex:10 element:[IBAMQPWrapper wrapBOOL:[self->_batchable boolValue]]];
     }
     
     NSMutableData *data = [NSMutableData data];
@@ -132,7 +145,7 @@
     if (size > 6) {
         IBTLVAMQP *element = [list.list objectAtIndex:6];
         if (!element.isNull) {
-            self->_rcvSettleMode = [IBAMQPReceiverSettleMode enumWithReceiverSettleMode:[IBAMQPUnwrapper unwrapBOOL:element]];
+            self->_rcvSettleMode = [IBAMQPReceiverSettleMode enumWithReceiverSettleMode:[IBAMQPUnwrapper unwrapUByte:element]];
         }
     }
     if (size > 7) {

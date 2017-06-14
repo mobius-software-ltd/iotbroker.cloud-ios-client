@@ -13,6 +13,27 @@
 #import "IBAMQPUnwrapper.h"
 #import "IBAMQPTLVList.h"
 
+#import "IBAMQPParser.h"
+#import "IBAMQPProtoHeader.h"
+#import "IBAMQPOpen.h"
+#import "IBAMQPBegin.h"
+#import "IBAMQPPing.h"
+#import "IBAMQPClose.h"
+#import "IBAMQPEnd.h"
+#import "IBAMQPSASLChallenge.h"
+#import "IBAMQPSASLMechanisms.h"
+#import "IBAMQPSASLInit.h"
+#import "IBAMQPSASLOutcome.h"
+#import "IBAMQPSASLResponse.h"
+#import "IBAMQPDetach.h"
+#import "IBAMQPDisposition.h"
+#import "IBAMQPModified.h"
+#import "IBAMQPTransfer.h"
+#import "IBAMQPReceived.h"
+#import "IBAMQPAttach.h"
+#import "IBAMQPFlow.h"
+#import "IBAMQPBegin.h"
+
 @interface iotbroker : XCTestCase
 
 @property (strong, nonatomic) NSMutableData *data;
@@ -52,8 +73,226 @@
     }
 }
 
-// wrapper & unwrapper
+#pragma mark - Packets
 
+- (void)testOpenPacket {
+
+    IBAMQPOpen *open = [[IBAMQPOpen alloc] init];
+    open.containerId = @"container-id";
+    
+    open.chanel = 32;
+    open.channelMax = @(60000);
+    open.hostname = @"weasel.rmq.cloudamqp.com";
+    open.idleTimeout = @(1000);
+    open.maxFrameSize = @(10000);
+    [open addDesiredCapability:@[@"capability11", @"capability12", @"capability13"]];
+    [open addOfferedCapability:@[@"capability21", @"capability22"]];
+    [open addIncomingLocale:@[@"locale1"]];
+    [open addOutgoingLocale:@[@"locale1.1", @"locale1.2"]];
+    [open addProperty:@"key1" value:@"value1"];
+    [open addProperty:@"key2" value:@"value2"];
+    [open addProperty:@"key3" value:@"value3"];
+    NSLog(@" t> OPEN        %zd", [open getLength]);
+    
+    XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:open]]);
+}
+
+- (void)testBeginPacket {
+    
+    IBAMQPBegin *begin = [[IBAMQPBegin alloc] init];
+    begin.handleMax = @(1000);
+    begin.incomingWindow = @(2000);
+    begin.nextOutgoingID = @(3000);
+    begin.outgoingWindow = @(4000);
+    begin.remoteChannel = @(5000);
+    [begin addDesiredCapability:@[@"capability11", @"capability12", @"capability13"]];
+    [begin addOfferedCapability:@[@"capability21", @"capability22"]];
+    [begin addProperty:@"key1" value:@"value1"];
+    [begin addProperty:@"key2" value:@"value2"];
+    [begin addProperty:@"key3" value:@"value3"];
+    NSLog(@" t> BEGIN       %zd", [begin getLength]);
+    
+    XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:begin]]);
+}
+
+- (void)testAttachPacket {
+    
+    IBAMQPAttach *attach = [[IBAMQPAttach alloc] init];
+    attach.handle = @(1000);
+    attach.incompleteUnsettled = @(YES);
+    attach.initialDeliveryCount = @(100L);
+    attach.maxMessageSize = @(43333);
+    attach.name = @"usr-name";
+    attach.receivedCodes = [IBAMQPReceiverSettleMode enumWithReceiverSettleMode:IBAMQPFirstReceiverSettleMode];
+    attach.role = [IBAMQPRoleCode enumWithRoleCode:IBAMQPReceiverRoleCode];
+    attach.sendCodes = [IBAMQPSendCode enumWithSendCode:IBAMQPMixedSendCode];
+    attach.source = [[IBAMQPSource alloc] init];
+    attach.target = [[IBAMQPTarget alloc] init];
+    [attach addDesiredCapability:@[@"capability11", @"capability12", @"capability13"]];
+    [attach addOfferedCapability:@[@"capability21", @"capability22"]];
+    [attach addProperty:@"key1" value:@"value1"];
+    [attach addProperty:@"key2" value:@"value2"];
+    [attach addProperty:@"key3" value:@"value3"];
+    NSLog(@" t> ATTACH      %zd", [attach getLength]);
+    
+    XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:attach]]);
+}
+
+- (void)testFlowPacket {
+    
+    IBAMQPFlow *flow = [[IBAMQPFlow alloc] init];
+    flow.avaliable = @(10);
+    flow.deliveryCount = @(100);
+    flow.drain = @(YES);
+    flow.echo = @(NO);
+    flow.handle = @(1000);
+    flow.incomingWindow = @(10000);
+    flow.linkCredit = @(10000);
+    flow.nextIncomingId = @(30000);
+    flow.nextOutgoingId = @(40000);
+    flow.outgoingWindow = @(54000);
+    [flow addProperty:@"key1" value:@"value1"];
+    [flow addProperty:@"key2" value:@"value2"];
+    [flow addProperty:@"key3" value:@"value3"];
+    NSLog(@" t> FLOW        %zd", [flow getLength]);
+    
+    XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:flow]]);
+}
+
+- (void)testTransferPacket {
+    
+    IBAMQPTransfer *transfer = [[IBAMQPTransfer alloc] init];
+    transfer.aborted = @(YES);
+    transfer.batchable = @(NO);
+    transfer.deliveryId = @(234);
+    transfer.deliveryTag = [NSMutableData dataWithData:[@"Hello" dataUsingEncoding:NSUTF8StringEncoding]];
+    transfer.handle = @(32);
+    transfer.messageFormat = [[IBAMQPMessageFormat alloc] initWithValue:2352];
+    transfer.more = @(YES);
+    transfer.rcvSettleMode = [IBAMQPReceiverSettleMode enumWithReceiverSettleMode:IBAMQPSecondReceiverSettleMode];
+    transfer.resume = @(NO);
+    transfer.settled = @(YES);
+    transfer.state = [[IBAMQPReceived alloc] init];
+    NSLog(@" t> TRANSFER    %zd", [transfer getLength]);
+
+    XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:transfer]]);
+}
+
+- (void)testDispositionPacket {
+    
+    IBAMQPDisposition *disposition = [[IBAMQPDisposition alloc] init];
+    disposition.batchable = @(YES);
+    disposition.first = @(3412);
+    disposition.last = @(54309);
+    disposition.role = [IBAMQPRoleCode enumWithRoleCode:IBAMQPSenderRoleCode];
+    disposition.settled = @(NO);
+    disposition.state = [[IBAMQPModified alloc] init];
+    NSLog(@" t> DISPOSITION %zd", [disposition getLength]);
+    
+    XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:disposition]]);
+}
+
+- (void)testDetachPacket {
+    
+    IBAMQPDetach *detach = [[IBAMQPDetach alloc] init];
+    detach.closed = @(YES);
+    detach.error = [[IBAMQPError alloc] init];
+    detach.handle = @(3452);
+    NSLog(@" t> DETACH      %zd", [detach getLength]);
+    
+    XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:detach]]);
+}
+
+- (void)testEndPacket {
+    
+    IBAMQPEnd *end = [[IBAMQPEnd alloc] init];
+    end.error = [[IBAMQPError alloc] init];
+    NSLog(@" t> END         %zd", [end getLength]);
+    
+    XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:end]]);
+}
+
+- (void)testClosePacket {
+    
+    IBAMQPClose *close = [[IBAMQPClose alloc] init];
+    close.error = [[IBAMQPError alloc] init];
+    NSLog(@" t> CLOSE       %zd", [close getLength]);
+    
+    XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:close]]);
+}
+
+#pragma mark SASL
+
+- (void)testMechanismsPacket {
+    
+    IBAMQPSASLMechanisms *mechanisms = [[IBAMQPSASLMechanisms alloc] init];
+    [mechanisms addMechanism:@"NATIVE"];
+    [mechanisms addMechanism:@"CRAM-MD5"];
+    NSLog(@" t> MECHANISMS  %zd", [mechanisms getLength]);
+    
+    XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:mechanisms]]);
+}
+
+- (void)testInitPacket {
+    
+    IBAMQPSASLInit *init = [[IBAMQPSASLInit alloc] init];
+    init.hostName = @"localhost";
+    init.initialResponse = [NSMutableData dataWithData:[@"hello" dataUsingEncoding:NSUTF8StringEncoding]];
+    init.mechanism = [[IBAMQPSymbol alloc] initWithString:@"hello-mechanism"];
+    NSLog(@" t> INIT        %zd", [init getLength]);
+    
+    XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:init]]);
+}
+
+- (void)testChallengePacket {
+    
+    IBAMQPSASLChallenge *challenge = [[IBAMQPSASLChallenge alloc] init];
+    challenge.challenge = [NSMutableData dataWithData:[@"hello world" dataUsingEncoding:NSUTF8StringEncoding]];
+    NSLog(@" t> CHALLENGE   %zd", [challenge getLength]);
+    
+    XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:challenge]]);
+}
+
+- (void)testResponsePacket {
+    
+    //IBAMQPSASLResponse *response  = [[IBAMQPSASLResponse alloc] init];
+    //NSLog(@" t> RESPONSE     %zd", [response getLength]);
+    
+    //XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:response]]);
+}
+
+- (void)testOutcomePacket {
+    
+    IBAMQPSASLOutcome *outcome  = [[IBAMQPSASLOutcome alloc] init];
+    outcome.outcomeCode = [IBAMQPSASLCode enumWithSASLCode:IBAMQPOkSASLCode];
+    outcome.additionalData = [NSMutableData dataWithData:[@"hello world" dataUsingEncoding:NSUTF8StringEncoding]];
+    NSLog(@" t> OUTCOME     %zd", [outcome getLength]);
+    
+    XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:outcome]]);
+}
+
+#pragma mark Header & Ping
+
+- (void)testProtoHeaderPacket {
+    
+    IBAMQPProtoHeader *header = [[IBAMQPProtoHeader alloc] init];
+
+    NSLog(@" t> HEADER       %zd", [header getLength]);
+    
+    XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:header]]);
+}
+
+- (void)testPingPacket {
+    
+    IBAMQPPing *ping = [[IBAMQPPing alloc] init];
+    
+    NSLog(@" t> PING         %zd", [ping getLength]);
+    
+    XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:ping]]);
+}
+
+#pragma mark - Wrapper & Unwrapper
+/*
 - (void)testWU_UByte {
 
     short value = 32;
@@ -383,5 +622,5 @@
         NSLog(@"%@", result);
     }
 }
-
+*/
 @end

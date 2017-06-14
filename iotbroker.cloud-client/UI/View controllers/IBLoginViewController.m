@@ -138,6 +138,8 @@ static NSString *const IBQoSCell            = @"qosCell";
         [self->_registerInfoSectionCells addObject:IBServerHostCell];
         [self->_registerInfoSectionCells addObject:IBPortCell];
         self->_settingsSectionCells = nil;
+    } else if (type == IBAMQPProtocolType) {
+        self->_settingsSectionCells = nil;
     }
     self.protocolField.text = [protocolType nameByValue];
 }

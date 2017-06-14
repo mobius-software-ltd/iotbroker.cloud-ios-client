@@ -9,7 +9,7 @@
 #import "IBAMQPHeader.h"
 #import "IBAMQPSymbol.h"
 
-@interface IBAMQPSASLMechanisms : IBAMQPHeader
+@interface IBAMQPSASLMechanisms : IBAMQPHeader 
 
 @property (strong, nonatomic, readonly) NSMutableArray<IBAMQPSymbol *> *mechanisms;
 

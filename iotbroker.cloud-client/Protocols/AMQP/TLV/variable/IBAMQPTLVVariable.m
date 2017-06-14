@@ -46,4 +46,18 @@
     return self->_value.length + [self.constructor length] + self.width;
 }
 
+- (NSMutableData *)value {
+    return self->_value;
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    
+    IBAMQPType *typeCode = [IBAMQPType enumWithType:self.type];
+    IBAMQPTLVVariable *copy = [[IBAMQPTLVVariable alloc] initWithType:typeCode andValue:self->_value];
+    copy.width = self->_width;
+    copy.constructor = self.constructor;
+    
+    return copy;
+}
+
 @end

@@ -15,15 +15,24 @@
 
 @implementation IBAMQPSASLResponse
 
-@synthesize code = _code;
-@synthesize doff = _doff;
-@synthesize type = _type;
-@synthesize chanel = _chanel;
-
 - (instancetype)init {
     IBAMQPHeaderCode *code = [IBAMQPHeaderCode enumWithHeaderCode:IBAMQPResponseHeaderCode];
     self = [super initWithCode:code];
+    self.type = 1;
     return self;
+}
+
+- (NSInteger) getLength {
+    
+    int length = 8;
+    IBAMQPTLVList *arguments = [self arguments];
+    length += arguments.length;
+    
+    return length;
+}
+
+- (NSInteger) getMessageType {
+    return IBAMQPResponseHeaderCode;
 }
 
 - (IBAMQPTLVList *)arguments {

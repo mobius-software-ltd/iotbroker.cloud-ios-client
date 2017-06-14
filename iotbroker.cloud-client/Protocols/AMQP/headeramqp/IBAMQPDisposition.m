@@ -16,27 +16,35 @@
 
 @implementation IBAMQPDisposition
 
-@synthesize code = _code;
-@synthesize doff = _doff;
-@synthesize type = _type;
-@synthesize chanel = _chanel;
-
 - (instancetype)init {
     IBAMQPHeaderCode *code = [IBAMQPHeaderCode enumWithHeaderCode:IBAMQPDispositionHeaderCode];
     self = [self initWithCode:code];
     return self;
 }
 
+- (NSInteger) getLength {
+    
+    int length = 8;
+    IBAMQPTLVList *arguments = [self arguments];
+    length += arguments.length;
+    
+    return length;
+}
+
+- (NSInteger) getMessageType {
+    return IBAMQPDispositionHeaderCode;
+}
+
 - (IBAMQPTLVList *)arguments {
 
     IBAMQPTLVList *list = [[IBAMQPTLVList alloc] init];
 
-    if (self->_role != nil) {
+    if (self->_role == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
     [list addElementWithIndex:0 element:[IBAMQPWrapper wrapBOOL:self->_role.value]];
     
-    if (self->_first != nil) {
+    if (self->_first == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
     [list addElementWithIndex:1 element:[IBAMQPWrapper wrapUInt:[self->_first unsignedIntValue]]];

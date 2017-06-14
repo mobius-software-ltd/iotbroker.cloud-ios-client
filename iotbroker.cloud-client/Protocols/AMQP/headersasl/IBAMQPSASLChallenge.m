@@ -15,19 +15,27 @@
 
 @implementation IBAMQPSASLChallenge
 
-@synthesize code = _code;
-@synthesize doff = _doff;
-@synthesize type = _type;
-@synthesize chanel = _chanel;
-
 - (instancetype)init {
     IBAMQPHeaderCode *code = [IBAMQPHeaderCode enumWithHeaderCode:IBAMQPChallengeHeaderCode];
     self = [super initWithCode:code];
     if (self != nil) {
         self->_challenge = [NSMutableData data];
-        self->_type = 1;
+        self.type = 1;
     }
     return self;
+}
+
+- (NSInteger) getLength {
+    
+    int length = 8;
+    IBAMQPTLVList *arguments = [self arguments];
+    length += arguments.length;
+    
+    return length;
+}
+
+- (NSInteger) getMessageType {
+    return IBAMQPChallengeHeaderCode;
 }
 
 - (IBAMQPTLVList *)arguments {

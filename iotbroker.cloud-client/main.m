@@ -25,75 +25,94 @@
 
 #import "IBSocketTransport.h"
 
-@interface Test : NSObject <IBInternetProtocolDelegate>
+#import "IBAMQPParser.h"
+#import "IBAMQPProtoHeader.h"
+#import "IBAMQPOpen.h"
+#import "IBAMQPBegin.h"
+#import "IBAMQPPing.h"
+#import "IBAMQPClose.h"
+#import "IBAMQPEnd.h"
+#import "IBAMQPSASLChallenge.h"
+#import "IBAMQPSASLMechanisms.h"
+#import "IBAMQPSASLInit.h"
+#import "IBAMQPSASLOutcome.h"
+#import "IBAMQPSASLResponse.h"
+#import "IBAMQPDetach.h"
+#import "IBAMQPDisposition.h"
+#import "IBAMQPModified.h"
+#import "IBAMQPTransfer.h"
+#import "IBAMQPReceived.h"
+#import "IBAMQPAttach.h"
+#import "IBAMQPFlow.h"
+#import "IBAMQPBegin.h"
+
+#import "IBAMQP.h"
+
+@interface Test : NSObject <IBResponsesDelegate>
 
 @end
 
 @implementation Test
 {
-    IBSocketTransport *_tcpSocket;
+    IBAMQP *_amqp;
 }
 
 - (instancetype)init {
     self = [super init];
     if (self != nil) {
-        self->_tcpSocket = [[IBSocketTransport alloc] initWithHost:@"198.41.30.241" andPort:1883];
-        self->_tcpSocket.delegate = self;
-        [self->_tcpSocket start];
+        self->_amqp = [[IBAMQP alloc] initWithHost:@"13.92.84.124" port:5672 andResponseDelegate:self];
+        [self->_amqp prepareToSendingRequest];
     }
     return self;
 }
 
-- (void) internetProtocolDidStart : (id<IBInternetProtocol>) internetProtocol {
-    NSLog(@"----------%@---------", internetProtocol);
+- (void) ready {
     
-    
-    NSMutableData *data = [NSMutableData data];
-    
-    NSString *protocol = @"AMQP";
-    
-    Byte m1 = 0xb1;
-    [data appendBytes:&m1 length:1];
-    Byte size = 4;
-    [data appendBytes:&size length:1];
-    [data appendBytes:[[protocol dataUsingEncoding:NSUTF8StringEncoding] bytes] length:protocol.length];
-
-    Byte protocolID = 0;
-    
-    Byte m2 = 0x50;
-    [data appendBytes:&m2 length:1];
-    [data appendBytes:&protocolID length:1];
-    
-    Byte major = 1;
-    
-    [data appendBytes:&m2 length:1];
-    [data appendBytes:&major length:1];
-    
-    Byte minor = 0;
-    
-    [data appendBytes:&m2 length:1];
-    [data appendBytes:&minor length:1];
-    
-    Byte revision = 0;
-    
-    [data appendBytes:&m2 length:1];
-    [data appendBytes:&revision length:1];
-    
-    [data appendBytes:[[@"HELLO!!!" dataUsingEncoding:NSUTF8StringEncoding] bytes] length:8];
-    
-    [internetProtocol sendData:data];
+    [self->_amqp connectWithAccount:nil];
 }
 
-- (void) internetProtocolDidStop  : (id<IBInternetProtocol>) internetProtocol {
+- (void) connackWithCode : (NSInteger) returnCode {
     
 }
 
-- (void) internetProtocol : (id<IBInternetProtocol>) internetProtocol didReceiveMessage : (NSData *) message {
+- (void) publishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag {
     
 }
 
-- (void) internetProtocol : (id<IBInternetProtocol>) internetProtocol didFailWithError  : (NSError *) error {
+- (void) pubackForPublishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag andReturnCode : (NSInteger) returnCode {
     
+}
+
+- (void) pubrecForPublishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag {
+    
+}
+
+- (void) pubrelForPublishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag {
+    
+}
+
+- (void) pubcompForPublishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag {
+    
+}
+
+- (void) subackForSubscribeWithTopicName : (NSString *) name qos : (NSInteger) qos returnCode : (NSInteger) returnCode {
+    
+}
+
+- (void) unsubackForUnsubscribeWithTopicName : (NSString *) name {
+    
+}
+
+- (void) pingresp {
+    
+}
+
+- (void) disconnectWithDuration : (NSInteger) duration {
+    
+}
+
+- (void) error : (NSError *) error {
+
 }
 
 @end

@@ -11,7 +11,7 @@
 #import "IBAMQPRoleCode.h"
 #import "IBAMQPState.h"
 
-@interface IBAMQPDisposition : IBAMQPHeader
+@interface IBAMQPDisposition : IBAMQPHeader 
 
 @property (strong, nonatomic) IBAMQPRoleCode *role;
 @property (strong, nonatomic) NSNumber *first;

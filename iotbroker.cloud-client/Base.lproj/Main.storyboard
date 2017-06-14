@@ -99,7 +99,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7h-qY-Xxd">
-                                <rect key="frame" x="12" y="173" width="296" height="222"/>
+                                <rect key="frame" x="12" y="143" width="296" height="282"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOe-gT-pXY">
                                         <rect key="frame" x="0.0" y="0.0" width="296" height="44"/>
@@ -120,7 +120,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EhZ-3g-RAW">
-                                        <rect key="frame" x="0.0" y="44" width="296" height="178"/>
+                                        <rect key="frame" x="0.0" y="44" width="296" height="238"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="60" id="Qw5-9e-BAD" customClass="IBProtocolTypeTableViewCell">
@@ -157,7 +157,7 @@
                                     <constraint firstItem="EhZ-3g-RAW" firstAttribute="leading" secondItem="k7h-qY-Xxd" secondAttribute="leading" id="DCI-rb-Xut"/>
                                     <constraint firstAttribute="bottom" secondItem="EhZ-3g-RAW" secondAttribute="bottom" id="EUJ-t8-9Y1"/>
                                     <constraint firstItem="dOe-gT-pXY" firstAttribute="top" secondItem="k7h-qY-Xxd" secondAttribute="top" id="crs-6U-CXE"/>
-                                    <constraint firstAttribute="height" constant="222" id="e55-41-QYw"/>
+                                    <constraint firstAttribute="height" constant="282" id="e55-41-QYw"/>
                                     <constraint firstItem="dOe-gT-pXY" firstAttribute="leading" secondItem="k7h-qY-Xxd" secondAttribute="leading" id="r0e-Te-lv4"/>
                                     <constraint firstItem="EhZ-3g-RAW" firstAttribute="top" secondItem="dOe-gT-pXY" secondAttribute="bottom" id="ux2-Ep-Gwj"/>
                                 </constraints>
@@ -575,7 +575,7 @@
                                         <rect key="frame" x="0.0" y="476" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7oI-uZ-E2L" id="kYL-DP-x6G">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageKeepalive" translatesAutoresizingMaskIntoConstraints="NO" id="s68-b5-m5F">

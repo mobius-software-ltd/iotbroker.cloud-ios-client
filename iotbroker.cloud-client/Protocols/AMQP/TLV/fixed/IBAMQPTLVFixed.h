@@ -8,7 +8,7 @@
 
 #import "IBTLVAMQP.h"
 
-@interface IBAMQPTLVFixed : IBTLVAMQP
+@interface IBAMQPTLVFixed : IBTLVAMQP <NSCopying>
 
 - (instancetype) initWithType : (IBAMQPType *) type andValue : (NSMutableData *) value;
 

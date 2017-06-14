@@ -161,6 +161,7 @@
 		22C5C0461DF061CE00790EF6 /* iotbroker_cloud_clientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0451DF061CE00790EF6 /* iotbroker_cloud_clientTests.m */; };
 		22C5C0511DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0501DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m */; };
 		22C728061EEAF78800D2F277 /* IBAMQPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C728051EEAF78800D2F277 /* IBAMQPParser.m */; };
+		22D861111EF13C7500177088 /* IBAMQP.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D861101EF13C7500177088 /* IBAMQP.m */; };
 		22DE14311EDFFFB300A9CDA7 /* iotbroker.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DE14301EDFFFB300A9CDA7 /* iotbroker.m */; };
 		22ED8B441EB092F9006A0C98 /* IBMQTTSN.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B431EB092F9006A0C98 /* IBMQTTSN.m */; };
 		22ED8B561EB0B8B0006A0C98 /* IBMQTT.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B551EB0B8B0006A0C98 /* IBMQTT.m */; };
@@ -520,6 +521,8 @@
 		22C5C0521DF061CE00790EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22C728041EEAF78800D2F277 /* IBAMQPParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPParser.h; sourceTree = "<group>"; };
 		22C728051EEAF78800D2F277 /* IBAMQPParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPParser.m; sourceTree = "<group>"; };
+		22D8610F1EF13C7500177088 /* IBAMQP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQP.h; sourceTree = "<group>"; };
+		22D861101EF13C7500177088 /* IBAMQP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQP.m; sourceTree = "<group>"; };
 		22DE14301EDFFFB300A9CDA7 /* iotbroker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iotbroker.m; sourceTree = "<group>"; };
 		22ED8B3B1EB0847D006A0C98 /* IBRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBRequests.h; sourceTree = "<group>"; };
 		22ED8B3C1EB084A4006A0C98 /* IBResponsesDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBResponsesDelegate.h; sourceTree = "<group>"; };
@@ -608,6 +611,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220B59FA1EEE792D00123112 /* logic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = logic;
+			sourceTree = "<group>";
+		};
 		2217D8E91EBB12C900A636E7 /* Timers */ = {
 			isa = PBXGroup;
 			children = (
@@ -697,10 +707,8 @@
 			isa = PBXGroup;
 			children = (
 				2217D94B1EBB17ED00A636E7 /* Coordinator */,
-				2217D9541EBB185200A636E7 /* LoginTableViewCell */,
 				2217D94C1EBB17F700A636E7 /* LoginViewController */,
 				2217D94D1EBB17FE00A636E7 /* ProtocolTypeViewController */,
-				2217D9561EBB187000A636E7 /* AccountListTableViewCell */,
 				2217D9571EBB188500A636E7 /* AccountListViewController  */,
 				2217D94E1EBB180600A636E7 /* TabBarController */,
 				2217D9551EBB186400A636E7 /* MessagesListTableViewController */,
@@ -765,6 +773,7 @@
 		2217D94C1EBB17F700A636E7 /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2217D9541EBB185200A636E7 /* LoginTableViewCell */,
 				2217D9161EBB177F00A636E7 /* IBLoginViewController.h */,
 				2217D9171EBB177F00A636E7 /* IBLoginViewController.m */,
 			);
@@ -865,6 +874,7 @@
 		2217D9571EBB188500A636E7 /* AccountListViewController  */ = {
 			isa = PBXGroup;
 			children = (
+				2217D9561EBB187000A636E7 /* AccountListTableViewCell */,
 				2217D9251EBB177F00A636E7 /* IBAccountListViewController.h */,
 				2217D91B1EBB177F00A636E7 /* IBAccountListViewController.m */,
 			);
@@ -1856,6 +1866,15 @@
 			path = parser;
 			sourceTree = "<group>";
 		};
+		22D8610E1EF13C5F00177088 /* AMQP */ = {
+			isa = PBXGroup;
+			children = (
+				22D8610F1EF13C7500177088 /* IBAMQP.h */,
+				22D861101EF13C7500177088 /* IBAMQP.m */,
+			);
+			path = AMQP;
+			sourceTree = "<group>";
+		};
 		22ED8B3A1EB0843E006A0C98 /* ProtocolsImplementation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1864,6 +1883,7 @@
 				22ED8B3E1EB084E4006A0C98 /* MQTT-SN */,
 				22ED8B3D1EB084D5006A0C98 /* MQTT */,
 				2227221A1ED869FD0098D40F /* CoAP */,
+				22D8610E1EF13C5F00177088 /* AMQP */,
 			);
 			path = ProtocolsImplementation;
 			sourceTree = "<group>";
@@ -2011,6 +2031,7 @@
 		22F3083A1EE6E285008AF92F /* AMQP */ = {
 			isa = PBXGroup;
 			children = (
+				220B59FA1EEE792D00123112 /* logic */,
 				22C728031EEAF75000D2F277 /* parser */,
 				224BEFB01EEAA2290033961F /* headersasl */,
 				224BEF931EEA860E0033961F /* sections */,
@@ -2446,6 +2467,7 @@
 				22C5C02A1DF061CE00790EF6 /* main.m in Sources */,
 				2217D93A1EBB177F00A636E7 /* IBTabBarController.m in Sources */,
 				22F308721EE6ED12008AF92F /* IBAMQPTLVVariable.m in Sources */,
+				22D861111EF13C7500177088 /* IBAMQP.m in Sources */,
 				2217D93B1EBB177F00A636E7 /* IBMessagesListTableViewController.m in Sources */,
 				22C532101EAF9338007F57A8 /* IBSNEncapsulated.m in Sources */,
 				2217D8E61EBB127500A636E7 /* IBSocketTransport.m in Sources */,

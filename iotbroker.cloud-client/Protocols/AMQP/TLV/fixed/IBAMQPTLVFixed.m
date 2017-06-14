@@ -15,7 +15,7 @@
 - (instancetype) initWithType : (IBAMQPType *) type andValue : (NSMutableData *) value {
     self = [super initWithConstructor:[[IBAMQPSimpleConstructor alloc] initWithType:type]];
     if (self != nil) {
-        self->_value = value;
+        self->_value = [NSMutableData dataWithData:value];
     }
     return self;
 }
@@ -96,26 +96,20 @@
         case IBAMQPUUIDType:
             string = [[NSString alloc] initWithData:self->_value encoding:NSUTF8StringEncoding];
             break;
-        case IBAMQPSourceType:
-        case IBAMQPTargetType:
-        case IBAMQPErrorType:
-        case IBAMQPNullType:
-        case IBAMQPMap8Type:
-        case IBAMQPString8Type:
-        case IBAMQPString32Type:
-        case IBAMQPList0Type:
-        case IBAMQPList8Type:
-        case IBAMQPList32Type:
-        case IBAMQPArray8Type:
-        case IBAMQPArray32Type:
-        case IBAMQPBinary8Type:
-        case IBAMQPBinary32Type:
-        case IBAMQPSymbol8Type:
-        case IBAMQPSymbol32Type:
-        case IBAMQPMap32Type:
+            
+        default:
             break;
     }
     return string;
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    
+    IBAMQPType *typeCode = [IBAMQPType enumWithType:self.type];
+    IBAMQPTLVFixed *copy = [[IBAMQPTLVFixed alloc] initWithType:typeCode andValue:self->_value];
+    copy.constructor = self.constructor;
+    
+    return copy;
 }
 
 @end

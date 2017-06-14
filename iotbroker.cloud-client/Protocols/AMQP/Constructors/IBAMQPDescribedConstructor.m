@@ -33,7 +33,7 @@
 
 - (Byte)descriptorCode {
     Byte *bytes = (Byte *)[self.descriptor.data bytes];
-    return bytes[0];
+    return bytes[1];
 }
 
 @end

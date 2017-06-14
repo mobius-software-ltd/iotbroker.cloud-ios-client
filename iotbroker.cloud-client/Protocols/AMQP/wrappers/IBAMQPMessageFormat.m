@@ -14,7 +14,13 @@
 - (instancetype) initWithValue : (long) value {
     self = [super init];
     if (self != nil) {
-    
+        NSMutableData *data = [NSMutableData data];
+        [data appendInt:value];
+        
+        Byte *bytes = (Byte *)[data bytes];
+        
+        self->_messageFormat = [data readUInt24];
+        self->_version = bytes[3] & 0xff;
     }
     return self;
 }

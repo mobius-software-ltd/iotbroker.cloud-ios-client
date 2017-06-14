@@ -123,12 +123,16 @@ static NSInteger const IBFirstID = 1;
         @throw [NSException exceptionWithName:[[self class] description] reason:@"Outgoing identifier overflow" userInfo:nil];
     }
     
-    IBCountableMessage *countableMessage = (IBCountableMessage *)message;
-    if (countableMessage.packetID == 0) {
-        countableMessage.packetID = [self getNewPacketID];
+    NSInteger number = [self getNewPacketID];
+    
+    if ([message isKindOfClass:[IBCountableMessage class]]) {
+        IBCountableMessage *countableMessage = (IBCountableMessage *)message;
+        if (countableMessage.packetID == 0) {
+            countableMessage.packetID = [self getNewPacketID];
+        }
     }
     
-    [self->_timersDictionary setObject:timerTask forKey:@(countableMessage.packetID)];
+    [self->_timersDictionary setObject:timerTask forKey:@(number)];
     
     [timerTask start];
 }

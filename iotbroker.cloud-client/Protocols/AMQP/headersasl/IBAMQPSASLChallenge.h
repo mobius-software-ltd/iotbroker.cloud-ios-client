@@ -12,6 +12,6 @@
 
 @interface IBAMQPSASLChallenge : IBAMQPHeader
 
-@property (strong, nonatomic, readonly) NSMutableData *challenge;
+@property (strong, nonatomic) NSMutableData *challenge;
 
 @end

@@ -14,7 +14,7 @@
 #import "IBAMQPSectionCode.h"
 #import "IBAMQPSection.h"
 
-@interface IBAMQPTransfer : IBAMQPHeader
+@interface IBAMQPTransfer : IBAMQPHeader 
 
 @property (strong, nonatomic) NSNumber *handle;
 @property (strong, nonatomic) NSNumber *deliveryId;
