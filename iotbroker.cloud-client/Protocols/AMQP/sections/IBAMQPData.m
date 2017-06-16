@@ -23,7 +23,7 @@
     IBTLVAMQP *bin = nil;
     
     if (self->_data != nil) {
-        bin = [IBAMQPWrapper wrapObject:bin];
+        bin = [IBAMQPWrapper wrapObject:self->_data];
     } else {
         bin = [[IBAMQPTLVNull alloc] init];
     }

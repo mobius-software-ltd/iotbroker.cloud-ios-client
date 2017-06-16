@@ -12,6 +12,6 @@
 
 @interface IBAMQPData : NSObject <IBAMQPSection>
 
-@property (strong, nonatomic, readonly) NSMutableData *data;
+@property (strong, nonatomic) NSMutableData *data;
 
 @end

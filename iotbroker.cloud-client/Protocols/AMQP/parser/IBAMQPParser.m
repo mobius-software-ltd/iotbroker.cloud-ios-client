@@ -90,7 +90,7 @@
                                      userInfo:nil];
     }
     
-    if (header.type == IBAMQPTransferHeaderCode) {
+    if (header.code.value == IBAMQPTransferHeaderCode) {
         while ((buffer.length - [buffer getByteNumber]) > 0) {
             [((IBAMQPTransfer *)header) addSections:@[[IBAMQPFactory section:buffer]]];
         }
@@ -126,7 +126,7 @@
     [data appendShort:header.chanel];
     [data appendData:[header arguments].data];
     
-    if (header.type == IBAMQPTransferHeaderCode) {
+    if (header.code.value == IBAMQPTransferHeaderCode) {
         NSMutableArray<id<IBAMQPSection>> *sections = [NSMutableArray arrayWithArray:((IBAMQPTransfer *)header).sections.allValues];
         for (id<IBAMQPSection> section in sections) {
             [data appendData:section.value.data];

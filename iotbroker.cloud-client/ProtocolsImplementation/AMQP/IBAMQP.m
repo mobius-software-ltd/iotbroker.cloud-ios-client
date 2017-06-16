@@ -11,11 +11,13 @@
 #import "IBSocketTransport.h"
 #import "IBTimersMap.h"
 #import "IBAMQPSimpleType.h"
+#import "IBAMQPStringID.h"
 
 @interface IBAMQP () <IBInternetProtocolDelegate>
 
 @property (strong, nonatomic) IBTimersMap *timers;
 @property (assign, nonatomic) BOOL isSASLСonfirm;
+@property (assign, nonatomic) BOOL isPublishAllow;
 @property (assign, nonatomic) NSInteger chanel;
 
 @end
@@ -32,6 +34,7 @@
         self->_internetProtocol.delegate = self;
         self->_delegate = delegate;
         self->_isSASLСonfirm = false;
+        self->_isPublishAllow = false;
     }
     return self;
 }
@@ -65,6 +68,50 @@
 
 - (void) publishMessage:(Message *)message {
     
+    if (self->_isPublishAllow == true) {
+        
+        IBAMQPTransfer *transfer = [[IBAMQPTransfer alloc] init];
+        transfer.chanel = self->_chanel;
+        transfer.handle = @(0);
+        transfer.deliveryId = @(23);
+        transfer.deliveryTag = [NSMutableData dataWithData:[@"fdg345g" dataUsingEncoding:NSUTF8StringEncoding]];
+        transfer.settled = @(false);
+        transfer.messageFormat = [[IBAMQPMessageFormat alloc] initWithValue:0];
+        
+        IBAMQPMessageHeader *messageHeader = [[IBAMQPMessageHeader alloc] init];
+        messageHeader.durable = @(true);
+        messageHeader.priority = @(1);
+        messageHeader.milliseconds = @(10000);
+
+        //IBAMQPDeliveryAnnotation *deliveryAnnotation = [[IBAMQPDeliveryAnnotation alloc] init];
+        
+        //IBAMQPMessageAnnotations *messageAnnotation = [[IBAMQPMessageAnnotations alloc] init];
+
+        //IBAMQPApplicationProperties *applicationProperties = [[IBAMQPApplicationProperties alloc] init];
+
+        IBAMQPProperties *properties = [[IBAMQPProperties alloc] init];
+        properties.messageID = [[IBAMQPStringID alloc] initWithStringID:@"msg-32"];
+        properties.userID = [NSMutableData dataWithData:[@"user-id" dataUsingEncoding:NSUTF8StringEncoding]];
+        properties.to = @"user-id-name";
+        properties.subject = @"sbj";
+        properties.replyTo = @"rpl32";
+        properties.correlationID = [@"t42" dataUsingEncoding:NSUTF8StringEncoding];
+        properties.contentType = @"r24l32";
+        properties.contentEncoding = @"r224l32";
+        //properties.absoluteExpiryTime = [NSDate date];
+        //properties.creationTime = [NSDate date];
+        properties.groupId = @"egr534";
+        properties.groupSequence = @(43);
+        properties.replyToGroupId = @"g3434fff";
+        //IBAMQPFooter *footer = [[IBAMQPFooter alloc] init];
+        
+        IBAMQPData *data = [[IBAMQPData alloc] init];
+        data.data = [NSMutableData dataWithData:[@"hello world test string" dataUsingEncoding:NSUTF8StringEncoding]];
+    
+        [transfer addSections:@[messageHeader, data, properties]];
+        
+        [self sendMessage:transfer];
+    }
 }
 
 - (void) subscribeToTopic:(Topic *)topic {
@@ -164,7 +211,7 @@
                 attach.name = [[NSUUID UUID] UUIDString];
                 attach.handle = @(0);
                 attach.role = [IBAMQPRoleCode enumWithRoleCode:IBAMQPSenderRoleCode];
-                attach.sendCodes = [IBAMQPSendCode enumWithSendCode:IBAMQPMixedSendCode];
+                attach.sendCodes = [IBAMQPSendCode enumWithSendCode:IBAMQPSettledSendCode];
                 attach.source = [[IBAMQPSource alloc] init];
                 attach.source.address = @"testQueue";
                 attach.source.durable = IBAMQPNoneTerminusDurabilities;
@@ -174,8 +221,6 @@
                 attach.target.address = @"testQueue";
                 attach.target.timeout = @(0);
                 attach.target.dynamic = @(false);
-                //[attach.target addDynamicNodeProperties:@"supported-dist-modes" value:@"move"];
-                //[attach.target addDynamicNodeProperties:@"durable" value:[IBAMQPSimpleType simpleType:IBAMQPBooleanType withValue:@(true)]];
                 [attach.target addCapabilities:@[@"create-on-demand", @"queue", @"durable"]];
                 attach.initialDeliveryCount = @(0);
                 
@@ -184,18 +229,29 @@
                 break;
             }
             case IBAMQPAttachHeaderCode: {
-                
                 [self.delegate connackWithCode:0];
                 
                 break;
             }
             case IBAMQPFlowHeaderCode: {
+                IBAMQPFlow *flow = (IBAMQPFlow *)message;
+                if (self->_chanel == flow.chanel) {
+                    self->_isPublishAllow = true;
+                }
+            
                 break;
             }
             case IBAMQPTransferHeaderCode: {
                 break;
             }
             case IBAMQPDispositionHeaderCode: {
+                IBAMQPDisposition *disposition = (IBAMQPDisposition *)message;
+
+                IBAMQPEnd *end = [[IBAMQPEnd alloc] init];
+                end.chanel = disposition.chanel;
+                
+                [self sendMessage:end];
+                
                 break;
             }
             case IBAMQPDetachHeaderCode: {
@@ -219,6 +275,7 @@
                 break;
             }
             case IBAMQPCloseHeaderCode: {
+                [self->_timers stopPingTimer];
                 self->_isSASLСonfirm = false;
                 break;
             }
@@ -235,12 +292,15 @@
                 break;
             }
             case IBAMQPInitHeaderCode: {
+                NSLog(@" > Init did recive");
                 break;
             }
             case IBAMQPChallengeHeaderCode: {
+                NSLog(@" > Challenge did recive");
                 break;
             }
             case IBAMQPResponseHeaderCode: {
+                NSLog(@" > Response did recive");
                 break;
             }
             case IBAMQPOutcomeHeaderCode: {
@@ -270,6 +330,7 @@
                 break;
             }
             case IBAMQPPingHeaderCode: {
+                NSLog(@" > Ping did recive");
                 break;
             }
         }

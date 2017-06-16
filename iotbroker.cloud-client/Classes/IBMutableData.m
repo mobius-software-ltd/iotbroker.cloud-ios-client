@@ -85,7 +85,6 @@ static void const *key;
     int length = 3;
     
     NSInteger value = 0;
-    NSLog(@"%zd", self.byteNumber);
     NSData *subData = [self subdataWithRange:NSMakeRange(self.byteNumber, length)];
     Byte *bytes = (Byte *)[subData bytes];
 

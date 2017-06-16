@@ -11,6 +11,6 @@
 
 @interface IBAMQPValue : NSObject <IBAMQPSection>
 
-@property (strong, nonatomic, readonly) NSObject *valueObject;
+@property (strong, nonatomic) NSObject *valueObject;
 
 @end

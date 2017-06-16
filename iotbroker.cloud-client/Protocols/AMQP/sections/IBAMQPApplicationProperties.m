@@ -47,7 +47,7 @@
 }
 
 - (void) addProperty : (NSString *) key value : (NSObject *) value {
-    if (self->_properties != nil) {
+    if (self->_properties == nil) {
         self->_properties = [NSMutableDictionary dictionary];
     }
     [self->_properties setObject:value forKey:key];

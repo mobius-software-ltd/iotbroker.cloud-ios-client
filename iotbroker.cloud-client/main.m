@@ -72,7 +72,14 @@
 }
 
 - (void) connackWithCode : (NSInteger) returnCode {
-    [self->_amqp disconnectWithDuration:0];
+
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        [NSThread sleepForTimeInterval:4.0];
+        [self->_amqp publishMessage:nil];
+
+    });
+    
 }
 
 - (void) publishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag {
