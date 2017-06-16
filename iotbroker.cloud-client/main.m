@@ -60,7 +60,7 @@
 - (instancetype)init {
     self = [super init];
     if (self != nil) {
-        self->_amqp = [[IBAMQP alloc] initWithHost:@"13.92.84.124" port:5672 andResponseDelegate:self];
+        self->_amqp = [[IBAMQP alloc] initWithHost:@"23.97.209.85" port:5672 andResponseDelegate:self];
         [self->_amqp prepareToSendingRequest];
     }
     return self;
@@ -72,7 +72,7 @@
 }
 
 - (void) connackWithCode : (NSInteger) returnCode {
-    
+    [self->_amqp disconnectWithDuration:0];
 }
 
 - (void) publishWithTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag {

@@ -39,31 +39,31 @@
     IBAMQPTLVList *list = [[IBAMQPTLVList alloc] init];
     
     if (self->_nextIncomingId != nil) {
-        [list addElementWithIndex:0 element:[IBAMQPWrapper wrapObject:self->_nextIncomingId withType:IBAMQPUIntType]];
+        [list addElementWithIndex:0 element:[IBAMQPWrapper wrapUInt:[self->_nextIncomingId unsignedIntValue]]];
     }
     
     if (self->_incomingWindow == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
-    [list addElementWithIndex:1 element:[IBAMQPWrapper wrapObject:self->_incomingWindow withType:IBAMQPUIntType]];
+    [list addElementWithIndex:1 element:[IBAMQPWrapper wrapUInt:[self->_incomingWindow unsignedIntValue]]];
     
     if (self->_nextOutgoingId == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
-    [list addElementWithIndex:2 element:[IBAMQPWrapper wrapObject:self->_nextOutgoingId withType:IBAMQPUIntType]];
+    [list addElementWithIndex:2 element:[IBAMQPWrapper wrapUInt:[self->_nextOutgoingId unsignedIntValue]]];
     
     if (self->_outgoingWindow == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
-    [list addElementWithIndex:3 element:[IBAMQPWrapper wrapObject:self->_outgoingWindow withType:IBAMQPUIntType]];
+    [list addElementWithIndex:3 element:[IBAMQPWrapper wrapUInt:[self->_outgoingWindow unsignedIntValue]]];
     
     if (self->_handle != nil) {
-        [list addElementWithIndex:4 element:[IBAMQPWrapper wrapObject:self->_handle withType:IBAMQPUIntType]];
+        [list addElementWithIndex:4 element:[IBAMQPWrapper wrapUInt:[self->_handle unsignedIntValue]]];
     }
     
     if (self->_deliveryCount != nil) {
         if (self->_handle != nil) {
-            [list addElementWithIndex:5 element:[IBAMQPWrapper wrapObject:self->_deliveryCount withType:IBAMQPUIntType]];
+            [list addElementWithIndex:5 element:[IBAMQPWrapper wrapUInt:[self->_deliveryCount unsignedIntValue]]];
         } else {
             @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
         }
@@ -71,7 +71,7 @@
     
     if (self->_linkCredit != nil) {
         if (self->_handle != nil) {
-            [list addElementWithIndex:6 element:[IBAMQPWrapper wrapObject:self->_linkCredit withType:IBAMQPUIntType]];
+            [list addElementWithIndex:6 element:[IBAMQPWrapper wrapUInt:[self->_linkCredit unsignedIntValue]]];
         } else {
             @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
         }
@@ -79,7 +79,7 @@
     
     if (self->_avaliable != nil) {
         if (self->_handle != nil) {
-            [list addElementWithIndex:7 element:[IBAMQPWrapper wrapObject:self->_avaliable withType:IBAMQPUIntType]];
+            [list addElementWithIndex:7 element:[IBAMQPWrapper wrapUInt:[self->_avaliable unsignedIntValue]]];
         } else {
             @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
         }
@@ -87,17 +87,17 @@
     
     if (self->_drain != nil) {
         if (self->_handle != nil) {
-            [list addElementWithIndex:8 element:[IBAMQPWrapper wrapObject:self->_drain withType:IBAMQPBooleanType]];
+            [list addElementWithIndex:8 element:[IBAMQPWrapper wrapBOOL:[self->_drain boolValue]]];
         } else {
             @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
         }
     }
     
     if (self->_echo != nil) {
-        [list addElementWithIndex:9 element:[IBAMQPWrapper wrapObject:self->_drain withType:IBAMQPBooleanType]];
+        [list addElementWithIndex:9 element:[IBAMQPWrapper wrapBOOL:[self->_drain boolValue]]];
     }
     if (self->_properties != nil) {
-        [list addElementWithIndex:10 element:[IBAMQPWrapper wrapMap:self->_properties withKeyType:0 valueType:0]];
+        [list addElementWithIndex:10 element:[IBAMQPWrapper wrapMap:self->_properties]];
     }
     
     NSMutableData *data = [NSMutableData data];
@@ -133,21 +133,21 @@
     }
     if (size > 1) {
         IBTLVAMQP *element = [list.list objectAtIndex:1];
-        if (!element.isNull) {
+        if (element.isNull) {
             @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
         }
         self->_incomingWindow = @([IBAMQPUnwrapper unwrapUInt:element]);
     }
     if (size > 2) {
         IBTLVAMQP *element = [list.list objectAtIndex:2];
-        if (!element.isNull) {
+        if (element.isNull) {
             @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
         }
         self->_nextOutgoingId = @([IBAMQPUnwrapper unwrapUInt:element]);
     }
     if (size > 3) {
         IBTLVAMQP *element = [list.list objectAtIndex:3];
-        if (!element.isNull) {
+        if (element.isNull) {
             @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
         }
         self->_outgoingWindow = @([IBAMQPUnwrapper unwrapUInt:element]);

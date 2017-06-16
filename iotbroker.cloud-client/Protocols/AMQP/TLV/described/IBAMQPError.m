@@ -31,13 +31,13 @@
     
     if (self.condition != nil) {
         IBAMQPSymbol *symbol = [[IBAMQPSymbol alloc] initWithString:[self.condition nameByValue]];
-        [list addElementWithIndex:0 element:[IBAMQPWrapper wrapObject:symbol withType:0]];
+        [list addElementWithIndex:0 element:[IBAMQPWrapper wrapObject:symbol]];
     }
     if (self.descriptionString != nil) {
-        [list addElementWithIndex:1 element:[IBAMQPWrapper wrapObject:self.descriptionString withType:0]];
+        [list addElementWithIndex:1 element:[IBAMQPWrapper wrapObject:self.descriptionString]];
     }
     if (self.info != nil) {
-        [list addElementWithIndex:2 element:[IBAMQPWrapper wrapMap:self.info withKeyType:0 valueType:0]];
+        [list addElementWithIndex:2 element:[IBAMQPWrapper wrapMap:self.info]];
     }
     
     IBAMQPType *type = [[IBAMQPType alloc] initWithType:IBAMQPSmallULongType];

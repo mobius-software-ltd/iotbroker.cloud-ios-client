@@ -66,7 +66,7 @@
         [list addElementWithIndex:6 element:self->_target.list];
     }
     if (self->_unsettled != nil) {
-        [list addElementWithIndex:7 element:[IBAMQPWrapper wrapMap:self->_unsettled withKeyType:0 valueType:0]];
+        [list addElementWithIndex:7 element:[IBAMQPWrapper wrapMap:self->_unsettled]];
     }
     if (self->_incompleteUnsettled != nil) {
         [list addElementWithIndex:8 element:[IBAMQPWrapper wrapBOOL:[self->_incompleteUnsettled boolValue]]];
@@ -80,13 +80,13 @@
         [list addElementWithIndex:10 element:[IBAMQPWrapper wrapULong:[self->_maxMessageSize unsignedLongValue]]];
     }
     if (self->_offeredCapabilities != nil) {
-        [list addElementWithIndex:11 element:[IBAMQPWrapper wrapArray:self->_offeredCapabilities withType:0]];
+        [list addElementWithIndex:11 element:[IBAMQPWrapper wrapArray:self->_offeredCapabilities]];
     }
     if (self->_desiredCapabilities != nil) {
-        [list addElementWithIndex:12 element:[IBAMQPWrapper wrapArray:self->_desiredCapabilities withType:0]];
+        [list addElementWithIndex:12 element:[IBAMQPWrapper wrapArray:self->_desiredCapabilities]];
     }
     if (self->_properties != nil) {
-        [list addElementWithIndex:13 element:[IBAMQPWrapper wrapMap:self->_properties withKeyType:0 valueType:0]];
+        [list addElementWithIndex:13 element:[IBAMQPWrapper wrapMap:self->_properties]];
     }
     
     NSMutableData *data = [NSMutableData data];

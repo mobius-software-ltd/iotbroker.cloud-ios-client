@@ -22,6 +22,8 @@
 
 @interface NSMutableData (MQTT)
 
+@property (assign, nonatomic) NSInteger byteNumber;
+
 - (void) appendByte : (Byte) byte;
 - (Byte) readByte;
 - (void) appendShort : (short) value;
@@ -43,6 +45,8 @@
 
 - (NSString *) readStringWithLength : (NSInteger) length;
 - (NSInteger) numberWithLength : (NSInteger) length;
+- (NSMutableData *) dataWithLength : (NSInteger) length;
+
 - (void) clearNumber;
 - (NSInteger) getByteNumber;
 

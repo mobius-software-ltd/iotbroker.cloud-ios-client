@@ -16,10 +16,11 @@
 #import "IBAMQPTLVNull.h"
 #import "IBAMQPTLVFixed.h"
 #import "IBAMQPTLVVariable.h"
+#import "IBAMQPSimpleType.h"
 
 @interface IBAMQPWrapper : NSObject
 
-+ (IBTLVAMQP *) wrapObject : (id) object withType : (IBAMQPTypes) type;
++ (IBTLVAMQP *) wrapObject : (id) object;
 
 + (IBTLVAMQP *) wrapBOOL : (BOOL) value;
 + (IBTLVAMQP *) wrapUByte : (short) value;
@@ -41,8 +42,8 @@
 + (IBTLVAMQP *) wrapDecimal128 : (IBAMQPDecimal *) value;
 + (IBAMQPTLVVariable *) wrapString : (NSString *) value;
 + (IBAMQPTLVVariable *) wrapSymbol : (IBAMQPSymbol *) value;
-+ (IBAMQPTLVList *) wrapList : (NSArray *) value withType : (IBAMQPTypes) type;
-+ (IBAMQPTLVMap *) wrapMap : (NSDictionary *) value withKeyType : (IBAMQPTypes) keyType valueType : (IBAMQPTypes) valueType;
-+ (IBAMQPTLVArray *) wrapArray : (NSArray *) value withType : (IBAMQPTypes) type;
++ (IBAMQPTLVList *) wrapList : (NSArray *) value;
++ (IBAMQPTLVMap *) wrapMap : (NSDictionary *) value;
++ (IBAMQPTLVArray *) wrapArray : (NSArray *) value;
 
 @end

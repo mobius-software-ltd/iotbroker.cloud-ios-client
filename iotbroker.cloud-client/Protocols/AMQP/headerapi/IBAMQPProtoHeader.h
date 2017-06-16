@@ -10,18 +10,18 @@
 #import "IBMutableData.h"
 #import "IBAMQPHeader.h"
 
-typedef NS_ENUM(NSInteger, IBAMQPProtocolHeaders)
+typedef NS_ENUM(NSInteger, IBAMQPProtocolIds)
 {
-    IBAMQPProtocolHeader        = 0,
-    IBAMQPProtocolHeaderTLS     = 2,
-    IBAMQPProtocolHeaderSASL    = 3,
+    IBAMQPProtocolId        = 0,
+    IBAMQPProtocolIdTLS     = 2,
+    IBAMQPProtocolIdSASL    = 3,
 };
 
 extern NSString *const IBAMQPProtocolName;
 
 @interface IBAMQPProtoHeader : IBAMQPHeader 
 
-@property (assign, nonatomic) IBAMQPProtocolHeaders protocolID;
+@property (assign, nonatomic) IBAMQPProtocolIds protocolID;
 @property (assign, nonatomic) NSInteger versionMajor;
 @property (assign, nonatomic) NSInteger versionMinor;
 @property (assign, nonatomic) NSInteger versionRevision;

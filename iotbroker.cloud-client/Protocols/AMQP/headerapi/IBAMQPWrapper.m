@@ -10,7 +10,7 @@
 
 @implementation IBAMQPWrapper
 
-+ (IBTLVAMQP *) wrapObject : (id) object withType : (IBAMQPTypes) type {
++ (IBTLVAMQP *) wrapObject : (id) object {
 
     if (object == nil) {
         return [[IBAMQPTLVNull alloc] init];
@@ -18,28 +18,28 @@
     
     IBTLVAMQP *result = nil;
     
-    if ([object isKindOfClass:[NSNumber class]]) {
-        NSNumber *number = (NSNumber *)object;
+    if ([object isKindOfClass:[IBAMQPSimpleType class]]) {
+        IBAMQPSimpleType *simpleType = (IBAMQPSimpleType *)object;
         
-        switch (type) {
-            case IBAMQPBooleanType:     result = [self wrapBOOL:[number boolValue]];                break;
-            case IBAMQPUByteType:       result = [self wrapUByte:(Byte)[number unsignedCharValue]]; break;
-            case IBAMQPUShortType:      result = [self wrapUShort:[number unsignedShortValue]];     break;
+        switch (simpleType.type) {
+            case IBAMQPBooleanType:     result = [self wrapBOOL:[simpleType.value boolValue]];                break;
+            case IBAMQPUByteType:       result = [self wrapUByte:(Byte)[simpleType.value unsignedCharValue]]; break;
+            case IBAMQPUShortType:      result = [self wrapUShort:[simpleType.value unsignedShortValue]];     break;
             case IBAMQPUIntType:
             case IBAMQPSmallUIntType:
-            case IBAMQPUInt0Type:       result = [self wrapUInt:[number unsignedIntValue]];         break;
+            case IBAMQPUInt0Type:       result = [self wrapUInt:[simpleType.value unsignedIntValue]];         break;
             case IBAMQPULongType:
             case IBAMQPSmallULongType:
-            case IBAMQPULong0Type:      result = [self wrapULong:[number unsignedLongValue]];       break;
-            case IBAMQPByteType:        result = [self wrapUByte:(Byte)[number charValue]];         break;
-            case IBAMQPShortType:       result = [self wrapShort:[number shortValue]];              break;
+            case IBAMQPULong0Type:      result = [self wrapULong:[simpleType.value unsignedLongValue]];       break;
+            case IBAMQPByteType:        result = [self wrapUByte:(Byte)[simpleType.value charValue]];         break;
+            case IBAMQPShortType:       result = [self wrapShort:[simpleType.value shortValue]];              break;
             case IBAMQPIntType:
-            case IBAMQPSmallIntType:    result = [self wrapInt:[number intValue]];                  break;
+            case IBAMQPSmallIntType:    result = [self wrapInt:[simpleType.value intValue]];                  break;
             case IBAMQPLongType:
-            case IBAMQPSmallLongType:   result = [self wrapLong:[number longValue]];                break;
-            case IBAMQPFloatType:       result = [self wrapFloat:[number floatValue]];              break;
-            case IBAMQPDoubleType:      result = [self wrapDouble:[number doubleValue]];            break;
-            case IBAMQPCharType:        result = [self wrapChar:[number charValue]];                break;
+            case IBAMQPSmallLongType:   result = [self wrapLong:[simpleType.value longValue]];                break;
+            case IBAMQPFloatType:       result = [self wrapFloat:[simpleType.value floatValue]];              break;
+            case IBAMQPDoubleType:      result = [self wrapDouble:[simpleType.value doubleValue]];            break;
+            case IBAMQPCharType:        result = [self wrapChar:[simpleType.value charValue]];                break;
             default: break;
         }
         
@@ -284,19 +284,19 @@
     return [[IBAMQPTLVVariable alloc] initWithType:type andValue:data];
 }
 
-+ (IBAMQPTLVList *) wrapList : (NSArray *) value withType : (IBAMQPTypes) type {
++ (IBAMQPTLVList *) wrapList : (NSArray *) value {
 
     if (value == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
     IBAMQPTLVList *list = [[IBAMQPTLVList alloc] init];
     for (NSObject *object in value) {
-        [list addElement:[self wrapObject:object withType:type]];
+        [list addElement:[self wrapObject:object]];
     }
     return list;
 }
 
-+ (IBAMQPTLVMap *) wrapMap : (NSDictionary *) value withKeyType : (IBAMQPTypes) keyType valueType : (IBAMQPTypes) valueType {
++ (IBAMQPTLVMap *) wrapMap : (NSDictionary *) value {
     
     if (value == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
@@ -305,8 +305,8 @@
     for (NSObject *key in value.allKeys) {
         NSObject *valueItem = [value objectForKey:key];
 
-        IBTLVAMQP *k = [self wrapObject:key withType:keyType];
-        IBTLVAMQP *v = [self wrapObject:valueItem withType:valueType];
+        IBTLVAMQP *k = [self wrapObject:key];
+        IBTLVAMQP *v = [self wrapObject:valueItem];
         
         [map putElementWithKey:k
                       andValue:v];
@@ -314,14 +314,14 @@
     return map;
 }
 
-+ (IBAMQPTLVArray *) wrapArray : (NSArray *) value withType : (IBAMQPTypes) type {
++ (IBAMQPTLVArray *) wrapArray : (NSArray *) value {
     
     if (value == nil) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
     IBAMQPTLVArray *array = [[IBAMQPTLVArray alloc] init];
     for (NSObject *object in value) {
-        [array addElement:[self wrapObject:object withType:type]];
+        [array addElement:[self wrapObject:object]];
     }
 
     return array;

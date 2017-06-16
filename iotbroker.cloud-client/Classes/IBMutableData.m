@@ -19,15 +19,20 @@
  */
 
 #import "IBMutableData.h"
+#import <objc/runtime.h>
+
+static void const *key;
 
 @implementation NSMutableData (MQTT)
 
-NSInteger byteNumber = 0;
+//NSInteger byteNumber = 0;
 
-+ (instancetype)data {
-    NSMutableData *data = [[NSMutableData alloc] init];
-    [data clearNumber];
-    return data;
+- (NSInteger)byteNumber {
+    return [objc_getAssociatedObject(self, key) integerValue];
+}
+
+- (void)setByteNumber:(NSInteger)byteNumber {
+    objc_setAssociatedObject(self, key, @(byteNumber), OBJC_ASSOCIATION_RETAIN);
 }
 
 - (void) appendByte : (Byte) byte {
@@ -37,8 +42,8 @@ NSInteger byteNumber = 0;
 - (Byte) readByte {
     
     const Byte *bytes = [self bytes];
-    Byte byte = bytes[byteNumber];
-    byteNumber++;
+    Byte byte = bytes[self.byteNumber];
+    self.byteNumber++;
     
     return byte;
 }
@@ -80,14 +85,15 @@ NSInteger byteNumber = 0;
     int length = 3;
     
     NSInteger value = 0;
-    NSData *subData = [self subdataWithRange:NSMakeRange(byteNumber, length)];
+    NSLog(@"%zd", self.byteNumber);
+    NSData *subData = [self subdataWithRange:NSMakeRange(self.byteNumber, length)];
     Byte *bytes = (Byte *)[subData bytes];
 
     for (int i = 0; i < length; i++) {
         value <<= 8;
         value |= bytes[i] & 0x00FF;
     }
-    byteNumber += length;
+    self.byteNumber += length;
     
     return (int)value;
 }
@@ -103,7 +109,7 @@ NSInteger byteNumber = 0;
 - (int) readInt {
 
     int value = 0;
-    
+
     value = (int)[self numberWithLength:sizeof(int)];
 
     return value;
@@ -135,8 +141,8 @@ NSInteger byteNumber = 0;
 - (float) readFloat {
 
     int length = sizeof(float);
-    NSData *data = [self subdataWithRange:NSMakeRange(byteNumber, length)];
-    byteNumber += length;
+    NSData *data = [self subdataWithRange:NSMakeRange(self.byteNumber, length)];
+    self.byteNumber += length;
     return ((float *)[data bytes])[0];
 }
 
@@ -148,8 +154,8 @@ NSInteger byteNumber = 0;
 - (double) readDouble {
 
     int length = sizeof(double);
-    NSData *data = [self subdataWithRange:NSMakeRange(byteNumber, length)];
-    byteNumber += length;
+    NSData *data = [self subdataWithRange:NSMakeRange(self.byteNumber, length)];
+    self.byteNumber += length;
     return ((double *)[data bytes])[0];
 }
 
@@ -166,26 +172,36 @@ NSInteger byteNumber = 0;
 }
 
 - (NSInteger) numberWithLength : (NSInteger) length {
+
+    if (self.byteNumber == self.length) return 0;
     
     NSInteger number = 0;
-    NSData *data = [self subdataWithRange:NSMakeRange([self getByteNumber], length)];
+    NSData *data = [self subdataWithRange:NSMakeRange(self.byteNumber, length)];
     Byte *bytes = (Byte *)[data bytes];
     
     for (int i = 0; i < length; i++) {
         number <<= 8;
         number |= bytes[i] & 0x00FF;
     }
-    byteNumber += length;
+    self.byteNumber += length;
     
     return number;
 }
 
+- (NSMutableData *) dataWithLength : (NSInteger) length {
+
+    NSData *data = [self subdataWithRange:NSMakeRange([self getByteNumber], length)];
+    self.byteNumber += length;
+    
+    return [NSMutableData dataWithData:data];
+}
+
 - (void) clearNumber {
-    byteNumber = 0;
+    self.byteNumber = 0;
 }
 
 - (NSInteger) getByteNumber {
-    return byteNumber;
+    return self.byteNumber;
 }
 
 

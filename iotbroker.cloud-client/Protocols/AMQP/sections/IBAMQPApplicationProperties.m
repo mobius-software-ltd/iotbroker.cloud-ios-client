@@ -20,7 +20,7 @@
     IBAMQPTLVMap *map = [[IBAMQPTLVMap alloc] init];
     
     if (self->_properties != nil) {
-        map = (IBAMQPTLVMap *)[IBAMQPWrapper wrapMap:self->_properties withKeyType:0 valueType:0];
+        map = (IBAMQPTLVMap *)[IBAMQPWrapper wrapMap:self->_properties];
     }
     
     NSMutableData *data = [NSMutableData data];

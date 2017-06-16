@@ -78,7 +78,7 @@
     
     if (size > 0) {
         IBTLVAMQP *element = [list.list objectAtIndex:0];
-        if (!element.isNull) {
+        if (element.isNull) {
             @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
         }
         self->_handle = @([IBAMQPUnwrapper unwrapUInt:element]);

@@ -20,7 +20,7 @@
     IBTLVAMQP *map = [[IBTLVAMQP alloc] init];
     
     if (self->_annotations != nil) {
-        map = [IBAMQPWrapper wrapMap:self->_annotations withKeyType:0 valueType:0];
+        map = [IBAMQPWrapper wrapMap:self->_annotations];
     }
     
     NSMutableData *data = [NSMutableData data];

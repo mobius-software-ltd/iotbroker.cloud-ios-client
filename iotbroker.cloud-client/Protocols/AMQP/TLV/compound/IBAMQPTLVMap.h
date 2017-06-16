@@ -14,7 +14,7 @@
 @property (assign, nonatomic, readonly) NSInteger size;
 @property (assign, nonatomic, readonly) NSInteger count;
 
-@property (strong, nonatomic, readonly) NSMutableDictionary<IBTLVAMQP *, IBTLVAMQP *> *map;
+@property (strong, atomic, readonly) NSMutableDictionary<IBTLVAMQP *, IBTLVAMQP *> *map;
 
 - (instancetype)initWithType : (IBAMQPType *) type andMap : (NSDictionary<IBTLVAMQP *, IBTLVAMQP *> *) map;
 

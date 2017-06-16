@@ -40,7 +40,7 @@ NSString *const IBAMQPProtocolName = @"AMQP";
 }
 
 - (NSInteger) getMessageType {
-    return 0;
+    return IBAMQPProtocolHeaderCode;
 }
 
 - (NSMutableData *)bytes {

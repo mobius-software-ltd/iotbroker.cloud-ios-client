@@ -27,7 +27,7 @@
 
     }
     if (self->_messageAnnotations != nil) {
-        [list addElementWithIndex:2 element:[IBAMQPWrapper wrapMap:self->_messageAnnotations withKeyType:0 valueType:0]];
+        [list addElementWithIndex:2 element:[IBAMQPWrapper wrapMap:self->_messageAnnotations]];
     }
     
     IBAMQPType *type = [[IBAMQPType alloc] initWithType:IBAMQPSmallULongType];

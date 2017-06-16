@@ -20,7 +20,7 @@
     IBAMQPTLVList *list = [[IBAMQPTLVList alloc] init];
     
     if (self->_sequence != nil) {
-        list = (IBAMQPTLVList *)[IBAMQPWrapper wrapList:self->_sequence withType:0];
+        list = (IBAMQPTLVList *)[IBAMQPWrapper wrapList:self->_sequence];
     }
     
     NSMutableData *data = [NSMutableData data];

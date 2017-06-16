@@ -211,10 +211,16 @@
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
-    NSDictionary *values = ((IBAMQPTLVMap *)tlv).map;
-    for (IBTLVAMQP *item in values.allKeys) {
-        IBTLVAMQP *value = [values objectForKey:item];
-        [result setObject:[self unwrap:value] forKey:[self unwrap:item]];
+    
+    IBAMQPTLVMap *map = ((IBAMQPTLVMap *)tlv);
+    
+    Byte *bytes = (Byte *)[tlv.data bytes];
+    
+    for (IBTLVAMQP *key in map.map.allKeys) {
+        IBTLVAMQP *value = [map.map objectForKey:key];
+        if (value != nil) {
+            [result setObject:[self unwrap:value] forKey:[self unwrap:key]];
+        }
     }
     return result;
 }

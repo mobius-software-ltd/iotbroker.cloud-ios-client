@@ -25,8 +25,7 @@
     return 8;
 }
 
-- (NSInteger)type {
-    @throw [NSException exceptionWithName:[[self class] description] reason:@"arguments: - abstract" userInfo:nil];
+- (NSInteger)getMessageType {
     return 0;
 }
 

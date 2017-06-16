@@ -11,6 +11,9 @@
 @implementation IBAMQPTLVVariable
 
 @synthesize value = _value;
+@synthesize data = _data;
+@synthesize length = _length;
+@synthesize isNull = _isNull;
 
 - (instancetype) initWithType : (IBAMQPType *) type andValue : (NSMutableData *) value {
     self = [super initWithConstructor:[[IBAMQPSimpleConstructor alloc] initWithType:type]];
@@ -50,12 +53,19 @@
     return self->_value;
 }
 
+- (NSString *)description {
+    return [[NSString alloc] initWithData:self->_value encoding:NSUTF8StringEncoding];
+}
+
 - (id)copyWithZone:(NSZone *)zone {
     
     IBAMQPType *typeCode = [IBAMQPType enumWithType:self.type];
     IBAMQPTLVVariable *copy = [[IBAMQPTLVVariable alloc] initWithType:typeCode andValue:self->_value];
-    copy.width = self->_width;
     copy.constructor = self.constructor;
+    copy->_data = self.data;
+    copy->_length = self.length;
+    copy->_isNull = self.isNull;
+    copy->_width = self.width;
     
     return copy;
 }

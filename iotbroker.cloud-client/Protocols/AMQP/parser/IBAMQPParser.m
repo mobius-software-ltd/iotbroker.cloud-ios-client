@@ -11,14 +11,17 @@
 @implementation IBAMQPParser
 
 + (NSInteger) next : (NSMutableData *) buffer {
+   
+    [buffer clearNumber];
     
     NSInteger length = [buffer readInt];
+
     if (length == 1095586128) {
         NSInteger protocolId = [buffer readByte];
         NSInteger versionMajor = [buffer readByte];
         NSInteger versionMinor = [buffer readByte];
         NSInteger versionRevision = [buffer readByte];
-        if ((protocolId == IBAMQPProtocolHeader  || protocolId == IBAMQPProtocolHeaderTLS || protocolId == IBAMQPProtocolHeaderSASL) && versionMajor == 1 && versionMinor == 0 && versionRevision == 0) {
+        if ((protocolId == IBAMQPProtocolId  || protocolId == IBAMQPProtocolIdTLS || protocolId == IBAMQPProtocolIdSASL) && versionMajor == 1 && versionMinor == 0 && versionRevision == 0) {
             [buffer clearNumber];
             return 8;
         } else {
@@ -40,6 +43,7 @@
         protoHeader.versionRevision = [buffer readByte];
         return protoHeader;
     }
+    
     [buffer clearNumber];
     
     NSInteger length = [buffer readInt] & 0xffffffffL;
@@ -68,8 +72,6 @@
         }
     }
     
-    NSLog(@"DECODE LENGTH = %zd", length);
-    //NSLog(@" %zd - %zd = %zd --- (%zd)", buffer.length, [buffer getByteNumber], (buffer.length - [buffer getByteNumber]), length);
     if (length != (buffer.length - [buffer getByteNumber]) + 8) {
         @throw [NSException exceptionWithName:[[self class] description]
                                        reason:@"Received malformed header with invalid length"
@@ -77,6 +79,16 @@
     }
     
     IBAMQPHeader *header = nil;
+
+    if (type == 0) {
+        header = [IBAMQPFactory amqp:buffer];
+    } else if (type == 1) {
+        header = [IBAMQPFactory sasl:buffer];
+    } else {
+        @throw [NSException exceptionWithName:[[self class] description]
+                                       reason:@"Received malformed header with invalid type"
+                                     userInfo:nil];
+    }
     
     if (header.type == IBAMQPTransferHeaderCode) {
         while ((buffer.length - [buffer getByteNumber]) > 0) {

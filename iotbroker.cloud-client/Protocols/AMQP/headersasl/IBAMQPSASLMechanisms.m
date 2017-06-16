@@ -44,7 +44,7 @@
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
     
-    [list addElementWithIndex:0 element:[IBAMQPWrapper wrapArray:self->_mechanisms withType:0]];
+    [list addElementWithIndex:0 element:[IBAMQPWrapper wrapArray:self->_mechanisms]];
     
     NSMutableData *data = [NSMutableData data];
     [data appendByte:0x40];

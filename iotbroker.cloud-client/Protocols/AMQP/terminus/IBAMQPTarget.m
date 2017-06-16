@@ -22,22 +22,22 @@
         [list addElementWithIndex:0 element:[IBAMQPWrapper wrapString:self->_address]];
     }
     if (self->_durable != nil) {
-        [list addElementWithIndex:1 element:[IBAMQPWrapper wrapObject:@(self->_durable.value) withType:IBAMQPUIntType]];
+        [list addElementWithIndex:1 element:[IBAMQPWrapper wrapUInt:self->_durable.value]];
     }
     if (self->_expiryPeriod != nil) {
         IBAMQPSymbol *symbol = [[IBAMQPSymbol alloc] initWithString:[self->_expiryPeriod nameByValue]];
-        [list addElementWithIndex:2 element:[IBAMQPWrapper wrapObject:symbol withType:0]];
+        [list addElementWithIndex:2 element:[IBAMQPWrapper wrapObject:symbol]];
     }
     if (self->_timeout != nil) {
-        [list addElementWithIndex:3 element:[IBAMQPWrapper wrapObject:self->_timeout withType:IBAMQPUIntType]];
+        [list addElementWithIndex:3 element:[IBAMQPWrapper wrapUInt:[self->_timeout unsignedIntValue]]];
     }
     if (self->_dynamic != nil) {
-        [list addElementWithIndex:4 element:[IBAMQPWrapper wrapObject:self->_dynamic withType:IBAMQPBooleanType]];
+        [list addElementWithIndex:4 element:[IBAMQPWrapper wrapBOOL:[self->_dynamic boolValue]]];
     }
     if (self->_dynamicNodeProperties != nil) {
         if (self->_dynamic != nil) {
             if ([self->_dynamic boolValue]) {
-                [list addElementWithIndex:5 element:[IBAMQPWrapper wrapMap:self->_dynamicNodeProperties withKeyType:0 valueType:0]];
+                [list addElementWithIndex:5 element:[IBAMQPWrapper wrapMap:self->_dynamicNodeProperties]];
             } else {
                 @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
             }
@@ -46,7 +46,7 @@
         }
     }
     if (self->_capabilities != nil) {
-        [list addElementWithIndex:6 element:[IBAMQPWrapper wrapArray:self->_capabilities withType:0]];
+        [list addElementWithIndex:6 element:[IBAMQPWrapper wrapList:self->_capabilities]];
     }
     
     NSMutableData *data = [NSMutableData data];
@@ -116,7 +116,7 @@
     if (list.list.count > 6) {
         IBTLVAMQP *element = [list.list objectAtIndex:6];
         if (!element.isNull) {
-            self->_capabilities = [NSMutableArray arrayWithArray:[IBAMQPUnwrapper unwrapArray:element]];
+            self->_capabilities = [NSMutableArray arrayWithArray:[IBAMQPUnwrapper unwrapList:element]];
         }
     }
 }

@@ -34,7 +34,7 @@
         } else if (self->_messageID.uuid != nil) {
             object = self->_messageID.uuid;
         }
-        [list addElementWithIndex:0 element:[IBAMQPWrapper wrapObject:object withType:0]];
+        [list addElementWithIndex:0 element:[IBAMQPWrapper wrapObject:object]];
     }
     
     if (self->_userID != nil) {
@@ -68,7 +68,7 @@
         [list addElementWithIndex:10 element:[IBAMQPWrapper wrapString:self->_groupId]];
     }
     if (self->_groupSequence != nil) {
-        [list addElementWithIndex:11 element:[IBAMQPWrapper wrapObject:self->_groupSequence withType:IBAMQPUIntType]];
+        [list addElementWithIndex:11 element:[IBAMQPWrapper wrapUInt:[self->_groupSequence unsignedIntValue]]];
     }
     if (self->_replyToGroupId != nil) {
         [list addElementWithIndex:12 element:[IBAMQPWrapper wrapString:self->_replyToGroupId]];

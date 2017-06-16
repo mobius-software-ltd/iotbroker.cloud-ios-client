@@ -56,19 +56,19 @@
         [list addElementWithIndex:4 element:[IBAMQPWrapper wrapUInt:[self->_idleTimeout unsignedIntValue]]];
     }
     if (self->_outgoingLocales != nil) {
-        [list addElementWithIndex:5 element:[IBAMQPWrapper wrapArray:self->_outgoingLocales withType:0]];
+        [list addElementWithIndex:5 element:[IBAMQPWrapper wrapArray:self->_outgoingLocales]];
     }
     if (self->_incomingLocales != nil) {
-        [list addElementWithIndex:6 element:[IBAMQPWrapper wrapArray:self->_incomingLocales withType:0]];
+        [list addElementWithIndex:6 element:[IBAMQPWrapper wrapArray:self->_incomingLocales]];
     }
     if (self->_offeredCapabilities != nil) {
-        [list addElementWithIndex:7 element:[IBAMQPWrapper wrapArray:self->_offeredCapabilities withType:0]];
+        [list addElementWithIndex:7 element:[IBAMQPWrapper wrapArray:self->_offeredCapabilities]];
     }
     if (self->_desiredCapabilities != nil) {
-        [list addElementWithIndex:8 element:[IBAMQPWrapper wrapArray:self->_desiredCapabilities withType:0]];
+        [list addElementWithIndex:8 element:[IBAMQPWrapper wrapArray:self->_desiredCapabilities]];
     }
     if (self->_properties != nil) {
-        [list addElementWithIndex:9 element:[IBAMQPWrapper wrapMap:self->_properties withKeyType:0 valueType:0]];
+        [list addElementWithIndex:9 element:[IBAMQPWrapper wrapMap:self->_properties]];
     }
 
     NSMutableData *data = [NSMutableData data];
@@ -120,7 +120,7 @@
     if (size > 3) {
         element = [list.list objectAtIndex:3];
         if (!element.isNull) {
-            self->_channelMax = @([IBAMQPUnwrapper unwrapShort:element]);
+            self->_channelMax = @([IBAMQPUnwrapper unwrapUShort:element]);
         }
     }
     if (size > 4) {

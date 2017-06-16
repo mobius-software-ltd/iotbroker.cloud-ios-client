@@ -18,7 +18,7 @@
 
 - (IBTLVAMQP *)value {
 
-    IBTLVAMQP *val = self->_valueObject != nil ? [IBAMQPWrapper wrapObject:self->_valueObject withType:0] : [[IBAMQPTLVNull alloc] init];
+    IBTLVAMQP *val = self->_valueObject != nil ? [IBAMQPWrapper wrapObject:self->_valueObject] : [[IBAMQPTLVNull alloc] init];
     
     NSMutableData *data = [NSMutableData data];
     [data appendByte:0x77];

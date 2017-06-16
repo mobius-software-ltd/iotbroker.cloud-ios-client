@@ -8,42 +8,13 @@
 
 #import "IBAMQPFactory.h"
 #import "IBAMQPTLVFactory.h"
-#import "IBAMQPAttach.h"
-#import "IBAMQPBegin.h"
-#import "IBAMQPClose.h"
-#import "IBAMQPDetach.h"
-#import "IBAMQPDisposition.h"
-#import "IBAMQPEnd.h"
-#import "IBAMQPFlow.h"
-#import "IBAMQPOpen.h"
-#import "IBAMQPTransfer.h"
-#import "IBAMQPSASLChallenge.h"
-#import "IBAMQPSASLInit.h"
-#import "IBAMQPSASLMechanisms.h"
-#import "IBAMQPSASLOutcome.h"
-#import "IBAMQPSASLResponse.h"
-#import "IBAMQPApplicationProperties.h"
-#import "IBAMQPData.h"
-#import "IBAMQPDeliveryAnnotation.h"
-#import "IBAMQPFooter.h"
-#import "IBAMQPMessageHeader.h"
-#import "IBAMQPMessageAnnotations.h"
-#import "IBAMQPProperties.h"
-#import "IBAMQPSequence.h"
-#import "IBAMQPValue.h"
-#import "IBAMQPStateCode.h"
-#import "IBAMQPAccepted.h"
-#import "IBAMQPModified.h"
-#import "IBAMQPReceived.h"
-#import "IBAMQPRejected.h"
-#import "IBAMQPReleased.h"
 
 @implementation IBAMQPFactory
 
 + (IBAMQPHeader *) amqp : (NSMutableData *) data {
     
     IBTLVAMQP *list = [IBAMQPTLVFactory tlvByData:data];
-    
+        
     if (list.type != IBAMQPList0Type && list.type != IBAMQPList8Type && list.type != IBAMQPList32Type) {
         @throw [NSException exceptionWithName:[[self class] description] reason:NSStringFromSelector(_cmd) userInfo:nil];
     }
@@ -75,7 +46,7 @@
 }
 
 + (IBAMQPHeader *) sasl : (NSMutableData *) data {
-
+    
     IBTLVAMQP *list = [IBAMQPTLVFactory tlvByData:data];
 
     if (list.type != IBAMQPList0Type && list.type != IBAMQPList8Type && list.type != IBAMQPList32Type) {

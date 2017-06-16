@@ -19,9 +19,9 @@
 
 + (IBTLVAMQP *) tlvByData : (NSMutableData *) data {
 
-    IBAMQPSimpleConstructor *constructor = [self constructorByData:data];
+    IBAMQPSimpleConstructor *constructor = [IBAMQPTLVFactory constructorByData:data];
     
-    IBTLVAMQP *tlv = [self elementByConstructor:constructor andData:data];
+    IBTLVAMQP *tlv = [IBAMQPTLVFactory elementByConstructor:constructor andData:data];
     return tlv;
 }
 
@@ -30,7 +30,7 @@
     IBTLVAMQP *tlv = nil;
     
     IBAMQPType *type = constructor.type;
-    
+        
     switch (type.value) {
         case IBAMQPNullType:
             tlv = [[IBAMQPTLVNull alloc] init];
@@ -94,8 +94,8 @@
         case IBAMQPBinary8Type: {
             int var8Length = ([data readByte] & 0xff);
             NSMutableData *bytes = [NSMutableData data];
-            [bytes appendData:[data subdataWithRange:NSMakeRange(0, var8Length)]];
-            tlv = [[IBAMQPTLVFixed alloc] initWithType:type andValue:bytes];
+            [bytes appendData:[data dataWithLength:var8Length]];
+            tlv = [[IBAMQPTLVVariable alloc] initWithType:type andValue:bytes];
             break;
         }
         case IBAMQPString32Type:
@@ -103,8 +103,8 @@
         case IBAMQPBinary32Type: {
             int var32Length = [data readInt];
             NSMutableData *bytes = [NSMutableData data];
-            [bytes appendData:[data subdataWithRange:NSMakeRange(0, var32Length)]];
-            tlv = [[IBAMQPTLVFixed alloc] initWithType:type andValue:bytes];
+            [bytes appendData:[data dataWithLength:var32Length]];
+            tlv = [[IBAMQPTLVVariable alloc] initWithType:type andValue:bytes];
             break;
         }
         case IBAMQPList0Type:
@@ -134,12 +134,19 @@
         case IBAMQPMap8Type: {
             int map8size = ([data readByte] & 0xff);
             [data readByte]; // map8count
+
             int stop8 = (int)[data getByteNumber] + map8size - 1;
-            NSMutableDictionary *map8 = [NSMutableDictionary dictionary];
+            
+            IBAMQPTLVMap *map8 = [[IBAMQPTLVMap alloc] init];
+            
             while ([data getByteNumber] < stop8) {
-                [map8 setObject:[IBAMQPTLVFactory tlvByData:data] forKey:[IBAMQPTLVFactory tlvByData:data]];
+                IBTLVAMQP *key = [IBAMQPTLVFactory tlvByData:data];
+                IBTLVAMQP *value = [IBAMQPTLVFactory tlvByData:data];
+                
+                [map8 putElementWithKey:key andValue:value];
             }
-            tlv = [[IBAMQPTLVMap alloc] initWithType:type andMap:map8];
+            tlv = map8;
+            
             break;
         }
         case IBAMQPMap32Type: {
@@ -195,7 +202,7 @@
     Byte codeByte = [data readByte];
     
     if (codeByte == 0) {
-        IBTLVAMQP *descriptor = [self tlvByData:data];
+        IBTLVAMQP *descriptor = [IBAMQPTLVFactory tlvByData:data];
         type.value = ([data readByte] & 0xff);
         constructor = [[IBAMQPDescribedConstructor alloc] initWithType:type andDescriptor:descriptor];
     } else {

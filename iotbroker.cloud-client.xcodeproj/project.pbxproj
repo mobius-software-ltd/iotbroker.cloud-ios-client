@@ -54,6 +54,7 @@
 		222722181ED829930098D40F /* IBCoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 222722171ED829930098D40F /* IBCoMessage.m */; };
 		2227221D1ED86A0E0098D40F /* IBCoAP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2227221C1ED86A0E0098D40F /* IBCoAP.m */; };
 		22280FA21EDC46A300D56252 /* IBProtocolTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22280FA11EDC46A300D56252 /* IBProtocolTypeTableViewCell.m */; };
+		2229726F1EF3D90600B1E14C /* IBAMQPSimpleType.m in Sources */ = {isa = PBXBuildFile; fileRef = 2229726E1EF3D90600B1E14C /* IBAMQPSimpleType.m */; };
 		224BEF921EEA7F7C0033961F /* IBAMQPTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEF911EEA7F7C0033961F /* IBAMQPTarget.m */; };
 		224BEF971EEA87530033961F /* IBAMQPData.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEF961EEA87530033961F /* IBAMQPData.m */; };
 		224BEF9A1EEA89050033961F /* IBAMQPFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEF991EEA89050033961F /* IBAMQPFooter.m */; };
@@ -301,6 +302,8 @@
 		2227221C1ED86A0E0098D40F /* IBCoAP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBCoAP.m; sourceTree = "<group>"; };
 		22280FA01EDC46A300D56252 /* IBProtocolTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBProtocolTypeTableViewCell.h; sourceTree = "<group>"; };
 		22280FA11EDC46A300D56252 /* IBProtocolTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBProtocolTypeTableViewCell.m; sourceTree = "<group>"; };
+		2229726D1EF3D90600B1E14C /* IBAMQPSimpleType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPSimpleType.h; sourceTree = "<group>"; };
+		2229726E1EF3D90600B1E14C /* IBAMQPSimpleType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPSimpleType.m; sourceTree = "<group>"; };
 		224BEF901EEA7F7C0033961F /* IBAMQPTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPTarget.h; sourceTree = "<group>"; };
 		224BEF911EEA7F7C0033961F /* IBAMQPTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPTarget.m; sourceTree = "<group>"; };
 		224BEF941EEA86A40033961F /* IBAMQPSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPSection.h; sourceTree = "<group>"; };
@@ -1139,6 +1142,8 @@
 				221AE5C71EE94315009C0A09 /* IBAMQPUnwrapper.m */,
 				221AE5CF1EE999ED009C0A09 /* IBAMQPFactory.h */,
 				221AE5D01EE999ED009C0A09 /* IBAMQPFactory.m */,
+				2229726D1EF3D90600B1E14C /* IBAMQPSimpleType.h */,
+				2229726E1EF3D90600B1E14C /* IBAMQPSimpleType.m */,
 			);
 			path = headerapi;
 			sourceTree = "<group>";
@@ -2371,6 +2376,7 @@
 				2289A1B21EE80D43009B98AA /* IBAMQPTLVFactory.m in Sources */,
 				221AE5C81EE94315009C0A09 /* IBAMQPUnwrapper.m in Sources */,
 				22C531A71EAF90D2007F57A8 /* IBPingreq.m in Sources */,
+				2229726F1EF3D90600B1E14C /* IBAMQPSimpleType.m in Sources */,
 				22C531A61EAF90D2007F57A8 /* IBDisconnect.m in Sources */,
 				221AE5CB1EE986B3009C0A09 /* IBAMQPError.m in Sources */,
 				2217D9661EBB18B700A636E7 /* IBMutableData.m in Sources */,

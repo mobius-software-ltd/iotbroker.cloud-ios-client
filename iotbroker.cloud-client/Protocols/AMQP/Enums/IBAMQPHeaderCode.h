@@ -10,6 +10,7 @@
 
 typedef NS_ENUM(Byte, IBAMQPHeaderCodes)
 {
+    IBAMQPProtocolHeaderCode        = 0x08,
     IBAMQPOpenHeaderCode            = 0x10,
     IBAMQPBeginHeaderCode           = 0x11,
     IBAMQPAttachHeaderCode          = 0x12,

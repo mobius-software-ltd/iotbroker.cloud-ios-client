@@ -197,7 +197,7 @@
     IBAMQPDetach *detach = [[IBAMQPDetach alloc] init];
     detach.closed = @(YES);
     detach.error = [[IBAMQPError alloc] init];
-    detach.handle = @(3452);
+    detach.handle = @(52);
     NSLog(@" t> DETACH      %zd", [detach getLength]);
     
     XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:detach]]);
@@ -226,6 +226,7 @@
 - (void)testMechanismsPacket {
     
     IBAMQPSASLMechanisms *mechanisms = [[IBAMQPSASLMechanisms alloc] init];
+    [mechanisms setType:1];
     [mechanisms addMechanism:@"NATIVE"];
     [mechanisms addMechanism:@"CRAM-MD5"];
     NSLog(@" t> MECHANISMS  %zd", [mechanisms getLength]);
@@ -236,6 +237,7 @@
 - (void)testInitPacket {
     
     IBAMQPSASLInit *init = [[IBAMQPSASLInit alloc] init];
+    [init setType:1];
     init.hostName = @"localhost";
     init.initialResponse = [NSMutableData dataWithData:[@"hello" dataUsingEncoding:NSUTF8StringEncoding]];
     init.mechanism = [[IBAMQPSymbol alloc] initWithString:@"hello-mechanism"];
@@ -247,6 +249,7 @@
 - (void)testChallengePacket {
     
     IBAMQPSASLChallenge *challenge = [[IBAMQPSASLChallenge alloc] init];
+    [challenge setType:1];
     challenge.challenge = [NSMutableData dataWithData:[@"hello world" dataUsingEncoding:NSUTF8StringEncoding]];
     NSLog(@" t> CHALLENGE   %zd", [challenge getLength]);
     
@@ -264,6 +267,7 @@
 - (void)testOutcomePacket {
     
     IBAMQPSASLOutcome *outcome  = [[IBAMQPSASLOutcome alloc] init];
+    [outcome setType:1];
     outcome.outcomeCode = [IBAMQPSASLCode enumWithSASLCode:IBAMQPOkSASLCode];
     outcome.additionalData = [NSMutableData dataWithData:[@"hello world" dataUsingEncoding:NSUTF8StringEncoding]];
     NSLog(@" t> OUTCOME     %zd", [outcome getLength]);
