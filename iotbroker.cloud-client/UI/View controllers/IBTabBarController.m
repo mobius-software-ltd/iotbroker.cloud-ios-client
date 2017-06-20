@@ -26,6 +26,7 @@
 #import "IBMQTT.h"
 #import "IBMQTTSN.h"
 #import "IBCoAP.h"
+#import "IBAMQP.h"
 
 @interface IBTabBarController () <IBTopicsListControllerDelegate, IBSendMessageControllerDelegate, IBAddTopicDelegate, IBMessagesControllerDelegate, IBResponsesDelegate>
 
@@ -54,6 +55,7 @@
 - (void) initializeConnection {
 
     Account *account = [self->_accountManager readDefaultAccount];
+    
     if (account != nil) {
         if (account.protocol == IBMqttProtocolType) {
             self->_requests = [[IBMQTT alloc] initWithHost:account.serverHost port:account.port andResponseDelegate:self];
@@ -61,6 +63,8 @@
             self->_requests = [[IBMQTTSN alloc] initWithHost:account.serverHost port:account.port andResponseDelegate:self];
         } else if (account.protocol == IBCoAPProtocolType) {
             self->_requests = [[IBCoAP alloc] initWithHost:account.serverHost port:account.port andResponseDelegate:self];
+        } else if (account.protocol == IBAMQPProtocolType) {
+            self->_requests = [[IBAMQP alloc] initWithHost:account.serverHost port:account.port andResponseDelegate:self];
         }
         [self showProgressWithMessage:@"Connection..."];
         [self->_requests prepareToSendingRequest];

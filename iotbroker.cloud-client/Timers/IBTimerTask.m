@@ -46,7 +46,7 @@
 #pragma mark - Private methods -
 
 - (void) timerMethod : (NSTimer *) timer {
-    
+        
     if (self->_request.internetProtocol.state == IBTransportOpen) {
         if (self->_status == true) {
             if ([self->_message getMessageType] == IBPublishMessage) {

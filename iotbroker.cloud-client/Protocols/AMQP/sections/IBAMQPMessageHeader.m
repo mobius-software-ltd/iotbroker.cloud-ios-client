@@ -26,7 +26,7 @@
         [list addElementWithIndex:1 element:[IBAMQPWrapper wrapUByte:[self->_priority shortValue]]];
     }
     if (self->_milliseconds != nil) {
-        [list addElementWithIndex:2 element:[IBAMQPWrapper wrapUInt:[self->_milliseconds longValue]]];
+        [list addElementWithIndex:2 element:[IBAMQPWrapper wrapUInt:[self->_milliseconds unsignedIntValue]]];
     }
     if (self->_firstAquirer != nil) {
         [list addElementWithIndex:3 element:[IBAMQPWrapper wrapBOOL:[self->_firstAquirer boolValue]]];

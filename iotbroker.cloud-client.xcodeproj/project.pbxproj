@@ -78,6 +78,7 @@
 		224BEFD11EEAD55E0033961F /* IBAMQPFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFD01EEAD55E0033961F /* IBAMQPFlow.m */; };
 		224BEFD41EEADB200033961F /* IBAMQPOpen.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFD31EEADB200033961F /* IBAMQPOpen.m */; };
 		224BEFD71EEAE19C0033961F /* IBAMQPTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFD61EEAE19C0033961F /* IBAMQPTransfer.m */; };
+		22664DCC1EF9A1FA007E7438 /* IBAMQPTransferMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 22664DCB1EF9A1FA007E7438 /* IBAMQPTransferMap.m */; };
 		2289A1A81EE7E8EF009B98AA /* IBAMQPTLVList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1A71EE7E8EF009B98AA /* IBAMQPTLVList.m */; };
 		2289A1AB1EE7F332009B98AA /* IBAMQPTLVMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1AA1EE7F332009B98AA /* IBAMQPTLVMap.m */; };
 		2289A1AF1EE7FAB1009B98AA /* IBAMQPTLVArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1AE1EE7FAB1009B98AA /* IBAMQPTLVArray.m */; };
@@ -351,6 +352,8 @@
 		224BEFD31EEADB200033961F /* IBAMQPOpen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPOpen.m; sourceTree = "<group>"; };
 		224BEFD51EEAE19C0033961F /* IBAMQPTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPTransfer.h; sourceTree = "<group>"; };
 		224BEFD61EEAE19C0033961F /* IBAMQPTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPTransfer.m; sourceTree = "<group>"; };
+		22664DCA1EF9A1FA007E7438 /* IBAMQPTransferMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPTransferMap.h; sourceTree = "<group>"; };
+		22664DCB1EF9A1FA007E7438 /* IBAMQPTransferMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPTransferMap.m; sourceTree = "<group>"; };
 		2289A1A61EE7E8EF009B98AA /* IBAMQPTLVList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPTLVList.h; sourceTree = "<group>"; };
 		2289A1A71EE7E8EF009B98AA /* IBAMQPTLVList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPTLVList.m; sourceTree = "<group>"; };
 		2289A1A91EE7F332009B98AA /* IBAMQPTLVMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPTLVMap.h; sourceTree = "<group>"; };
@@ -1052,6 +1055,15 @@
 				224BEFBE1EEAABE10033961F /* IBAMQPSASLResponse.m */,
 			);
 			path = headersasl;
+			sourceTree = "<group>";
+		};
+		22664DC91EF9A1BA007E7438 /* classes */ = {
+			isa = PBXGroup;
+			children = (
+				22664DCA1EF9A1FA007E7438 /* IBAMQPTransferMap.h */,
+				22664DCB1EF9A1FA007E7438 /* IBAMQPTransferMap.m */,
+			);
+			path = classes;
 			sourceTree = "<group>";
 		};
 		2289A1A51EE7E8CF009B98AA /* compound */ = {
@@ -2036,6 +2048,7 @@
 		22F3083A1EE6E285008AF92F /* AMQP */ = {
 			isa = PBXGroup;
 			children = (
+				22664DC91EF9A1BA007E7438 /* classes */,
 				220B59FA1EEE792D00123112 /* logic */,
 				22C728031EEAF75000D2F277 /* parser */,
 				224BEFB01EEAA2290033961F /* headersasl */,
@@ -2462,6 +2475,7 @@
 				22ED8B441EB092F9006A0C98 /* IBMQTTSN.m in Sources */,
 				22C532251EAF9338007F57A8 /* IBSNWillMsgReq.m in Sources */,
 				2289A1E91EE84E03009B98AA /* IBAMQPPing.m in Sources */,
+				22664DCC1EF9A1FA007E7438 /* IBAMQPTransferMap.m in Sources */,
 				22F308641EE6E285008AF92F /* IBAMQPTerminusDurability.m in Sources */,
 				2217D8EE1EBB12F200A636E7 /* IBTimersMap.m in Sources */,
 				22C532491EAF9625007F57A8 /* IBSNParser.m in Sources */,

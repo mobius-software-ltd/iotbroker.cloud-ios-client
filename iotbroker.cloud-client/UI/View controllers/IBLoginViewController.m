@@ -139,6 +139,9 @@ static NSString *const IBQoSCell            = @"qosCell";
         [self->_registerInfoSectionCells addObject:IBPortCell];
         self->_settingsSectionCells = nil;
     } else if (type == IBAMQPProtocolType) {
+        [self->_registerInfoSectionCells addObject:IBClientIDCell];
+        [self->_registerInfoSectionCells addObject:IBServerHostCell];
+        [self->_registerInfoSectionCells addObject:IBPortCell];
         self->_settingsSectionCells = nil;
     }
     self.protocolField.text = [protocolType nameByValue];
@@ -177,6 +180,7 @@ static NSString *const IBQoSCell            = @"qosCell";
     self->_account.willTopic = self.willTopicField.text;
     self->_account.isRetain = self.retainSwitch.isOn;
     self->_account.qos = (int32_t)[self.qosTextField.text integerValue];
+    self->_account.isDefault = true;
     
     [self.delegate loginTableViewController:self newAccountToAdd:self->_account];
 }

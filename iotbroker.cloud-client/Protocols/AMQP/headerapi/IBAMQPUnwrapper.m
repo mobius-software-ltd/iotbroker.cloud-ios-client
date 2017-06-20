@@ -213,9 +213,7 @@
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     
     IBAMQPTLVMap *map = ((IBAMQPTLVMap *)tlv);
-    
-    Byte *bytes = (Byte *)[tlv.data bytes];
-    
+        
     for (IBTLVAMQP *key in map.map.allKeys) {
         IBTLVAMQP *value = [map.map objectForKey:key];
         if (value != nil) {

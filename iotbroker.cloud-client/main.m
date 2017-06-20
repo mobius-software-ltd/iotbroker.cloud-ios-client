@@ -75,8 +75,17 @@
 
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        [NSThread sleepForTimeInterval:4.0];
+        [NSThread sleepForTimeInterval:8.0];
         [self->_amqp publishMessage:nil];
+        
+        //[NSThread sleepForTimeInterval:8.0];
+        //[self->_amqp subscribeToTopic:nil];
+        
+        [NSThread sleepForTimeInterval:8.0];
+        [self->_amqp publishMessage:nil];
+        
+        //[NSThread sleepForTimeInterval:8.0];
+        //[self->_amqp subscribeToTopic:nil];
 
     });
     
@@ -126,7 +135,7 @@
 
 int main(int argc, char * argv[]) {
     
-    Test *test = [[Test alloc] init];
+    //Test *test = [[Test alloc] init];
     
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));

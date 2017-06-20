@@ -60,7 +60,7 @@
         
         if (self.state == IBSocketDecoderReadyState) {
             NSInteger number;
-            UInt8 buffer[768];
+            UInt8 buffer[2048];
             
             number = [self.stream read:buffer maxLength:sizeof(buffer)];
             if (number == -1) {

@@ -12,6 +12,8 @@
 #import "IBTimersMap.h"
 #import "IBAMQPSimpleType.h"
 #import "IBAMQPStringID.h"
+#import "IBAMQPAccepted.h"
+#import "IBAMQPTransferMap.h"
 
 @interface IBAMQP () <IBInternetProtocolDelegate>
 
@@ -19,6 +21,7 @@
 @property (assign, nonatomic) BOOL isSASLСonfirm;
 @property (assign, nonatomic) BOOL isPublishAllow;
 @property (assign, nonatomic) NSInteger chanel;
+@property (strong, nonatomic) IBAMQPTransferMap *transferMap;
 
 @end
 
@@ -35,6 +38,7 @@
         self->_delegate = delegate;
         self->_isSASLСonfirm = false;
         self->_isPublishAllow = false;
+        self->_transferMap = [[IBAMQPTransferMap alloc] init];
     }
     return self;
 }
@@ -73,64 +77,65 @@
         IBAMQPTransfer *transfer = [[IBAMQPTransfer alloc] init];
         transfer.chanel = self->_chanel;
         transfer.handle = @(0);
-        transfer.deliveryId = @(23);
-        transfer.deliveryTag = [NSMutableData dataWithData:[@"fdg345g" dataUsingEncoding:NSUTF8StringEncoding]];
+        transfer.deliveryId = @(0);
+        transfer.deliveryTag = [NSMutableData dataWithData:[@"dTag" dataUsingEncoding:NSUTF8StringEncoding]];
         transfer.settled = @(false);
+        transfer.more = @(false);
         transfer.messageFormat = [[IBAMQPMessageFormat alloc] initWithValue:0];
         
         IBAMQPMessageHeader *messageHeader = [[IBAMQPMessageHeader alloc] init];
         messageHeader.durable = @(true);
-        messageHeader.priority = @(1);
-        messageHeader.milliseconds = @(10000);
-
-        //IBAMQPDeliveryAnnotation *deliveryAnnotation = [[IBAMQPDeliveryAnnotation alloc] init];
-        
-        //IBAMQPMessageAnnotations *messageAnnotation = [[IBAMQPMessageAnnotations alloc] init];
-
-        //IBAMQPApplicationProperties *applicationProperties = [[IBAMQPApplicationProperties alloc] init];
-
-        IBAMQPProperties *properties = [[IBAMQPProperties alloc] init];
-        properties.messageID = [[IBAMQPStringID alloc] initWithStringID:@"msg-32"];
-        properties.userID = [NSMutableData dataWithData:[@"user-id" dataUsingEncoding:NSUTF8StringEncoding]];
-        properties.to = @"user-id-name";
-        properties.subject = @"sbj";
-        properties.replyTo = @"rpl32";
-        properties.correlationID = [@"t42" dataUsingEncoding:NSUTF8StringEncoding];
-        properties.contentType = @"r24l32";
-        properties.contentEncoding = @"r224l32";
-        //properties.absoluteExpiryTime = [NSDate date];
-        //properties.creationTime = [NSDate date];
-        properties.groupId = @"egr534";
-        properties.groupSequence = @(43);
-        properties.replyToGroupId = @"g3434fff";
-        //IBAMQPFooter *footer = [[IBAMQPFooter alloc] init];
+        messageHeader.priority = @(3);
+        messageHeader.milliseconds = @(1000);
         
         IBAMQPData *data = [[IBAMQPData alloc] init];
-        data.data = [NSMutableData dataWithData:[@"hello world test string" dataUsingEncoding:NSUTF8StringEncoding]];
+        data.data = [NSMutableData dataWithData:message.content];
     
-        [transfer addSections:@[messageHeader, data, properties]];
-        
-        [self sendMessage:transfer];
+        [transfer addSections:@[data]];
+
+        [self sendMessage:[self->_transferMap addTransfer:transfer]];
     }
 }
 
 - (void) subscribeToTopic:(Topic *)topic {
     
+    IBAMQPFlow *flow = [[IBAMQPFlow alloc] init];
+    flow.chanel = self->_chanel;
+    flow.handle = @(1);
+    flow.incomingWindow = @(65535);
+    flow.outgoingWindow = @(65535);
+    flow.linkCredit = @(65535);
+    flow.nextOutgoingId = @(0);
+    flow.nextIncomingId = @(0);
+    flow.drain = @(false);
+    flow.echo = @(false);
+    
+    [self sendMessage:flow];
+    
 }
 
 - (void) unsubscribeFromTopic:(Topic *)topic {
 
+    IBAMQPDetach *detach = [[IBAMQPDetach alloc] init];
+    detach.chanel = self->_chanel;
+    detach.handle = @(0);
+    detach.closed = @(false);
+    
+    [self sendMessage:detach];
 }
 
 - (void) pingreq {
 
+    IBAMQPPing *ping = [[IBAMQPPing alloc] init];
+    
+    [self sendMessage:ping];
 }
 
 - (void) disconnectWithDuration : (NSInteger) duration {
 
     IBAMQPDetach *detach = [[IBAMQPDetach alloc] init];
     detach.chanel = self->_chanel;
-    detach.handle = @(0);
+    detach.handle = @(1);
     detach.closed = @(true);
     
     [self sendMessage:detach];
@@ -168,7 +173,7 @@
         buffer = [NSMutableData dataWithData:sub];
         
         IBAMQPHeader *message = [self decodeData:packet];
-    
+        
         switch ([message getMessageType]) {
             case IBAMQPProtocolHeaderCode: {
                 IBAMQPProtoHeader *protoHeader = (IBAMQPProtoHeader *)message;
@@ -195,6 +200,7 @@
                 [self->_timers startPingTimerWithKeepAlive:idleTimeoutInSeconds];
                 
                 IBAMQPBegin *begin = [[IBAMQPBegin alloc] init];
+                begin.chanel = self->_chanel;
                 begin.nextOutgoingID = @(0);
                 begin.incomingWindow = @(2147483647);
                 begin.outgoingWindow = @(0);
@@ -208,29 +214,57 @@
                 
                 IBAMQPAttach *attach = [[IBAMQPAttach alloc] init];
                 
+                attach.chanel = self->_chanel;
                 attach.name = [[NSUUID UUID] UUIDString];
                 attach.handle = @(0);
                 attach.role = [IBAMQPRoleCode enumWithRoleCode:IBAMQPSenderRoleCode];
-                attach.sendCodes = [IBAMQPSendCode enumWithSendCode:IBAMQPSettledSendCode];
+                attach.sendCodes = [IBAMQPSendCode enumWithSendCode:IBAMQPMixedSendCode];
                 attach.source = [[IBAMQPSource alloc] init];
-                attach.source.address = @"testQueue";
-                attach.source.durable = IBAMQPNoneTerminusDurabilities;
+                attach.source.address = @"my_queue";
+                attach.source.durable = [IBAMQPTerminusDurability enumWithTerminusDurability:IBAMQPNoneTerminusDurabilities];
                 attach.source.timeout = @(0);
                 attach.source.dynamic = @(false);
                 attach.target = [[IBAMQPTarget alloc] init];
-                attach.target.address = @"testQueue";
+                attach.target.address = @"my_queue";
+                attach.target.durable = [IBAMQPTerminusDurability enumWithTerminusDurability:IBAMQPNoneTerminusDurabilities];
                 attach.target.timeout = @(0);
                 attach.target.dynamic = @(false);
                 [attach.target addCapabilities:@[@"create-on-demand", @"queue", @"durable"]];
-                attach.initialDeliveryCount = @(0);
+                attach.initialDeliveryCount = @(1);
                 
                 [self sendMessage:attach];
                 
                 break;
             }
             case IBAMQPAttachHeaderCode: {
-                [self.delegate connackWithCode:0];
+                IBAMQPAttach *attach = (IBAMQPAttach *)message;
                 
+                if (attach.role.value == IBAMQPSenderRoleCode) {
+                    
+                    [self.delegate connackWithCode:0];
+                } else {
+                    IBAMQPAttach *attach = [[IBAMQPAttach alloc] init];
+                    
+                    attach.chanel = self->_chanel;
+                    attach.name = [[NSUUID UUID] UUIDString];
+                    attach.handle = @(1);
+                    attach.role = [IBAMQPRoleCode enumWithRoleCode:IBAMQPReceiverRoleCode];
+                    attach.sendCodes = [IBAMQPSendCode enumWithSendCode:IBAMQPMixedSendCode];
+                    attach.source = [[IBAMQPSource alloc] init];
+                    attach.source.address = @"my_queue";
+                    attach.source.durable = [IBAMQPTerminusDurability enumWithTerminusDurability:IBAMQPNoneTerminusDurabilities];
+                    attach.source.timeout = @(0);
+                    attach.source.dynamic = @(false);
+                    attach.target = [[IBAMQPTarget alloc] init];
+                    attach.target.address = @"my_queue";
+                    attach.target.durable = [IBAMQPTerminusDurability enumWithTerminusDurability:IBAMQPNoneTerminusDurabilities];
+                    attach.target.timeout = @(0);
+                    attach.target.dynamic = @(false);
+                    [attach.target addCapabilities:@[@"create-on-demand", @"queue", @"durable"]];
+                    attach.initialDeliveryCount = @(1);
+                    
+                    [self sendMessage:attach];
+                }
                 break;
             }
             case IBAMQPFlowHeaderCode: {
@@ -238,29 +272,58 @@
                 if (self->_chanel == flow.chanel) {
                     self->_isPublishAllow = true;
                 }
+                [self.delegate subackForSubscribeWithTopicName:nil qos:0 returnCode:0];
             
                 break;
             }
             case IBAMQPTransferHeaderCode: {
+                IBAMQPTransfer *transfer = (IBAMQPTransfer *)message;
+                IBAMQPData *data = [transfer data];
+                
+                if ([transfer.settled boolValue] == true) {
+                    [self.delegate publishWithTopicName:nil qos:0 content:data.data dup:false retainFlag:false];
+                    
+                } else {
+                    IBAMQPDisposition *disposition = [[IBAMQPDisposition alloc] init];
+                    disposition.chanel = self->_chanel;
+                    disposition.role = [IBAMQPRoleCode enumWithRoleCode:IBAMQPReceiverRoleCode];
+                    disposition.first = transfer.deliveryId;
+                    disposition.last = transfer.deliveryId;
+                    disposition.settled = @(true);
+                    disposition.state = [[IBAMQPAccepted alloc] init];
+                    [self sendMessage:disposition];
+                    
+                    [self.delegate publishWithTopicName:nil qos:1 content:data.data dup:false retainFlag:false];
+                }
                 break;
             }
             case IBAMQPDispositionHeaderCode: {
                 IBAMQPDisposition *disposition = (IBAMQPDisposition *)message;
-
-                IBAMQPEnd *end = [[IBAMQPEnd alloc] init];
-                end.chanel = disposition.chanel;
                 
-                [self sendMessage:end];
+                int first = [disposition.first intValue];
+                int second = [disposition.last intValue];
                 
+                for (int i = first; i <= second; i++) {
+                    id msg = [self->_transferMap removeTransferByDeliveryId:i];
+                    if ([msg isKindOfClass:[IBAMQPTransfer class]]) {
+                        IBAMQPTransfer *transfer = (IBAMQPTransfer *)msg;
+                        IBAMQPData *data = [transfer data];
+                        [self.delegate pubackForPublishWithTopicName:nil qos:1 content:data.data dup:false retainFlag:false andReturnCode:0];
+                    }
+                }
                 break;
             }
             case IBAMQPDetachHeaderCode: {
                 IBAMQPDetach *detach = (IBAMQPDetach *)message;
                 
-                IBAMQPEnd *end = [[IBAMQPEnd alloc] init];
-                end.chanel = detach.chanel;
-                
-                [self sendMessage:end];
+                if ([detach.closed boolValue]) {
+                    IBAMQPEnd *end = [[IBAMQPEnd alloc] init];
+                    end.chanel = detach.chanel;
+                    
+                    [self sendMessage:end];
+                } else {
+                    [self.delegate unsubackForUnsubscribeWithTopicName:nil];
+                }
                 
                 break;
             }

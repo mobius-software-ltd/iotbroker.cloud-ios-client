@@ -60,6 +60,10 @@
         if (self.port == 0) {
             return false;
         }
+    } else if (self.protocol == IBAMQPProtocolType) {
+        if (self.clientID.length == 0 || self.port == 0) {
+            return false;
+        }
     }
     return true;
 }

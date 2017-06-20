@@ -204,8 +204,17 @@
 }
 
 - (id<IBAMQPSection>) data {
-    IBAMQPSectionCode *sectionCode = [IBAMQPSectionCode enumWithSectionCode:IBAMQPDataSectionCode];
-    return [self->_sections objectForKey:sectionCode];
+    
+    IBAMQPData *data = nil;
+    
+    NSDictionary *dic = self.sections;
+    for (IBAMQPSectionCode *code in dic.allKeys) {
+        id object = [dic objectForKey:code];
+        if ([object isKindOfClass:[IBAMQPData class]]) {
+            data = (IBAMQPData *)object;
+        }
+    }
+    return data;
 }
 
 - (id<IBAMQPSection>) sequence {

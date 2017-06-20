@@ -61,7 +61,7 @@
         [list addElementWithIndex:9 element:[IBAMQPWrapper wrapArray:self->_outcomes]];
     }
     if (self->_capabilities != nil) {
-        [list addElementWithIndex:10 element:[IBAMQPWrapper wrapArray:self->_capabilities]];
+        [list addElementWithIndex:10 element:[IBAMQPWrapper wrapList:self->_capabilities]];
     }
     
     NSMutableData *data = [NSMutableData data];
@@ -164,7 +164,7 @@
     if (list.list.count > 10) {
         IBTLVAMQP *element = [list.list objectAtIndex:10];
         if (!element.isNull) {
-            self->_outcomes = [NSMutableArray arrayWithArray:[IBAMQPUnwrapper unwrapArray:element]];
+            self->_capabilities = [NSMutableArray arrayWithArray:[IBAMQPUnwrapper unwrapList:element]];
         }
     }
 }
