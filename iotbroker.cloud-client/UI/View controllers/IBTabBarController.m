@@ -142,8 +142,8 @@
 }
 
 - (void) topicsListTableViewController : (IBTopicsListTableViewController *) topicsListTableViewController didClickDeleteButtonWithTopic : (Topic *) topic {
-    [self->_requests unsubscribeFromTopic:topic];
     [self showProgressWithMessage:@"Unsubscription..."];
+    [self->_requests unsubscribeFromTopic:topic];
 }
 
 #pragma mark - IBAddTopicDelegate -
@@ -152,10 +152,10 @@
     Topic *topic = [self->_accountManager topic];
     topic.topicName = controller.topicName;
     topic.qos = (int32_t)controller.qosValue;
-    [self->_requests subscribeToTopic:topic];
     self->_progressHUD = [self.tabBarDelegate getPreparedProgressHUD];
     self->_progressHUD.parentController = self;
     [self showProgressWithMessage:@"Subscription..."];
+    [self->_requests subscribeToTopic:topic];
 }
 
 #pragma mark - IBSendMessageControllerDelegate -

@@ -128,7 +128,9 @@ static NSInteger const IBFirstID = 1;
     if ([message isKindOfClass:[IBCountableMessage class]]) {
         IBCountableMessage *countableMessage = (IBCountableMessage *)message;
         if (countableMessage.packetID == 0) {
-            countableMessage.packetID = [self getNewPacketID];
+            countableMessage.packetID = number;
+        } else {
+            number = countableMessage.packetID;
         }
     }
     

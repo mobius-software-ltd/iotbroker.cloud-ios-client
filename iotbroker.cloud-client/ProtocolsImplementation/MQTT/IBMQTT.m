@@ -193,7 +193,9 @@
             {
                 IBPubcomp *pubcomp = (IBPubcomp *)message;
                 [self->_timers removeTimerWithPacketID:@(pubcomp.packetID)];
+
                 IBPublish *publish = [self->_publishPackets objectForKey:@(pubcomp.packetID)];
+
                 [self->_publishPackets removeObjectForKey:@(pubcomp.packetID)];
                 [self.delegate pubcompForPublishWithTopicName:publish.topic.name qos:publish.topic.qos.value content:publish.content dup:publish.dup retainFlag:publish.isRetain];
             } break;
