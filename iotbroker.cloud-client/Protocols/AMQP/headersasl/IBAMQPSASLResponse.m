@@ -93,8 +93,6 @@
 
 - (NSMutableData *) calcCramMD5 : (NSMutableData *) challenge user : (NSString *) user {
     if (challenge != nil && challenge.length != 0) {
-
-    #warning MD5
         
     } else {
         return [NSMutableData data];
