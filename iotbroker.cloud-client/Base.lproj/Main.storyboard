@@ -267,10 +267,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="protocolCell" id="5z5-Ms-bQw" customClass="IBLoginTableViewCell">
-                                        <rect key="frame" x="0.0" y="56" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5z5-Ms-bQw" id="rE5-Xa-xCV">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageSettings" translatesAutoresizingMaskIntoConstraints="NO" id="8Xi-Xp-Ckp">
@@ -311,10 +311,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="usernameCell" id="9bT-VL-vsr" customClass="IBLoginTableViewCell">
-                                        <rect key="frame" x="0.0" y="116" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="115.5" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9bT-VL-vsr" id="oz3-PM-NwG">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageUser" translatesAutoresizingMaskIntoConstraints="NO" id="pSO-y2-4FB">
@@ -355,10 +355,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="passwordCell" id="mai-OQ-qi3" customClass="IBLoginTableViewCell">
-                                        <rect key="frame" x="0.0" y="176" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="175.5" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mai-OQ-qi3" id="3YB-uw-gXh">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImagePassword" translatesAutoresizingMaskIntoConstraints="NO" id="l5Q-VF-s1I">
@@ -399,10 +399,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="clientIDCell" id="zMp-BG-DlE" customClass="IBLoginTableViewCell">
-                                        <rect key="frame" x="0.0" y="236" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="235.5" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zMp-BG-DlE" id="Tt2-RR-Rcr">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageClientID" translatesAutoresizingMaskIntoConstraints="NO" id="3wA-Ub-mO3">
@@ -443,10 +443,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="serverHostCell" id="pOZ-wJ-GIM" customClass="IBLoginTableViewCell">
-                                        <rect key="frame" x="0.0" y="296" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="295.5" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pOZ-wJ-GIM" id="ynE-lO-dOw">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageServerHost" translatesAutoresizingMaskIntoConstraints="NO" id="L3b-cI-zVu">
@@ -487,10 +487,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="portCell" id="Svw-UO-vO4" customClass="IBLoginTableViewCell">
-                                        <rect key="frame" x="0.0" y="356" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="355.5" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Svw-UO-vO4" id="L9k-tP-kGQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageServerHost" translatesAutoresizingMaskIntoConstraints="NO" id="4nb-uD-a3q">
@@ -531,10 +531,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cleanSessionCell" id="BpL-Ps-Wim" customClass="IBLoginTableViewCell">
-                                        <rect key="frame" x="0.0" y="416" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="415.5" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BpL-Ps-Wim" id="tMp-2l-buA">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageCleanSession" translatesAutoresizingMaskIntoConstraints="NO" id="Li0-W1-SkN">
@@ -572,10 +572,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="keepaliveCell" id="7oI-uZ-E2L" customClass="IBLoginTableViewCell">
-                                        <rect key="frame" x="0.0" y="476" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="475.5" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7oI-uZ-E2L" id="kYL-DP-x6G">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageKeepalive" translatesAutoresizingMaskIntoConstraints="NO" id="s68-b5-m5F">
@@ -616,7 +616,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="willCell" id="kvC-vU-SeS" customClass="IBLoginTableViewCell">
-                                        <rect key="frame" x="0.0" y="536" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="535.5" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kvC-vU-SeS" id="0ny-iF-4i2">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
@@ -660,7 +660,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="willTopicCell" id="irK-CD-NjP" customClass="IBLoginTableViewCell">
-                                        <rect key="frame" x="0.0" y="596" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="595.5" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="irK-CD-NjP" id="Rok-gi-jXJ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
@@ -704,7 +704,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="retainCell" id="lZZ-CE-H5U" customClass="IBLoginTableViewCell">
-                                        <rect key="frame" x="0.0" y="656" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="655.5" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lZZ-CE-H5U" id="jMS-tB-Lxt">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
@@ -745,7 +745,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="qosCell" id="a85-VN-2g9" customClass="IBLoginTableViewCell">
-                                        <rect key="frame" x="0.0" y="716" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="715.5" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a85-VN-2g9" id="Ofq-oM-Ffy">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>

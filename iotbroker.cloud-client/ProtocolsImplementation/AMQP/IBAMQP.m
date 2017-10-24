@@ -72,7 +72,7 @@
 }
 
 - (void)connectWithAccount:(Account *)account {
-
+    
     IBAMQPProtoHeader *header = [[IBAMQPProtoHeader alloc] init];
     header.protocolID = IBAMQPProtocolIdSASL;
     header.versionMajor = 1;
@@ -102,9 +102,9 @@
         
         IBAMQPData *data = [[IBAMQPData alloc] init];
         data.data = [NSMutableData dataWithData:message.content];
-    
+        
         [transfer addSections:@[data]];
-
+        
         [self sendMessage:[self->_transferMap addTransfer:transfer]];
     }
 }
@@ -131,14 +131,14 @@
 }
 
 - (void) pingreq {
-
+    
     IBAMQPPing *ping = [[IBAMQPPing alloc] init];
     
     [self sendMessage:ping];
 }
 
 - (void) disconnectWithDuration : (NSInteger) duration {
-
+    
     IBAMQPDetach *detach = [[IBAMQPDetach alloc] init];
     detach.chanel = self->_chanel;
     detach.handle = @(1);
@@ -189,7 +189,7 @@
                     
                     IBAMQPOpen *open = [[IBAMQPOpen alloc] init];
                     open.containerId = [[NSUUID UUID] UUIDString];
-            
+                    
                     open.chanel = protoHeader.chanel;
                     open.hostname = self->_internetProtocol.host;
                     [open addProperty:@"qpid.client_process" value:@"qpid-send"];
@@ -210,14 +210,12 @@
                 begin.nextOutgoingID = @(0);
                 begin.incomingWindow = @(2147483647);
                 begin.outgoingWindow = @(0);
-
+                
                 [self sendMessage:begin];
                 
                 break;
             }
-            case IBAMQPBeginHeaderCode: {
-                IBAMQPBegin *begin = (IBAMQPBegin *)begin;
-                
+            case IBAMQPBeginHeaderCode: {                
                 IBAMQPAttach *attach = [[IBAMQPAttach alloc] init];
                 
                 attach.chanel = self->_chanel;
@@ -329,7 +327,7 @@
             }
             case IBAMQPEndHeaderCode: {
                 IBAMQPEnd *end = (IBAMQPEnd *)message;
-
+                
                 IBAMQPClose *close = [[IBAMQPClose alloc] init];
                 close.chanel = end.chanel;
                 

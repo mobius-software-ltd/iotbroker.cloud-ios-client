@@ -23,9 +23,8 @@
 @implementation IBSNSubscribe
 
 - (instancetype) initWithPacketID : (NSInteger) packetID topic : (id<IBTopic>) topic dup : (BOOL) dup {
-    self = [super init];
+    self = [super initWithPacketID:packetID];
     if (self != nil) {
-        self->_packetID = packetID;
         self->_topic = topic;
         self->_dup = dup;
     }
@@ -50,7 +49,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"\n - packetID = %zd\n - topic = %@\n - dup = %@", self->_packetID, self->_topic, self->_dup?@"yes":@"no"];
+    return [NSString stringWithFormat:@"\n - packetID = %zd\n - topic = %@\n - dup = %@", self.packetID, self->_topic, self->_dup?@"yes":@"no"];
 }
 
 @end

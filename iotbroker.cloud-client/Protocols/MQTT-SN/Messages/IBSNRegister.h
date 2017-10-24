@@ -20,12 +20,11 @@
 
 #import <Foundation/Foundation.h>
 #import "IBMQTT-SNEnums.h"
-#import "IBMessage.h"
+#import "IBCountableMessage.h"
 
-@interface IBSNRegister : NSObject <IBMessage>
+@interface IBSNRegister : IBCountableMessage
 
 @property (assign, nonatomic) NSInteger topicID;
-@property (assign, nonatomic) NSInteger packetID;
 @property (strong, nonatomic) NSString *topicName;
 
 - (instancetype) initWithTopicID : (NSInteger) topicID packetID : (NSInteger) packetID andTopicName : (NSString *) topicName;

@@ -167,7 +167,7 @@ static NSString *const IBQoSCell            = @"qosCell";
 - (IBAction) addButtonDidClick : (id) sender {
 
     IBProtocolTypeEnum *type = [[IBProtocolTypeEnum alloc] init];
-        
+
     self->_account.protocol = [type valueByName:self.protocolField.text];
     self->_account.username = self.usernameField.text;
     self->_account.password = self.passwordField.text;

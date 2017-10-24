@@ -32,7 +32,7 @@
     if (self != nil) {
         self->_condition = [[IBAMQPErrorCode alloc] init];
         self->_descriptionString = [NSString string];
-        self->_info = [NSMutableDictionary dictionary];
+        self->_info = nil;
     }
     return self;
 }
@@ -46,12 +46,13 @@
         [list addElementWithIndex:0 element:[IBAMQPWrapper wrapObject:symbol]];
     }
     if (self.descriptionString != nil) {
-        [list addElementWithIndex:1 element:[IBAMQPWrapper wrapObject:self.descriptionString]];
+        IBAMQPTLVVariable *tst = [IBAMQPWrapper wrapString:self.descriptionString];
+        [list addElementWithIndex:1 element:tst];
     }
     if (self.info != nil) {
         [list addElementWithIndex:2 element:[IBAMQPWrapper wrapMap:self.info]];
     }
-    
+
     IBAMQPType *type = [[IBAMQPType alloc] initWithType:IBAMQPSmallULongType];
     NSMutableData *data = [NSMutableData data];
     [data appendByte:0x1D];

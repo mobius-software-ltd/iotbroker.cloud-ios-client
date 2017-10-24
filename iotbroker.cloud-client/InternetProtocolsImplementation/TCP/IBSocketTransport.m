@@ -33,6 +33,7 @@
 @synthesize runLoopMode;
 @synthesize host = _host;
 @synthesize port = _port;
+@synthesize tls = _tls;
 
 - (instancetype) initWithHost : (NSString *) host andPort : (NSInteger) port {
 
@@ -43,6 +44,7 @@
         self.runLoopMode = NSRunLoopCommonModes;
         self->_host = host;
         self->_port = port;
+        self->_tls = false;
     }
     return self;
 }
@@ -50,7 +52,7 @@
 - (void)start {
     self.state = IBTransportOpening;
     
-    NSError *connectError;
+    NSError *connectError = nil;
     
     CFReadStreamRef readStream;
     CFWriteStreamRef writeStream;
@@ -59,7 +61,28 @@
     
     CFReadStreamSetProperty(readStream, kCFStreamPropertyShouldCloseNativeSocket, kCFBooleanTrue);
     CFWriteStreamSetProperty(writeStream, kCFStreamPropertyShouldCloseNativeSocket, kCFBooleanTrue);
-  
+
+    if (self.tls) {
+        NSMutableDictionary *sslOptions = [[NSMutableDictionary alloc] init];
+        
+        [sslOptions setObject:(NSString *)kCFStreamSocketSecurityLevelNegotiatedSSL forKey:(NSString*)kCFStreamSSLLevel];
+        
+        if (self.certificates) {
+            [sslOptions setObject:self.certificates forKey:(NSString *)kCFStreamSSLCertificates];
+        }
+        
+        if(!CFReadStreamSetProperty(readStream, kCFStreamPropertySSLSettings, (__bridge CFDictionaryRef)(sslOptions))){
+            connectError = [NSError errorWithDomain:@"TCP start"
+                                               code:errSSLInternal
+                                           userInfo:@{NSLocalizedDescriptionKey : @"Fail to set ssl for read stream"}];
+        }
+        if(!CFWriteStreamSetProperty(writeStream, kCFStreamPropertySSLSettings, (__bridge CFDictionaryRef)(sslOptions))){
+            connectError = [NSError errorWithDomain:@"TCP start"
+                                               code:errSSLInternal
+                                           userInfo:@{NSLocalizedDescriptionKey : @"Fail to set ssl for write stream"}];
+        }
+    }
+    
     if(!connectError){
         self.encoder.delegate = nil;
         self.encoder = [[IBSocketEncoder alloc] init];
@@ -132,6 +155,47 @@
 - (void)encoderDidOpen:(IBSocketEncoder *)sender {
     self.state = IBTransportOpen;
     [self.delegate internetProtocolDidStart:self];
+}
+
++ (NSArray *)clientCertsFromP12:(NSString *)path passphrase:(NSString *)passphrase {
+    if (!path) {
+        return nil;
+    }
+    
+    NSData *pkcs12data = [[NSData alloc] initWithContentsOfFile:path];
+    if (!pkcs12data) {
+        return nil;
+    }
+    
+    if (!passphrase) {
+        return nil;
+    }
+    CFArrayRef keyref = NULL;
+    OSStatus importStatus = SecPKCS12Import((__bridge CFDataRef)pkcs12data,
+                                            (__bridge CFDictionaryRef)[NSDictionary dictionaryWithObject:passphrase forKey:(__bridge id)kSecImportExportPassphrase],
+                                            &keyref);
+    if (importStatus != noErr) {
+        return nil;
+    }
+    
+    CFDictionaryRef identityDict = CFArrayGetValueAtIndex(keyref, 0);
+    if (!identityDict) {
+        return nil;
+    }
+    
+    SecIdentityRef identityRef = (SecIdentityRef)CFDictionaryGetValue(identityDict, kSecImportItemIdentity);
+    if (!identityRef) {
+        return nil;
+    };
+    
+    SecCertificateRef cert = NULL;
+    OSStatus status = SecIdentityCopyCertificate(identityRef, &cert);
+    if (status != noErr) {
+        return nil;
+    }
+    
+    NSArray *clientCerts = [[NSArray alloc] initWithObjects:(__bridge id)identityRef, (__bridge id)cert, nil];
+    return clientCerts;
 }
 
 @end

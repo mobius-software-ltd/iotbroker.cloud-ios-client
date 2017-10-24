@@ -28,4 +28,9 @@
 @property (strong, nonatomic) NSRunLoop *runLoop;
 @property (strong, nonatomic) NSString *runLoopMode;
 
+@property (assign, nonatomic) BOOL tls;
+@property (strong, nonatomic) NSArray *certificates;
+
++ (NSArray *)clientCertsFromP12:(NSString *)path passphrase:(NSString *)passphrase;
+
 @end

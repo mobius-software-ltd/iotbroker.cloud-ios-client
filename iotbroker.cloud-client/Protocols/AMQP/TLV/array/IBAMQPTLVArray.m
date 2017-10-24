@@ -88,7 +88,7 @@
     
     NSMutableData *elementConstructorData = self->_elementContructor.data;
     NSMutableData *valueData = [NSMutableData data];
-    NSMutableData *tlvData = [NSMutableData data];
+    NSMutableData *tlvData = nil;
     
     for (IBTLVAMQP *item in self->_elements) {
         NSInteger valueLength = item.data.length - elementConstructorData.length;

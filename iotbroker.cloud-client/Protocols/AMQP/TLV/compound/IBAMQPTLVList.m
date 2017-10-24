@@ -130,13 +130,13 @@
     NSMutableData *countBytes = [NSMutableData data];
     
     if (self->_width == 1) {
-        [sizeData appendByte:(Byte)self->_count];
+        [countBytes appendByte:(Byte)self->_count];
     } else {
-        [sizeData appendInt:self->_count];
+        [countBytes appendInt:self->_count];
     }
     
     NSMutableData *valueData = [NSMutableData data];
-    NSMutableData *tlvData = [NSMutableData data];
+    NSMutableData *tlvData = nil;
 
     for (IBTLVAMQP *item in self->_list) {
         tlvData = item.data;

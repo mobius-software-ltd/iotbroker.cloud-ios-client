@@ -21,6 +21,9 @@
 #import <Foundation/Foundation.h>
 #import "IBTimerTask.h"
 
+static NSInteger const IBTimeoutTimerValue = 18;
+static NSInteger const IBMessageResendPeriod = 3;
+
 @interface IBTimersMap : NSObject
 
 @property (strong, nonatomic, readonly) NSMutableDictionary<NSNumber *, IBTimerTask *> *timersDictionary;

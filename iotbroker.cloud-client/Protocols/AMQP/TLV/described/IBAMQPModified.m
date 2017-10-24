@@ -32,10 +32,10 @@
     IBAMQPTLVList *list = [[IBAMQPTLVList alloc] init];
     
     if (self->_deliveryFailed != nil) {
-        [list addElementWithIndex:0 element:[IBAMQPWrapper wrapBOOL:self->_deliveryFailed]];
+        [list addElementWithIndex:0 element:[IBAMQPWrapper wrapBOOL:[self->_deliveryFailed boolValue]]];
     }
     if (self->_undeliverableHere != nil) {
-        [list addElementWithIndex:1 element:[IBAMQPWrapper wrapBOOL:self->_undeliverableHere]];
+        [list addElementWithIndex:1 element:[IBAMQPWrapper wrapBOOL:[self->_undeliverableHere boolValue]]];
 
     }
     if (self->_messageAnnotations != nil) {

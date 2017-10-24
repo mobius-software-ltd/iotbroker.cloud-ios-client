@@ -52,7 +52,7 @@
 }
 
 - (void) putElementWithKey : (IBTLVAMQP *) key andValue : (IBTLVAMQP *) value {
-    
+        
     [self->_map setObject:value forKey:key];
     
     self->_size += key.length + value.length;

@@ -23,9 +23,8 @@
 @implementation IBSNPublish
 
 - (instancetype) initWithPacketID: (NSInteger) packetID topic : (id<IBTopic>) topic content : (NSData *) content dup : (BOOL) dup retainFlag : (BOOL) retainFlag {
-    self = [super init];
+    self = [super initWithPacketID:packetID];
     if (self != nil) {
-        self->_packetID = packetID;
         self->_topic = topic;
         self->_content = content;
         self->_dup = dup;
@@ -56,7 +55,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"\n - packetID = %zd\n - topic = %@\n - content = %@\n - dup = %@\n - retainFlag = %@", self->_packetID, self->_topic, [[NSString alloc] initWithData:self->_content encoding:NSUTF8StringEncoding], self->_dup?@"yes":@"no", self->_retainFlag?@"yes":@"no"];
+    return [NSString stringWithFormat:@"\n - packetID = %zd\n - topic = %@\n - content = %@\n - dup = %@\n - retainFlag = %@", self.packetID, self->_topic, [[NSString alloc] initWithData:self->_content encoding:NSUTF8StringEncoding], self->_dup?@"yes":@"no", self->_retainFlag?@"yes":@"no"];
 }
 
 @end

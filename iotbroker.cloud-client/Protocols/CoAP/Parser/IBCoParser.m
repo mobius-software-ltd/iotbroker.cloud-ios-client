@@ -33,7 +33,6 @@ static int const IB15OptionFaildConstant = 15;
     [buffer clearNumber];
     
     Byte zeroByte = [buffer readByte];
-    
     Byte version = (zeroByte >> 6) & 0x3;
     
     if (version != message.version) {
@@ -123,10 +122,10 @@ static int const IB15OptionFaildConstant = 15;
     zeroByte |= (01 << 6);
     zeroByte |= (message.type << 4);
     zeroByte |= tokenAsString.length / 2;
-    
+
     [final appendFormat:@"%02X", zeroByte];
-    [final appendFormat:@"%02lX", message.code];
-    [final appendFormat:@"%04lX", message.messageID];
+    [final appendFormat:@"%02lX", (long)message.code];
+    [final appendFormat:@"%04lX", (long)message.messageID];
     [final appendFormat:@"%@", tokenAsString];
 
     NSArray *sortedArray = [message.optionDictionary allKeys];
@@ -177,17 +176,18 @@ static int const IB15OptionFaildConstant = 15;
                 [final appendString:[NSString stringWithFormat:@"%01X", length]];
             }
             
-            [final appendString:extendedDelta];
+            [final appendString:extendedDelta]; 
             [final appendString:extendedLength];
             [final appendString:valueForKey];
             
             previousDelta += delta;
         }
     }
-    
+
     if ([message.payload length] > 0) {
         if ([self payloadDecodeForMessage:message]) {
             [final appendString:[NSString stringWithFormat:@"%02X%@", 255, [self hexStringFromString:message.payload]]];
+
         } else {
             [final appendString:[NSString stringWithFormat:@"%02X%@", 255, message.payload]];
         }
@@ -214,6 +214,7 @@ static int const IB15OptionFaildConstant = 15;
     else {
         string = [NSString stringWithFormat:@"%08X", value];
     }
+    
     return string;
 }
 
@@ -242,6 +243,7 @@ static int const IB15OptionFaildConstant = 15;
     for (int i = 0; i < (string.length / 2); i++) {
         byte_chars[0] = [string characterAtIndex:i * 2];
         byte_chars[1] = [string characterAtIndex:i * 2 + 1];
+        
         byteRepresentation = strtol(byte_chars, NULL, 16);
         [commandData appendBytes:&byteRepresentation length:1];
     }

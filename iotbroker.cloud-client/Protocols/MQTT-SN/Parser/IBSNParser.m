@@ -313,7 +313,7 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
             }
             bytesLeft -= 2;
             NSInteger registerPacketID = [data readShort];
-            if (![IBSNValuesValidator validateRegistrationTopicID:registerPacketID]) {
+            if (![IBSNValuesValidator validatePacketID:registerPacketID]) {
                 @throw [NSException exceptionWithName:[[self class] description] reason:[NSString stringWithFormat:@"%zd invalid packetID %zd", type, registerPacketID] userInfo:nil];
             }
             bytesLeft -= 2;

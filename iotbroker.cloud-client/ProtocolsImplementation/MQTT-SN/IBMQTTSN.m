@@ -110,6 +110,7 @@
 }
 
 - (void) disconnectWithDuration : (NSInteger) duration {
+    [self.timers stopAllTimers];
     IBSNDisconnect *disconnect = [[IBSNDisconnect alloc] initWithDuration:duration];
     [self sendMessage:disconnect];
 }

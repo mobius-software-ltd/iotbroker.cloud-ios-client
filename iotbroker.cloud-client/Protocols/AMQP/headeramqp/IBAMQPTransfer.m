@@ -219,11 +219,9 @@
     
     IBAMQPData *data = nil;
     
-    NSDictionary *dic = self.sections;
-    for (IBAMQPSectionCode *code in dic.allKeys) {
-        id object = [dic objectForKey:code];
-        if ([object isKindOfClass:[IBAMQPData class]]) {
-            data = (IBAMQPData *)object;
+    for (id value in self.sections.allValues) {
+        if ([value isKindOfClass:[IBAMQPData class]]) {
+            data = (IBAMQPData *)value;
         }
     }
     return data;

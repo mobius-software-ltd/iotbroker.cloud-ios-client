@@ -57,12 +57,12 @@
     }
     
     [buffer clearNumber];
-    
+        
     NSInteger length = [buffer readInt] & 0xffffffffL;
     int doff = [buffer readByte] & 0xff;
     int type = [buffer readByte] & 0xff;
     int chennel = [buffer readShort] & 0xffff;
-
+    
     if (length == 8 && doff == 2 && (type == 0 || type == 1) && chennel == 0) {
         if ((buffer.length - [buffer getByteNumber]) == 0) {
             return [[IBAMQPPing alloc] init];
@@ -91,7 +91,7 @@
     }
     
     IBAMQPHeader *header = nil;
-
+    
     if (type == 0) {
         header = [IBAMQPFactory amqp:buffer];
     } else if (type == 1) {
@@ -136,6 +136,7 @@
     [data appendByte:header.doff];
     [data appendByte:header.type];
     [data appendShort:header.chanel];
+        
     [data appendData:[header arguments].data];
     
     if (header.code.value == IBAMQPTransferHeaderCode) {

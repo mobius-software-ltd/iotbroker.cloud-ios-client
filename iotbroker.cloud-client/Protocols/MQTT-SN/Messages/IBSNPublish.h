@@ -20,12 +20,11 @@
 
 #import <Foundation/Foundation.h>
 #import "IBMQTT-SNEnums.h"
-#import "IBMessage.h"
+#import "IBCountableMessage.h"
 #import "IBTopic.h"
 
-@interface IBSNPublish : NSObject <IBMessage>
+@interface IBSNPublish : IBCountableMessage
 
-@property (assign, nonatomic) NSInteger packetID;
 @property (strong, nonatomic) id<IBTopic> topic;
 @property (strong, nonatomic) NSData *content;
 @property (assign, nonatomic) BOOL dup;

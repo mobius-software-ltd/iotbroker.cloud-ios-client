@@ -23,9 +23,8 @@
 @implementation IBSNUnsubscribe
 
 - (instancetype) initWithPacketID : (NSInteger) packetID topic : (id<IBTopic>) topic {
-    self = [super init];
+    self = [super initWithPacketID:packetID];
     if (self != nil) {
-        self->_packetID = packetID;
         self->_topic = topic;
     }
     return self;
@@ -45,7 +44,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"\n - packetID = %zd\n - topic = %@", self->_packetID, self->_topic];
+    return [NSString stringWithFormat:@"\n - packetID = %zd\n - topic = %@", self.packetID, self->_topic];
 }
 
 @end

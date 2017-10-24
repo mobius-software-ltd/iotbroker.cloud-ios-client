@@ -37,4 +37,5 @@ typedef NS_ENUM(NSInteger, IBQualitiesOfService)
 
 - (BOOL) isValidForMqtt;
 - (BOOL) isValidforMqttSN;
+
 @end

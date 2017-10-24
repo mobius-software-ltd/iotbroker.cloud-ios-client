@@ -35,8 +35,6 @@
 @property (assign, nonatomic) NSInteger messageID;
 @property (strong, nonatomic) NSString *payload;
 
-@property (assign, nonatomic) BOOL isResponse;
-
 + (instancetype) method : (IBCoAPMethods) method confirmableFlag : (BOOL) isCon tokenFlag : (BOOL) isToken andPayload : (NSString *) payload;
 - (instancetype) initWithMethod : (NSInteger) method confirmableFlag : (BOOL) isCon tokenFlag : (BOOL) isToken andPayload : (NSString *) payload;
 

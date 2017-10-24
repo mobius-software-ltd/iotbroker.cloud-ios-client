@@ -78,6 +78,7 @@ static void const *key;
         }
     }
     [self appendBytes:bytes length:length];
+    free(bytes);
 }
 
 - (int) readUInt24 {
@@ -118,7 +119,7 @@ static void const *key;
     
     long number = value;
     
-    value = htonll(number);
+    value = (long)htonll(number);
     [self appendBytes:&value length:sizeof(long)];
 }
 

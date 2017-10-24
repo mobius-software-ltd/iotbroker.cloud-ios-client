@@ -38,7 +38,6 @@ static NSString *const IBLoginControllerIdentifier = @"IBLoginControllerIdentifi
 static NSString *const IBProtocolControllerIdentifier = @"IBProtocolTypeViewControllerIdentifier";
 static NSString *const IBTabBarIdentifier = @"IBTabBarControllerIdentifier";
 static NSString *const IBProgressHUDIdentifier = @"IBProgressHUDViewControllerIdentifier";
-static NSString *const IBPattern = @"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
 
 @interface IBCoordinator () <IBAccountListDelegate, IBLoginControllerDelegate, IBTabBarControllerDelegate, IBProtocolTypeViewControllerDelegate>
 
@@ -111,15 +110,6 @@ static NSString *const IBPattern = @"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?
     [self->_navigationController pushViewController:login animated:true];
 }
 
-- (BOOL) isHostValid : (NSString *) host  {
-    NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:IBPattern options:NSRegularExpressionCaseInsensitive error:nil];
-    NSInteger count = [regexp numberOfMatchesInString:host options:0 range:NSMakeRange(0, host.length)];
-    if (count == 1) {
-        return true;
-    }
-    return false;
-}
-
 #pragma mark - IBAccountListDelegate -
 
 - (void) accountListViewController:(IBAccountListViewController *)accountList didSelectedAccount:(Account *)account {
@@ -140,17 +130,12 @@ static NSString *const IBPattern = @"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?
 - (void)loginTableViewController:(IBLoginViewController *)loginTableViewController newAccountToAdd:(Account *)account {
     
     if ([account isValid] == true) {
-        if ([self isHostValid:account.serverHost] == true) {
-            [self->_accountManager writeAccount:account];
-            [self->_accountManager setDefaultAccountWithClientID:account.clientID];
-            IBTabBarController *tabBarController = (IBTabBarController *)[self controllerWithIdentifier:IBTabBarIdentifier];
-            tabBarController.tabBarDelegate = self;
-            tabBarController.accountManager = self->_accountManager;
-            [self->_navigationController pushViewController:tabBarController animated:true];
-        } else {
-            IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:@"IP address is invalid" preferredStyle:UIAlertControllerStyleActionSheet];
-            [alert pushToNavigationControllerStack:self->_navigationController];
-        }
+        [self->_accountManager writeAccount:account];
+        [self->_accountManager setDefaultAccountWithClientID:account.clientID];
+        IBTabBarController *tabBarController = (IBTabBarController *)[self controllerWithIdentifier:IBTabBarIdentifier];
+        tabBarController.tabBarDelegate = self;
+        tabBarController.accountManager = self->_accountManager;
+        [self->_navigationController pushViewController:tabBarController animated:true];
     } else {
         IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:@"Some fields are empty or not valid" preferredStyle:UIAlertControllerStyleActionSheet];
         [alert pushToNavigationControllerStack:self->_navigationController];
@@ -173,7 +158,7 @@ static NSString *const IBPattern = @"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?
 }
 
 #pragma mark - IBProtocolTypeViewControllerDelegate -
-
+    
 - (void) protocolTypeViewController : (IBProtocolTypeViewController *) protocolTypeViewController didSelectProtocol : (IBProtocolsType) type {
     IBLoginViewController *login = (IBLoginViewController *)[self topViewController];
     [login setProtocolType:type];

@@ -172,8 +172,10 @@
 
 - (void) unselectDefaultAccount {
     
-    Account *account = [self readDefaultAccount];
-    account.isDefault = false;
+    for (Account *account in [self accounts]) {
+        account.isDefault = false;
+    }
+    
     [self->_coreDataManager save];
 }
 

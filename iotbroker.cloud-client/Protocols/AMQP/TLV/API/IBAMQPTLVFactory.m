@@ -32,7 +32,6 @@
 + (IBTLVAMQP *) tlvByData : (NSMutableData *) data {
 
     IBAMQPSimpleConstructor *constructor = [IBAMQPTLVFactory constructorByData:data];
-    
     IBTLVAMQP *tlv = [IBAMQPTLVFactory elementByConstructor:constructor andData:data];
     return tlv;
 }
@@ -176,6 +175,7 @@
             NSMutableArray<IBTLVAMQP *> *array8 = [NSMutableArray array];
             [data readByte]; // array8size
             int array8count = ([data readByte] & 0xff);
+            
             IBAMQPSimpleConstructor *array8Constructor = [self constructorByData:data];
             for (int i = 0; i < array8count; i++) {
                 [array8 addObject:[IBAMQPTLVFactory elementByConstructor:array8Constructor andData:data]];
@@ -212,7 +212,7 @@
     IBAMQPType *type = [IBAMQPType enumWithType:IBAMQPNullType];
     IBAMQPSimpleConstructor *constructor = nil;
     Byte codeByte = [data readByte];
-    
+
     if (codeByte == 0) {
         IBTLVAMQP *descriptor = [IBAMQPTLVFactory tlvByData:data];
         type.value = ([data readByte] & 0xff);

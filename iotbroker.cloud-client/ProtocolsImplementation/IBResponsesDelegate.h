@@ -37,6 +37,8 @@
 - (void) pingresp;
 - (void) disconnectWithDuration : (NSInteger) duration;
 
+- (void) timeout;
+
 - (void) error : (NSError *) error;
 
 @end

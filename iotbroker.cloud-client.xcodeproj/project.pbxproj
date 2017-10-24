@@ -2235,7 +2235,7 @@
 				TargetAttributes = {
 					22C5C0241DF061CE00790EF6 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 5K455F48MX;
+						DevelopmentTeam = 53A7V2WPHY;
 						ProvisioningStyle = Automatic;
 					};
 					22C5C0401DF061CE00790EF6 = {
@@ -2679,11 +2679,11 @@
 			baseConfigurationReference = A016733DB13CAF666DB499F0 /* Pods-iotbroker.cloud-client.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5K455F48MX;
+				DEVELOPMENT_TEAM = 53A7V2WPHY;
 				INFOPLIST_FILE = "iotbroker.cloud-client/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker-cloud-client";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker.cloud.client";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2693,11 +2693,11 @@
 			baseConfigurationReference = 0589C7D167EA1F54ED0C102B /* Pods-iotbroker.cloud-client.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5K455F48MX;
+				DEVELOPMENT_TEAM = 53A7V2WPHY;
 				INFOPLIST_FILE = "iotbroker.cloud-client/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker-cloud-client";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker.cloud.client";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

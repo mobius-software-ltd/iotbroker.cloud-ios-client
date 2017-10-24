@@ -53,18 +53,22 @@
 }
 
 - (void) initializeConnection {
-
+    
     Account *account = [self->_accountManager readDefaultAccount];
     
     if (account != nil) {
+        
+        NSInteger port = (NSInteger)account.port;
+        NSString *host = account.serverHost;
+                
         if (account.protocol == IBMqttProtocolType) {
-            self->_requests = [[IBMQTT alloc] initWithHost:account.serverHost port:account.port andResponseDelegate:self];
+            self->_requests = [[IBMQTT alloc] initWithHost:host port:port andResponseDelegate:self];
         } else if (account.protocol == IBMqttSNProtocolType) {
-            self->_requests = [[IBMQTTSN alloc] initWithHost:account.serverHost port:account.port andResponseDelegate:self];
+            self->_requests = [[IBMQTTSN alloc] initWithHost:host port:port andResponseDelegate:self];
         } else if (account.protocol == IBCoAPProtocolType) {
-            self->_requests = [[IBCoAP alloc] initWithHost:account.serverHost port:account.port andResponseDelegate:self];
+            self->_requests = [[IBCoAP alloc] initWithHost:host port:port andResponseDelegate:self];
         } else if (account.protocol == IBAMQPProtocolType) {
-            self->_requests = [[IBAMQP alloc] initWithHost:account.serverHost port:account.port andResponseDelegate:self];
+            self->_requests = [[IBAMQP alloc] initWithHost:host port:port andResponseDelegate:self];
         }
         [self showProgressWithMessage:@"Connection..."];
         [self->_requests prepareToSendingRequest];
@@ -118,7 +122,7 @@
     message.topicName = name;
     message.qos = (int32_t)qos;
     message.content = content;
-    message.isDup = dup;
+    message.isDup = (int)dup;
     message.isRetain = isRetain;
     message.isIncoming = isIncoming;
     [self->_accountManager addMessageForDefaultAccount:message];
@@ -257,6 +261,13 @@
 
 - (void) disconnectWithDuration : (NSInteger) duration {
     // Disconnect
+}
+
+- (void)timeout {
+    [self closeProgress];
+    [self logout];
+    IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:@"Timeout error" preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert pushToNavigationControllerStack:self.navigationController];
 }
 
 - (void) error : (NSError *) error {

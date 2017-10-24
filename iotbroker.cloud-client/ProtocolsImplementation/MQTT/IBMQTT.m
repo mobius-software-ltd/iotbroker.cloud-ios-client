@@ -25,6 +25,7 @@
 
 @interface IBMQTT () <IBInternetProtocolDelegate>
 
+@property (strong, nonatomic) NSTimer *timeoutTimer;
 @property (strong, nonatomic) IBTimersMap *timers;
 @property (assign, nonatomic) NSInteger keepalive;
 @property (strong, nonatomic) NSMutableDictionary *publishPackets;
@@ -43,6 +44,15 @@
         self->_internetProtocol.delegate = self;
         self->_delegate = delegate;
         self->_publishPackets = [NSMutableDictionary dictionary];
+    
+//        NSString *path = [[NSBundle mainBundle] pathForResource:@"certificate" ofType:@"p12"];
+//        
+//        ((IBSocketTransport *)self->_internetProtocol).tls = true;
+//        ((IBSocketTransport *)self->_internetProtocol).certificates = [IBSocketTransport clientCertsFromP12:path passphrase:@"ssl03"];
+//        
+//        self->_internetProtocol.delegate = self;
+//        self->_delegate = delegate;
+//        self->_publishPackets = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -71,6 +81,7 @@
                                                    keepalive:account.keepalive cleanSession:account.cleanSession andWill:willObject];
     self->_keepalive = account.keepalive;
     [self->_timers startConnectTimer:connect];
+    [self startTimeoutTimer];
 }
 
 - (void) publishMessage:(Message *)message {
@@ -131,7 +142,7 @@
 - (void) internetProtocol : (id<IBInternetProtocol>) internetProtocol didReceiveMessage : (NSData *) data {
     
     NSMutableData *packets = [NSMutableData dataWithData:data];
-
+    
     do {
         NSMutableData *packet = [IBParser next:&packets];
         id<IBMessage> message = [self decodeData:packet];
@@ -145,9 +156,12 @@
             case IBConnackMessage:
             {
                 IBConnack *connack = (IBConnack *)message;
-                [self->_timers stopConnectTimer];
-                [self.delegate connackWithCode:connack.returnCode];
-                [self->_timers startPingTimerWithKeepAlive:self->_keepalive];
+                if (connack.returnCode == IBAccepted) {
+                    [self stopTimeoutTimer];
+                    [self->_timers stopConnectTimer];
+                    [self.delegate connackWithCode:connack.returnCode];
+                    [self->_timers startPingTimerWithKeepAlive:self->_keepalive];
+                }
             } break;
             case IBPublishMessage:
             {
@@ -227,6 +241,21 @@
 }
 
 #pragma mark - Private methods -
+
+- (void) startTimeoutTimer {
+    self->_timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:IBTimeoutTimerValue target:self selector:@selector(timeoutTimerMethod:) userInfo:nil repeats:false];
+}
+
+- (void) stopTimeoutTimer {
+    [self->_timeoutTimer invalidate];
+    self->_timeoutTimer = nil;
+}
+
+- (void) timeoutTimerMethod : (NSTimer *) timer {
+    
+    [self->_timers stopAllTimers];
+    [self.delegate timeout];
+}
 
 - (NSData *) encodeMessage : (id<IBMessage>) message {
     

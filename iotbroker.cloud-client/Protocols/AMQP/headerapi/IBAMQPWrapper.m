@@ -319,7 +319,7 @@
 
         IBTLVAMQP *k = [self wrapObject:key];
         IBTLVAMQP *v = [self wrapObject:valueItem];
-        
+                
         [map putElementWithKey:k
                       andValue:v];
     }

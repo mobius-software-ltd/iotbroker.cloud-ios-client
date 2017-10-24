@@ -23,7 +23,6 @@
 #import "IBSNRegister.h"
 #import "IBCoMessage.h"
 
-static NSInteger const IBMessageResendPeriod = 3;
 static NSInteger const IBMaxValue = 65535;
 static NSInteger const IBFirstID = 1;
 

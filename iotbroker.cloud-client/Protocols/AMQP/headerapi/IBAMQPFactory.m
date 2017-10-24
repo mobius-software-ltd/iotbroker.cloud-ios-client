@@ -114,7 +114,6 @@
     }
     
     [section fill:value];
-    
     return section;
 }
 

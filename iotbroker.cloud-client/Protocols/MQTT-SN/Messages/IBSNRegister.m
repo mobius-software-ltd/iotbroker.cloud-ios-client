@@ -23,10 +23,9 @@
 @implementation IBSNRegister
 
 - (instancetype) initWithTopicID : (NSInteger) topicID packetID : (NSInteger) packetID andTopicName : (NSString *) topicName {
-    self = [super init];
+    self = [super initWithPacketID:packetID];
     if (self != nil) {
         self->_topicID = topicID;
-        self->_packetID = packetID;
         self->_topicName = topicName;
     }
     return self;
@@ -49,7 +48,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"\n - topicID = %zd\n - packetID = %zd\n - topicName = %@", self->_topicID, self->_packetID, self->_topicName];
+    return [NSString stringWithFormat:@"\n - topicID = %zd\n - packetID = %zd\n - topicName = %@", self->_topicID, self.packetID, self->_topicName];
 }
 
 @end
