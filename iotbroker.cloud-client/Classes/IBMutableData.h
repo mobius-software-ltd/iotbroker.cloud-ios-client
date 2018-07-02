@@ -27,7 +27,7 @@
 - (void) appendByte : (Byte) byte;
 - (Byte) readByte;
 - (void) appendShort : (short) value;
-- (NSInteger) readShort;
+- (short) readShort;
 
 - (void) appendInt : (NSInteger) value;
 - (int) readInt;

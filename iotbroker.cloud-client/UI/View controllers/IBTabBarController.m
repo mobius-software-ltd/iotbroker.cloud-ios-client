@@ -63,12 +63,14 @@
                 
         if (account.protocol == IBMqttProtocolType) {
             self->_requests = [[IBMQTT alloc] initWithHost:host port:port andResponseDelegate:self];
+            [self->_requests secureWithCertificate:account.keyPath withPassword:account.keyPass];
         } else if (account.protocol == IBMqttSNProtocolType) {
             self->_requests = [[IBMQTTSN alloc] initWithHost:host port:port andResponseDelegate:self];
         } else if (account.protocol == IBCoAPProtocolType) {
             self->_requests = [[IBCoAP alloc] initWithHost:host port:port andResponseDelegate:self];
         } else if (account.protocol == IBAMQPProtocolType) {
             self->_requests = [[IBAMQP alloc] initWithHost:host port:port andResponseDelegate:self];
+            [self->_requests secureWithCertificate:account.keyPath withPassword:account.keyPass];
         }
         [self showProgressWithMessage:@"Connection..."];
         [self->_requests prepareToSendingRequest];

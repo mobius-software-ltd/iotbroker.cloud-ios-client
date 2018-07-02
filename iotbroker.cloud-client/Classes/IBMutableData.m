@@ -54,14 +54,10 @@ static void const *key;
     [self appendBytes:&value length:2];
 }
 
-- (NSInteger) readShort {
-    
-    short value = 0;
-
-    value += [self readByte];
-    value += [self readByte];
-    
-    return value;
+- (short) readShort {
+    Byte msb = [self readByte];
+    Byte lsb = [self readByte];
+    return (((msb & 0xFF) << 8) | (lsb & 0xFF));
 }
 
 - (void) appendUInt24 : (int) value {

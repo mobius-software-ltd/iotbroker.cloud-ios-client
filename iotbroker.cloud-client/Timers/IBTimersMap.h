@@ -42,7 +42,7 @@ static NSInteger const IBMessageResendPeriod = 3;
 - (void) startPingTimerWithKeepAlive : (NSInteger) keepAlive;
 - (void) stopPingTimer;
 
-- (void) startRegisterTimer: (id<IBMessage>) message;
+- (NSInteger) startRegisterTimer: (id<IBMessage>) message;
 - (void) stopRegisterTimer;
 
 - (void) startCoAPMessageTimer: (id<IBMessage>) coapMessage;

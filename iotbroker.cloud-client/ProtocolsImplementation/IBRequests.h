@@ -44,4 +44,6 @@
 
 - (id<IBMessage>) getPingreqMessage;
 
+- (void) secureWithCertificate : (NSString *) certificate withPassword : (NSString *) password;
+
 @end

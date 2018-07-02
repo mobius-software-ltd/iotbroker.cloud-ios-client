@@ -101,6 +101,7 @@
 		2289A1E91EE84E03009B98AA /* IBAMQPPing.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1E81EE84E03009B98AA /* IBAMQPPing.m */; };
 		2289A1EC1EE84F05009B98AA /* IBAMQPProtoHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1EB1EE84F05009B98AA /* IBAMQPProtoHeader.m */; };
 		2289A1EF1EE8520A009B98AA /* IBAMQPWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1EE1EE8520A009B98AA /* IBAMQPWrapper.m */; };
+		229BF78120EA352900407C60 /* IBCoOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 229BF78020EA352900407C60 /* IBCoOption.m */; };
 		22C531A31EAF90D2007F57A8 /* IBPuback.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531871EAF90D2007F57A8 /* IBPuback.m */; };
 		22C531A41EAF90D2007F57A8 /* IBConnack.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531891EAF90D2007F57A8 /* IBConnack.m */; };
 		22C531A51EAF90D2007F57A8 /* IBConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5318B1EAF90D2007F57A8 /* IBConnect.m */; };
@@ -352,6 +353,7 @@
 		224BEFD31EEADB200033961F /* IBAMQPOpen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPOpen.m; sourceTree = "<group>"; };
 		224BEFD51EEAE19C0033961F /* IBAMQPTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPTransfer.h; sourceTree = "<group>"; };
 		224BEFD61EEAE19C0033961F /* IBAMQPTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPTransfer.m; sourceTree = "<group>"; };
+		22661E5E20D113D500ADA774 /* iotbroker.cloud-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iotbroker.cloud-client.entitlements"; sourceTree = "<group>"; };
 		22664DCA1EF9A1FA007E7438 /* IBAMQPTransferMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPTransferMap.h; sourceTree = "<group>"; };
 		22664DCB1EF9A1FA007E7438 /* IBAMQPTransferMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPTransferMap.m; sourceTree = "<group>"; };
 		2289A1A61EE7E8EF009B98AA /* IBAMQPTLVList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPTLVList.h; sourceTree = "<group>"; };
@@ -401,6 +403,8 @@
 		2289A1EB1EE84F05009B98AA /* IBAMQPProtoHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPProtoHeader.m; sourceTree = "<group>"; };
 		2289A1ED1EE8520A009B98AA /* IBAMQPWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPWrapper.h; sourceTree = "<group>"; };
 		2289A1EE1EE8520A009B98AA /* IBAMQPWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPWrapper.m; sourceTree = "<group>"; };
+		229BF77F20EA352900407C60 /* IBCoOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBCoOption.h; sourceTree = "<group>"; };
+		229BF78020EA352900407C60 /* IBCoOption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBCoOption.m; sourceTree = "<group>"; };
 		22C531811EAF8AC3007F57A8 /* IBMQTTMessages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBMQTTMessages.h; sourceTree = "<group>"; };
 		22C531851EAF8C92007F57A8 /* IBMQTT-SNMessages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IBMQTT-SNMessages.h"; sourceTree = "<group>"; };
 		22C531871EAF90D2007F57A8 /* IBPuback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBPuback.m; sourceTree = "<group>"; };
@@ -989,6 +993,8 @@
 		222722151ED829690098D40F /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				229BF77F20EA352900407C60 /* IBCoOption.h */,
+				229BF78020EA352900407C60 /* IBCoOption.m */,
 				222722191ED829C60098D40F /* IBCoEnums.h */,
 				222722161ED829930098D40F /* IBCoMessage.h */,
 				222722171ED829930098D40F /* IBCoMessage.m */,
@@ -1829,6 +1835,7 @@
 		22C5C0271DF061CE00790EF6 /* iotbroker.cloud-client */ = {
 			isa = PBXGroup;
 			children = (
+				22661E5E20D113D500ADA774 /* iotbroker.cloud-client.entitlements */,
 				2217D9111EBB16F800A636E7 /* UI */,
 				2217D90F1EBB168000A636E7 /* Classes */,
 				2217D8F01EBB132700A636E7 /* CoreData */,
@@ -2237,6 +2244,14 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 53A7V2WPHY;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					22C5C0401DF061CE00790EF6 = {
 						CreatedOnToolsVersion = 8.1;
@@ -2461,6 +2476,7 @@
 				22C532171EAF9338007F57A8 /* IBSNRegister.m in Sources */,
 				2217D93E1EBB177F00A636E7 /* IBTopicsListTableViewController.m in Sources */,
 				224BEFA31EEA90440033961F /* IBAMQPApplicationProperties.m in Sources */,
+				229BF78120EA352900407C60 /* IBCoOption.m in Sources */,
 				22C532441EAF95A8007F57A8 /* IBSNResponseMessage.m in Sources */,
 				2227221D1ED86A0E0098D40F /* IBCoAP.m in Sources */,
 				224BEFCE1EEAD1220033961F /* IBAMQPDisposition.m in Sources */,
@@ -2623,7 +2639,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2666,7 +2682,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2679,9 +2695,10 @@
 			baseConfigurationReference = A016733DB13CAF666DB499F0 /* Pods-iotbroker.cloud-client.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "iotbroker.cloud-client/iotbroker.cloud-client.entitlements";
 				DEVELOPMENT_TEAM = 53A7V2WPHY;
 				INFOPLIST_FILE = "iotbroker.cloud-client/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker.cloud.client";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2693,9 +2710,10 @@
 			baseConfigurationReference = 0589C7D167EA1F54ED0C102B /* Pods-iotbroker.cloud-client.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "iotbroker.cloud-client/iotbroker.cloud-client.entitlements";
 				DEVELOPMENT_TEAM = 53A7V2WPHY;
 				INFOPLIST_FILE = "iotbroker.cloud-client/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker.cloud.client";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -26,6 +26,5 @@
 
 + (id<IBMessage>) decode : (NSMutableData *) data;
 + (NSMutableData *) encode : (id<IBMessage>) message;
-+ (NSMutableData *)getHexDataFromString:(NSString *)string;
 
 @end

@@ -34,7 +34,7 @@
 @property (assign, nonatomic) NSInteger keepalive;
 @property (strong, nonatomic) IBWill *connectWill;
 @property (strong, nonatomic) IBTimersMap *timers;
-@property (strong, nonatomic) IBSNPublish *forPublish;
+@property (strong, nonatomic) NSMutableDictionary *forPublish;
 @property (strong, nonatomic) NSMutableDictionary *publishPackets;
 
 @end
@@ -51,6 +51,8 @@
         self->_internetProtocol.delegate = self;
         self->_delegate = delegate;
         self->_clientID = nil;
+        self->_forPublish = [NSMutableDictionary dictionary];
+        self->_publishPackets = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -86,8 +88,9 @@
     IBQoS *QoS = [[IBQoS alloc] initWithValue:message.qos];
     IBSNFullTopic *topic = [[IBSNFullTopic alloc] initWithValue:message.topicName andQoS:QoS];
     IBSNRegister *registerPacket = [[IBSNRegister alloc] initWithTopicID:0 packetID:0 andTopicName:message.topicName];
-    self->_forPublish = [[IBSNPublish alloc] initWithPacketID:0 topic:topic content:message.content dup:message.isDup retainFlag:message.isRetain];
-    [self->_timers startRegisterTimer:registerPacket];
+    IBSNPublish *publish = [[IBSNPublish alloc] initWithPacketID:0 topic:topic content:message.content dup:message.isDup retainFlag:message.isRetain];
+    NSInteger packetId = [self->_timers startRegisterTimer:registerPacket];
+    [self->_forPublish setObject:publish forKey:@(packetId)];
 }
 
 - (void) subscribeToTopic : (Topic *) topic {
@@ -180,13 +183,14 @@
                 [self->_timers stopRegisterTimer];
                 
                 if (regack.returnCode == IBAcceptedReturnCode) {
-                    IBSNIdentifierTopic *topic = [[IBSNIdentifierTopic alloc] initWithValue:regack.topicID andQoS:[self->_forPublish.topic getQoS]];
-                    self->_forPublish.packetID = regack.packetID;
-                    self->_forPublish.topic = topic;
-                    if ([self->_forPublish.topic getQoS].value == IBAtMostOnce) {
-                        [self sendMessage:self->_forPublish];
+                    IBSNPublish *publish = [self->_forPublish objectForKey:@(regack.packetID)];
+                    IBSNIdentifierTopic *topic = [[IBSNIdentifierTopic alloc] initWithValue:regack.topicID andQoS:[publish.topic getQoS]];
+                    publish.packetID = regack.packetID;
+                    publish.topic = topic;
+                    if ([publish.topic getQoS].value == IBAtMostOnce) {
+                        [self sendMessage:publish];
                     } else {
-                        [self->_timers startMessageTimer:self->_forPublish];
+                        [self->_timers startMessageTimer:publish];
                     }
                 }
             } break;

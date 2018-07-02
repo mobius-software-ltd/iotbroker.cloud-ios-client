@@ -22,29 +22,29 @@
 
 @implementation IBCoMessage
 {
-    NSMutableDictionary *_optionDictionary;
+    NSMutableArray<IBCoOption *> *_options;
 }
 
 - (instancetype)init {
     self = [super init];
     if (self != nil) {
-        self->_optionDictionary = [NSMutableDictionary dictionary];
+        self->_options = [NSMutableArray array];
         self->_version = 1;
+        self->_token = -1;
     }
     return self;
 }
 
-+ (instancetype) method : (IBCoAPMethods) method confirmableFlag : (BOOL) isCon tokenFlag : (BOOL) isToken andPayload : (NSString *) payload {
-    return [[IBCoMessage alloc] initWithMethod:method confirmableFlag:isCon tokenFlag:isToken andPayload:payload];
++ (instancetype) code : (IBCoAPCodes) code confirmableFlag : (BOOL) isCon andPayload : (NSString *) payload {
+    return [[IBCoMessage alloc] initWithCode:code confirmableFlag:isCon andPayload:payload];
 }
 
-- (instancetype) initWithMethod : (NSInteger) method confirmableFlag : (BOOL) isCon tokenFlag : (BOOL) isToken andPayload : (NSString *) payload {
+- (instancetype) initWithCode : (IBCoAPCodes) code confirmableFlag : (BOOL) isCon andPayload : (NSString *) payload {
     self = [self init];
     if (self != nil) {
-        self->_code = method;
+        self->_code = code;
         self->_type = (isCon == true) ? IBConfirmableType : IBNonConfirmableType;
-        self->_isTokenExist = isToken;
-        self->_payload = payload;
+        self->_payload = [payload dataUsingEncoding:NSUTF8StringEncoding];
     }
     return self;
 }
@@ -58,21 +58,27 @@
 }
 
 - (void) addOption : (IBCoAPOptionDefinitions) option withValue : (NSString *) value {
-    
-    NSMutableArray *values = [NSMutableArray array];
-    NSString *key = [@(option) stringValue];
-    
-    if ([self->_optionDictionary valueForKey:key]) {
-        values = [self->_optionDictionary valueForKey:key];
-    } else {
-        [self->_optionDictionary setValue:values forKey:key];
-    }
-    
-    [values addObject:value];
+    IBCoOption *item = [[IBCoOption alloc] initWithNumber:option length:(int)value.length value:[value dataUsingEncoding:NSUTF8StringEncoding]];
+    [self->_options addObject:item];
 }
 
-- (NSDictionary *) optionDictionary {
-    return self->_optionDictionary;
+- (void) addOption : (IBCoOption *) option {
+    [self->_options addObject:option];
+}
+
+- (IBCoOption *) option : (IBCoAPOptionDefinitions) option {
+    for (IBCoOption *item in self->_options) {
+        if (item.number == option) {
+            return item;
+        }
+    }
+    return nil;
+}
+
+- (NSArray<IBCoOption *> *) options {
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"number" ascending:YES];
+    NSArray *sorted = [self->_options sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    return sorted;
 }
 
 @end

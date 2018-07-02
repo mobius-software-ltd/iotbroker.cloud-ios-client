@@ -21,15 +21,18 @@
 #import "IBLoginViewController.h"
 #import "IBLoginTableViewCell.h"
 #import "IBPickerView.h"
+#import "IBAlertViewController.h"
 
 static NSString *const IBMQTTLoginControllerIdentifier = @"IBMQTTLoginTableViewControllerIdentifier";
 static NSString *const IBMQTTSNLoginControllerIdentifier = @"IBMQTTSNLoginTableViewControllerIdentifier";
 
 static NSInteger const IBRegustrationInfoSection = 0;
 static NSInteger const IBSettingsSection = 1;
+static NSInteger const IBClientSecuritySection = 2;
 
-static NSString *const IBRegustrationInfoSectionTitle = @"Regustration info";
+static NSString *const IBRegustrationInfoSectionTitle = @"Registration info";
 static NSString *const IBSettingsSectionTitle = @"Settings";
+static NSString *const IBClientSecuritySectionTitle = @"Client security";
 
 static NSString *const IBProtocolCell       = @"protocolCell";
 static NSString *const IBUsernameCell       = @"usernameCell";
@@ -43,13 +46,17 @@ static NSString *const IBWillCell           = @"willCell";
 static NSString *const IBWillTopicCell      = @"willTopicCell";
 static NSString *const IBRetainCell         = @"retainCell";
 static NSString *const IBQoSCell            = @"qosCell";
+static NSString *const IBSecureConnectionCell   = @"secureConnectionCell";
+static NSString *const IBSecurityKeyCell        = @"securityKeyCell";
+static NSString *const IBKeyPasswordCell        = @"keyPasswordCell";
 
-@interface IBLoginViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, IBPickerViewDelegate>
+@interface IBLoginViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIDocumentBrowserViewControllerDelegate, IBPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSMutableArray *registerInfoSectionCells;
 @property (strong, nonatomic) NSMutableArray *settingsSectionCells;
+@property (strong, nonatomic) NSMutableArray *clientSecurityCells;
 
 @property (strong, nonatomic) IBPickerView *qosPickerView;
 
@@ -61,6 +68,7 @@ static NSString *const IBQoSCell            = @"qosCell";
 @property (weak, nonatomic) UITextField *clientIDField;
 @property (weak, nonatomic) UITextField *serverHostField;
 @property (weak, nonatomic) UITextField *portField;
+@property (weak, nonatomic) UISwitch *secureConnectionSwitch;
 
 // settings
 
@@ -70,6 +78,11 @@ static NSString *const IBQoSCell            = @"qosCell";
 @property (weak, nonatomic) UITextField *willTopicField;
 @property (weak, nonatomic) UISwitch *retainSwitch;
 @property (weak, nonatomic) UITextField *qosTextField;
+
+// client security
+
+@property (weak, nonatomic) UITextField *securityKeyTextField;
+@property (weak, nonatomic) UITextField *keyPasswordTextField;
 
 @end
 
@@ -118,6 +131,7 @@ static NSString *const IBQoSCell            = @"qosCell";
         [self->_registerInfoSectionCells addObject:IBClientIDCell];
         [self->_registerInfoSectionCells addObject:IBServerHostCell];
         [self->_registerInfoSectionCells addObject:IBPortCell];
+        [self->_registerInfoSectionCells addObject:IBSecureConnectionCell];
         self->_settingsSectionCells = [NSMutableArray array];
         [self->_settingsSectionCells addObject:IBCleanSessionCell];
         [self->_settingsSectionCells addObject:IBKeepaliveCell];
@@ -129,6 +143,7 @@ static NSString *const IBQoSCell            = @"qosCell";
         [self->_registerInfoSectionCells addObject:IBClientIDCell];
         [self->_registerInfoSectionCells addObject:IBServerHostCell];
         [self->_registerInfoSectionCells addObject:IBPortCell];
+        [self->_registerInfoSectionCells addObject:IBSecureConnectionCell];
         self->_settingsSectionCells = [NSMutableArray array];
         [self->_settingsSectionCells addObject:IBCleanSessionCell];
         [self->_settingsSectionCells addObject:IBKeepaliveCell];
@@ -137,11 +152,13 @@ static NSString *const IBQoSCell            = @"qosCell";
     } else if (type == IBCoAPProtocolType) {
         [self->_registerInfoSectionCells addObject:IBServerHostCell];
         [self->_registerInfoSectionCells addObject:IBPortCell];
+        [self->_registerInfoSectionCells addObject:IBSecureConnectionCell];
         self->_settingsSectionCells = nil;
     } else if (type == IBAMQPProtocolType) {
         [self->_registerInfoSectionCells addObject:IBClientIDCell];
         [self->_registerInfoSectionCells addObject:IBServerHostCell];
         [self->_registerInfoSectionCells addObject:IBPortCell];
+        [self->_registerInfoSectionCells addObject:IBSecureConnectionCell];
         self->_settingsSectionCells = nil;
     }
     self.protocolField.text = [protocolType nameByValue];
@@ -181,14 +198,40 @@ static NSString *const IBQoSCell            = @"qosCell";
     self->_account.isRetain = self.retainSwitch.isOn;
     self->_account.qos = (int32_t)[self.qosTextField.text integerValue];
     self->_account.isDefault = true;
+    self->_account.isSecure = self.secureConnectionSwitch.isOn;
+    self->_account.keyPath = self.securityKeyTextField.text;
+    self->_account.keyPass = self.keyPasswordTextField.text;
     
     [self.delegate loginTableViewController:self newAccountToAdd:self->_account];
+}
+
+- (IBAction)secureStateToggled:(UISwitch *)sender {
+    
+    if (self.secureConnectionSwitch.isOn) {
+        self->_clientSecurityCells = [NSMutableArray array];
+        [self->_clientSecurityCells addObject:IBSecurityKeyCell];
+        [self->_clientSecurityCells addObject:IBKeyPasswordCell];
+    } else {
+        self->_clientSecurityCells = nil;
+    }
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     return [textField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if ([textField isEqual:self.securityKeyTextField]) {
+        NSArray *types = @[@"public.text", @"public.item", @"public.content", @"public.source-code"];
+        UIDocumentBrowserViewController *documentBrowser = [[UIDocumentBrowserViewController alloc] initForOpeningFilesWithContentTypes:types];
+        documentBrowser.delegate = self;
+        [self.navigationController pushViewController:documentBrowser animated:true];
+        return false;
+    }
+    return true;
 }
 
 #pragma mark - IBPickerViewDelegate
@@ -205,22 +248,36 @@ static NSString *const IBQoSCell            = @"qosCell";
 #pragma mark - UITableViewDataSource -
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (self->_registerInfoSectionCells != nil && self->_settingsSectionCells != nil) {
-        return 2;
-    }
-    return 1;
+    int count = 0;
+    count += self->_registerInfoSectionCells != nil ? 1 : 0;
+    count += self->_settingsSectionCells != nil ? 1 : 0;
+    count += self->_clientSecurityCells != nil ? 1 : 0;
+    return count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == IBRegustrationInfoSection) {
         return self.registerInfoSectionCells.count;
+    } else if (section == IBSettingsSection && self.settingsSectionCells.count > 0) {
+        return self.settingsSectionCells.count;
+    } else if ((section == IBClientSecuritySection || section == IBSettingsSection) && self.clientSecurityCells.count > 0) {
+        return self.clientSecurityCells.count;
     }
-    return self.settingsSectionCells.count;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
    
-    NSString *cellIdentifier = (indexPath.section == IBRegustrationInfoSection)?[self.registerInfoSectionCells objectAtIndex:indexPath.row]:[self.settingsSectionCells objectAtIndex:indexPath.row];
+    NSString *cellIdentifier = nil;
+    
+    if (indexPath.section == IBRegustrationInfoSection && self.registerInfoSectionCells.count > 0) {
+        cellIdentifier = [self.registerInfoSectionCells objectAtIndex:indexPath.row];
+    } else if (indexPath.section == IBSettingsSection && self.settingsSectionCells.count > 0) {
+        cellIdentifier = [self.settingsSectionCells objectAtIndex:indexPath.row];
+    } else if ((indexPath.section == IBClientSecuritySection || indexPath.section == IBSettingsSection) && self.clientSecurityCells.count > 0) {
+        cellIdentifier = [self.clientSecurityCells objectAtIndex:indexPath.row];
+    }
+    
     IBLoginTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if ([cellIdentifier isEqualToString:IBProtocolCell]) {
@@ -240,6 +297,8 @@ static NSString *const IBQoSCell            = @"qosCell";
     } else if ([cellIdentifier isEqualToString:IBPortCell]) {
         self.portField = ((UITextField *)cell.control);
         self.portField.delegate = self;
+    } else if ([cellIdentifier isEqualToString:IBSecureConnectionCell]) {
+        self.secureConnectionSwitch = ((UISwitch *)cell.control);
     } else if ([cellIdentifier isEqualToString:IBCleanSessionCell]) {
         self.cleanSessionSwitch = ((UISwitch *)cell.control);
     } else if ([cellIdentifier isEqualToString:IBKeepaliveCell]) {
@@ -257,6 +316,12 @@ static NSString *const IBQoSCell            = @"qosCell";
         self.qosTextField = ((UITextField *)cell.control);
         self.qosTextField.delegate = self;
         [self.qosTextField setInputView:self->_qosPickerView];
+    } else if ([cellIdentifier isEqualToString:IBSecurityKeyCell]) {
+        self.securityKeyTextField = ((UITextField *)cell.control);
+        self.securityKeyTextField.delegate = self;
+    } else if ([cellIdentifier isEqualToString:IBKeyPasswordCell]) {
+        self.keyPasswordTextField = ((UITextField *)cell.control);
+        self.keyPasswordTextField.delegate = self;
     }
     return cell;
 }
@@ -279,12 +344,14 @@ static NSString *const IBQoSCell            = @"qosCell";
     label.textColor = [UIColor whiteColor];
     [label setFont:[UIFont boldSystemFontOfSize:12.f]];
     
-    if (section == IBRegustrationInfoSection) {
+    if (section == IBRegustrationInfoSection && self->_registerInfoSectionCells.count > 0) {
         label.text = IBRegustrationInfoSectionTitle;
-    } else if (section == IBSettingsSection) {
+    } else if (section == IBSettingsSection && self->_settingsSectionCells.count > 0) {
         label.text = IBSettingsSectionTitle;
+    } else if ((section == IBClientSecuritySection || section == IBSettingsSection) && self->_clientSecurityCells.count > 0) {
+        label.text = IBClientSecuritySectionTitle;
     }
-    
+
     [view addSubview:label];
     return view;
 }
@@ -293,6 +360,41 @@ static NSString *const IBQoSCell            = @"qosCell";
     if (indexPath.section == IBRegustrationInfoSection && indexPath.row == 0) {
         [self.delegate loginTableViewControllerProtocolCellDidClick:self];
         [tableView deselectRowAtIndexPath:indexPath animated:true];
+    }
+}
+
+#pragma mark - UIDocumentBrowserViewControllerDelegate -
+
+- (void)documentBrowser:(UIDocumentBrowserViewController *)controller didPickDocumentURLs:(NSArray <NSURL *> *)documentURLs {
+    
+    NSURL *initialUrl = [documentURLs firstObject];
+    NSURL *destinationUrl = [[[NSFileManager defaultManager] temporaryDirectory] URLByAppendingPathComponent:[initialUrl lastPathComponent]];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[destinationUrl path]]) {
+        NSString *message = [NSString stringWithFormat:@"File %@ already exist.", [destinationUrl lastPathComponent]];
+        IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:message preferredStyle:UIAlertControllerStyleActionSheet];
+        [alert pushToNavigationControllerStack:self.navigationController];
+    } else {
+        
+        NSError *error = nil;
+        
+        [initialUrl startAccessingSecurityScopedResource];
+        BOOL result = [[NSFileManager defaultManager] copyItemAtURL:initialUrl toURL:destinationUrl error:&error];
+        [initialUrl stopAccessingSecurityScopedResource];
+        
+        if (result) {
+            [self.navigationController popViewControllerAnimated:true];
+            self.securityKeyTextField.text = [destinationUrl path];
+        } else {
+            NSString *message = [NSString stringWithFormat:@"Error while copying  of %@. Try again.", [destinationUrl lastPathComponent]];
+            IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:message preferredStyle:UIAlertControllerStyleActionSheet];
+            [alert pushToNavigationControllerStack:self.navigationController];
+        }
+        
+        if (error != nil) {
+            IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:[error localizedDescription] preferredStyle:UIAlertControllerStyleActionSheet];
+            [alert pushToNavigationControllerStack:self.navigationController];
+        }
     }
 }
 

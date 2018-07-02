@@ -20,25 +20,25 @@
 
 #import "IBMessage.h"
 #import "IBCoEnums.h"
+#import "IBCoOption.h"
 
 @interface IBCoMessage : NSObject <IBMessage>
 
-@property (assign, nonatomic, readonly) Byte version;
-
+@property (assign, nonatomic, readonly) int version;
 @property (assign, nonatomic) IBCoAPTypes type;
+@property (assign, nonatomic) long token;
+@property (assign, nonatomic) IBCoAPCodes code;
+@property (assign, nonatomic) short messageID;
+@property (strong, nonatomic) NSData *payload;
 
-@property (assign, nonatomic) BOOL isTokenExist;
-@property (assign, nonatomic) NSInteger token;
-
-@property (assign, nonatomic) IBCoAPMethods code;
-
-@property (assign, nonatomic) NSInteger messageID;
-@property (strong, nonatomic) NSString *payload;
-
-+ (instancetype) method : (IBCoAPMethods) method confirmableFlag : (BOOL) isCon tokenFlag : (BOOL) isToken andPayload : (NSString *) payload;
-- (instancetype) initWithMethod : (NSInteger) method confirmableFlag : (BOOL) isCon tokenFlag : (BOOL) isToken andPayload : (NSString *) payload;
++ (instancetype) code : (IBCoAPCodes) code confirmableFlag : (BOOL) isCon andPayload : (NSString *) payload;
+- (instancetype) initWithCode : (IBCoAPCodes) code confirmableFlag : (BOOL) isCon andPayload : (NSString *) payload;
 
 - (void) addOption : (IBCoAPOptionDefinitions) option withValue : (NSString *) value;
-- (NSDictionary *) optionDictionary;
+- (void) addOption : (IBCoOption *) option;
+
+- (IBCoOption *) option : (IBCoAPOptionDefinitions) option;
+
+- (NSArray<IBCoOption *> *) options;
 
 @end

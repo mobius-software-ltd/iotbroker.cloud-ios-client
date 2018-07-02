@@ -20,10 +20,6 @@
 
 #import "IBCoParser.h"
 
-static int const IB13OptionFaildConstant = 13;
-static int const IB14OptionFaildConstant = 14;
-static int const IB15OptionFaildConstant = 15;
-
 @implementation IBCoParser
 
 + (id<IBMessage>) decode : (NSMutableData *) buffer {
@@ -31,235 +27,164 @@ static int const IB15OptionFaildConstant = 15;
     IBCoMessage *message = [[IBCoMessage alloc] init];
     
     [buffer clearNumber];
-    
-    Byte zeroByte = [buffer readByte];
-    Byte version = (zeroByte >> 6) & 0x3;
-    
+
+    Byte firstByte = [buffer readByte];
+    Byte version = firstByte >> 6;
     if (version != message.version) {
-        return nil;
+        @throw [NSException exceptionWithName:@"CoAP parser" reason:[NSString stringWithFormat:@"Invalid version: %zd", version] userInfo:nil];
     }
     
-    message.type = (zeroByte >> 4) & 0x3;
-    Byte tokenLength = (zeroByte >> 0) & 0xF;
-    message.isTokenExist = (tokenLength == 0) ? false : true;
-    message.code = [buffer readByte];
+    message.type = (firstByte >> 4) & 0x3;
     
-    message.messageID = [buffer numberWithLength:2];
-    
-    if (message.isTokenExist == true) {
-        message.token = [buffer numberWithLength:tokenLength]; 
+    Byte tokenLength = firstByte & 0xF;
+    if (tokenLength > 8) {
+        @throw [NSException exceptionWithName:@"CoAP parser" reason:[NSString stringWithFormat:@"Invalid token length: %zd", tokenLength] userInfo:nil];
     }
     
-    NSInteger previousOptionDelta = 0;
+    int codeByte = [buffer readByte];
+    int codeValue = (codeByte >> 5) * 100;
+    codeValue += codeByte & 0x1F;
+    message.code = codeValue;
+    message.messageID = [buffer readShort];
+    
+    if (tokenLength > 0) {
+        NSData *data = [buffer dataWithLength:tokenLength];
+        NSString *number = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        message.token = [number integerValue];
+    }
+    
+    int number = 0;
     
     while ([buffer getByteNumber] < [buffer length]) {
-        Byte optionByte = [buffer readByte];
-        Byte optionDelta = (optionByte >> 4) & 0xF;
-        Byte optionLength = optionByte & 0xF;
-        
-        if (optionDelta == IB15OptionFaildConstant) {
-            if (optionLength != IB15OptionFaildConstant) {
-                return nil;
-            }
+        Byte nextByte = [buffer readByte];
+        if (nextByte == 0xFF) {
             break;
         }
+        int delta = (nextByte >> 4) & 15;
         
-        NSInteger extendedDelta = 0;
-        Byte optionIndexOffset = 1;
-        
-        if (optionDelta == IB13OptionFaildConstant) {
-            optionIndexOffset += 1;
-        } else if (optionDelta == IB14OptionFaildConstant) {
-            optionIndexOffset += 2;
+        if (delta == 13) {
+            delta = [buffer readByte] + 13;
+        } else if (delta == 14) {
+            delta = [buffer readShort] + 269;
+        } else if (delta > 14) {
+            @throw [NSException exceptionWithName:@"CoAP parser" reason:[NSString stringWithFormat:@"Invalid option delta value: %zd", delta] userInfo:nil];
         }
         
-        if ([buffer getByteNumber] + optionIndexOffset <= [buffer length]) {
-            extendedDelta = [buffer numberWithLength:optionIndexOffset - 1];
-        } else {
-            return nil;
+        number += delta;
+
+        int optionLength = nextByte & 15;
+        if (optionLength == 13) {
+            optionLength = [buffer readByte] + 13;
+        } else if (optionLength == 14) {
+            optionLength = [buffer readShort] + 269;
+        } else if (optionLength > 14) {
+            @throw [NSException exceptionWithName:@"CoAP parser" reason:[NSString stringWithFormat:@"Invalid option delta value: %zd", optionLength] userInfo:nil];
         }
         
-        NSInteger optionLengthExtendedOffsetIndex = optionIndexOffset;
-        if (optionLength == IB13OptionFaildConstant) {
-            optionIndexOffset += 1;
-        } else if (optionLength == IB14OptionFaildConstant) {
-            optionIndexOffset += 2;
-        } else if (optionLength == IB15OptionFaildConstant) {
-            return nil;
-        }
-        optionLength += [buffer numberWithLength:optionIndexOffset - optionLengthExtendedOffsetIndex];
-        
-        if ([buffer getByteNumber] + optionIndexOffset + optionLength > [buffer length]) {
-            return nil;
+        NSMutableData *optionValue = [NSMutableData data];
+        if (optionLength > 0) {
+            optionValue = [buffer dataWithLength:optionLength];
         }
         
-        NSInteger newOptionNumber = optionDelta + extendedDelta + previousOptionDelta;
-        
-        NSString *optionValue = [buffer readStringWithLength:optionLength];
-        
-        [message addOption:newOptionNumber withValue:optionValue];
-        
-        previousOptionDelta += optionDelta + extendedDelta;
-        
+        IBCoOption *option = [[IBCoOption alloc] initWithNumber:number length:optionLength value:optionValue];
+        [message addOption:option];
     }
     
     if ([buffer getByteNumber] < [buffer length]) {
-        NSInteger length = [buffer length] - [buffer getByteNumber];
-        message.payload = [buffer readStringWithLength:length];
+        int size = (int)(buffer.length - [buffer getByteNumber]);
+        message.payload = [buffer dataWithLength:size];
     }
+
     return message;
 }
 
 + (NSMutableData *) encode : (id<IBMessage>) mess {
     
     IBCoMessage *message = (IBCoMessage *)mess;
+    NSMutableData *buffer = [NSMutableData data];
 
-    NSMutableString *final = [[NSMutableString alloc] init];
-    NSString *tokenAsString = [self hexStringFromInt:(int)message.token];
+    Byte firstByte = 0;
     
-    Byte zeroByte = 0;
-    
-    zeroByte |= (01 << 6);
-    zeroByte |= (message.type << 4);
-    zeroByte |= tokenAsString.length / 2;
+    firstByte += message.version << 6;
+    firstByte += message.type << 4;
 
-    [final appendFormat:@"%02X", zeroByte];
-    [final appendFormat:@"%02lX", (long)message.code];
-    [final appendFormat:@"%04lX", (long)message.messageID];
-    [final appendFormat:@"%@", tokenAsString];
-
-    NSArray *sortedArray = [message.optionDictionary allKeys];
-    
-    uint previousDelta = 0;
-    
-    for (NSString *key in sortedArray) {
-        NSMutableArray *valueArray = [message.optionDictionary valueForKey:key];
-        
-        for (uint i = 0; i < [valueArray count]; i++) {
-            uint delta = [key intValue] - previousDelta;
-            NSString *valueForKey;
-            
-            if ([key intValue] == IBETagOption || [key intValue] == IBIfMatchOption) {
-                valueForKey = [valueArray objectAtIndex:i];
-            }
-            else if ([key intValue] == IBBlock2Option || [key intValue] == IBUriPortOption  || [key intValue] == IBContentFormatOption  ||
-                     [key intValue] == IBMaxAgeOption || [key intValue] == IBAcceptOption   || [key intValue] == IBSize1Option          ||
-                     [key intValue] == IBSize2Option  || [key intValue] == IBObserveOption) {
-                valueForKey = [self hexStringFromInt:[[valueArray objectAtIndex:i] intValue]];
-            }
-            else {
-                valueForKey = [self hexStringFromString:[valueArray objectAtIndex:i]];
-            }
-            
-            int length = (int)([valueForKey length] / 2);
-            
-            NSString *extendedDelta = [NSString string];
-            NSString *extendedLength = [NSString string];
-            
-            if (delta >= 269) {
-                [final appendString:[NSString stringWithFormat:@"%01X", IB14OptionFaildConstant]];
-                extendedDelta = [NSString stringWithFormat:@"%04X", delta - 269];
-            } else if (delta >= 13) {
-                [final appendString:[NSString stringWithFormat:@"%01X", IB13OptionFaildConstant]];
-                extendedDelta = [NSString stringWithFormat:@"%02X", delta - IB13OptionFaildConstant];
-            } else {
-                [final appendString:[NSString stringWithFormat:@"%01X", delta]];
-            }
-            
-            if (length >= 269) {
-                [final appendString:[NSString stringWithFormat:@"%01X", IB14OptionFaildConstant]];
-                extendedLength = [NSString stringWithFormat:@"%04X", length - 269];
-            } else if (length >= IB13OptionFaildConstant) {
-                [final appendString:[NSString stringWithFormat:@"%01X", IB13OptionFaildConstant]];
-                extendedLength = [NSString stringWithFormat:@"%02X", length - IB13OptionFaildConstant];
-            } else {
-                [final appendString:[NSString stringWithFormat:@"%01X", length]];
-            }
-            
-            [final appendString:extendedDelta]; 
-            [final appendString:extendedLength];
-            [final appendString:valueForKey];
-            
-            previousDelta += delta;
-        }
+    if (message.token != -1) {
+        firstByte += [[NSNumber numberWithLong:message.token] stringValue].length;
     }
+    
+    [buffer appendByte:firstByte];
+    
+    int codeMsb = (message.code / 100);
+    int codeLsb = (message.code % 100);
+    int codeByte = ((codeMsb << 5) + codeLsb);
+    
+    [buffer appendByte:codeByte];
+    [buffer appendShort:message.messageID];
+    
+    if (message.token != -1) {
+        NSString *token = [[NSNumber numberWithLong:message.token] stringValue];
+        [buffer appendData:[token dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    int previousNumber = 0;
 
-    if ([message.payload length] > 0) {
-        if ([self payloadDecodeForMessage:message]) {
-            [final appendString:[NSString stringWithFormat:@"%02X%@", 255, [self hexStringFromString:message.payload]]];
-
+    for (IBCoOption *option in [message options]) {
+        int delta = option.number - previousNumber;
+        int nextByte = 0;
+        
+        int extendedDelta = -1;
+        if (delta  < 13) {
+            nextByte += delta << 4;
         } else {
-            [final appendString:[NSString stringWithFormat:@"%02X%@", 255, message.payload]];
+            extendedDelta = delta;
+            if (delta < 0xFF) {
+                nextByte = 13 << 4;
+            } else {
+                nextByte = 14 << 4;
+            }
         }
-    }
-    return [self getHexDataFromString:final];
-}
-
-#pragma mark - Private methods -
-
-+ (NSString *) hexStringFromInt : (int) value {
-    NSString *string;
-    if (value == 0) {
-        string = [NSString string];
-    }
-    else if (value < 255) {
-        string = [NSString stringWithFormat:@"%02X", value];
-    }
-    else if (value <= 65535) {
-        string = [NSString stringWithFormat:@"%04X", value];
-    }
-    else if (value <= 16777215) {
-        string = [NSString stringWithFormat:@"%06X", value];
-    }
-    else {
-        string = [NSString stringWithFormat:@"%08X", value];
-    }
-    
-    return string;
-}
-
-+ (BOOL)payloadDecodeForMessage:(id<IBMessage>)mess {
-    
-    IBCoMessage *message = (IBCoMessage *)mess;
-    
-    if (![[message optionDictionary] valueForKey:[@(IBContentFormatOption) stringValue]]) {
-        return true;
-    }
-    else if ([[message optionDictionary] valueForKey:[@(IBContentFormatOption) stringValue]]) {
-        NSMutableArray *values = [[message optionDictionary] valueForKey:[@(IBContentFormatOption) stringValue]];
-        if ([[values objectAtIndex:0] intValue] == IBPlainContentFormat || [[values objectAtIndex:0] intValue] == IBLinkContentFormat
-            || [[values objectAtIndex:0] intValue] == IBXMLContentFormat || [[values objectAtIndex:0] intValue] == IBJSONContentFormat) {
-            return true;
-        }
-    }
-    return false;
-}
-
-+ (NSMutableData *)getHexDataFromString:(NSString *)string {
-    NSMutableData *commandData= [[NSMutableData alloc] init];
-    unsigned char byteRepresentation;
-    char byte_chars[3] = {'\0','\0','\0'};
-    
-    for (int i = 0; i < (string.length / 2); i++) {
-        byte_chars[0] = [string characterAtIndex:i * 2];
-        byte_chars[1] = [string characterAtIndex:i * 2 + 1];
         
-        byteRepresentation = strtol(byte_chars, NULL, 16);
-        [commandData appendBytes:&byteRepresentation length:1];
+        int extendedLength = -1;
+        if (option.length < 13) {
+            nextByte += option.length;
+        } else {
+            extendedLength = option.length;
+            if (option.length < 0xFF) {
+                nextByte += 13;
+            } else {
+                nextByte += 14;
+            }
+        }
+        
+        [buffer appendByte:nextByte];
+        
+        if (extendedDelta != -1) {
+            if (extendedDelta < 0xFF) {
+                [buffer appendByte:extendedDelta - 13];
+            } else {
+                [buffer appendShort:extendedDelta - 269];
+            }
+        }
+        
+        if (extendedLength != -1) {
+            if (extendedLength < 0xFF) {
+                [buffer appendByte:extendedLength - 13];
+            } else {
+                [buffer appendShort:extendedDelta - 269];
+            }
+        }
+        
+        [buffer appendData:option.value];
+        previousNumber = option.number;
     }
     
-    return commandData;
-}
-
-+ (NSString *)hexStringFromString:(NSString *) string {
-    return [self stringFromDataWithHex:[NSData dataWithBytes:[string cStringUsingEncoding:NSUTF8StringEncoding] length:strlen([string cStringUsingEncoding:NSUTF8StringEncoding])]];
-}
-
-+ (NSString *)stringFromDataWithHex:(NSData *)data{
-    NSString *result = [[data description] stringByReplacingOccurrencesOfString:@" " withString:@""];
-    result = [result substringWithRange:NSMakeRange(1, [result length] - 2)];
+    [buffer appendByte:0xFF];
     
-    return result;
+    if (message.payload.length > 0) {
+        [buffer appendData:message.payload];
+    }
+    
+    return buffer;
 }
 
 @end

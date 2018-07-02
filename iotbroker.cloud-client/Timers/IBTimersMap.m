@@ -83,7 +83,7 @@ static NSInteger const IBFirstID = 1;
     }
 }
 
-- (void) startRegisterTimer: (id<IBMessage>) message {
+- (NSInteger) startRegisterTimer: (id<IBMessage>) message {
     if (self->_registerPacket != nil) {
         [self->_registerPacket stop];
     }
@@ -95,6 +95,8 @@ static NSInteger const IBFirstID = 1;
     
     self->_registerPacket = [[IBTimerTask alloc] initWithMessage:message request:self->_request andPeriod:IBMessageResendPeriod];
     [self->_registerPacket start];
+    
+    return countableMessage.packetID;
 }
 
 - (void) stopRegisterTimer {

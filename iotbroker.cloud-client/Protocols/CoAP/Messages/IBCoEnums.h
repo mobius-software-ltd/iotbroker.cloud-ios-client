@@ -21,24 +21,12 @@
 #ifndef IBCoEnums_h
 #define IBCoEnums_h
 
-typedef NS_ENUM (NSInteger, IBCoAPMethods)
+typedef NS_ENUM (NSInteger, IBCoAPCodes)
 {
-    IBGETMethod     = 1,
-    IBPOSTMethod    = 2,
-    IBPUTMethod     = 3,
-    IBDELETEMethod  = 4,
-};
-
-typedef NS_ENUM (NSInteger, IBCoAPTypes)
-{
-    IBConfirmableType       = 0,
-    IBNonConfirmableType    = 1,
-    IBAcknowledgmentType    = 2,
-    IBResetType             = 3,
-};
-
-typedef NS_ENUM (NSInteger, IBCoAPResponseCodes)
-{
+    IBGETMethod                             = 1,
+    IBPOSTMethod                            = 2,
+    IBPUTMethod                             = 3,
+    IBDELETEMethod                          = 4,
     IBEmptyResponseCode                     = 0,
     IBCreatedResponseCode                   = 65,
     IBDeletedResponseCode                   = 66,
@@ -63,6 +51,14 @@ typedef NS_ENUM (NSInteger, IBCoAPResponseCodes)
     IBProxyingNotSupportedResponseCode      = 165
 };
 
+typedef NS_ENUM (NSInteger, IBCoAPTypes)
+{
+    IBConfirmableType       = 0,
+    IBNonConfirmableType    = 1,
+    IBAcknowledgmentType    = 2,
+    IBResetType             = 3,
+};
+
 typedef NS_ENUM (NSInteger, IBCoAPOptionDefinitions)
 {
     IBIfMatchOption         = 1,
@@ -84,16 +80,17 @@ typedef NS_ENUM (NSInteger, IBCoAPOptionDefinitions)
     IBProxyUriOption        = 35,
     IBProxySchemeOption     = 39,
     IBSize1Option           = 60,
+    IBNodeId                = 2050,
 };
 
 typedef NS_ENUM (NSInteger, IBCoAPContentFormats)
 {
-    IBPlainContentFormat = 0,
-    IBLinkContentFormat = 40,
-    IBXMLContentFormat = 41,
-    IBOctetStreamContentFormat = 42,
-    IBEXIContentFormat = 47,
-    IBJSONContentFormat = 50,
+    IBPlainContentFormat        = 0,
+    IBLinkContentFormat         = 40,
+    IBXMLContentFormat          = 41,
+    IBOctetStreamContentFormat  = 42,
+    IBEXIContentFormat          = 47,
+    IBJSONContentFormat         = 50,
 };
 
 #endif /* IBCoEnums_h */

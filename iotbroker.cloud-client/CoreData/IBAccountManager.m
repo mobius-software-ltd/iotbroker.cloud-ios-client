@@ -57,6 +57,8 @@
 
 - (void) setDefaultAccountWithClientID : (NSString *) clientID {
     
+    [self unselectDefaultAccount];
+    
     Account *account = [self accountByClientID:clientID];
     [account setIsDefault:true];
     
@@ -117,7 +119,10 @@
             [newAccount setIsRetain:account.isRetain];
             [newAccount setQos:account.qos];
             [newAccount setIsDefault:account.isDefault];
-            
+            [newAccount setIsSecure:account.isSecure];
+            [newAccount setKeyPath:account.keyPath];
+            [newAccount setKeyPass:account.keyPass];
+                        
             [self->_coreDataManager save];
         }
     }

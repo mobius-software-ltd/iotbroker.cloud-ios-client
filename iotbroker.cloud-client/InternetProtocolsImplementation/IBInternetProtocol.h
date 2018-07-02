@@ -40,6 +40,7 @@ typedef NS_ENUM(NSInteger, IBTransportState) {
 @property (strong, nonatomic, readonly) NSString *host;
 @property (assign, nonatomic, readonly) NSInteger port;
 
+
 - (instancetype) initWithHost : (NSString *) host andPort : (NSInteger) port;
 
 - (void) start;

@@ -24,7 +24,7 @@
 
 @interface IBAMQPDeliveryAnnotation : NSObject <IBAMQPSection>
 
-@property (strong, nonatomic) NSMutableDictionary<IBAMQPSymbol *, NSObject *> *annotations;
+@property (strong, nonatomic) NSMutableDictionary<id, NSObject *> *annotations;
 
 - (void) addAnnotation : (id) key value : (NSObject *) object;
 
