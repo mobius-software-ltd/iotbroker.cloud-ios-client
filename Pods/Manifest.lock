@@ -2,13 +2,16 @@ PODS:
   - CocoaAsyncSocket (7.5.0):
     - CocoaAsyncSocket/GCD (= 7.5.0)
   - CocoaAsyncSocket/GCD (7.5.0)
+  - OpenSSL-Universal (1.0.2.13)
 
 DEPENDENCIES:
   - CocoaAsyncSocket
+  - OpenSSL-Universal
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: 3baeb1ddd969f81cf9fca81053ae49ef2d1cbbfa
+  OpenSSL-Universal: 401888162f11c33ebbd46f782d9229da35c61327
 
-PODFILE CHECKSUM: aa1a0e9d061973dd1c08309f3549153df643fe4f
+PODFILE CHECKSUM: 714b093bd73f669e3426a6d85f28ed047764159f
 
 COCOAPODS: 1.1.1

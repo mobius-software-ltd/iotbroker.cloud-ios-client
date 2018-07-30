@@ -63,7 +63,7 @@
 
 #pragma mark - API's methods -
 
-- (void) secureWithCertificate : (NSString *) certificate withPassword : (NSString *) password {
+- (void) secureWithCertificatePath : (NSString *) certificate withPassword : (NSString *) password {
     ((IBSocketTransport *)self->_internetProtocol).tls = true;
     if (certificate.length > 0 && password.length > 0) {
         ((IBSocketTransport *)self->_internetProtocol).certificates = [IBSocketTransport clientCertsFromP12:certificate passphrase:password];

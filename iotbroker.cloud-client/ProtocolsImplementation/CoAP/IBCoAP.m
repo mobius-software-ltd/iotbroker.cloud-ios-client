@@ -22,6 +22,8 @@
 #import "IBCoParser.h"
 #import "IBUDPSocket.h"
 #import "IBTimersMap.h"
+#import "IBDTLSSocket.h"
+#import "P12FileExtractor.h"
 
 @interface IBCoAP () <IBInternetProtocolDelegate>
 
@@ -30,6 +32,9 @@
 @property (strong, nonatomic) NSString *clientID;
 @property (assign, nonatomic) NSInteger messageID;
 @property (assign, nonatomic) NSInteger token;
+
+@property (strong, nonatomic) NSString *host;
+@property (assign, nonatomic) int port;
 
 @end
 
@@ -41,12 +46,13 @@
     self = [super init];
     if (self != nil) {
         
+        self->_host = host;
+        self->_port = (int)port;
+        
         self.messageID = 1 + arc4random() % 65536;
         self.token = 1 + arc4random() % INT_MAX;
         
         self->_timers = [[IBTimersMap alloc] initWithRequest:self];
-        self->_internetProtocol = [[IBUDPSocket alloc] initWithHost:host andPort:port];
-        self->_internetProtocol.delegate = self;
         self->_delegate = delegate;
     }
     return self;
@@ -54,8 +60,18 @@
 
 #pragma mark - API's methods -
 
-- (void) prepareToSendingRequest {
-    [self.internetProtocol start];
+- (void) secureWithCertificatePath : (NSString *) certificate withPassword : (NSString *) password {
+    self->_internetProtocol = [[IBDTLSSocket alloc] initWithHost:self->_host andPort:self->_port];
+    self->_internetProtocol.delegate = self;
+    [((IBDTLSSocket *)self->_internetProtocol) setCertificate:[P12FileExtractor certificateFromP12:certificate passphrase:password]];
+}
+
+- (void)prepareToSendingRequest {
+    if (self->_internetProtocol == nil) {
+        self->_internetProtocol = [[IBUDPSocket alloc] initWithHost:self->_host andPort:self->_port];
+        self->_internetProtocol.delegate = self;
+    }
+    [self->_internetProtocol start];
 }
 
 - (BOOL) sendMessage : (id<IBMessage>) message {

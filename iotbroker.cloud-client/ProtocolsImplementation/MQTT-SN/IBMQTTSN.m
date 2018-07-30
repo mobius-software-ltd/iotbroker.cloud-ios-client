@@ -27,6 +27,8 @@
 #import "IBSNWillTopic.h"
 #import "IBSNShortTopic.h"
 #import "IBSNIdentifierTopic.h"
+#import "IBDTLSSocket.h"
+#import "P12FileExtractor.h"
 
 @interface IBMQTTSN () <IBInternetProtocolDelegate>
 
@@ -37,6 +39,9 @@
 @property (strong, nonatomic) NSMutableDictionary *forPublish;
 @property (strong, nonatomic) NSMutableDictionary *publishPackets;
 
+@property (strong, nonatomic) NSString *host;
+@property (assign, nonatomic) int port;
+
 @end
 
 @implementation IBMQTTSN
@@ -46,9 +51,10 @@
 - (instancetype) initWithHost : (NSString *) host port : (NSInteger) port andResponseDelegate : (id<IBResponsesDelegate>) delegate {
     self = [super init];
     if (self != nil) {
-        self->_internetProtocol = [[IBUDPSocket alloc] initWithHost:host andPort:port];
+        self->_host = host;
+        self->_port = (int)port;
+        self->_internetProtocol = nil;
         self->_timers = [[IBTimersMap alloc] initWithRequest:self];
-        self->_internetProtocol.delegate = self;
         self->_delegate = delegate;
         self->_clientID = nil;
         self->_forPublish = [NSMutableDictionary dictionary];
@@ -59,7 +65,17 @@
 
 #pragma mark - API's methods -
 
+- (void) secureWithCertificatePath : (NSString *) certificate withPassword : (NSString *) password {
+    self->_internetProtocol = [[IBDTLSSocket alloc] initWithHost:self->_host andPort:self->_port];
+    self->_internetProtocol.delegate = self;
+    [((IBDTLSSocket *)self->_internetProtocol) setCertificate:[P12FileExtractor certificateFromP12:certificate passphrase:password]];
+}
+
 - (void)prepareToSendingRequest {
+    if (self->_internetProtocol == nil) {
+        self->_internetProtocol = [[IBUDPSocket alloc] initWithHost:self->_host andPort:self->_port];
+        self->_internetProtocol.delegate = self;
+    }
     [self->_internetProtocol start];
 }
 
