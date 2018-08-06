@@ -22,8 +22,9 @@
 #import "IBMQTTEnums.h"
 #import "IBMessage.h"
 #import "IBWill.h"
+#import <JSONModel/JSONModel.h>
 
-@interface IBConnect : NSObject <IBMessage>
+@interface IBConnect : JSONModel <IBMessage>
 
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSString *password;
@@ -33,7 +34,7 @@
 @property (assign, nonatomic) BOOL cleanSession;
 @property (assign, nonatomic) NSInteger keepalive;
 
-@property (strong, nonatomic) IBWill *will;
+@property (strong, nonatomic) IBWill<Optional> *will;
 
 - (instancetype) init;
 - (instancetype) initWithUsername : (NSString *) username password : (NSString *) password clientID : (NSString *) clientID keepalive : (NSInteger) keepalive cleanSession : (BOOL) isClean andWill : (IBWill *) will;

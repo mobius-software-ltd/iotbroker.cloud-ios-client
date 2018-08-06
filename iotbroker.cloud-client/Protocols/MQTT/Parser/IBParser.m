@@ -528,7 +528,7 @@
     } else if (messageType == IBSubscribeMessage) {
         
         NSInteger subscribeID = [buffer readShort];
-        NSMutableArray<IBMQTTTopic *> *subscriptions = [NSMutableArray array];
+        NSMutableArray<IBMQTTTopic *> <IBMQTTTopic> *subscriptions = [NSMutableArray<IBMQTTTopic *> <IBMQTTTopic> array];
         
         while ([buffer getByteNumber] < [buffer length]) {
 

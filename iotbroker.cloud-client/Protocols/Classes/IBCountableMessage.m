@@ -42,3 +42,21 @@
 }
 
 @end
+
+// JSON Mapping
+
+@interface IBCountableMessage (JsonMapping)
+
+@property (nonatomic) NSInteger messageType;
+
+@end
+
+@implementation IBCountableMessage (JsonMapping)
+
+@dynamic messageType;
+
++ (JSONKeyMapper *)keyMapper {
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"messageType": @"packet" }];
+}
+
+@end

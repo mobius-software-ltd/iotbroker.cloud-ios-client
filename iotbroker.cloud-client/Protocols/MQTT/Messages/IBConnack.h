@@ -20,8 +20,9 @@
 
 #import "IBMessage.h"
 #import "IBMQTTEnums.h"
+#import <JSONModel/JSONModel.h>
 
-@interface IBConnack : NSObject <IBMessage>
+@interface IBConnack : JSONModel <IBMessage>
 
 @property (assign, nonatomic) BOOL sessionPresentValue;
 @property (assign, nonatomic) IBConnectReturnCode returnCode;

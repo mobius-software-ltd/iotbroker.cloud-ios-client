@@ -50,6 +50,9 @@
 		221AE5D11EE999ED009C0A09 /* IBAMQPFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AE5D01EE999ED009C0A09 /* IBAMQPFactory.m */; };
 		221AE5D51EE99B12009C0A09 /* IBAMQPAttach.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AE5D41EE99B12009C0A09 /* IBAMQPAttach.m */; };
 		221AE5D91EE99D0C009C0A09 /* IBAMQPSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 221AE5D81EE99D0C009C0A09 /* IBAMQPSource.m */; };
+		2223803721133942003AAD9A /* IBWebsocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2223803621133942003AAD9A /* IBWebsocket.m */; };
+		2223803B21134790003AAD9A /* IBWebsocketMQTT.m in Sources */ = {isa = PBXBuildFile; fileRef = 2223803A21134790003AAD9A /* IBWebsocketMQTT.m */; };
+		2223803F21134BA3003AAD9A /* IBMQJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2223803E21134BA3003AAD9A /* IBMQJsonParser.m */; };
 		222722141ED829490098D40F /* IBCoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 222722131ED829490098D40F /* IBCoParser.m */; };
 		222722181ED829930098D40F /* IBCoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 222722171ED829930098D40F /* IBCoMessage.m */; };
 		2227221D1ED86A0E0098D40F /* IBCoAP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2227221C1ED86A0E0098D40F /* IBCoAP.m */; };
@@ -299,6 +302,12 @@
 		221AE5D41EE99B12009C0A09 /* IBAMQPAttach.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPAttach.m; sourceTree = "<group>"; };
 		221AE5D71EE99D0C009C0A09 /* IBAMQPSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPSource.h; sourceTree = "<group>"; };
 		221AE5D81EE99D0C009C0A09 /* IBAMQPSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPSource.m; sourceTree = "<group>"; };
+		2223803521133942003AAD9A /* IBWebsocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBWebsocket.h; sourceTree = "<group>"; };
+		2223803621133942003AAD9A /* IBWebsocket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBWebsocket.m; sourceTree = "<group>"; };
+		2223803921134790003AAD9A /* IBWebsocketMQTT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBWebsocketMQTT.h; sourceTree = "<group>"; };
+		2223803A21134790003AAD9A /* IBWebsocketMQTT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBWebsocketMQTT.m; sourceTree = "<group>"; };
+		2223803D21134BA3003AAD9A /* IBMQJsonParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBMQJsonParser.h; sourceTree = "<group>"; };
+		2223803E21134BA3003AAD9A /* IBMQJsonParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBMQJsonParser.m; sourceTree = "<group>"; };
 		222722121ED829490098D40F /* IBCoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCoParser.h; sourceTree = "<group>"; };
 		222722131ED829490098D40F /* IBCoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBCoParser.m; sourceTree = "<group>"; };
 		222722161ED829930098D40F /* IBCoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCoMessage.h; sourceTree = "<group>"; };
@@ -1094,6 +1103,41 @@
 			path = terminus;
 			sourceTree = "<group>";
 		};
+		2223802C2113387A003AAD9A /* Websocket */ = {
+			isa = PBXGroup;
+			children = (
+				22238030211338BD003AAD9A /* Websocket */,
+			);
+			path = Websocket;
+			sourceTree = "<group>";
+		};
+		22238030211338BD003AAD9A /* Websocket */ = {
+			isa = PBXGroup;
+			children = (
+				2223803521133942003AAD9A /* IBWebsocket.h */,
+				2223803621133942003AAD9A /* IBWebsocket.m */,
+			);
+			name = Websocket;
+			sourceTree = "<group>";
+		};
+		222380382113476B003AAD9A /* WebsocketMQTT */ = {
+			isa = PBXGroup;
+			children = (
+				2223803921134790003AAD9A /* IBWebsocketMQTT.h */,
+				2223803A21134790003AAD9A /* IBWebsocketMQTT.m */,
+			);
+			path = WebsocketMQTT;
+			sourceTree = "<group>";
+		};
+		2223803C21134B65003AAD9A /* MQJsonParser */ = {
+			isa = PBXGroup;
+			children = (
+				2223803D21134BA3003AAD9A /* IBMQJsonParser.h */,
+				2223803E21134BA3003AAD9A /* IBMQJsonParser.m */,
+			);
+			name = MQJsonParser;
+			sourceTree = "<group>";
+		};
 		222722101ED829130098D40F /* CoAP */ = {
 			isa = PBXGroup;
 			children = (
@@ -1856,6 +1900,7 @@
 		22C5317E1EAF8975007F57A8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2223803C21134B65003AAD9A /* MQJsonParser */,
 				22C531CB1EAF91D2007F57A8 /* MQTTTopic */,
 				22C531CC1EAF91DD007F57A8 /* Will */,
 			);
@@ -2206,6 +2251,7 @@
 				22ED8B3D1EB084D5006A0C98 /* MQTT */,
 				2227221A1ED869FD0098D40F /* CoAP */,
 				22D8610E1EF13C5F00177088 /* AMQP */,
+				222380382113476B003AAD9A /* WebsocketMQTT */,
 			);
 			path = ProtocolsImplementation;
 			sourceTree = "<group>";
@@ -2234,6 +2280,7 @@
 				22ED8B481EB093E1006A0C98 /* IBInternetProtocol.h */,
 				22ED8B621EB0D69F006A0C98 /* TCP */,
 				22ED8B731EB0D71D006A0C98 /* UDP */,
+				2223802C2113387A003AAD9A /* Websocket */,
 			);
 			path = InternetProtocolsImplementation;
 			sourceTree = "<group>";
@@ -2797,6 +2844,7 @@
 				22F308641EE6E285008AF92F /* IBAMQPTerminusDurability.m in Sources */,
 				2217D8EE1EBB12F200A636E7 /* IBTimersMap.m in Sources */,
 				22C532491EAF9625007F57A8 /* IBSNParser.m in Sources */,
+				2223803F21134BA3003AAD9A /* IBMQJsonParser.m in Sources */,
 				2217D95C1EBB188F00A636E7 /* IBDashBorderButton.m in Sources */,
 				2217D9421EBB177F00A636E7 /* IBAddTopicViewController.m in Sources */,
 				22C531AE1EAF90D2007F57A8 /* IBSubscribe.m in Sources */,
@@ -2829,6 +2877,8 @@
 				22C5323C1EAF95A8007F57A8 /* IBSNFlags.m in Sources */,
 				22C5323E1EAF95A8007F57A8 /* IBSNIdentifierTopic.m in Sources */,
 				2289A1DC1EE849E8009B98AA /* IBAMQPLongID.m in Sources */,
+				2223803721133942003AAD9A /* IBWebsocket.m in Sources */,
+				2223803B21134790003AAD9A /* IBWebsocketMQTT.m in Sources */,
 				22C531B91EAF90F2007F57A8 /* IBMQTTTopic.m in Sources */,
 				2217D9411EBB177F00A636E7 /* IBRootViewController.m in Sources */,
 				2289A1CE1EE83565009B98AA /* IBAMQPDecimal.m in Sources */,

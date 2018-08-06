@@ -20,8 +20,9 @@
 
 #import <Foundation/Foundation.h>
 #import "IBMessage.h"
+#import <JSONModel/JSONModel.h>
 
-@interface IBCountableMessage : NSObject <IBMessage>
+@interface IBCountableMessage : JSONModel <IBMessage>
 
 @property (assign, nonatomic) NSInteger packetID;
 

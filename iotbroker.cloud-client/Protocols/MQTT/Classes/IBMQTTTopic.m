@@ -51,3 +51,29 @@ static NSString *const IBSeparator = @":";
 }
 
 @end
+
+// JSON Mapping
+
+@interface IBMQTTTopic (JsonMapping)
+
+@property (nonatomic) NSInteger jmQos;
+
+@end
+
+@implementation IBMQTTTopic (JsonMapping)
+
+@dynamic jmQos;
+
++ (JSONKeyMapper *)keyMapper {
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"jmQos": @"qos" }];
+}
+
+- (NSInteger)jmQos {
+    return self->_qos.value;
+}
+
+- (void)setJmQos:(NSInteger)jmQos {
+    self->_qos = [[IBQoS alloc] initWithValue:(IBQualitiesOfService)jmQos];
+}
+
+@end

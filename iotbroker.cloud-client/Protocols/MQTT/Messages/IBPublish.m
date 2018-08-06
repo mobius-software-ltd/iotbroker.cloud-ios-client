@@ -55,3 +55,34 @@
 }
 
 @end
+
+// JSON Mapping
+
+@interface IBPublish (JsonMapping)
+
+@property (nonatomic) NSInteger messageType;
+@property (nonatomic) NSString *jmContent;
+
+@end
+
+@implementation IBPublish (JsonMapping)
+
+@dynamic messageType;
+
++ (JSONKeyMapper *)keyMapper {
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
+                                                                  @"messageType": @"packet",
+                                                                  @"jmContent": @"content",
+                                                                  @"isRetain": @"retain",
+                                                                  }];
+}
+
+- (NSString *)jmContent {
+    return [self->_content base64EncodedStringWithOptions:0];
+}
+
+- (void)setJmContent:(NSString *)jmContent {
+    self->_content = [[NSData alloc] initWithBase64EncodedString:jmContent options:0];
+}
+
+@end

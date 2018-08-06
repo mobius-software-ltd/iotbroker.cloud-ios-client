@@ -125,7 +125,7 @@ static NSString *const IBKeyPasswordCell        = @"keyPasswordCell";
     self->_registerInfoSectionCells = [NSMutableArray array];
     [self->_registerInfoSectionCells addObject:IBProtocolCell];
     
-    if (type == IBMqttProtocolType) {
+    if (type == IBMqttProtocolType || type == IBWebsocketsProtocolType) {
         [self->_registerInfoSectionCells addObject:IBUsernameCell];
         [self->_registerInfoSectionCells addObject:IBPasswordCell];
         [self->_registerInfoSectionCells addObject:IBClientIDCell];

@@ -31,3 +31,21 @@
 }
 
 @end
+
+// JSON Mapping
+
+@interface IBPingresp (JsonMapping)
+
+@property (nonatomic) NSInteger messageType;
+
+@end
+
+@implementation IBPingresp (JsonMapping)
+
+@dynamic messageType;
+
++ (JSONKeyMapper *)keyMapper {
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"messageType": @"packet" }];
+}
+
+@end

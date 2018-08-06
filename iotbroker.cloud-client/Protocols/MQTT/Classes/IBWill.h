@@ -20,11 +20,12 @@
 
 #import <Foundation/Foundation.h>
 #import "IBMQTTTopic.h"
+#import <JSONModel/JSONModel.h>
 
-@interface IBWill : NSObject
+@interface IBWill : JSONModel
 
 @property (strong, nonatomic) IBMQTTTopic *topic;
-@property (strong, nonatomic) NSData *content;
+@property (strong, nonatomic) NSData<Ignore> *content;
 @property (assign, nonatomic) BOOL isRetain;
 
 - (instancetype) initWithTopic : (IBMQTTTopic *) topic content : (NSData *) content andIsRetain : (BOOL) retain;

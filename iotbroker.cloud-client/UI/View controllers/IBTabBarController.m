@@ -27,6 +27,7 @@
 #import "IBMQTTSN.h"
 #import "IBCoAP.h"
 #import "IBAMQP.h"
+#import "IBWebsocketMQTT.h"
 
 @interface IBTabBarController () <IBTopicsListControllerDelegate, IBSendMessageControllerDelegate, IBAddTopicDelegate, IBMessagesControllerDelegate, IBResponsesDelegate>
 
@@ -78,6 +79,11 @@
             }
         } else if (account.protocol == IBAMQPProtocolType) {
             self->_requests = [[IBAMQP alloc] initWithHost:host port:port andResponseDelegate:self];
+            if (account.isSecure) {
+                [self->_requests secureWithCertificatePath:account.keyPath withPassword:account.keyPass];
+            }
+        } else if (account.protocol == IBWebsocketsProtocolType) {
+            self->_requests = [[IBWebsocketMQTT alloc] initWithHost:host port:port andResponseDelegate:self];
             if (account.isSecure) {
                 [self->_requests secureWithCertificatePath:account.keyPath withPassword:account.keyPass];
             }

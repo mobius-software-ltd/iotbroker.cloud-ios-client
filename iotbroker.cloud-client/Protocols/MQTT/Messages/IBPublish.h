@@ -25,7 +25,7 @@
 @interface IBPublish : IBCountableMessage
 
 @property (strong, nonatomic) IBMQTTTopic *topic;
-@property (strong, nonatomic) NSData *content;
+@property (strong, nonatomic) NSData<Ignore> *content;
 @property (assign, nonatomic) BOOL isRetain;
 @property (assign, nonatomic) BOOL dup;
 

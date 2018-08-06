@@ -76,7 +76,7 @@
     self->_state = IBTransportClosed;
     NSError *error = [[NSError alloc] initWithDomain:[NSString stringWithFormat:@"%@", [self class]]
                                                 code:-435
-                                            userInfo:@{ NSLocalizedDescriptionKey : NSLocalizedString([[NSString alloc] init], nil) }];
+                                            userInfo:@{ NSLocalizedDescriptionKey : NSLocalizedString([[NSString alloc] initWithUTF8String:message], nil) }];
     [self.delegate internetProtocol:self didFailWithError:error];
 
 }

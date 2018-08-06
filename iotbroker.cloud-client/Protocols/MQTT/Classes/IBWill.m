@@ -42,3 +42,32 @@
 }
 
 @end
+
+// JSON Mapping
+
+@interface IBWill (JsonMapping)
+
+@property (nonatomic) NSString *jmContent;
+
+@end
+
+@implementation IBWill (JsonMapping)
+
+@dynamic jmContent;
+
++ (JSONKeyMapper *)keyMapper {
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
+                                                                  @"jmContent": @"content",
+                                                                  @"isRetain": @"retain"
+                                                                  }];
+}
+
+- (NSString *)jmContent {
+    return [self->_content base64EncodedStringWithOptions:0];
+}
+
+- (void)setJmContent:(NSString *)jmContent {
+    self->_content = [[NSData alloc] initWithBase64EncodedString:jmContent options:0];
+}
+
+@end

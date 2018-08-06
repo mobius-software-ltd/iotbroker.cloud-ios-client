@@ -26,7 +26,7 @@
     
     self = [super initWithPacketID:packetID];
     if (self != nil) {
-        self.topics = [NSMutableArray array];
+        self.topics = [NSMutableArray<IBMQTTTopic *> <IBMQTTTopic> array];
     }
     return self;
 }

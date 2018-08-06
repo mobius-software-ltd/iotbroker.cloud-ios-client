@@ -7,142 +7,236 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		009C79BE88C2F4C986644CD3E0B088C2 /* JSONModelClassProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC7C27C6277FA47AEBB56146838E326 /* JSONModelClassProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05687E7EA63FAAAF52CB84844BFD8F40 /* SRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = EC33F5CBF6F1B588500821C574995765 /* SRWebSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06697BBB6E6D73B5F021E6DACAC5DE45 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = C49E871ABB07292241665B8DF80A6CDE /* JSONAPI.m */; };
+		0B1C5725C7BE03D622114275D6FD6EFA /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB7B3E6D42DA241A45F579D4E57D224 /* JSONModelError.m */; };
 		0B2994CA0C4D30FB95355C10EFA2138A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC76A27B6AC5FF40DBB7B0E2B8BF8014 /* Security.framework */; };
+		17BBD81D5B5815BE6CB2DFC6E78877AA /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 432FC5E6C6C3A4E794448F1E78A86BF9 /* SRWebSocket.m */; };
+		2AFB0AFA2138181E162CD00669D87FE3 /* JSONModelError.h in Headers */ = {isa = PBXBuildFile; fileRef = BBA3AEE6BA1DBBEB9D274DDBBD0EE30B /* JSONModelError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		350A07B7A89CFC33CFA3C2C17E90CE61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D67AC30769732F1FF0BD1854B2E225 /* Foundation.framework */; };
-		50D6A7C2AA88CA9CA2A162D1F5ED24A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D67AC30769732F1FF0BD1854B2E225 /* Foundation.framework */; };
+		36E344E5B627E04368ECC96338E17F26 /* JSONModel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CC3C74C76AF9E190147983E59A1EC5 /* JSONModel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		37F6913EE3CD6EB8715086F0C9F6A823 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5731E41EE6F78D640082B9B13C4BD1F /* JSONValueTransformer.m */; };
+		37FD169854FF4B397051998D611F152A /* JSONModel.h in Headers */ = {isa = PBXBuildFile; fileRef = C95DF2BED2F64E25D9F84C5C66F6558A /* JSONModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		40A6216FC50B4540584DA1C45F98F9FD /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEFD8801DA3B157C0293AC6F216ED3B /* JSONModelClassProperty.m */; };
+		43527752C7825A28E36FD1B1A3D575C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D67AC30769732F1FF0BD1854B2E225 /* Foundation.framework */; };
+		4EB17293737C717D12298CFFE6A67514 /* JSONAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5A82FB9ABCD4F81F9952CA37EF6B9E /* JSONAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		57FE38F17C0EDD5CF73B2A084A17586E /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = DE80A40BEF9EF274BBF03AF8A64B63E3 /* JSONHTTPClient.m */; };
+		58388F773008AF671CE67FE1C902E6CB /* JSONKeyMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C4DF7531DA561A1F97FCC76543499EE1 /* JSONKeyMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68A64EDB03D8E18A7CB3CF4B1E0BF35B /* Pods-iotbroker.cloud-client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C15FD0F738C75158DA58C60BFC4F9791 /* Pods-iotbroker.cloud-client-dummy.m */; };
+		6F5906B58272E07A0850248867562581 /* JSONModelLib.h in Headers */ = {isa = PBXBuildFile; fileRef = F05529D3F304C33717852387EA6D166A /* JSONModelLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		772785574BC1059C2913576CBFF3AD17 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C260AD4198082DBB597C89E684DD35 /* JSONKeyMapper.m */; };
 		78673E0A090CAA106F510D94186B39A1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 898EE84856EB5E52F00A964689E9F67E /* CFNetwork.framework */; };
-		7E4F0161B4D135DA3A0763619A56C2F5 /* CocoaAsyncSocket-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 88F53ABDD81FCD5CC845D2A655AEA4EA /* CocoaAsyncSocket-dummy.m */; };
-		8480493AEC1C7AF1B5C0E0BF2F70FB44 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0D4C3072A6C9049591E612E1292DD3 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		8E941F8FBB602E4B64AC91654CEA735F /* Pods-iotbroker.cloud-client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C15FD0F738C75158DA58C60BFC4F9791 /* Pods-iotbroker.cloud-client-dummy.m */; };
-		A882891E5A89CADF96C2CA79606409CA /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 32684BC5E53D1817418786E33A7CCC6C /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC7DC2A21843CD99040DCD79FF3BE91B /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 61967AFFCB375452F9DFC27536381246 /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AEE9644DA0EFCF945438E125BA4F0724 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D86180EAD857C391877C8F9836D353 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		BAC9A465E91A77C185B2BC6FE27850B6 /* Pods-iotbroker.cloud-client-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DD28B3BABF3120191EE3A899E058A0C /* Pods-iotbroker.cloud-client-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E4230DB0D114C94B081018C1AC1E9972 /* CocoaAsyncSocket-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EA9FC34904F9E628F97317BBC8FC907 /* CocoaAsyncSocket-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E4F0161B4D135DA3A0763619A56C2F5 /* CocoaAsyncSocket-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 07694A5F23E6BD8F6AD4B7346E46F882 /* CocoaAsyncSocket-dummy.m */; };
+		7F66E5779B29E0BC17D565DAD7CDEC1B /* JSONHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = FD1D3570209A2852CAF8C6A54F20B1E2 /* JSONHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8060025235D93F30A5F10B412DD0822E /* JSONModel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8CBF30E017FAE1A6B708903A76DAC4 /* JSONModel-dummy.m */; };
+		8480493AEC1C7AF1B5C0E0BF2F70FB44 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E3F21F0CA4EB03960BEABB94C0919C /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		91BC82C1AEBAED2C2F4D5ECC7EC6DD77 /* SocketRocket-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FEF12146D74A476331106290573B7A /* SocketRocket-dummy.m */; };
+		9878D467C02411D31EE5B90F3C527CEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D67AC30769732F1FF0BD1854B2E225 /* Foundation.framework */; };
+		98F19C682AC68E9D2E2052F709F42AF9 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1283653B0AA1F5C917DFB3218669C801 /* JSONModel+networking.m */; };
+		9FFC15898EA29A767D1234B73292A15A /* Pods-iotbroker.cloud-client-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DD28B3BABF3120191EE3A899E058A0C /* Pods-iotbroker.cloud-client-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A882891E5A89CADF96C2CA79606409CA /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 292A53BAAD49A82DD9F1E6A4A582F3B0 /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC7DC2A21843CD99040DCD79FF3BE91B /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = B3A3870D50B2778BC3D0A2E3539C5E05 /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AEE9644DA0EFCF945438E125BA4F0724 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 77AC65DA309C179D0FD7F6CB7440AE25 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BCA3B7170F79F553CE7DB2DFC89C4D65 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC76A27B6AC5FF40DBB7B0E2B8BF8014 /* Security.framework */; };
+		BE44F8DCF94E28A2A3B84C563BE9CA19 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D67AC30769732F1FF0BD1854B2E225 /* Foundation.framework */; };
+		CD669FDB5BBD3A95A62B362B9C1D1F02 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 898EE84856EB5E52F00A964689E9F67E /* CFNetwork.framework */; };
+		DFA0B0C7EC02135911CACDAFD38BE715 /* JSONValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4458F892F9755364FFC905BDB66E47F4 /* JSONValueTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E39D9A942BCE728467A42C478816966F /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B320A03216FC5A5F87AEF65A2DB23BA1 /* JSONModel.m */; };
+		E3C47E114E924D2F331F9A3F122AEE5C /* JSONModel+networking.h in Headers */ = {isa = PBXBuildFile; fileRef = D4834AADE46C1B4B1C16E0BD7BFE13CD /* JSONModel+networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E4230DB0D114C94B081018C1AC1E9972 /* CocoaAsyncSocket-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B561BE3E8869121B99B2986E60BE08DD /* CocoaAsyncSocket-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E777AB67D0327AE575ABD5BBC90E3316 /* SocketRocket-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B70F40B9FF97864E267BA9D1C0A43E8 /* SocketRocket-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD0D43A7D3FB2D1844E01F0BB41C7551 /* SocketRocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A14BD08078C23C90EE798AE9B2E8F3C /* SocketRocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8D494A5D98A3B37A5A58D9E7DA68E038 /* PBXContainerItemProxy */ = {
+		411CB037F2934F65454B9118A661BB6E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = AC0D2D2B4EE7C873431AB3502859CA60;
 			remoteInfo = CocoaAsyncSocket;
 		};
+		B39F4CC9C497875629FFC6AF792E2B09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 098FACCAC56331FCA3E23A2DC6D93E51;
+			remoteInfo = SocketRocket;
+		};
+		E43E88B01F3F7B0DB7239D24DA101E2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DC3688684BF42A20A8998F31DDA51A49;
+			remoteInfo = JSONModel;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0062B87261FEAA46ECF276DCC767760D /* ecdh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecdh.h; path = "include-ios/openssl/ecdh.h"; sourceTree = "<group>"; };
-		0064B190AD9AFAA8F5FEAF7DC873D427 /* e_os2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = e_os2.h; path = "include-ios/openssl/e_os2.h"; sourceTree = "<group>"; };
-		01EC821DBB1B37ECD905A112AF44B4F2 /* ssl23.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ssl23.h; path = "include-ios/openssl/ssl23.h"; sourceTree = "<group>"; };
-		080A1150C2E92B8F40460524C9BFDEF3 /* rc4.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rc4.h; path = "include-ios/openssl/rc4.h"; sourceTree = "<group>"; };
-		09EDB18FD0371B91465813BF924B26CC /* txt_db.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = txt_db.h; path = "include-ios/openssl/txt_db.h"; sourceTree = "<group>"; };
-		0DE031565D538E1C278C8EEA1C263ADE /* ui.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ui.h; path = "include-ios/openssl/ui.h"; sourceTree = "<group>"; };
-		10314B10B085AB020D54248EE0EEF761 /* ui_compat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ui_compat.h; path = "include-ios/openssl/ui_compat.h"; sourceTree = "<group>"; };
-		11C0E7C152F8A788CBA818FCCA4F42AD /* safestack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = safestack.h; path = "include-ios/openssl/safestack.h"; sourceTree = "<group>"; };
-		1B1EF8D3CB53F221EAFA524219F66B1F /* srtp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = srtp.h; path = "include-ios/openssl/srtp.h"; sourceTree = "<group>"; };
-		1B78238DC29AFE97ADDA2D6AF7FB1626 /* CocoaAsyncSocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaAsyncSocket.xcconfig; sourceTree = "<group>"; };
-		1BE62FE1EA15BE4AC7E0AED2EA915B19 /* srp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = srp.h; path = "include-ios/openssl/srp.h"; sourceTree = "<group>"; };
-		1EA9FC34904F9E628F97317BBC8FC907 /* CocoaAsyncSocket-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaAsyncSocket-umbrella.h"; sourceTree = "<group>"; };
+		014F7705B85F43162FFCD1AD38DECDC3 /* JSONModel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JSONModel-prefix.pch"; sourceTree = "<group>"; };
+		03C1F1A6837979168B4130741C6FD723 /* engine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = engine.h; path = "include-ios/openssl/engine.h"; sourceTree = "<group>"; };
+		0449FC26BBEEB3D284162DBB2AD1EB74 /* dtls1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dtls1.h; path = "include-ios/openssl/dtls1.h"; sourceTree = "<group>"; };
+		07694A5F23E6BD8F6AD4B7346E46F882 /* CocoaAsyncSocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaAsyncSocket-dummy.m"; sourceTree = "<group>"; };
+		0A5A82FB9ABCD4F81F9952CA37EF6B9E /* JSONAPI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSONAPI.h; path = JSONModel/JSONModelNetworking/JSONAPI.h; sourceTree = "<group>"; };
+		0B829633D889C89A88E5C6C6F84B3CFE /* dso.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dso.h; path = "include-ios/openssl/dso.h"; sourceTree = "<group>"; };
+		0E355F921E28923234AA9328A7DB21A5 /* seed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = seed.h; path = "include-ios/openssl/seed.h"; sourceTree = "<group>"; };
+		0F10FF8AF64F90232943A5248857BDB3 /* kssl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = kssl.h; path = "include-ios/openssl/kssl.h"; sourceTree = "<group>"; };
+		0F20DFC67F22889B809F80011D05547B /* modes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = modes.h; path = "include-ios/openssl/modes.h"; sourceTree = "<group>"; };
+		1110EA786BA4FDC7237936CF2E660113 /* ts.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ts.h; path = "include-ios/openssl/ts.h"; sourceTree = "<group>"; };
+		1283653B0AA1F5C917DFB3218669C801 /* JSONModel+networking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "JSONModel+networking.m"; path = "JSONModel/JSONModelNetworking/JSONModel+networking.m"; sourceTree = "<group>"; };
+		189A0F76B91B9394066FA06BC39BEBA5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1ACC98A31547A9FC90A855B27180706E /* ec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ec.h; path = "include-ios/openssl/ec.h"; sourceTree = "<group>"; };
+		1AD4CD7156B93A97D51715AC86430653 /* buffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = buffer.h; path = "include-ios/openssl/buffer.h"; sourceTree = "<group>"; };
+		2187A1A69847E626A9A6FC98BCD831BF /* ssl2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ssl2.h; path = "include-ios/openssl/ssl2.h"; sourceTree = "<group>"; };
+		225CC99B0FC950333D1939F7A60B20C6 /* tls1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tls1.h; path = "include-ios/openssl/tls1.h"; sourceTree = "<group>"; };
 		23ECF030270A82BC6FBB3E6E44CE4857 /* Pods-iotbroker.cloud-client-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-iotbroker.cloud-client-resources.sh"; sourceTree = "<group>"; };
-		2463AEDFEC214439B3124B0CEB91DC2A /* rsa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rsa.h; path = "include-ios/openssl/rsa.h"; sourceTree = "<group>"; };
-		24A596CF9E3EBA10996B0915805942EF /* crypto.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crypto.h; path = "include-ios/openssl/crypto.h"; sourceTree = "<group>"; };
-		25CCD76B66B339CAB69AD8A50D33BE28 /* bio.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bio.h; path = "include-ios/openssl/bio.h"; sourceTree = "<group>"; };
-		26CEBF3104BBF7CE37F383F15A9A3E1A /* x509v3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = x509v3.h; path = "include-ios/openssl/x509v3.h"; sourceTree = "<group>"; };
-		29824FE9D6F8D793E7369DFF0638D47E /* whrlpool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = whrlpool.h; path = "include-ios/openssl/whrlpool.h"; sourceTree = "<group>"; };
+		25F2C912BB44D218A3EE7CF0B326E1A5 /* pem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pem.h; path = "include-ios/openssl/pem.h"; sourceTree = "<group>"; };
+		286BBD16984E99B738CC147239BFB97B /* asn1_mac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = asn1_mac.h; path = "include-ios/openssl/asn1_mac.h"; sourceTree = "<group>"; };
+		292A53BAAD49A82DD9F1E6A4A582F3B0 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Source/GCD/GCDAsyncSocket.h; sourceTree = "<group>"; };
 		2B1103AF962655B04ECB09E3CF368698 /* Pods-iotbroker.cloud-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iotbroker.cloud-client.debug.xcconfig"; sourceTree = "<group>"; };
-		2EBFC2BB98676C50B6CF097083DE61C9 /* comp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = comp.h; path = "include-ios/openssl/comp.h"; sourceTree = "<group>"; };
-		3114D87BD39411728587DCF2841E2732 /* ssl3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ssl3.h; path = "include-ios/openssl/ssl3.h"; sourceTree = "<group>"; };
-		311CD4B7FD3FCD186E0024EDE00336D1 /* ebcdic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ebcdic.h; path = "include-ios/openssl/ebcdic.h"; sourceTree = "<group>"; };
-		32684BC5E53D1817418786E33A7CCC6C /* GCDAsyncSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Source/GCD/GCDAsyncSocket.h; sourceTree = "<group>"; };
-		32BEC36E52F5F928486352453D754E0F /* lhash.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = lhash.h; path = "include-ios/openssl/lhash.h"; sourceTree = "<group>"; };
-		331C88FCFE8F6E53AA2A385E11D1178D /* blowfish.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = blowfish.h; path = "include-ios/openssl/blowfish.h"; sourceTree = "<group>"; };
-		3B8FAC1C635FE27C6E8AC79FB4DE1305 /* mdc2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mdc2.h; path = "include-ios/openssl/mdc2.h"; sourceTree = "<group>"; };
-		3BA785340EFBDF5778A753D9A87FD2D8 /* des.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = des.h; path = "include-ios/openssl/des.h"; sourceTree = "<group>"; };
-		40BE98F8CBB7344A7C31A72DD17814AC /* cmac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cmac.h; path = "include-ios/openssl/cmac.h"; sourceTree = "<group>"; };
-		445A3276B45560DD64679D224D73B9C1 /* camellia.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = camellia.h; path = "include-ios/openssl/camellia.h"; sourceTree = "<group>"; };
-		44B12214DEBE05D83D90FD9A995C15C8 /* dtls1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dtls1.h; path = "include-ios/openssl/dtls1.h"; sourceTree = "<group>"; };
-		4976AFC70B9DA7510A7FF9BA132921E6 /* seed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = seed.h; path = "include-ios/openssl/seed.h"; sourceTree = "<group>"; };
+		329A8F2C9B3DAAD7D15255EA36FFE179 /* stack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = stack.h; path = "include-ios/openssl/stack.h"; sourceTree = "<group>"; };
+		367AC14431622C3268967B627ABD19B2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E7EDFB0417AB2C9B6D131B11E4854C6 /* crypto.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crypto.h; path = "include-ios/openssl/crypto.h"; sourceTree = "<group>"; };
+		4004691B5C453A04AA5885D040BB1163 /* JSONModel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = JSONModel.modulemap; sourceTree = "<group>"; };
+		41D5E564A9AC95F06B7B48089C789DFF /* CocoaAsyncSocket.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CocoaAsyncSocket.modulemap; sourceTree = "<group>"; };
+		432FC5E6C6C3A4E794448F1E78A86BF9 /* SRWebSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SRWebSocket.m; path = SocketRocket/SRWebSocket.m; sourceTree = "<group>"; };
+		438A83758675791699FB3FD36968F518 /* aes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aes.h; path = "include-ios/openssl/aes.h"; sourceTree = "<group>"; };
+		43ED8F5C43FE93A858F8C085729CC467 /* CocoaAsyncSocket-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaAsyncSocket-prefix.pch"; sourceTree = "<group>"; };
+		43FC2208E04ED1EF6043C556DFCC4275 /* pkcs12.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pkcs12.h; path = "include-ios/openssl/pkcs12.h"; sourceTree = "<group>"; };
+		4458F892F9755364FFC905BDB66E47F4 /* JSONValueTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSONValueTransformer.h; path = JSONModel/JSONModelTransformations/JSONValueTransformer.h; sourceTree = "<group>"; };
+		4ABF3CB3A925835524372400B4F03F1C /* SocketRocket.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SocketRocket.modulemap; sourceTree = "<group>"; };
 		4AE44D26A25E8BB80C01F32ED9F3A168 /* Pods-iotbroker.cloud-client-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-iotbroker.cloud-client-frameworks.sh"; sourceTree = "<group>"; };
-		4C4A96524A7B29D4CFAC98D05A25E0EB /* ripemd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ripemd.h; path = "include-ios/openssl/ripemd.h"; sourceTree = "<group>"; };
-		4C578AA46770CE19855FA915395C6EA4 /* sha.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sha.h; path = "include-ios/openssl/sha.h"; sourceTree = "<group>"; };
-		4D0D4C3072A6C9049591E612E1292DD3 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = Source/GCD/GCDAsyncSocket.m; sourceTree = "<group>"; };
-		53E5E5D82847808AE914D64A9CB25586 /* asn1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = asn1.h; path = "include-ios/openssl/asn1.h"; sourceTree = "<group>"; };
-		54EC06A08CDCFC37D01F72D87034C51E /* evp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = evp.h; path = "include-ios/openssl/evp.h"; sourceTree = "<group>"; };
-		55E05D45C6C9FE1F1CCE47E1B9D999C8 /* md4.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = md4.h; path = "include-ios/openssl/md4.h"; sourceTree = "<group>"; };
-		60002462D6CEEF5C6AC0363EAD10E514 /* ossl_typ.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ossl_typ.h; path = "include-ios/openssl/ossl_typ.h"; sourceTree = "<group>"; };
-		6096A4D26CD4C0FB035A6D7B9164DD24 /* cms.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cms.h; path = "include-ios/openssl/cms.h"; sourceTree = "<group>"; };
-		61967AFFCB375452F9DFC27536381246 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = Source/GCD/GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
-		6419FC6D54A7F0C49F21076566278DEE /* libcrypto.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libcrypto.a; path = "lib-ios/libcrypto.a"; sourceTree = "<group>"; };
-		6499195409A5E6C48B3F4F3F12B7F0A3 /* cast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cast.h; path = "include-ios/openssl/cast.h"; sourceTree = "<group>"; };
-		700301FFBC9AFB87E4E9F2D5E5B472AF /* obj_mac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = obj_mac.h; path = "include-ios/openssl/obj_mac.h"; sourceTree = "<group>"; };
-		76BFDEC70F58EAF42F80E6BE7A7941F4 /* tls1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tls1.h; path = "include-ios/openssl/tls1.h"; sourceTree = "<group>"; };
-		77BA174A6E521E2A4734106050E9FC49 /* ecdsa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecdsa.h; path = "include-ios/openssl/ecdsa.h"; sourceTree = "<group>"; };
-		797951AD7C70D29840950D20024618EC /* err.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = err.h; path = "include-ios/openssl/err.h"; sourceTree = "<group>"; };
-		7AE0B04A70380F1E3F70172E260D0FF4 /* rc2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rc2.h; path = "include-ios/openssl/rc2.h"; sourceTree = "<group>"; };
-		7D58D305DD9D2E7CA3E05A2F2213ABA6 /* opensslconf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = opensslconf.h; path = "include-ios/openssl/opensslconf.h"; sourceTree = "<group>"; };
+		4B51888EF7BAE2F4B77E21202868ABC6 /* rsa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rsa.h; path = "include-ios/openssl/rsa.h"; sourceTree = "<group>"; };
+		4C84E055E5FB4A3ED874B2EFDAE792CE /* dh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dh.h; path = "include-ios/openssl/dh.h"; sourceTree = "<group>"; };
+		504B2DD8DE9E97487077A034F6E4EF16 /* asn1t.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = asn1t.h; path = "include-ios/openssl/asn1t.h"; sourceTree = "<group>"; };
+		53B72391623CFE70A499E414D1EB45E4 /* obj_mac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = obj_mac.h; path = "include-ios/openssl/obj_mac.h"; sourceTree = "<group>"; };
+		55C90C7C53A317B33AF60203B195E3FC /* ocsp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ocsp.h; path = "include-ios/openssl/ocsp.h"; sourceTree = "<group>"; };
+		5839C4AFE34F1474611B650BD573D250 /* ecdh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecdh.h; path = "include-ios/openssl/ecdh.h"; sourceTree = "<group>"; };
+		58F2C13B3DD4608862AF139E8CFE0193 /* SocketRocket-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-prefix.pch"; sourceTree = "<group>"; };
+		59D3E057A4227A1316EB979918A27024 /* err.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = err.h; path = "include-ios/openssl/err.h"; sourceTree = "<group>"; };
+		5C7EC79EEB57B5497B515CBF5F222F9C /* idea.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = idea.h; path = "include-ios/openssl/idea.h"; sourceTree = "<group>"; };
+		5C94C81E567DA9969534662C2A239979 /* des_old.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = des_old.h; path = "include-ios/openssl/des_old.h"; sourceTree = "<group>"; };
+		5D56FC9F2009244D6749FB3985F5243C /* safestack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = safestack.h; path = "include-ios/openssl/safestack.h"; sourceTree = "<group>"; };
+		636C02E02DDB146F503F02191937813B /* opensslv.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = opensslv.h; path = "include-ios/openssl/opensslv.h"; sourceTree = "<group>"; };
+		64A36279A632F2AB60A72B62B00F9902 /* conf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = conf.h; path = "include-ios/openssl/conf.h"; sourceTree = "<group>"; };
+		65701835218E52A1BE25536835419FCD /* bio.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bio.h; path = "include-ios/openssl/bio.h"; sourceTree = "<group>"; };
+		66CD39058208883BE85657712AEA1473 /* camellia.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = camellia.h; path = "include-ios/openssl/camellia.h"; sourceTree = "<group>"; };
+		6AC7B90259746B115EF8C69CAC87BA83 /* JSONModel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JSONModel.xcconfig; sourceTree = "<group>"; };
+		6DAE78B00471DC58654BAE71669A7382 /* CocoaAsyncSocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaAsyncSocket.xcconfig; sourceTree = "<group>"; };
+		709535B374C463ACD99A1DD6EC12CDE1 /* pqueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pqueue.h; path = "include-ios/openssl/pqueue.h"; sourceTree = "<group>"; };
+		72240BB42084CBA3FF452741F8C4C001 /* SocketRocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SocketRocket.framework; path = SocketRocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77AC65DA309C179D0FD7F6CB7440AE25 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncUdpSocket.m; path = Source/GCD/GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		798B29EEAC74F769C090C6C33F1F75F3 /* conf_api.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = conf_api.h; path = "include-ios/openssl/conf_api.h"; sourceTree = "<group>"; };
+		79B592F2654D65CC7107C72C0808CBA9 /* ssl3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ssl3.h; path = "include-ios/openssl/ssl3.h"; sourceTree = "<group>"; };
+		7B70F40B9FF97864E267BA9D1C0A43E8 /* SocketRocket-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-umbrella.h"; sourceTree = "<group>"; };
+		7C7068F689210417A67C6A0A98744D3A /* cmac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cmac.h; path = "include-ios/openssl/cmac.h"; sourceTree = "<group>"; };
+		7CC7C27C6277FA47AEBB56146838E326 /* JSONModelClassProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSONModelClassProperty.h; path = JSONModel/JSONModel/JSONModelClassProperty.h; sourceTree = "<group>"; };
+		7CF46CA674E28FFC98C4703581884C74 /* objects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = objects.h; path = "include-ios/openssl/objects.h"; sourceTree = "<group>"; };
 		7DD28B3BABF3120191EE3A899E058A0C /* Pods-iotbroker.cloud-client-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-iotbroker.cloud-client-umbrella.h"; sourceTree = "<group>"; };
-		7DF018BEFF5C7E7CA91398A4AC97FAF2 /* engine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = engine.h; path = "include-ios/openssl/engine.h"; sourceTree = "<group>"; };
-		80AC0058E7DBB2CA565E5D84BB91CE3E /* des_old.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = des_old.h; path = "include-ios/openssl/des_old.h"; sourceTree = "<group>"; };
-		88F53ABDD81FCD5CC845D2A655AEA4EA /* CocoaAsyncSocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaAsyncSocket-dummy.m"; sourceTree = "<group>"; };
+		7FA7916311CB056451B9F31C87A0C9E8 /* libssl.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libssl.a; path = "lib-ios/libssl.a"; sourceTree = "<group>"; };
+		7FBDD8A6D5A386CFFA24D9575CE19DC7 /* pem2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pem2.h; path = "include-ios/openssl/pem2.h"; sourceTree = "<group>"; };
+		80EEE77A6533AA34B7D30C9F48091878 /* ripemd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ripemd.h; path = "include-ios/openssl/ripemd.h"; sourceTree = "<group>"; };
+		81BB790ACF7F8F20702FCFFA3B8B1C17 /* e_os2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = e_os2.h; path = "include-ios/openssl/e_os2.h"; sourceTree = "<group>"; };
+		84DF7EDE3A0544C1C84B693616D08DCD /* srp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = srp.h; path = "include-ios/openssl/srp.h"; sourceTree = "<group>"; };
+		871B890AD1B70CA9795375925131E0B7 /* ecdsa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecdsa.h; path = "include-ios/openssl/ecdsa.h"; sourceTree = "<group>"; };
+		8946F4CF9D56D4E3FE260CB732FC2009 /* libcrypto.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libcrypto.a; path = "lib-ios/libcrypto.a"; sourceTree = "<group>"; };
 		898EE84856EB5E52F00A964689E9F67E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
-		8A732E39A32F15240C1FAA760A3C26C2 /* idea.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = idea.h; path = "include-ios/openssl/idea.h"; sourceTree = "<group>"; };
-		8DCB905A96BC51C635807CEC05412A05 /* hmac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = "include-ios/openssl/hmac.h"; sourceTree = "<group>"; };
+		8A03F4B2B2D124222760DA427FF3FC4B /* rand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rand.h; path = "include-ios/openssl/rand.h"; sourceTree = "<group>"; };
+		8AB7B3E6D42DA241A45F579D4E57D224 /* JSONModelError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSONModelError.m; path = JSONModel/JSONModel/JSONModelError.m; sourceTree = "<group>"; };
+		8ADD590E92751CC958059DF32CE515AB /* JSONModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JSONModel.framework; path = JSONModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DCA8E44EDA164ED469C062A9F28786E /* sha.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sha.h; path = "include-ios/openssl/sha.h"; sourceTree = "<group>"; };
+		8DD64E8927AE7313009E59803B6AE7B6 /* symhacks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = symhacks.h; path = "include-ios/openssl/symhacks.h"; sourceTree = "<group>"; };
 		8FF9652D8CC6579E068B2FB5E87DDC47 /* Pods-iotbroker.cloud-client-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iotbroker.cloud-client-acknowledgements.plist"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9B273D82C34ABC1A01D6B8A00443296D /* CocoaAsyncSocket-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaAsyncSocket-prefix.pch"; sourceTree = "<group>"; };
-		9C0E3813F4E372499A6E98B6E9FA3723 /* ec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ec.h; path = "include-ios/openssl/ec.h"; sourceTree = "<group>"; };
-		A0C38EF969420434BE3E590BD40B111B /* symhacks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = symhacks.h; path = "include-ios/openssl/symhacks.h"; sourceTree = "<group>"; };
-		A37001D2703167215AD050DBF11FEFF2 /* dh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dh.h; path = "include-ios/openssl/dh.h"; sourceTree = "<group>"; };
-		A3D86180EAD857C391877C8F9836D353 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncUdpSocket.m; path = Source/GCD/GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
-		A3FBCD6D8667D6595C0DE6DC47235E52 /* opensslv.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = opensslv.h; path = "include-ios/openssl/opensslv.h"; sourceTree = "<group>"; };
-		A8E31E617FE1A86DF84F76B49B60A9A1 /* conf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = conf.h; path = "include-ios/openssl/conf.h"; sourceTree = "<group>"; };
-		B2E6E9CEAC304DFD3BDA765E43E52BB6 /* stack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = stack.h; path = "include-ios/openssl/stack.h"; sourceTree = "<group>"; };
-		B58D5325DD14B8C550FA141613DDF048 /* ts.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ts.h; path = "include-ios/openssl/ts.h"; sourceTree = "<group>"; };
+		90678C0B8ABEB4E19D53324D423358DD /* bn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bn.h; path = "include-ios/openssl/bn.h"; sourceTree = "<group>"; };
+		91068F2BAFE1020BB8964562ACC3B785 /* krb5_asn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = krb5_asn.h; path = "include-ios/openssl/krb5_asn.h"; sourceTree = "<group>"; };
+		91C71AAD9CE31E3ED3003EAFCFD5B885 /* mdc2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mdc2.h; path = "include-ios/openssl/mdc2.h"; sourceTree = "<group>"; };
+		9365E9373B29A6D599DCB803A2A4C9FA /* blowfish.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = blowfish.h; path = "include-ios/openssl/blowfish.h"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		97AEACD21FEA7AA81E90983F78DDB1FD /* x509_vfy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = x509_vfy.h; path = "include-ios/openssl/x509_vfy.h"; sourceTree = "<group>"; };
+		97F4B6DF24E04271DA4C51AEECB09569 /* opensslconf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = opensslconf.h; path = "include-ios/openssl/opensslconf.h"; sourceTree = "<group>"; };
+		9A14BD08078C23C90EE798AE9B2E8F3C /* SocketRocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SocketRocket.h; path = SocketRocket/SocketRocket.h; sourceTree = "<group>"; };
+		9A2F93E9E178443C27F2E80F9FF73FEB /* comp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = comp.h; path = "include-ios/openssl/comp.h"; sourceTree = "<group>"; };
+		9C6B227C9FDC8D94C4AB1538DA2C33E6 /* x509v3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = x509v3.h; path = "include-ios/openssl/x509v3.h"; sourceTree = "<group>"; };
+		9DAFF2641D7CC3D3E25B6FA9257D57BA /* ebcdic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ebcdic.h; path = "include-ios/openssl/ebcdic.h"; sourceTree = "<group>"; };
+		A40522B045391F1915FD89181FE52D4E /* ossl_typ.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ossl_typ.h; path = "include-ios/openssl/ossl_typ.h"; sourceTree = "<group>"; };
+		A5731E41EE6F78D640082B9B13C4BD1F /* JSONValueTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSONValueTransformer.m; path = JSONModel/JSONModelTransformations/JSONValueTransformer.m; sourceTree = "<group>"; };
+		ABADAEFBEFE7951090BB109B048CB02B /* srtp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = srtp.h; path = "include-ios/openssl/srtp.h"; sourceTree = "<group>"; };
+		AEED59D287F70E5CC13E25D24CDB2222 /* pkcs7.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pkcs7.h; path = "include-ios/openssl/pkcs7.h"; sourceTree = "<group>"; };
+		AFB3FDCC230C627C82E23DFC5E109CBC /* Pods_iotbroker_cloud_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_iotbroker_cloud_client.framework; path = "Pods-iotbroker.cloud-client.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B320A03216FC5A5F87AEF65A2DB23BA1 /* JSONModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSONModel.m; path = JSONModel/JSONModel/JSONModel.m; sourceTree = "<group>"; };
+		B3851CCBC94327EF9E125149BEF86886 /* cast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cast.h; path = "include-ios/openssl/cast.h"; sourceTree = "<group>"; };
+		B3A3870D50B2778BC3D0A2E3539C5E05 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCDAsyncUdpSocket.h; path = Source/GCD/GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		B4FEF12146D74A476331106290573B7A /* SocketRocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SocketRocket-dummy.m"; sourceTree = "<group>"; };
+		B561BE3E8869121B99B2986E60BE08DD /* CocoaAsyncSocket-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaAsyncSocket-umbrella.h"; sourceTree = "<group>"; };
+		B5ADAD78F6005F293BF881EC9A5FC3F6 /* rc2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rc2.h; path = "include-ios/openssl/rc2.h"; sourceTree = "<group>"; };
 		B5D67AC30769732F1FF0BD1854B2E225 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		BA213F4EFABCEE6218CBDCB63D148A3B /* x509.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = x509.h; path = "include-ios/openssl/x509.h"; sourceTree = "<group>"; };
+		BA23DC77136FE66ECDD496F7587321A7 /* rc4.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rc4.h; path = "include-ios/openssl/rc4.h"; sourceTree = "<group>"; };
+		BA91040A94AF1C771270514BD2766857 /* txt_db.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = txt_db.h; path = "include-ios/openssl/txt_db.h"; sourceTree = "<group>"; };
+		BBA3AEE6BA1DBBEB9D274DDBBD0EE30B /* JSONModelError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSONModelError.h; path = JSONModel/JSONModel/JSONModelError.h; sourceTree = "<group>"; };
+		BC2732173DD60B1C9F9AF82578EF4D31 /* dsa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dsa.h; path = "include-ios/openssl/dsa.h"; sourceTree = "<group>"; };
 		BC76A27B6AC5FF40DBB7B0E2B8BF8014 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		BDE22034DA30EA95E06FBDCC6817D1C8 /* rand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rand.h; path = "include-ios/openssl/rand.h"; sourceTree = "<group>"; };
-		C1298B520F1C58EA321D887D6B2512C7 /* libssl.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libssl.a; path = "lib-ios/libssl.a"; sourceTree = "<group>"; };
+		BC8CBF30E017FAE1A6B708903A76DAC4 /* JSONModel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JSONModel-dummy.m"; sourceTree = "<group>"; };
 		C15FD0F738C75158DA58C60BFC4F9791 /* Pods-iotbroker.cloud-client-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iotbroker.cloud-client-dummy.m"; sourceTree = "<group>"; };
-		C5A445C81AD2DB2A175753A4A4F600CA /* dsa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dsa.h; path = "include-ios/openssl/dsa.h"; sourceTree = "<group>"; };
+		C1C260AD4198082DBB597C89E684DD35 /* JSONKeyMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSONKeyMapper.m; path = JSONModel/JSONModelTransformations/JSONKeyMapper.m; sourceTree = "<group>"; };
+		C49E871ABB07292241665B8DF80A6CDE /* JSONAPI.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSONAPI.m; path = JSONModel/JSONModelNetworking/JSONAPI.m; sourceTree = "<group>"; };
+		C4DF7531DA561A1F97FCC76543499EE1 /* JSONKeyMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSONKeyMapper.h; path = JSONModel/JSONModelTransformations/JSONKeyMapper.h; sourceTree = "<group>"; };
+		C59720FD970DCEC4B806B5482C252542 /* SocketRocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SocketRocket.xcconfig; sourceTree = "<group>"; };
 		C5DC661A13ACDC25B93FA1605F6954E6 /* Pods-iotbroker.cloud-client-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iotbroker.cloud-client-acknowledgements.markdown"; sourceTree = "<group>"; };
-		C64C476EA227E60FC8CA7D827C942FB3 /* pem2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pem2.h; path = "include-ios/openssl/pem2.h"; sourceTree = "<group>"; };
-		CC52DE05EB22A144DAB7D2C9CF738038 /* CocoaAsyncSocket.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CocoaAsyncSocket.modulemap; sourceTree = "<group>"; };
-		CF3AFBA17B2A15824BA7CD2B0BEA0A19 /* Pods-iotbroker.cloud-client.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-iotbroker.cloud-client.modulemap"; sourceTree = "<group>"; };
-		D18997534CAF009531E81FD6E08A1B08 /* ocsp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ocsp.h; path = "include-ios/openssl/ocsp.h"; sourceTree = "<group>"; };
-		D33293CA4DE002BDEC39A8DA82F9ECC8 /* ssl2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ssl2.h; path = "include-ios/openssl/ssl2.h"; sourceTree = "<group>"; };
-		D39048720BF4C46EAB8A284A674CBA08 /* x509_vfy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = x509_vfy.h; path = "include-ios/openssl/x509_vfy.h"; sourceTree = "<group>"; };
-		D5112A6488039CDE07B0EEBA85D6FCAE /* pqueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pqueue.h; path = "include-ios/openssl/pqueue.h"; sourceTree = "<group>"; };
-		D6017EF57FDCEF7502B0DF8363ACC4C7 /* md5.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = md5.h; path = "include-ios/openssl/md5.h"; sourceTree = "<group>"; };
-		DC34D58F7727D93F2B69C8DB251BF261 /* Pods_iotbroker_cloud_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iotbroker_cloud_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD0280254B76A802AD8AE31796BAD018 /* pem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pem.h; path = "include-ios/openssl/pem.h"; sourceTree = "<group>"; };
-		DD3B3B20FA922ED0D96507C727C028C8 /* aes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aes.h; path = "include-ios/openssl/aes.h"; sourceTree = "<group>"; };
+		C7450660035ED738932E49F6414AD2FA /* cms.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cms.h; path = "include-ios/openssl/cms.h"; sourceTree = "<group>"; };
+		C7C593002073B643865966ED9FD3B779 /* whrlpool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = whrlpool.h; path = "include-ios/openssl/whrlpool.h"; sourceTree = "<group>"; };
+		C7E29C293F6D628AB5A7B9AB9DE5FAEE /* asn1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = asn1.h; path = "include-ios/openssl/asn1.h"; sourceTree = "<group>"; };
+		C95DF2BED2F64E25D9F84C5C66F6558A /* JSONModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSONModel.h; path = JSONModel/JSONModel/JSONModel.h; sourceTree = "<group>"; };
+		CBB35930ABB16863181803184DC09FE9 /* ssl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ssl.h; path = "include-ios/openssl/ssl.h"; sourceTree = "<group>"; };
+		CCA9223FE2DCAA9BF944D5DC0A2D0B82 /* md4.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = md4.h; path = "include-ios/openssl/md4.h"; sourceTree = "<group>"; };
+		CF3AFBA17B2A15824BA7CD2B0BEA0A19 /* Pods-iotbroker.cloud-client.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-iotbroker.cloud-client.modulemap"; sourceTree = "<group>"; };
+		D02FCB9C23590BE6778018B1D847C181 /* x509.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = x509.h; path = "include-ios/openssl/x509.h"; sourceTree = "<group>"; };
+		D170737984A345CBAFF66F2245997FC2 /* ssl23.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ssl23.h; path = "include-ios/openssl/ssl23.h"; sourceTree = "<group>"; };
+		D47E85AFB26E2A3E756A980B9684F39C /* ui_compat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ui_compat.h; path = "include-ios/openssl/ui_compat.h"; sourceTree = "<group>"; };
+		D4834AADE46C1B4B1C16E0BD7BFE13CD /* JSONModel+networking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "JSONModel+networking.h"; path = "JSONModel/JSONModelNetworking/JSONModel+networking.h"; sourceTree = "<group>"; };
+		D842311E8F6B4406010373ACC49FD60D /* ui.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ui.h; path = "include-ios/openssl/ui.h"; sourceTree = "<group>"; };
 		DD8F94CF96B207B1D5ECE1F593AD9034 /* Pods-iotbroker.cloud-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iotbroker.cloud-client.release.xcconfig"; sourceTree = "<group>"; };
-		DF5C5D963BBDB1AFCA459B76024A4BD9 /* objects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = objects.h; path = "include-ios/openssl/objects.h"; sourceTree = "<group>"; };
-		E427FEA23C0F50AEDC3CE3472A3E988A /* ssl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ssl.h; path = "include-ios/openssl/ssl.h"; sourceTree = "<group>"; };
-		E6E109F9167FF56DDD8F715983DA64AF /* modes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = modes.h; path = "include-ios/openssl/modes.h"; sourceTree = "<group>"; };
-		E85AE543D5C6F1E17394A0A64BD732E2 /* pkcs12.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pkcs12.h; path = "include-ios/openssl/pkcs12.h"; sourceTree = "<group>"; };
+		DE4F05CBD3896BD87D7EC8A8A4A641AB /* md5.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = md5.h; path = "include-ios/openssl/md5.h"; sourceTree = "<group>"; };
+		DE80A40BEF9EF274BBF03AF8A64B63E3 /* JSONHTTPClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSONHTTPClient.m; path = JSONModel/JSONModelNetworking/JSONHTTPClient.m; sourceTree = "<group>"; };
+		E1E3F21F0CA4EB03960BEABB94C0919C /* GCDAsyncSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = Source/GCD/GCDAsyncSocket.m; sourceTree = "<group>"; };
+		E2A2CA52C2F16EFDD8D0326D8585BBFD /* hmac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = "include-ios/openssl/hmac.h"; sourceTree = "<group>"; };
+		E7CC3C74C76AF9E190147983E59A1EC5 /* JSONModel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JSONModel-umbrella.h"; sourceTree = "<group>"; };
+		E9B4F682E3E18B14752E6A5B8EEEFE35 /* lhash.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = lhash.h; path = "include-ios/openssl/lhash.h"; sourceTree = "<group>"; };
 		EA6CADCDBB62C515BBE941C5EB5B2DE0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EE7BBD5CB06CF914BCDE259BD596E076 /* dso.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dso.h; path = "include-ios/openssl/dso.h"; sourceTree = "<group>"; };
-		EE8003C4A8A0CF733FB766B7957899B1 /* kssl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = kssl.h; path = "include-ios/openssl/kssl.h"; sourceTree = "<group>"; };
-		F1B53AA17EABA8BCAC96F694918F43BB /* krb5_asn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = krb5_asn.h; path = "include-ios/openssl/krb5_asn.h"; sourceTree = "<group>"; };
-		F36A1E15C5AF7B5362F7D9918A1A71CA /* pkcs7.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pkcs7.h; path = "include-ios/openssl/pkcs7.h"; sourceTree = "<group>"; };
-		F5B0A1E6DF8E37AD9FAD84EFFCFFE82C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F8C8480DBB1702CABAABABCFDF37DECD /* asn1t.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = asn1t.h; path = "include-ios/openssl/asn1t.h"; sourceTree = "<group>"; };
-		FAF8762D5E3ED40FB2A73325624C2299 /* asn1_mac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = asn1_mac.h; path = "include-ios/openssl/asn1_mac.h"; sourceTree = "<group>"; };
-		FB030E223881DBA99FAB70BCF7FB5604 /* bn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bn.h; path = "include-ios/openssl/bn.h"; sourceTree = "<group>"; };
-		FD040E71C23F747B2CB53DDE9D7AEB9F /* conf_api.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = conf_api.h; path = "include-ios/openssl/conf_api.h"; sourceTree = "<group>"; };
-		FD1CE01B4762C4950991FB5FED623393 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaAsyncSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD6EDA710CB1A5E709FFF109DF56C268 /* buffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = buffer.h; path = "include-ios/openssl/buffer.h"; sourceTree = "<group>"; };
+		EC33F5CBF6F1B588500821C574995765 /* SRWebSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SRWebSocket.h; path = SocketRocket/SRWebSocket.h; sourceTree = "<group>"; };
+		EDEFD8801DA3B157C0293AC6F216ED3B /* JSONModelClassProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSONModelClassProperty.m; path = JSONModel/JSONModel/JSONModelClassProperty.m; sourceTree = "<group>"; };
+		EE29B13C8C11CDC8370F76B77D22B4B9 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CocoaAsyncSocket.framework; path = CocoaAsyncSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFF60BA0C422BB10DAF55095DCF9140A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F05529D3F304C33717852387EA6D166A /* JSONModelLib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSONModelLib.h; path = JSONModel/JSONModelLib.h; sourceTree = "<group>"; };
+		F12F1C5F7D3546A64B0ED3D09E314DDE /* evp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = evp.h; path = "include-ios/openssl/evp.h"; sourceTree = "<group>"; };
+		F9DEF61B284B05F541A24B7D4BF221FA /* des.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = des.h; path = "include-ios/openssl/des.h"; sourceTree = "<group>"; };
+		FD1D3570209A2852CAF8C6A54F20B1E2 /* JSONHTTPClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSONHTTPClient.h; path = JSONModel/JSONModelNetworking/JSONHTTPClient.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7AA4DE97125879A2C765229F143DEE36 /* Frameworks */ = {
+		0F13FDE48FAA625D37D626F69DA46819 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50D6A7C2AA88CA9CA2A162D1F5ED24A4 /* Foundation.framework in Frameworks */,
+				43527752C7825A28E36FD1B1A3D575C6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10F78240990F140B42E6DD242C192F8E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE44F8DCF94E28A2A3B84C563BE9CA19 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36AC0F0C11D25340DD9E584461EDAD13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD669FDB5BBD3A95A62B362B9C1D1F02 /* CFNetwork.framework in Frameworks */,
+				9878D467C02411D31EE5B90F3C527CEA /* Foundation.framework in Frameworks */,
+				BCA3B7170F79F553CE7DB2DFC89C4D65 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,96 +253,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		01926093AA428185919A4A869D450BC4 /* OpenSSL-Universal */ = {
+		07DBE555B785D5894E905249715943E7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DD3B3B20FA922ED0D96507C727C028C8 /* aes.h */,
-				53E5E5D82847808AE914D64A9CB25586 /* asn1.h */,
-				FAF8762D5E3ED40FB2A73325624C2299 /* asn1_mac.h */,
-				F8C8480DBB1702CABAABABCFDF37DECD /* asn1t.h */,
-				25CCD76B66B339CAB69AD8A50D33BE28 /* bio.h */,
-				331C88FCFE8F6E53AA2A385E11D1178D /* blowfish.h */,
-				FB030E223881DBA99FAB70BCF7FB5604 /* bn.h */,
-				FD6EDA710CB1A5E709FFF109DF56C268 /* buffer.h */,
-				445A3276B45560DD64679D224D73B9C1 /* camellia.h */,
-				6499195409A5E6C48B3F4F3F12B7F0A3 /* cast.h */,
-				40BE98F8CBB7344A7C31A72DD17814AC /* cmac.h */,
-				6096A4D26CD4C0FB035A6D7B9164DD24 /* cms.h */,
-				2EBFC2BB98676C50B6CF097083DE61C9 /* comp.h */,
-				A8E31E617FE1A86DF84F76B49B60A9A1 /* conf.h */,
-				FD040E71C23F747B2CB53DDE9D7AEB9F /* conf_api.h */,
-				24A596CF9E3EBA10996B0915805942EF /* crypto.h */,
-				3BA785340EFBDF5778A753D9A87FD2D8 /* des.h */,
-				80AC0058E7DBB2CA565E5D84BB91CE3E /* des_old.h */,
-				A37001D2703167215AD050DBF11FEFF2 /* dh.h */,
-				C5A445C81AD2DB2A175753A4A4F600CA /* dsa.h */,
-				EE7BBD5CB06CF914BCDE259BD596E076 /* dso.h */,
-				44B12214DEBE05D83D90FD9A995C15C8 /* dtls1.h */,
-				0064B190AD9AFAA8F5FEAF7DC873D427 /* e_os2.h */,
-				311CD4B7FD3FCD186E0024EDE00336D1 /* ebcdic.h */,
-				9C0E3813F4E372499A6E98B6E9FA3723 /* ec.h */,
-				0062B87261FEAA46ECF276DCC767760D /* ecdh.h */,
-				77BA174A6E521E2A4734106050E9FC49 /* ecdsa.h */,
-				7DF018BEFF5C7E7CA91398A4AC97FAF2 /* engine.h */,
-				797951AD7C70D29840950D20024618EC /* err.h */,
-				54EC06A08CDCFC37D01F72D87034C51E /* evp.h */,
-				8DCB905A96BC51C635807CEC05412A05 /* hmac.h */,
-				8A732E39A32F15240C1FAA760A3C26C2 /* idea.h */,
-				F1B53AA17EABA8BCAC96F694918F43BB /* krb5_asn.h */,
-				EE8003C4A8A0CF733FB766B7957899B1 /* kssl.h */,
-				32BEC36E52F5F928486352453D754E0F /* lhash.h */,
-				55E05D45C6C9FE1F1CCE47E1B9D999C8 /* md4.h */,
-				D6017EF57FDCEF7502B0DF8363ACC4C7 /* md5.h */,
-				3B8FAC1C635FE27C6E8AC79FB4DE1305 /* mdc2.h */,
-				E6E109F9167FF56DDD8F715983DA64AF /* modes.h */,
-				700301FFBC9AFB87E4E9F2D5E5B472AF /* obj_mac.h */,
-				DF5C5D963BBDB1AFCA459B76024A4BD9 /* objects.h */,
-				D18997534CAF009531E81FD6E08A1B08 /* ocsp.h */,
-				7D58D305DD9D2E7CA3E05A2F2213ABA6 /* opensslconf.h */,
-				A3FBCD6D8667D6595C0DE6DC47235E52 /* opensslv.h */,
-				60002462D6CEEF5C6AC0363EAD10E514 /* ossl_typ.h */,
-				DD0280254B76A802AD8AE31796BAD018 /* pem.h */,
-				C64C476EA227E60FC8CA7D827C942FB3 /* pem2.h */,
-				E85AE543D5C6F1E17394A0A64BD732E2 /* pkcs12.h */,
-				F36A1E15C5AF7B5362F7D9918A1A71CA /* pkcs7.h */,
-				D5112A6488039CDE07B0EEBA85D6FCAE /* pqueue.h */,
-				BDE22034DA30EA95E06FBDCC6817D1C8 /* rand.h */,
-				7AE0B04A70380F1E3F70172E260D0FF4 /* rc2.h */,
-				080A1150C2E92B8F40460524C9BFDEF3 /* rc4.h */,
-				4C4A96524A7B29D4CFAC98D05A25E0EB /* ripemd.h */,
-				2463AEDFEC214439B3124B0CEB91DC2A /* rsa.h */,
-				11C0E7C152F8A788CBA818FCCA4F42AD /* safestack.h */,
-				4976AFC70B9DA7510A7FF9BA132921E6 /* seed.h */,
-				4C578AA46770CE19855FA915395C6EA4 /* sha.h */,
-				1BE62FE1EA15BE4AC7E0AED2EA915B19 /* srp.h */,
-				1B1EF8D3CB53F221EAFA524219F66B1F /* srtp.h */,
-				E427FEA23C0F50AEDC3CE3472A3E988A /* ssl.h */,
-				D33293CA4DE002BDEC39A8DA82F9ECC8 /* ssl2.h */,
-				01EC821DBB1B37ECD905A112AF44B4F2 /* ssl23.h */,
-				3114D87BD39411728587DCF2841E2732 /* ssl3.h */,
-				B2E6E9CEAC304DFD3BDA765E43E52BB6 /* stack.h */,
-				A0C38EF969420434BE3E590BD40B111B /* symhacks.h */,
-				76BFDEC70F58EAF42F80E6BE7A7941F4 /* tls1.h */,
-				B58D5325DD14B8C550FA141613DDF048 /* ts.h */,
-				09EDB18FD0371B91465813BF924B26CC /* txt_db.h */,
-				0DE031565D538E1C278C8EEA1C263ADE /* ui.h */,
-				10314B10B085AB020D54248EE0EEF761 /* ui_compat.h */,
-				29824FE9D6F8D793E7369DFF0638D47E /* whrlpool.h */,
-				BA213F4EFABCEE6218CBDCB63D148A3B /* x509.h */,
-				D39048720BF4C46EAB8A284A674CBA08 /* x509_vfy.h */,
-				26CEBF3104BBF7CE37F383F15A9A3E1A /* x509v3.h */,
-				D42C388065219AE2AA8275C738DD0F4E /* Frameworks */,
+				1FFF898F47C29618202672638B43EAA7 /* CocoaAsyncSocket */,
+				649E24647558F94222F8A96ADA67DF02 /* JSONModel */,
+				5B70E1A02875217C311F7A35ACB29225 /* OpenSSL-Universal */,
+				774CA7CCE49062B39170A04E2D8137D2 /* SocketRocket */,
 			);
-			path = "OpenSSL-Universal";
-			sourceTree = "<group>";
-		};
-		02B81D95F8705212EBCC8637B793D491 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FD1CE01B4762C4950991FB5FED623393 /* CocoaAsyncSocket.framework */,
-				DC34D58F7727D93F2B69C8DB251BF261 /* Pods_iotbroker_cloud_client.framework */,
-			);
-			name = Products;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
@@ -277,33 +290,28 @@
 			path = "Target Support Files/Pods-iotbroker.cloud-client";
 			sourceTree = "<group>";
 		};
-		1E676227B458AB2C6ABF9DA09EB337AB /* GCD */ = {
+		1FFF898F47C29618202672638B43EAA7 /* CocoaAsyncSocket */ = {
 			isa = PBXGroup;
 			children = (
-				32684BC5E53D1817418786E33A7CCC6C /* GCDAsyncSocket.h */,
-				4D0D4C3072A6C9049591E612E1292DD3 /* GCDAsyncSocket.m */,
-				61967AFFCB375452F9DFC27536381246 /* GCDAsyncUdpSocket.h */,
-				A3D86180EAD857C391877C8F9836D353 /* GCDAsyncUdpSocket.m */,
+				9E8939167BE1AC852C963CCA83E82B3B /* GCD */,
+				D14864B961784581184E2FF738BEF4FD /* Support Files */,
 			);
-			name = GCD;
-			sourceTree = "<group>";
-		};
-		3797D82C226896C5FF23D2927B7C0DD2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3FAD44DE5B6DD119009EE8BEB688F3FB /* CocoaAsyncSocket */,
-				01926093AA428185919A4A869D450BC4 /* OpenSSL-Universal */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		3FAD44DE5B6DD119009EE8BEB688F3FB /* CocoaAsyncSocket */ = {
-			isa = PBXGroup;
-			children = (
-				1E676227B458AB2C6ABF9DA09EB337AB /* GCD */,
-				697FFF403866E848C50C6A655A559B2D /* Support Files */,
-			);
+			name = CocoaAsyncSocket;
 			path = CocoaAsyncSocket;
+			sourceTree = "<group>";
+		};
+		21DD2E4A069635A0C23E0400FEC739FB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				367AC14431622C3268967B627ABD19B2 /* Info.plist */,
+				4ABF3CB3A925835524372400B4F03F1C /* SocketRocket.modulemap */,
+				C59720FD970DCEC4B806B5482C252542 /* SocketRocket.xcconfig */,
+				B4FEF12146D74A476331106290573B7A /* SocketRocket-dummy.m */,
+				58F2C13B3DD4608862AF139E8CFE0193 /* SocketRocket-prefix.pch */,
+				7B70F40B9FF97864E267BA9D1C0A43E8 /* SocketRocket-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SocketRocket";
 			sourceTree = "<group>";
 		};
 		4A9D6FF81BFBB1B195CCEBC8D335E2CF /* iOS */ = {
@@ -316,18 +324,137 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		697FFF403866E848C50C6A655A559B2D /* Support Files */ = {
+		5B70E1A02875217C311F7A35ACB29225 /* OpenSSL-Universal */ = {
 			isa = PBXGroup;
 			children = (
-				CC52DE05EB22A144DAB7D2C9CF738038 /* CocoaAsyncSocket.modulemap */,
-				1B78238DC29AFE97ADDA2D6AF7FB1626 /* CocoaAsyncSocket.xcconfig */,
-				88F53ABDD81FCD5CC845D2A655AEA4EA /* CocoaAsyncSocket-dummy.m */,
-				9B273D82C34ABC1A01D6B8A00443296D /* CocoaAsyncSocket-prefix.pch */,
-				1EA9FC34904F9E628F97317BBC8FC907 /* CocoaAsyncSocket-umbrella.h */,
-				F5B0A1E6DF8E37AD9FAD84EFFCFFE82C /* Info.plist */,
+				438A83758675791699FB3FD36968F518 /* aes.h */,
+				C7E29C293F6D628AB5A7B9AB9DE5FAEE /* asn1.h */,
+				286BBD16984E99B738CC147239BFB97B /* asn1_mac.h */,
+				504B2DD8DE9E97487077A034F6E4EF16 /* asn1t.h */,
+				65701835218E52A1BE25536835419FCD /* bio.h */,
+				9365E9373B29A6D599DCB803A2A4C9FA /* blowfish.h */,
+				90678C0B8ABEB4E19D53324D423358DD /* bn.h */,
+				1AD4CD7156B93A97D51715AC86430653 /* buffer.h */,
+				66CD39058208883BE85657712AEA1473 /* camellia.h */,
+				B3851CCBC94327EF9E125149BEF86886 /* cast.h */,
+				7C7068F689210417A67C6A0A98744D3A /* cmac.h */,
+				C7450660035ED738932E49F6414AD2FA /* cms.h */,
+				9A2F93E9E178443C27F2E80F9FF73FEB /* comp.h */,
+				64A36279A632F2AB60A72B62B00F9902 /* conf.h */,
+				798B29EEAC74F769C090C6C33F1F75F3 /* conf_api.h */,
+				3E7EDFB0417AB2C9B6D131B11E4854C6 /* crypto.h */,
+				F9DEF61B284B05F541A24B7D4BF221FA /* des.h */,
+				5C94C81E567DA9969534662C2A239979 /* des_old.h */,
+				4C84E055E5FB4A3ED874B2EFDAE792CE /* dh.h */,
+				BC2732173DD60B1C9F9AF82578EF4D31 /* dsa.h */,
+				0B829633D889C89A88E5C6C6F84B3CFE /* dso.h */,
+				0449FC26BBEEB3D284162DBB2AD1EB74 /* dtls1.h */,
+				81BB790ACF7F8F20702FCFFA3B8B1C17 /* e_os2.h */,
+				9DAFF2641D7CC3D3E25B6FA9257D57BA /* ebcdic.h */,
+				1ACC98A31547A9FC90A855B27180706E /* ec.h */,
+				5839C4AFE34F1474611B650BD573D250 /* ecdh.h */,
+				871B890AD1B70CA9795375925131E0B7 /* ecdsa.h */,
+				03C1F1A6837979168B4130741C6FD723 /* engine.h */,
+				59D3E057A4227A1316EB979918A27024 /* err.h */,
+				F12F1C5F7D3546A64B0ED3D09E314DDE /* evp.h */,
+				E2A2CA52C2F16EFDD8D0326D8585BBFD /* hmac.h */,
+				5C7EC79EEB57B5497B515CBF5F222F9C /* idea.h */,
+				91068F2BAFE1020BB8964562ACC3B785 /* krb5_asn.h */,
+				0F10FF8AF64F90232943A5248857BDB3 /* kssl.h */,
+				E9B4F682E3E18B14752E6A5B8EEEFE35 /* lhash.h */,
+				CCA9223FE2DCAA9BF944D5DC0A2D0B82 /* md4.h */,
+				DE4F05CBD3896BD87D7EC8A8A4A641AB /* md5.h */,
+				91C71AAD9CE31E3ED3003EAFCFD5B885 /* mdc2.h */,
+				0F20DFC67F22889B809F80011D05547B /* modes.h */,
+				53B72391623CFE70A499E414D1EB45E4 /* obj_mac.h */,
+				7CF46CA674E28FFC98C4703581884C74 /* objects.h */,
+				55C90C7C53A317B33AF60203B195E3FC /* ocsp.h */,
+				97F4B6DF24E04271DA4C51AEECB09569 /* opensslconf.h */,
+				636C02E02DDB146F503F02191937813B /* opensslv.h */,
+				A40522B045391F1915FD89181FE52D4E /* ossl_typ.h */,
+				25F2C912BB44D218A3EE7CF0B326E1A5 /* pem.h */,
+				7FBDD8A6D5A386CFFA24D9575CE19DC7 /* pem2.h */,
+				43FC2208E04ED1EF6043C556DFCC4275 /* pkcs12.h */,
+				AEED59D287F70E5CC13E25D24CDB2222 /* pkcs7.h */,
+				709535B374C463ACD99A1DD6EC12CDE1 /* pqueue.h */,
+				8A03F4B2B2D124222760DA427FF3FC4B /* rand.h */,
+				B5ADAD78F6005F293BF881EC9A5FC3F6 /* rc2.h */,
+				BA23DC77136FE66ECDD496F7587321A7 /* rc4.h */,
+				80EEE77A6533AA34B7D30C9F48091878 /* ripemd.h */,
+				4B51888EF7BAE2F4B77E21202868ABC6 /* rsa.h */,
+				5D56FC9F2009244D6749FB3985F5243C /* safestack.h */,
+				0E355F921E28923234AA9328A7DB21A5 /* seed.h */,
+				8DCA8E44EDA164ED469C062A9F28786E /* sha.h */,
+				84DF7EDE3A0544C1C84B693616D08DCD /* srp.h */,
+				ABADAEFBEFE7951090BB109B048CB02B /* srtp.h */,
+				CBB35930ABB16863181803184DC09FE9 /* ssl.h */,
+				2187A1A69847E626A9A6FC98BCD831BF /* ssl2.h */,
+				D170737984A345CBAFF66F2245997FC2 /* ssl23.h */,
+				79B592F2654D65CC7107C72C0808CBA9 /* ssl3.h */,
+				329A8F2C9B3DAAD7D15255EA36FFE179 /* stack.h */,
+				8DD64E8927AE7313009E59803B6AE7B6 /* symhacks.h */,
+				225CC99B0FC950333D1939F7A60B20C6 /* tls1.h */,
+				1110EA786BA4FDC7237936CF2E660113 /* ts.h */,
+				BA91040A94AF1C771270514BD2766857 /* txt_db.h */,
+				D842311E8F6B4406010373ACC49FD60D /* ui.h */,
+				D47E85AFB26E2A3E756A980B9684F39C /* ui_compat.h */,
+				C7C593002073B643865966ED9FD3B779 /* whrlpool.h */,
+				D02FCB9C23590BE6778018B1D847C181 /* x509.h */,
+				97AEACD21FEA7AA81E90983F78DDB1FD /* x509_vfy.h */,
+				9C6B227C9FDC8D94C4AB1538DA2C33E6 /* x509v3.h */,
+				DBF422B03348DBB7E5FA5D3AF7299CFF /* Frameworks */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/CocoaAsyncSocket";
+			name = "OpenSSL-Universal";
+			path = "OpenSSL-Universal";
+			sourceTree = "<group>";
+		};
+		649E24647558F94222F8A96ADA67DF02 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				0A5A82FB9ABCD4F81F9952CA37EF6B9E /* JSONAPI.h */,
+				C49E871ABB07292241665B8DF80A6CDE /* JSONAPI.m */,
+				FD1D3570209A2852CAF8C6A54F20B1E2 /* JSONHTTPClient.h */,
+				DE80A40BEF9EF274BBF03AF8A64B63E3 /* JSONHTTPClient.m */,
+				C4DF7531DA561A1F97FCC76543499EE1 /* JSONKeyMapper.h */,
+				C1C260AD4198082DBB597C89E684DD35 /* JSONKeyMapper.m */,
+				C95DF2BED2F64E25D9F84C5C66F6558A /* JSONModel.h */,
+				B320A03216FC5A5F87AEF65A2DB23BA1 /* JSONModel.m */,
+				D4834AADE46C1B4B1C16E0BD7BFE13CD /* JSONModel+networking.h */,
+				1283653B0AA1F5C917DFB3218669C801 /* JSONModel+networking.m */,
+				7CC7C27C6277FA47AEBB56146838E326 /* JSONModelClassProperty.h */,
+				EDEFD8801DA3B157C0293AC6F216ED3B /* JSONModelClassProperty.m */,
+				BBA3AEE6BA1DBBEB9D274DDBBD0EE30B /* JSONModelError.h */,
+				8AB7B3E6D42DA241A45F579D4E57D224 /* JSONModelError.m */,
+				F05529D3F304C33717852387EA6D166A /* JSONModelLib.h */,
+				4458F892F9755364FFC905BDB66E47F4 /* JSONValueTransformer.h */,
+				A5731E41EE6F78D640082B9B13C4BD1F /* JSONValueTransformer.m */,
+				FECC837C871F11113D6E07935FFA7CA1 /* Support Files */,
+			);
+			name = JSONModel;
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		70BA21C200D9F31D065C683499219CF0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE29B13C8C11CDC8370F76B77D22B4B9 /* CocoaAsyncSocket.framework */,
+				8ADD590E92751CC958059DF32CE515AB /* JSONModel.framework */,
+				AFB3FDCC230C627C82E23DFC5E109CBC /* Pods_iotbroker_cloud_client.framework */,
+				72240BB42084CBA3FF452741F8C4C001 /* SocketRocket.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		774CA7CCE49062B39170A04E2D8137D2 /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				9A14BD08078C23C90EE798AE9B2E8F3C /* SocketRocket.h */,
+				EC33F5CBF6F1B588500821C574995765 /* SRWebSocket.h */,
+				432FC5E6C6C3A4E794448F1E78A86BF9 /* SRWebSocket.m */,
+				21DD2E4A069635A0C23E0400FEC739FB /* Support Files */,
+			);
+			name = SocketRocket;
+			path = SocketRocket;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -335,10 +462,21 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
-				3797D82C226896C5FF23D2927B7C0DD2 /* Pods */,
-				02B81D95F8705212EBCC8637B793D491 /* Products */,
+				07DBE555B785D5894E905249715943E7 /* Pods */,
+				70BA21C200D9F31D065C683499219CF0 /* Products */,
 				CE28FD95B39AE7872E1604A241117955 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		9E8939167BE1AC852C963CCA83E82B3B /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+				292A53BAAD49A82DD9F1E6A4A582F3B0 /* GCDAsyncSocket.h */,
+				E1E3F21F0CA4EB03960BEABB94C0919C /* GCDAsyncSocket.m */,
+				B3A3870D50B2778BC3D0A2E3539C5E05 /* GCDAsyncUdpSocket.h */,
+				77AC65DA309C179D0FD7F6CB7440AE25 /* GCDAsyncUdpSocket.m */,
+			);
+			name = GCD;
 			sourceTree = "<group>";
 		};
 		CE28FD95B39AE7872E1604A241117955 /* Targets Support Files */ = {
@@ -349,18 +487,54 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		D42C388065219AE2AA8275C738DD0F4E /* Frameworks */ = {
+		D14864B961784581184E2FF738BEF4FD /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				6419FC6D54A7F0C49F21076566278DEE /* libcrypto.a */,
-				C1298B520F1C58EA321D887D6B2512C7 /* libssl.a */,
+				41D5E564A9AC95F06B7B48089C789DFF /* CocoaAsyncSocket.modulemap */,
+				6DAE78B00471DC58654BAE71669A7382 /* CocoaAsyncSocket.xcconfig */,
+				07694A5F23E6BD8F6AD4B7346E46F882 /* CocoaAsyncSocket-dummy.m */,
+				43ED8F5C43FE93A858F8C085729CC467 /* CocoaAsyncSocket-prefix.pch */,
+				B561BE3E8869121B99B2986E60BE08DD /* CocoaAsyncSocket-umbrella.h */,
+				189A0F76B91B9394066FA06BC39BEBA5 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CocoaAsyncSocket";
+			sourceTree = "<group>";
+		};
+		DBF422B03348DBB7E5FA5D3AF7299CFF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8946F4CF9D56D4E3FE260CB732FC2009 /* libcrypto.a */,
+				7FA7916311CB056451B9F31C87A0C9E8 /* libssl.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FECC837C871F11113D6E07935FFA7CA1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EFF60BA0C422BB10DAF55095DCF9140A /* Info.plist */,
+				4004691B5C453A04AA5885D040BB1163 /* JSONModel.modulemap */,
+				6AC7B90259746B115EF8C69CAC87BA83 /* JSONModel.xcconfig */,
+				BC8CBF30E017FAE1A6B708903A76DAC4 /* JSONModel-dummy.m */,
+				014F7705B85F43162FFCD1AD38DECDC3 /* JSONModel-prefix.pch */,
+				E7CC3C74C76AF9E190147983E59A1EC5 /* JSONModel-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/JSONModel";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		04E63FCD1D4C2D6C94D65FA974E6C041 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FFC15898EA29A767D1234B73292A15A /* Pods-iotbroker.cloud-client-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		066131069354C4CC132CAB645145E8F7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -371,33 +545,71 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8565302E36BBA4505CEAFCD4E8B72BA7 /* Headers */ = {
+		9D5AAED90A2479E10F1A9FB538938016 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAC9A465E91A77C185B2BC6FE27850B6 /* Pods-iotbroker.cloud-client-umbrella.h in Headers */,
+				E777AB67D0327AE575ABD5BBC90E3316 /* SocketRocket-umbrella.h in Headers */,
+				FD0D43A7D3FB2D1844E01F0BB41C7551 /* SocketRocket.h in Headers */,
+				05687E7EA63FAAAF52CB84844BFD8F40 /* SRWebSocket.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBF7227F5BD0440E9DF598DF26EC3891 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EB17293737C717D12298CFFE6A67514 /* JSONAPI.h in Headers */,
+				7F66E5779B29E0BC17D565DAD7CDEC1B /* JSONHTTPClient.h in Headers */,
+				58388F773008AF671CE67FE1C902E6CB /* JSONKeyMapper.h in Headers */,
+				E3C47E114E924D2F331F9A3F122AEE5C /* JSONModel+networking.h in Headers */,
+				36E344E5B627E04368ECC96338E17F26 /* JSONModel-umbrella.h in Headers */,
+				37FD169854FF4B397051998D611F152A /* JSONModel.h in Headers */,
+				009C79BE88C2F4C986644CD3E0B088C2 /* JSONModelClassProperty.h in Headers */,
+				2AFB0AFA2138181E162CD00669D87FE3 /* JSONModelError.h in Headers */,
+				6F5906B58272E07A0850248867562581 /* JSONModelLib.h in Headers */,
+				DFA0B0C7EC02135911CACDAFD38BE715 /* JSONValueTransformer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		4674B4DAEB47FF73FFE79866F2379A70 /* Pods-iotbroker.cloud-client */ = {
+		098FACCAC56331FCA3E23A2DC6D93E51 /* SocketRocket */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 388871FF8775429F0F8D3072947894BE /* Build configuration list for PBXNativeTarget "Pods-iotbroker.cloud-client" */;
+			buildConfigurationList = C0FF2B2DEE30571085BB566D7FF3BFD7 /* Build configuration list for PBXNativeTarget "SocketRocket" */;
 			buildPhases = (
-				6BCEB0173CF7970979733F8EABE121EE /* Sources */,
-				7AA4DE97125879A2C765229F143DEE36 /* Frameworks */,
-				8565302E36BBA4505CEAFCD4E8B72BA7 /* Headers */,
+				0C4722D457C2E4D3852500DA017B0F72 /* Sources */,
+				36AC0F0C11D25340DD9E584461EDAD13 /* Frameworks */,
+				9D5AAED90A2479E10F1A9FB538938016 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				62AB28C9FDE0EE15BE828E82DD3584EE /* PBXTargetDependency */,
+			);
+			name = SocketRocket;
+			productName = SocketRocket;
+			productReference = 72240BB42084CBA3FF452741F8C4C001 /* SocketRocket.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7954991AB508436459E6F5A8B0B030F3 /* Pods-iotbroker.cloud-client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FE51294555AC8B49A4319B54B3DB9CA /* Build configuration list for PBXNativeTarget "Pods-iotbroker.cloud-client" */;
+			buildPhases = (
+				0A888811C0AAEC58CA1F6211581654B1 /* Sources */,
+				10F78240990F140B42E6DD242C192F8E /* Frameworks */,
+				04E63FCD1D4C2D6C94D65FA974E6C041 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				31EDFE810B1197A5A083D82343BB2EEB /* PBXTargetDependency */,
+				1E6DD2CD0FF7D3B5EEEEFA7F6801F387 /* PBXTargetDependency */,
+				7BAC17BA5BA3BAAFA48A1253DB17C184 /* PBXTargetDependency */,
 			);
 			name = "Pods-iotbroker.cloud-client";
 			productName = "Pods-iotbroker.cloud-client";
-			productReference = DC34D58F7727D93F2B69C8DB251BF261 /* Pods_iotbroker_cloud_client.framework */;
+			productReference = AFB3FDCC230C627C82E23DFC5E109CBC /* Pods_iotbroker_cloud_client.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		AC0D2D2B4EE7C873431AB3502859CA60 /* CocoaAsyncSocket */ = {
@@ -414,7 +626,24 @@
 			);
 			name = CocoaAsyncSocket;
 			productName = CocoaAsyncSocket;
-			productReference = FD1CE01B4762C4950991FB5FED623393 /* CocoaAsyncSocket.framework */;
+			productReference = EE29B13C8C11CDC8370F76B77D22B4B9 /* CocoaAsyncSocket.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DC3688684BF42A20A8998F31DDA51A49 /* JSONModel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4D16BF2938703D3A0079C402F5E75D8 /* Build configuration list for PBXNativeTarget "JSONModel" */;
+			buildPhases = (
+				CF525CD81327D7C4B38AF818D91B35A1 /* Sources */,
+				0F13FDE48FAA625D37D626F69DA46819 /* Frameworks */,
+				BBF7227F5BD0440E9DF598DF26EC3891 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JSONModel;
+			productName = JSONModel;
+			productReference = 8ADD590E92751CC958059DF32CE515AB /* JSONModel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -424,7 +653,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -434,22 +663,49 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 02B81D95F8705212EBCC8637B793D491 /* Products */;
+			productRefGroup = 70BA21C200D9F31D065C683499219CF0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				AC0D2D2B4EE7C873431AB3502859CA60 /* CocoaAsyncSocket */,
-				4674B4DAEB47FF73FFE79866F2379A70 /* Pods-iotbroker.cloud-client */,
+				DC3688684BF42A20A8998F31DDA51A49 /* JSONModel */,
+				7954991AB508436459E6F5A8B0B030F3 /* Pods-iotbroker.cloud-client */,
+				098FACCAC56331FCA3E23A2DC6D93E51 /* SocketRocket */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6BCEB0173CF7970979733F8EABE121EE /* Sources */ = {
+		0A888811C0AAEC58CA1F6211581654B1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E941F8FBB602E4B64AC91654CEA735F /* Pods-iotbroker.cloud-client-dummy.m in Sources */,
+				68A64EDB03D8E18A7CB3CF4B1E0BF35B /* Pods-iotbroker.cloud-client-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C4722D457C2E4D3852500DA017B0F72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91BC82C1AEBAED2C2F4D5ECC7EC6DD77 /* SocketRocket-dummy.m in Sources */,
+				17BBD81D5B5815BE6CB2DFC6E78877AA /* SRWebSocket.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF525CD81327D7C4B38AF818D91B35A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06697BBB6E6D73B5F021E6DACAC5DE45 /* JSONAPI.m in Sources */,
+				57FE38F17C0EDD5CF73B2A084A17586E /* JSONHTTPClient.m in Sources */,
+				772785574BC1059C2913576CBFF3AD17 /* JSONKeyMapper.m in Sources */,
+				98F19C682AC68E9D2E2052F709F42AF9 /* JSONModel+networking.m in Sources */,
+				8060025235D93F30A5F10B412DD0822E /* JSONModel-dummy.m in Sources */,
+				E39D9A942BCE728467A42C478816966F /* JSONModel.m in Sources */,
+				40A6216FC50B4540584DA1C45F98F9FD /* JSONModelClassProperty.m in Sources */,
+				0B1C5725C7BE03D622114275D6FD6EFA /* JSONModelError.m in Sources */,
+				37F6913EE3CD6EB8715086F0C9F6A823 /* JSONValueTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,18 +722,30 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		62AB28C9FDE0EE15BE828E82DD3584EE /* PBXTargetDependency */ = {
+		1E6DD2CD0FF7D3B5EEEEFA7F6801F387 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JSONModel;
+			target = DC3688684BF42A20A8998F31DDA51A49 /* JSONModel */;
+			targetProxy = E43E88B01F3F7B0DB7239D24DA101E2A /* PBXContainerItemProxy */;
+		};
+		31EDFE810B1197A5A083D82343BB2EEB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CocoaAsyncSocket;
 			target = AC0D2D2B4EE7C873431AB3502859CA60 /* CocoaAsyncSocket */;
-			targetProxy = 8D494A5D98A3B37A5A58D9E7DA68E038 /* PBXContainerItemProxy */;
+			targetProxy = 411CB037F2934F65454B9118A661BB6E /* PBXContainerItemProxy */;
+		};
+		7BAC17BA5BA3BAAFA48A1253DB17C184 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SocketRocket;
+			target = 098FACCAC56331FCA3E23A2DC6D93E51 /* SocketRocket */;
+			targetProxy = B39F4CC9C497875629FFC6AF792E2B09 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		50580C4CD86A9B805C4F7E252234FE2C /* Release */ = {
+		13C32ADC614AB66C4BC8D3EBA6A78A79 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B78238DC29AFE97ADDA2D6AF7FB1626 /* CocoaAsyncSocket.xcconfig */;
+			baseConfigurationReference = C59720FD970DCEC4B806B5482C252542 /* SocketRocket.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -490,14 +758,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/CocoaAsyncSocket/CocoaAsyncSocket-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CocoaAsyncSocket/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SocketRocket/SocketRocket-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SocketRocket/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/CocoaAsyncSocket/CocoaAsyncSocket.modulemap";
+				MODULEMAP_FILE = "Target Support Files/SocketRocket/SocketRocket.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = CocoaAsyncSocket;
+				PRODUCT_NAME = SocketRocket;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -506,7 +774,7 @@
 			};
 			name = Release;
 		};
-		7816C58E5F5AE17BFBE492A1290179D8 /* Release */ = {
+		310A77F743D2E9678601E55A1CCDF245 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DD8F94CF96B207B1D5ECE1F593AD9034 /* Pods-iotbroker.cloud-client.release.xcconfig */;
 			buildSettings = {
@@ -523,7 +791,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-iotbroker.cloud-client/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-iotbroker.cloud-client/Pods-iotbroker.cloud-client.modulemap";
@@ -541,7 +809,7 @@
 			};
 			name = Release;
 		};
-		9C7A5EE6DE2C3784BAA89D1A5D5EB30D /* Release */ = {
+		432AE583FE3CD8E1271410C7651CDD4C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -550,29 +818,19 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_RELEASE=1",
 					"$(inherited)",
@@ -583,7 +841,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
@@ -591,9 +849,115 @@
 			};
 			name = Release;
 		};
+		4EEBBA423EF5147CB54AB07C6B910656 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C59720FD970DCEC4B806B5482C252542 /* SocketRocket.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SocketRocket/SocketRocket-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SocketRocket/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SocketRocket/SocketRocket.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SocketRocket;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		50580C4CD86A9B805C4F7E252234FE2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DAE78B00471DC58654BAE71669A7382 /* CocoaAsyncSocket.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CocoaAsyncSocket/CocoaAsyncSocket-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CocoaAsyncSocket/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CocoaAsyncSocket/CocoaAsyncSocket.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = CocoaAsyncSocket;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		75CC402179505BA337B07F61D1C8DDCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
 		A6B0CD1D10A98AAB2322157BF9E80068 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B78238DC29AFE97ADDA2D6AF7FB1626 /* CocoaAsyncSocket.xcconfig */;
+			baseConfigurationReference = 6DAE78B00471DC58654BAE71669A7382 /* CocoaAsyncSocket.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -622,61 +986,38 @@
 			};
 			name = Debug;
 		};
-		CE5513B3E35A5C69E7F70F186BD3CE9C /* Debug */ = {
+		C09D6E5269314321AAC25EDC740A4C1E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AC7B90259746B115EF8C69CAC87BA83 /* JSONModel.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_DEBUG=1",
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
+				GCC_PREFIX_HEADER = "Target Support Files/JSONModel/JSONModel-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JSONModel/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JSONModel/JSONModel.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = JSONModel;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		D34625B1F8EE5CC5C53C3B835673F640 /* Debug */ = {
+		C8B1D8AAD3F8230D5A8694452207E9F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2B1103AF962655B04ECB09E3CF368698 /* Pods-iotbroker.cloud-client.debug.xcconfig */;
 			buildSettings = {
@@ -693,7 +1034,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-iotbroker.cloud-client/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-iotbroker.cloud-client/Pods-iotbroker.cloud-client.modulemap";
@@ -711,23 +1052,63 @@
 			};
 			name = Debug;
 		};
+		E317A9D8483BF055FE8B44EA308078F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AC7B90259746B115EF8C69CAC87BA83 /* JSONModel.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/JSONModel/JSONModel-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JSONModel/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JSONModel/JSONModel.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = JSONModel;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE5513B3E35A5C69E7F70F186BD3CE9C /* Debug */,
-				9C7A5EE6DE2C3784BAA89D1A5D5EB30D /* Release */,
+				75CC402179505BA337B07F61D1C8DDCD /* Debug */,
+				432AE583FE3CD8E1271410C7651CDD4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		388871FF8775429F0F8D3072947894BE /* Build configuration list for PBXNativeTarget "Pods-iotbroker.cloud-client" */ = {
+		9FE51294555AC8B49A4319B54B3DB9CA /* Build configuration list for PBXNativeTarget "Pods-iotbroker.cloud-client" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D34625B1F8EE5CC5C53C3B835673F640 /* Debug */,
-				7816C58E5F5AE17BFBE492A1290179D8 /* Release */,
+				C8B1D8AAD3F8230D5A8694452207E9F1 /* Debug */,
+				310A77F743D2E9678601E55A1CCDF245 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0FF2B2DEE30571085BB566D7FF3BFD7 /* Build configuration list for PBXNativeTarget "SocketRocket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EEBBA423EF5147CB54AB07C6B910656 /* Debug */,
+				13C32ADC614AB66C4BC8D3EBA6A78A79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -737,6 +1118,15 @@
 			buildConfigurations = (
 				A6B0CD1D10A98AAB2322157BF9E80068 /* Debug */,
 				50580C4CD86A9B805C4F7E252234FE2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4D16BF2938703D3A0079C402F5E75D8 /* Build configuration list for PBXNativeTarget "JSONModel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E317A9D8483BF055FE8B44EA308078F6 /* Debug */,
+				C09D6E5269314321AAC25EDC740A4C1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

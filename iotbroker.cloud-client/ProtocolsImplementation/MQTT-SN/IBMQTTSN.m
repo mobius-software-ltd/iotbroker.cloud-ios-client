@@ -176,7 +176,7 @@
             case IBWillTopicReqMessage:
             {
                 [self->_timers stopConnectTimer];
-                id<IBTopic> fullTopic = self->_connectWill.topic;
+                IBSNFullTopic *fullTopic = (IBSNFullTopic *)self->_connectWill.topic;
                 IBSNWillTopic *willTopic = [[IBSNWillTopic alloc] initWithTopic:fullTopic andRetainFlag:self->_connectWill.isRetain];
                 [self sendMessage:willTopic];
             } break;
@@ -229,7 +229,7 @@
             case IBPubackMessage:
             {
                 IBSNPuback *puback = (IBSNPuback *)message;
-                IBSNPublish *publish = [self->_timers removeTimerWithPacketID:@(puback.packetID)];
+                IBSNPublish *publish = (IBSNPublish *)[self->_timers removeTimerWithPacketID:@(puback.packetID)];
                 NSString *name = [[NSString alloc] initWithData:[publish.topic encode] encoding:NSUTF8StringEncoding];
                 [self.delegate pubackForPublishWithTopicName:name qos:[publish.topic getQoS].value content:publish.content dup:publish.dup retainFlag:publish.retainFlag andReturnCode:puback.returnCode];
                 [self->_publishPackets removeObjectForKey:@(puback.packetID)];
@@ -237,7 +237,7 @@
             case IBPubrecMessage:
             {
                 IBSNPubrec *pubrec = (IBSNPubrec *)message;
-                IBSNPublish *publish = [self->_timers removeTimerWithPacketID:@(pubrec.packetID)];
+                IBSNPublish *publish = (IBSNPublish *)[self->_timers removeTimerWithPacketID:@(pubrec.packetID)];
                 [self->_publishPackets setObject:publish forKey:@(publish.packetID)];
                 IBSNPubrel *pubrel = [[IBSNPubrel alloc] initWithPacketID:pubrec.packetID];
                 [self->_timers startMessageTimer:pubrel];
@@ -267,7 +267,7 @@
             case IBSubackMessage:
             {
                 IBSNSuback *suback = (IBSNSuback *)message;
-                IBSNSubscribe *subscribe = [self->_timers removeTimerWithPacketID:@(suback.packetID)];
+                IBSNSubscribe *subscribe = (IBSNSubscribe *)[self->_timers removeTimerWithPacketID:@(suback.packetID)];
                 NSString *name = [[NSString alloc] initWithData:[subscribe.topic encode] encoding:NSUTF8StringEncoding];
                 [self.delegate subackForSubscribeWithTopicName:name qos:[subscribe.topic getQoS].value returnCode:suback.returnCode];
             } break;
@@ -275,7 +275,7 @@
             case IBUnsubackMessage:
             {
                 IBSNUnsuback *unsuback = (IBSNUnsuback *)message;
-                IBSNUnsubscribe *unsubscribe = [self->_timers removeTimerWithPacketID:@(unsuback.packetID)];
+                IBSNUnsubscribe *unsubscribe = (IBSNUnsubscribe *)[self->_timers removeTimerWithPacketID:@(unsuback.packetID)];
                 NSString *name = [[NSString alloc] initWithData:[unsubscribe.topic encode] encoding:NSUTF8StringEncoding];
                 [self.delegate unsubackForUnsubscribeWithTopicName:name];
             } break;

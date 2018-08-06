@@ -22,8 +22,10 @@
 #import "IBMQTTEnums.h"
 #import "IBMQTTTopic.h"
 
+@protocol IBMQTTTopic;
+
 @interface IBSubscribe : IBCountableMessage
 
-@property (strong, nonatomic) NSMutableArray<IBMQTTTopic *> *topics;
+@property (strong, nonatomic) NSMutableArray<IBMQTTTopic *> <IBMQTTTopic> *topics;
 
 @end

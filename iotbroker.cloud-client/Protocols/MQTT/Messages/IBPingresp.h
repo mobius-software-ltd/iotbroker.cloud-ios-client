@@ -20,7 +20,8 @@
 
 #import "IBMessage.h"
 #import "IBMQTTEnums.h"
+#import <JSONModel/JSONModel.h>
 
-@interface IBPingresp : NSObject <IBMessage>
+@interface IBPingresp : JSONModel <IBMessage>
 
 @end

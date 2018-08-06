@@ -103,7 +103,7 @@
     IBMQTTTopic *topicObject = [[IBMQTTTopic alloc] initWithName:topic.topicName andQoS:QoS];
     
     IBSubscribe *subscribe = [[IBSubscribe alloc] initWithPacketID:0];
-    subscribe.topics = [NSMutableArray arrayWithObject:topicObject];
+    subscribe.topics = [NSMutableArray<IBMQTTTopic *> <IBMQTTTopic> arrayWithObject:topicObject];
     [self->_timers startMessageTimer:subscribe];
 }
 
@@ -179,14 +179,14 @@
             case IBPubackMessage:
             {
                 IBPuback *puback = (IBPuback *)message;
-                IBPublish *publish = [self->_timers removeTimerWithPacketID:@(puback.packetID)];
+                IBPublish *publish = (IBPublish *)[self->_timers removeTimerWithPacketID:@(puback.packetID)];
                 [self.delegate pubackForPublishWithTopicName:publish.topic.name qos:publish.topic.qos.value content:publish.content dup:publish.dup retainFlag:publish.isRetain andReturnCode:-1];
                 [self->_publishPackets removeObjectForKey:@(puback.packetID)];
             } break;
             case IBPubrecMessage:
             {
                 IBPubrec *pubrec = (IBPubrec *)message;
-                IBPublish *publish = [self->_timers removeTimerWithPacketID:@(pubrec.packetID)];
+                IBPublish *publish = (IBPublish *)[self->_timers removeTimerWithPacketID:@(pubrec.packetID)];
                 [self->_publishPackets setObject:publish forKey:@(publish.packetID)];
                 IBPubrel *pubrel = [[IBPubrel alloc] initWithPacketID:pubrec.packetID];
                 [self->_timers startMessageTimer:pubrel];
@@ -215,7 +215,7 @@
             case IBSubackMessage:
             {
                 IBSuback *suback = (IBSuback *)message;
-                IBSubscribe *subscribe = [self->_timers stopTimerWithPacketID:@(suback.packetID)];
+                IBSubscribe *subscribe = (IBSubscribe *)[self->_timers stopTimerWithPacketID:@(suback.packetID)];
                 IBMQTTTopic *topic = [subscribe.topics lastObject];
                 [self.delegate subackForSubscribeWithTopicName:topic.name qos:topic.qos.value returnCode:[[suback.returnCodes lastObject] integerValue]];
             } break;
@@ -223,7 +223,7 @@
             case IBUnsubackMessage:
             {
                 IBUnsuback *unsuback = (IBUnsuback *)message;
-                IBUnsubscribe *unsubscribe = [self->_timers stopTimerWithPacketID:@(unsuback.packetID)];
+                IBUnsubscribe *unsubscribe = (IBUnsubscribe *)[self->_timers stopTimerWithPacketID:@(unsuback.packetID)];
                 [self.delegate unsubackForUnsubscribeWithTopicName:[unsubscribe.topics lastObject]];
             } break;
             case IBPingreqMessage:      NSLog(@" > Error: Pingreq message has been received");      break;

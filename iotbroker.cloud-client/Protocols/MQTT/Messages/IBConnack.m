@@ -72,3 +72,24 @@
 }
 
 @end
+
+// JSON Mapping
+
+@interface IBConnack (JsonMapping)
+
+@property (nonatomic) NSInteger messageType;
+
+@end
+
+@implementation IBConnack (JsonMapping)
+
+@dynamic messageType;
+
++ (JSONKeyMapper *)keyMapper {
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
+                                                                  @"messageType": @"packet",
+                                                                  @"sessionPresentValue": @"sessionPresent"
+                                                                   }];
+}
+
+@end

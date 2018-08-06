@@ -31,3 +31,21 @@
 }
 
 @end
+
+// JSON Mapping
+
+@interface IBDisconnect (JsonMapping)
+
+@property (nonatomic) NSInteger messageType;
+
+@end
+
+@implementation IBDisconnect (JsonMapping)
+
+@dynamic messageType;
+
++ (JSONKeyMapper *)keyMapper {
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"messageType": @"packet" }];
+}
+
+@end

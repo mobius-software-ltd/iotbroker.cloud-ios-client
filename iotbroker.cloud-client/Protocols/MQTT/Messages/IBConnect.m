@@ -98,3 +98,73 @@ static NSInteger const IBHeaderBytesLength = 10;
 }
 
 @end
+
+// JSON Mapping
+
+@interface IBConnect (JsonMapping)
+
+@property (nonatomic) NSInteger jmMessageType;
+@property (nonatomic) NSInteger jmProtocolLevel;
+@property (nonatomic) NSString *jmProtocolName;
+@property (nonatomic) BOOL jmWillFlag;
+@property (nonatomic) BOOL jmUsernameFlag;
+@property (nonatomic) BOOL jmPasswordFlag;
+
+@end
+
+@implementation IBConnect (JsonMapping)
+
+@dynamic jmMessageType;
+@dynamic jmProtocolLevel;
+@dynamic jmProtocolName;
+@dynamic jmWillFlag;
+@dynamic jmUsernameFlag;
+@dynamic jmPasswordFlag;
+
++ (JSONKeyMapper *)keyMapper {
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"jmMessageType"     : @"packet",
+                                                                   @"jmProtocolLevel"   : @"protocolLevel",
+                                                                   @"jmProtocolName"    : @"protocolName",
+                                                                   @"jmWillFlag"        : @"willFlag",
+                                                                   @"jmUsernameFlag"    : @"usernameFlag",
+                                                                   @"jmPasswordFlag"    : @"passwordFlag",
+                                                                   }];
+}
+
+- (NSInteger) jmMessageType {
+    return [self getMessageType];
+}
+
+- (NSInteger) jmProtocolLevel {
+    return self->_protocolLevel;
+}
+
+- (NSString *) jmProtocolName {
+    return [self getProtocolName];
+}
+
+- (BOOL) jmWillFlag {
+    return [self isWillFlag];
+}
+
+- (BOOL) jmUsernameFlag {
+    return [self isUsernameFlag];
+}
+
+- (BOOL) jmPasswordFlag {
+    return [self isPasswordFlag];
+}
+
+- (void) setJmPasswordFlag:(BOOL)jmPasswordFlag { }
+
+- (void) setJmUsernameFlag:(BOOL)jmUsernameFlag { }
+
+- (void) setJmWillFlag:(BOOL)jmWillFlag { }
+
+- (void) setJmProtocolName:(NSString *)jmProtocolName { }
+
+- (void) setJmProtocolLevel:(NSInteger)jmProtocolLevel { }
+
+- (void) setJmMessageType:(NSInteger)jmMessageType { }
+
+@end

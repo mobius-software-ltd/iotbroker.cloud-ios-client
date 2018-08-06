@@ -20,7 +20,8 @@
 
 #import "IBMessage.h"
 #import "IBMQTTEnums.h"
+#import <JSONModel/JSONModel.h>
 
-@interface IBDisconnect : NSObject <IBMessage>
+@interface IBDisconnect : JSONModel <IBMessage>
 
 @end

@@ -21,11 +21,12 @@
 #import <Foundation/Foundation.h>
 #import "IBTopic.h"
 #import "IBQoS.h"
+#import <JSONModel/JSONModel.h>
 
-@interface IBMQTTTopic : NSObject <IBTopic>
+@interface IBMQTTTopic : JSONModel <IBTopic>
 
 @property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) IBQoS *qos;
+@property (strong, nonatomic) IBQoS<Ignore> *qos;
 
 - (instancetype) initWithName : (NSString *) name andQoS : (IBQoS *) qos;
 
