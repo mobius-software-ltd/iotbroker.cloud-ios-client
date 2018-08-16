@@ -106,7 +106,7 @@ static NSString *const IBKeyPasswordCell        = @"keyPasswordCell";
         self.navigationItem.hidesBackButton = true;
     }
     
-    self->_qosPickerView = [[IBPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 128, self.view.frame.size.width, 128)];
+    self->_qosPickerView = [[IBPickerView alloc] initWithFrame:CGRectZero];
     self->_qosPickerView.ibDelegate = self;
     
     [self->_qosPickerView setValues:@[@0, @1, @2]];
@@ -217,6 +217,11 @@ static NSString *const IBKeyPasswordCell        = @"keyPasswordCell";
     [self.tableView reloadData];
 }
 
+- (void)doneButtonClicker {
+    self.qosTextField.text = self.qosTextField.text.length == 0 ? @"0" : self.qosTextField.text;
+    [self.qosTextField resignFirstResponder];
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -316,6 +321,7 @@ static NSString *const IBKeyPasswordCell        = @"keyPasswordCell";
         self.qosTextField = ((UITextField *)cell.control);
         self.qosTextField.delegate = self;
         [self.qosTextField setInputView:self->_qosPickerView];
+        [self.qosTextField setInputAccessoryView:[IBPickerView toolbarWithTarget:self selector:@selector(doneButtonClicker)]];
     } else if ([cellIdentifier isEqualToString:IBSecurityKeyCell]) {
         self.securityKeyTextField = ((UITextField *)cell.control);
         self.securityKeyTextField.delegate = self;

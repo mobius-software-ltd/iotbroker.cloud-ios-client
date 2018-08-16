@@ -37,4 +37,6 @@
 
 - (void) setValues : (NSArray *) array;
 
++ (UIToolbar *)toolbarWithTarget: (id)target selector:(SEL)selector;
+
 @end

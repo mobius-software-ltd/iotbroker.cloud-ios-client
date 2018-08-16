@@ -47,8 +47,19 @@
     self.dataSource = self;
 }
 
-- (void) setValues : (NSArray *) array {
++ (UIToolbar *)toolbarWithTarget: (id)target selector:(SEL)selector {
+    UIToolbar *toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 50)];
+    toolbar.tintColor = [UIColor colorWithRed:39.0/255.0 green:164.0/255.0 blue:217.0/255.0 alpha:1.0];
+    toolbar.backgroundColor = [UIColor whiteColor];
+    toolbar.items = [NSArray arrayWithObjects:
+                     [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                     [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:target action:selector],
+                     nil];
+    [toolbar sizeToFit];
+    return toolbar;
+}
 
+- (void) setValues : (NSArray *) array {
     self->_values = [NSArray arrayWithArray:array];
 }
 

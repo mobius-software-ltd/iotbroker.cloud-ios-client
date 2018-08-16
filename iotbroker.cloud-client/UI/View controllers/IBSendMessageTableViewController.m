@@ -49,11 +49,12 @@
     self.topicTextField.delegate = self;
     self.qosTextField.delegate = self;
     
-    self->_qosPickerView = [[IBPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 128, self.view.frame.size.width, 128)];
+    self->_qosPickerView = [[IBPickerView alloc] initWithFrame:CGRectZero];
     self->_qosPickerView.ibDelegate = self;
     
     [self->_qosPickerView setValues:@[@0, @1, @2]];
     [self.qosTextField setInputView:self->_qosPickerView];
+    [self.qosTextField setInputAccessoryView:[IBPickerView toolbarWithTarget:self selector:@selector(doneButtonClicker)]];
     [self.delegate sendMessageTableViewControllerDidLoad:self];
 }
 
@@ -61,6 +62,11 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.topItem.title = @"Send message";
     [self.delegate sendMessageTableViewControllerDidLoad:self];
+}
+
+- (void)doneButtonClicker {
+    self.qosTextField.text = self.qosTextField.text.length == 0 ? @"0" : self.qosTextField.text;
+    [self.qosTextField resignFirstResponder];
 }
 
 - (IBAction) sendButtonClick : (id) sender {

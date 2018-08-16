@@ -155,10 +155,6 @@
 
 #pragma mark - IBTopicsListControllerDelegate -
 
-- (void)topicsListTableViewControllerDidLoad:(IBTopicsListTableViewController *)topicsListTableViewController {
-    topicsListTableViewController.topics = [self->_accountManager getTopicsForCurrentAccount];
-}
-
 - (void) topicsListTableViewControllerDidClickAddButton : (IBTopicsListTableViewController *) topicsListTableViewController {
     [self.tabBarDelegate showAddTopicViewControllerOnViewController:self andSetDelegate:self];
 }
@@ -171,13 +167,19 @@
 #pragma mark - IBAddTopicDelegate -
 
 - (void) addTopicViewControllerClickOnAddButton : (IBAddTopicViewController *) controller {
-    Topic *topic = [self->_accountManager topic];
-    topic.topicName = controller.topicName;
-    topic.qos = (int32_t)controller.qosValue;
-    self->_progressHUD = [self.tabBarDelegate getPreparedProgressHUD];
-    self->_progressHUD.parentController = self;
-    [self showProgressWithMessage:@"Subscription..."];
-    [self->_requests subscribeToTopic:topic];
+    
+    if (![self->_accountManager isTopicExist:controller.topicName]) {
+        Topic *topic = [self->_accountManager topic];
+        topic.topicName = controller.topicName;
+        topic.qos = (int32_t)controller.qosValue;
+        self->_progressHUD = [self.tabBarDelegate getPreparedProgressHUD];
+        self->_progressHUD.parentController = self;
+        [self showProgressWithMessage:@"Subscription..."];
+        [self->_requests subscribeToTopic:topic];
+    } else {
+        IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:@"You have already subscribe on this topic" preferredStyle:UIAlertControllerStyleActionSheet];
+        [alert pushToNavigationControllerStack:self.navigationController];
+    }
 }
 
 #pragma mark - IBSendMessageControllerDelegate -
@@ -192,8 +194,9 @@
         [self->_requests publishMessage:message];
         if (message.qos != IBAtMostOnce) {
             [self showProgressWithMessage:@"Publishion..."];
+        } else {
+            [self->_accountManager addMessageForDefaultAccount:message];
         }
-
         return true;
     } else {
         IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:@"Please fill in all fields" preferredStyle:UIAlertControllerStyleActionSheet];
@@ -220,6 +223,12 @@
 - (void) connackWithCode : (NSInteger) returnCode {
     if (returnCode == 0) {
         [self closeProgress];
+        Account *account = [self->_accountManager readDefaultAccount];
+        if (account.cleanSession) {
+            [self->_accountManager cleanSessionData];
+        } else {
+            [self topicsListTableViewController].topics = [self->_accountManager getTopicsForCurrentAccount];
+        }
     }
 }
 
@@ -233,7 +242,7 @@
     [self closeProgress];
     [self addTopicName:name qos:qos content:content isDup:dup isRetain:retainFlag isIncoming:false];
 
-    IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Perfect" message:@"Message has been sending" preferredStyle:UIAlertControllerStyleActionSheet];
+    IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Perfect" message:@"Message has been send" preferredStyle:UIAlertControllerStyleActionSheet];
     [alert pushToNavigationControllerStack:self.navigationController];
 }
 
@@ -250,13 +259,23 @@
     [self closeProgress];
     [self addTopicName:name qos:qos content:content isDup:dup isRetain:retainFlag isIncoming:false];
 
-    IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Perfect" message:@"Message has been sending" preferredStyle:UIAlertControllerStyleActionSheet];
+    IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Perfect" message:@"Message has been send" preferredStyle:UIAlertControllerStyleActionSheet];
     [alert pushToNavigationControllerStack:self.navigationController];
 }
 
 - (void) subackForSubscribeWithTopicName:(NSString *)name qos:(NSInteger)qos returnCode:(NSInteger)returnCode {
-    [self closeProgress];
 
+    if (returnCode == IBFailure) {
+        [self closeProgress];
+        IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:@"Failure while subscribe" preferredStyle:UIAlertControllerStyleActionSheet];
+        [alert pushToNavigationControllerStack:self.navigationController];
+        return;
+    }
+
+    [self->_accountManager deleteTopicByTopicName:name];
+    
+    [self closeProgress];
+    
     IBTopicsListTableViewController *topic = [self topicsListTableViewController];
     Topic *item = [self->_accountManager topic];
     item.topicName = name;

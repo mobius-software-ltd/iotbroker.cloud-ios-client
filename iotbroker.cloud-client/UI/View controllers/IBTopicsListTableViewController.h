@@ -27,7 +27,6 @@
 
 - (void) topicsListTableViewControllerDidClickAddButton : (IBTopicsListTableViewController *) topicsListTableViewController;
 - (void) topicsListTableViewController : (IBTopicsListTableViewController *) topicsListTableViewController didClickDeleteButtonWithTopic : (Topic *) topic;
-- (void) topicsListTableViewControllerDidLoad : (IBTopicsListTableViewController *) topicsListTableViewController;
 
 @end
 

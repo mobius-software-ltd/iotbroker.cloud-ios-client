@@ -104,6 +104,7 @@
     
     IBSubscribe *subscribe = [[IBSubscribe alloc] initWithPacketID:0];
     subscribe.topics = [NSMutableArray<IBMQTTTopic *> <IBMQTTTopic> arrayWithObject:topicObject];
+        
     [self->_timers startMessageTimer:subscribe];
 }
 
@@ -120,6 +121,7 @@
 }
 
 - (void) disconnectWithDuration : (NSInteger) duration {
+    [self->_timers stopAllTimers];
     [self sendMessage:[[IBDisconnect alloc] init]];
 }
 

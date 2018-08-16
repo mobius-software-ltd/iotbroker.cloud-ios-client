@@ -51,4 +51,11 @@
 - (NSArray *) getTopicsForCurrentAccount;
 - (NSArray *) getMessagesForCurrentAccount;
 
+- (void) deleteAllTopicsForCurrentAccount;
+- (void) deleteAllMessagesForCurrentAccount;
+
+- (void) cleanSessionData;
+
+- (BOOL) isTopicExist: (NSString *)name;
+
 @end

@@ -37,13 +37,11 @@ static NSString *const IBAddTopicPopover = @"IBAddTopicPopover";
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     UITableView *tableView = (UITableView *)self.view;
     tableView.backgroundView = imageView;
-    [self.delegate topicsListTableViewControllerDidLoad:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.topItem.title = @"Topics list";
-    [self.delegate topicsListTableViewControllerDidLoad:self];
 }
 
 - (IBAction) addTopicButtonDidClick:(id)sender {

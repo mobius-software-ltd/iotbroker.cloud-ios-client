@@ -233,4 +233,32 @@
     return nil;
 }
 
+- (void) deleteAllTopicsForCurrentAccount {
+    
+    for (Topic *topic in [self getTopicsForCurrentAccount]) {
+        [self->_coreDataManager deleteEntity:topic];
+    }
+}
+
+- (void) deleteAllMessagesForCurrentAccount {
+    
+    for (Message *message in [self getMessagesForCurrentAccount]) {
+        [self->_coreDataManager deleteEntity:message];
+    }
+}
+
+- (void) cleanSessionData {
+    [self deleteAllTopicsForCurrentAccount];
+    [self deleteAllMessagesForCurrentAccount];
+}
+
+- (BOOL) isTopicExist: (NSString *)name {
+    for (Topic *topic in [self getTopicsForCurrentAccount]) {
+        if ([topic.topicName isEqualToString:name]) {
+            return true;
+        }
+    }
+    return false;
+}
+
 @end

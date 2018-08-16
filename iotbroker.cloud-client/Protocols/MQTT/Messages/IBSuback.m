@@ -41,7 +41,7 @@
 
 - (BOOL) isValidCode : (IBSubackCode) code {
     
-    if (code == IBAccepted_QoS0 || code == IBAccepted_QoS1 || code == IBAccepted_QoS2) {
+    if (code == IBAccepted_QoS0 || code == IBAccepted_QoS1 || code == IBAccepted_QoS2 || code == IBFailure) {
         return true;
     }
     return false;

@@ -38,13 +38,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self->_pickerView = [[IBPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 128, self.view.frame.size.width, 128)];
+    self->_pickerView = [[IBPickerView alloc] initWithFrame:CGRectZero];
     self->_pickerView.ibDelegate = self;
     
     [self->_pickerView setValues:@[@0,@1,@2]];
     
     self.qosValueTextField.delegate = self;
     [self.qosValueTextField setInputView:self->_pickerView];
+    [self.qosValueTextField setInputAccessoryView:[IBPickerView toolbarWithTarget:self selector:@selector(doneButtonClicker)]];
     
     self.topicTextField.delegate = self;
     
@@ -55,6 +56,11 @@
     self.mainView.layer.cornerRadius = radius;
     
     [self showAnimate];
+}
+
+- (void)doneButtonClicker {
+    self.qosValueTextField.text = self.qosValueTextField.text.length == 0 ? @"0" : self.qosValueTextField.text;
+    [self.qosValueTextField resignFirstResponder];
 }
 
 - (IBAction) addButtonClick:(id)sender {
