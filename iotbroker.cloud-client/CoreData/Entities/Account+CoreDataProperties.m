@@ -52,7 +52,7 @@
 - (BOOL) isValid {
     
     if (self.protocol == IBMqttProtocolType) {
-        if (self.username.length == 0 || self.password.length == 0 || self.clientID.length == 0 || self.serverHost.length == 0 || self.port == 0 || self.keepalive == 0 || self.will.length == 0 || self.willTopic.length == 0) {
+        if (self.username.length == 0 || self.password.length == 0 || self.clientID.length == 0 || self.serverHost.length == 0 || self.port == 0 || self.keepalive <= 0 || self.keepalive > 65535 || self.will.length == 0 || self.willTopic.length == 0) {
             return false;
         }
     } else if (self.protocol == IBMqttSNProtocolType) {
