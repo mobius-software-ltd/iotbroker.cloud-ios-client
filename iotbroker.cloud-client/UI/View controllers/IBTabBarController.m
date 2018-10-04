@@ -28,6 +28,7 @@
 #import "IBCoAP.h"
 #import "IBAMQP.h"
 #import "IBWebsocketMQTT.h"
+#import "IBMQTTEnums.h"
 
 @interface IBTabBarController () <IBTopicsListControllerDelegate, IBSendMessageControllerDelegate, IBAddTopicDelegate, IBMessagesControllerDelegate, IBResponsesDelegate>
 
@@ -208,7 +209,7 @@
 #pragma mark - IBMessagesControllerDelegate -
 
 - (void)messagesListTableViewControllerDidLoad:(IBMessagesListTableViewController *)messagesListTableViewController {
-    [messagesListTableViewController setMessages:[self->_accountManager getMessagesForCurrentAccount]];
+    [messagesListTableViewController setMessages:[self->_accountManager messagesForCurrentAccount]];
 }
 
 #pragma mark - IBResponsesDelegate -
@@ -227,7 +228,7 @@
         if (account.cleanSession) {
             [self->_accountManager cleanSessionData];
         } else {
-            [self topicsListTableViewController].topics = [self->_accountManager getTopicsForCurrentAccount];
+            [self topicsListTableViewController].topics = [self->_accountManager topicsForCurrentAccount];
         }
     }
 }
@@ -281,15 +282,14 @@
     item.topicName = name;
     item.qos = (int32_t)qos;
     [self->_accountManager addTopicToCurrentAccount:item];
-    [topic setTopics:[self->_accountManager getTopicsForCurrentAccount]];
+    [topic setTopics:[self->_accountManager topicsForCurrentAccount]];
 }
 
 - (void) unsubackForUnsubscribeWithTopicName:(NSString *)name {
     [self closeProgress];
-    
     IBTopicsListTableViewController *topic = [self topicsListTableViewController];
     [self->_accountManager deleteTopicByTopicName:name];
-    topic.topics = [self->_accountManager getTopicsForCurrentAccount];
+    topic.topics = [self->_accountManager topicsForCurrentAccount];
 }
 
 - (void) pingresp {
@@ -297,7 +297,11 @@
 }
 
 - (void) disconnectWithDuration : (NSInteger) duration {
-    // Disconnect
+    if ([self.navigationController topViewController] != nil) {
+        [self->_accountManager unselectDefaultAccount];
+        [self.navigationController popToRootViewControllerAnimated:true];
+        [self.tabBarDelegate tabBarControllerDidClickOnLogoutButton:self];
+    }
 }
 
 - (void)timeout {

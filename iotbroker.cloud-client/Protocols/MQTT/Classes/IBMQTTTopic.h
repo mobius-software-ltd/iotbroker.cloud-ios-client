@@ -30,4 +30,6 @@
 
 - (instancetype) initWithName : (NSString *) name andQoS : (IBQoS *) qos;
 
++ (nullable instancetype) mqttTopic:(NSString *)name qos:(NSInteger)qos;
+
 @end

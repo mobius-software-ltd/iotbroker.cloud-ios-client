@@ -32,6 +32,7 @@
 @required
 - (void) prepareToSendingRequest;
 - (BOOL) sendMessage : (id<IBMessage>) message;
+- (void) connectionTimeout;
 
 @optional
 

@@ -19,7 +19,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "IBMQTT-SNEnums.h"
 #import "IBMessage.h"
 
 static NSInteger const IBMQTTSNProtocolID = 1;

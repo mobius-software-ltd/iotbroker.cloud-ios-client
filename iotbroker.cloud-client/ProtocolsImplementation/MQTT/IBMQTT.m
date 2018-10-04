@@ -25,7 +25,6 @@
 
 @interface IBMQTT () <IBInternetProtocolDelegate>
 
-@property (strong, nonatomic) NSTimer *timeoutTimer;
 @property (strong, nonatomic) IBTimersMap *timers;
 @property (assign, nonatomic) NSInteger keepalive;
 @property (strong, nonatomic) NSMutableDictionary *publishPackets;
@@ -40,7 +39,7 @@
     self = [super init];
     if (self != nil) {
         self->_timers = [[IBTimersMap alloc] initWithRequest:self];
-        self->_internetProtocol = [[IBSocketTransport alloc] initWithHost:host andPort:port];
+        self->_internetProtocol = [[IBSocketTransport alloc] initWithHost:host andPort:1883];
         self->_internetProtocol.delegate = self;
         self->_delegate = delegate;
         self->_publishPackets = [NSMutableDictionary dictionary];
@@ -71,15 +70,21 @@
     return false;
 }
 
+- (void)connectionTimeout {
+    [self.delegate timeout];
+}
+
 - (void)connectWithAccount:(Account *)account {
     IBQoS *QoS = [[IBQoS alloc] initWithValue:account.qos];
-    IBMQTTTopic *topic = [[IBMQTTTopic alloc] initWithName:account.willTopic andQoS:QoS];
-    IBWill *willObject = [[IBWill alloc] initWithTopic:topic content:[account.will dataUsingEncoding:NSUTF8StringEncoding] andIsRetain:account.isRetain];
+    IBWill *willObject = nil;
+    if (account.will.length > 0 && account.willTopic.length > 0) {
+        IBMQTTTopic *topic = [[IBMQTTTopic alloc] initWithName:account.willTopic andQoS:QoS];
+        willObject = [[IBWill alloc] initWithTopic:topic content:[account.will dataUsingEncoding:NSUTF8StringEncoding] andIsRetain:account.isRetain];
+    }
     IBConnect *connect = [[IBConnect alloc] initWithUsername:account.username password:account.password clientID:account.clientID
                                                    keepalive:account.keepalive cleanSession:account.cleanSession andWill:willObject];
     self->_keepalive = account.keepalive;
     [self->_timers startConnectTimer:connect];
-    [self startTimeoutTimer];
 }
 
 - (void) publishMessage:(Message *)message {
@@ -157,7 +162,6 @@
             {
                 IBConnack *connack = (IBConnack *)message;
                 if (connack.returnCode == IBAccepted) {
-                    [self stopTimeoutTimer];
                     [self->_timers stopConnectTimer];
                     [self.delegate connackWithCode:connack.returnCode];
                     [self->_timers startPingTimerWithKeepAlive:self->_keepalive];
@@ -241,21 +245,6 @@
 }
 
 #pragma mark - Private methods -
-
-- (void) startTimeoutTimer {
-    self->_timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:IBTimeoutTimerValue target:self selector:@selector(timeoutTimerMethod:) userInfo:nil repeats:false];
-}
-
-- (void) stopTimeoutTimer {
-    [self->_timeoutTimer invalidate];
-    self->_timeoutTimer = nil;
-}
-
-- (void) timeoutTimerMethod : (NSTimer *) timer {
-    
-    [self->_timers stopAllTimers];
-    [self.delegate timeout];
-}
 
 - (NSData *) encodeMessage : (id<IBMessage>) message {
     

@@ -29,4 +29,6 @@
 
 - (instancetype) initWithValue : (NSInteger) value andQoS : (IBQoS *) qos;
 
++ (int) topicIdByEncodedValue:(NSData *)data;
+
 @end

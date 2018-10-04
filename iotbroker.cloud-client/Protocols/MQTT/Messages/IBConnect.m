@@ -19,6 +19,7 @@
  */
 
 #import "IBConnect.h"
+#import "IBMQTTEnums.h"
 
 static NSString *const IBProtocolName = @"MQTT";
 static Byte const IBDefaultProtocolLevel = 4;

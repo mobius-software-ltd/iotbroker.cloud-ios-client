@@ -19,6 +19,7 @@
  */
 
 #import "IBSNConnect.h"
+#import "IBMQTT-SNEnums.h"
 
 @implementation IBSNConnect
 

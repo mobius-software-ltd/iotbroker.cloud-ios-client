@@ -34,6 +34,14 @@ static NSString *const IBSeparator = @":";
     return self;
 }
 
++ (nullable instancetype) mqttTopic:(NSString *)name qos:(NSInteger)qos {
+    if (name.length > 0) {
+        IBQoS *QoS = [[IBQoS alloc] initWithValue:qos];
+        return [[IBMQTTTopic alloc] initWithName:name andQoS:QoS];
+    }
+    return nil;
+}
+
 - (IBSNTopicType *)getType {
     return nil;
 }

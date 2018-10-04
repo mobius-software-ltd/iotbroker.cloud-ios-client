@@ -48,8 +48,8 @@
 
 - (void) addMessageForDefaultAccount : (Message *) message;
 
-- (NSArray *) getTopicsForCurrentAccount;
-- (NSArray *) getMessagesForCurrentAccount;
+- (NSArray<Topic *> *) topicsForCurrentAccount;
+- (NSArray<Message *> *) messagesForCurrentAccount;
 
 - (void) deleteAllTopicsForCurrentAccount;
 - (void) deleteAllMessagesForCurrentAccount;
@@ -57,5 +57,7 @@
 - (void) cleanSessionData;
 
 - (BOOL) isTopicExist: (NSString *)name;
+
+- (void) deleteAccount:(Account *)account;
 
 @end

@@ -19,7 +19,6 @@
  */
 
 #import "IBCountableMessage.h"
-#import "IBMQTTEnums.h"
 #import "IBMQTTTopic.h"
 
 @interface IBPublish : IBCountableMessage

@@ -19,11 +19,10 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "IBMQTT-SNEnums.h"
 #import "IBCountableMessage.h"
 #import "IBTopic.h"
 
-@interface IBSNPublish : IBCountableMessage
+@interface IBSNPublish : IBCountableMessage <NSCopying>
 
 @property (strong, nonatomic) id<IBTopic> topic;
 @property (strong, nonatomic) NSData *content;

@@ -83,7 +83,6 @@
 		224BEFD71EEAE19C0033961F /* IBAMQPTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFD61EEAE19C0033961F /* IBAMQPTransfer.m */; };
 		22664DCC1EF9A1FA007E7438 /* IBAMQPTransferMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 22664DCB1EF9A1FA007E7438 /* IBAMQPTransferMap.m */; };
 		227E3DBB210F5DBF0028C899 /* P12FileExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 227E3DBA210F5DBF0028C899 /* P12FileExtractor.m */; };
-		227E3E2F210F5FA20028C899 /* libwolfssl_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 227E3DBD210F5FA00028C899 /* libwolfssl_ios.a */; };
 		227E3E33210F601B0028C899 /* IBDtls.m in Sources */ = {isa = PBXBuildFile; fileRef = 227E3E32210F601B0028C899 /* IBDtls.m */; };
 		227E3E37210F60EA0028C899 /* IBDTLSSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 227E3E36210F60EA0028C899 /* IBDTLSSocket.m */; };
 		2289A1A81EE7E8EF009B98AA /* IBAMQPTLVList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1A71EE7E8EF009B98AA /* IBAMQPTLVList.m */; };
@@ -108,6 +107,7 @@
 		2289A1E91EE84E03009B98AA /* IBAMQPPing.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1E81EE84E03009B98AA /* IBAMQPPing.m */; };
 		2289A1EC1EE84F05009B98AA /* IBAMQPProtoHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1EB1EE84F05009B98AA /* IBAMQPProtoHeader.m */; };
 		2289A1EF1EE8520A009B98AA /* IBAMQPWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1EE1EE8520A009B98AA /* IBAMQPWrapper.m */; };
+		229A68E021624A2900C547C9 /* libwolfssl_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 229A68DF21624A2900C547C9 /* libwolfssl_ios.a */; };
 		229BF78120EA352900407C60 /* IBCoOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 229BF78020EA352900407C60 /* IBCoOption.m */; };
 		22C531A31EAF90D2007F57A8 /* IBPuback.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531871EAF90D2007F57A8 /* IBPuback.m */; };
 		22C531A41EAF90D2007F57A8 /* IBConnack.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531891EAF90D2007F57A8 /* IBConnack.m */; };
@@ -371,7 +371,6 @@
 		22664DCB1EF9A1FA007E7438 /* IBAMQPTransferMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPTransferMap.m; sourceTree = "<group>"; };
 		227E3DB9210F5DBF0028C899 /* P12FileExtractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = P12FileExtractor.h; sourceTree = "<group>"; };
 		227E3DBA210F5DBF0028C899 /* P12FileExtractor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = P12FileExtractor.m; sourceTree = "<group>"; };
-		227E3DBD210F5FA00028C899 /* libwolfssl_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwolfssl_ios.a; sourceTree = "<group>"; };
 		227E3DC0210F5FA20028C899 /* callbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = callbacks.h; sourceTree = "<group>"; };
 		227E3DC1210F5FA20028C899 /* certs_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = certs_test.h; sourceTree = "<group>"; };
 		227E3DC2210F5FA20028C899 /* crl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crl.h; sourceTree = "<group>"; };
@@ -531,6 +530,7 @@
 		2289A1EB1EE84F05009B98AA /* IBAMQPProtoHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPProtoHeader.m; sourceTree = "<group>"; };
 		2289A1ED1EE8520A009B98AA /* IBAMQPWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPWrapper.h; sourceTree = "<group>"; };
 		2289A1EE1EE8520A009B98AA /* IBAMQPWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPWrapper.m; sourceTree = "<group>"; };
+		229A68DF21624A2900C547C9 /* libwolfssl_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwolfssl_ios.a; sourceTree = "<group>"; };
 		229BF77F20EA352900407C60 /* IBCoOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBCoOption.h; sourceTree = "<group>"; };
 		229BF78020EA352900407C60 /* IBCoOption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBCoOption.m; sourceTree = "<group>"; };
 		22C531811EAF8AC3007F57A8 /* IBMQTTMessages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBMQTTMessages.h; sourceTree = "<group>"; };
@@ -729,7 +729,7 @@
 			files = (
 				22F2C6E21DFAC397004FB400 /* CoreData.framework in Frameworks */,
 				015F422EA1D7A5DEA8470010 /* Pods_iotbroker_cloud_client.framework in Frameworks */,
-				227E3E2F210F5FA20028C899 /* libwolfssl_ios.a in Frameworks */,
+				229A68E021624A2900C547C9 /* libwolfssl_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1250,6 +1250,7 @@
 		227E3DBE210F5FA20028C899 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				229A68DF21624A2900C547C9 /* libwolfssl_ios.a */,
 				227E3DBF210F5FA20028C899 /* cyassl */,
 				227E3DF6210F5FA20028C899 /* wolfssl */,
 			);
@@ -2155,7 +2156,6 @@
 			isa = PBXGroup;
 			children = (
 				227E3DBE210F5FA20028C899 /* include */,
-				227E3DBD210F5FA00028C899 /* libwolfssl_ios.a */,
 				22C5C0271DF061CE00790EF6 /* iotbroker.cloud-client */,
 				22C5C0441DF061CE00790EF6 /* iotbroker.cloud-clientTests */,
 				22C5C04F1DF061CE00790EF6 /* iotbroker.cloud-clientUITests */,
@@ -3073,6 +3073,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker.cloud.client";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3098,6 +3099,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker.cloud.client";
 				PRODUCT_NAME = "$(TARGET_NAME)";

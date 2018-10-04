@@ -19,6 +19,7 @@
  */
 
 #import "IBSNPublish.h"
+#import "IBMQTT-SNEnums.h"
 
 @implementation IBSNPublish
 
@@ -56,6 +57,10 @@
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"\n - packetID = %zd\n - topic = %@\n - content = %@\n - dup = %@\n - retainFlag = %@", self.packetID, self->_topic, [[NSString alloc] initWithData:self->_content encoding:NSUTF8StringEncoding], self->_dup?@"yes":@"no", self->_retainFlag?@"yes":@"no"];
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    return [[IBSNPublish alloc] initWithPacketID:self.packetID topic:self.topic content:self.content dup:self.dup retainFlag:self.retainFlag];
 }
 
 @end

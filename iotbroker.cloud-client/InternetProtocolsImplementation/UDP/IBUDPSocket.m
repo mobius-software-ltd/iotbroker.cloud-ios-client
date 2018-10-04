@@ -105,12 +105,18 @@
 }
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data fromAddress:(NSData *)address withFilterContext:(nullable id)filterContext {
-    [self.delegate internetProtocol:self didReceiveMessage:data];
+    [self.delegate internetProtocol:self didReceiveMessage:[self addLastCCharacter:data]];
 }
 
 - (void)udpSocketDidClose:(GCDAsyncUdpSocket *)sock withError:(NSError *)error {
     self->_state = IBTransportClosed;
     [self.delegate internetProtocolDidStop:self];
+}
+
+- (NSData *)addLastCCharacter:(NSData *) data {
+    char *bytes = (char *)[data bytes];
+    bytes[data.length] = '\0';
+    return [NSData dataWithBytes:bytes length:data.length];
 }
 
 @end

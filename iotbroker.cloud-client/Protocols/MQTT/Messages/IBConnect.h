@@ -19,7 +19,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "IBMQTTEnums.h"
 #import "IBMessage.h"
 #import "IBWill.h"
 #import <JSONModel/JSONModel.h>

@@ -31,6 +31,10 @@
     return self;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@ : qos %zd", self->_value, self->_qos.value];
+}
+
 - (IBSNTopicType *)getType {
     return [[IBSNTopicType alloc] initWithValue:IBNamedTopicType];
 }

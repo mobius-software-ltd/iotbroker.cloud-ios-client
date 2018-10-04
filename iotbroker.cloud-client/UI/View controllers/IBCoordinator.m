@@ -64,8 +64,7 @@ static NSString *const IBProgressHUDIdentifier = @"IBProgressHUDViewControllerId
 
 #pragma mark - API's methods -
 
-- (void)start {
-    
+- (void)start {    
     IBLoadingViewController *loading = (IBLoadingViewController *)[self controllerWithIdentifier:IBLoadingIdentifier];
     [loading pushViewController:self->_navigationController animated:false withCompletionHandler:^(BOOL animated) {
         [self->_navigationController popViewControllerAnimated:animated];
@@ -90,12 +89,12 @@ static NSString *const IBProgressHUDIdentifier = @"IBProgressHUDViewControllerId
 }
 
 - (void) showAccountsControllerWithAccounts : (NSArray<Account *> *) accountsArray {
-    
+
     IBAccountListViewController *accounts = (IBAccountListViewController *)[self controllerWithIdentifier:IBAccountListIdentifier];
     accounts.delegate = self;
     accounts.accounts = accountsArray;
     UIViewController *controller = [self topViewController];
-    
+
     [controller addChildViewController:accounts];
     accounts.view.frame = controller.view.bounds;
     [controller.view addSubview:accounts.view];
@@ -123,6 +122,11 @@ static NSString *const IBProgressHUDIdentifier = @"IBProgressHUDViewControllerId
 
 - (void) accountListViewControllerDidClickToCreateNewAccount:(IBAccountListViewController *)accountList {
     [self showLoginController];
+}
+
+- (void)accountListViewController:(IBAccountListViewController *)accountList willRemoveAccount:(Account *)account {
+    [self->_accountManager deleteAccount:account];
+    [accountList setAccounts:[self->_accountManager accounts]];
 }
 
 #pragma mark - IBLoginControllerDelegate -

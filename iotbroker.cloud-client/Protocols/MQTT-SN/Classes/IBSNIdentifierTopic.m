@@ -31,6 +31,12 @@
     return self;
 }
 
++ (int) topicIdByEncodedValue:(NSData *)data {
+    short *array = malloc(sizeof(short));
+    [data getBytes:array length:sizeof(short)];
+    return htons(array[0]);
+}
+
 - (IBSNTopicType *)getType {
     return [[IBSNTopicType alloc] initWithValue:IBIDTopicType];
 }

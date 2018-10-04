@@ -19,6 +19,7 @@
  */
 
 #import "IBPublish.h"
+#import "IBMQTTEnums.h"
 
 @implementation IBPublish
 

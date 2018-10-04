@@ -147,6 +147,8 @@ static NSString *const IBKeyPasswordCell        = @"keyPasswordCell";
         self->_settingsSectionCells = [NSMutableArray array];
         [self->_settingsSectionCells addObject:IBCleanSessionCell];
         [self->_settingsSectionCells addObject:IBKeepaliveCell];
+        [self->_settingsSectionCells addObject:IBWillCell];
+        [self->_settingsSectionCells addObject:IBWillTopicCell];
         [self->_settingsSectionCells addObject:IBRetainCell];
         [self->_settingsSectionCells addObject:IBQoSCell];
     } else if (type == IBCoAPProtocolType) {

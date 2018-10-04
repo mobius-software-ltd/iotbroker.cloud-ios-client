@@ -20,6 +20,10 @@
 
 #import "IBAccountManager.h"
 
+NSComparisonResult dateSort(Message *m1, Message *m2, void *context) {
+    return [m2.date compare:m1.date];
+}
+
 @implementation IBAccountManager
 
 - (id) init {
@@ -129,11 +133,8 @@
 }
 
 - (BOOL) isAccountAlreadyExist : (Account *) account {
-    
     BOOL result = false;
-    
     NSArray *accounts = [self->_coreDataManager getEntities:IBAccountEntity];
-    
     if (accounts.count != 0) {
         for (Account *item in accounts) {
             if ([item.clientID isEqualToString:account.clientID]) {
@@ -145,13 +146,10 @@
 }
 
 - (void) addTopicToCurrentAccount : (Topic *) topic {
-
     if (topic != nil) {
         Topic *topicToAdd = (Topic *)[self->_coreDataManager entityForInserting:IBTopicEntity];
-        
         [topicToAdd setTopicName:topic.topicName];
         [topicToAdd setQos:(int32_t)topic.qos];
-        
         Account *currentAccount = [self readDefaultAccount];
         if ([self readDefaultAccount] != nil) {
             [currentAccount addTopicsObject:topicToAdd];
@@ -161,11 +159,8 @@
 }
 
 - (void) deleteTopicByTopicName : (NSString *) name {
-
     if (name != nil) {
-        
         NSArray *topics = [self->_coreDataManager getEntities:IBTopicEntity];
-        
         for (Topic *item in topics) {
             if ([item.topicName isEqualToString:name]) {
                 [self->_coreDataManager deleteEntity:item];
@@ -176,11 +171,9 @@
 }
 
 - (void) unselectDefaultAccount {
-    
     for (Account *account in [self accounts]) {
         account.isDefault = false;
     }
-    
     [self->_coreDataManager save];
 }
 
@@ -193,6 +186,7 @@
         [messageToAdd setQos:(int32_t)message.qos];
         [messageToAdd setTopicName:message.topicName];
         [messageToAdd setIsIncoming:message.isIncoming];
+        [messageToAdd setDate:[NSDate date]];
         
         Account *currentAccount = [self readDefaultAccount];
         if ([self readDefaultAccount] != nil) {
@@ -203,48 +197,20 @@
     }
 }
 
-- (NSArray *) getTopicsForCurrentAccount {
-
-    Account *currentAccount = [self readDefaultAccount];
-    
-    if (currentAccount != nil) {
-        NSMutableArray *topics = nil;
-        NSArray *array = currentAccount.topics.allObjects;
-        
-        if (array.count != 0) {
-            topics = [NSMutableArray array];
-        }
-        
-        for (Topic *item in array) {
-            [topics addObject:item];
-        }
-        return topics;
-    }
-    return nil;
+- (NSArray<Topic *> *) topicsForCurrentAccount {
+    return [self topicsForAccount:[self readDefaultAccount]];
 }
 
-- (NSArray *) getMessagesForCurrentAccount {
-
-    Account *currentAccount = [self readDefaultAccount];
-    
-    if (currentAccount != nil) {
-        return currentAccount.messages.allObjects;
-    }
-    return nil;
+- (NSArray<Message *> *) messagesForCurrentAccount {
+    return [self messagesForAccount:[self readDefaultAccount]];
 }
 
 - (void) deleteAllTopicsForCurrentAccount {
-    
-    for (Topic *topic in [self getTopicsForCurrentAccount]) {
-        [self->_coreDataManager deleteEntity:topic];
-    }
+    [self deleteTopicsForAccount:[self readDefaultAccount]];
 }
 
 - (void) deleteAllMessagesForCurrentAccount {
-    
-    for (Message *message in [self getMessagesForCurrentAccount]) {
-        [self->_coreDataManager deleteEntity:message];
-    }
+    [self deleteMessagesForAccount:[self readDefaultAccount]];
 }
 
 - (void) cleanSessionData {
@@ -253,12 +219,47 @@
 }
 
 - (BOOL) isTopicExist: (NSString *)name {
-    for (Topic *topic in [self getTopicsForCurrentAccount]) {
+    for (Topic *topic in [self topicsForCurrentAccount]) {
         if ([topic.topicName isEqualToString:name]) {
             return true;
         }
     }
     return false;
+}
+
+- (void) deleteAccount:(Account *)account {
+    [self deleteTopicsForAccount:account];
+    [self deleteMessagesForAccount:account];
+    [self->_coreDataManager deleteEntity:account];
+    [self->_coreDataManager save];
+}
+
+#pragma mark - private method
+
+- (NSArray<Topic *> *)topicsForAccount:(Account *)account {
+    if (account != nil) {
+        return [account.topics allObjects];
+    }
+    return nil;
+}
+
+- (NSArray<Message *> *)messagesForAccount:(Account *)account {
+    if (account != nil) {
+        return [account.messages.allObjects sortedArrayUsingFunction:dateSort context:nil];
+    }
+    return nil;
+}
+
+- (void)deleteTopicsForAccount:(Account *)account {
+    for (Topic *topic in [self topicsForCurrentAccount]) {
+        [self->_coreDataManager deleteEntity:topic];
+    }
+}
+
+- (void)deleteMessagesForAccount:(Account *)account {
+    for (Message *message in [self messagesForCurrentAccount]) {
+        [self->_coreDataManager deleteEntity:message];
+    }
 }
 
 @end

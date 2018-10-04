@@ -27,6 +27,7 @@
 
 - (void) accountListViewController : (IBAccountListViewController *) accountList didSelectedAccount : (Account *) account;
 - (void) accountListViewControllerDidClickToCreateNewAccount : (IBAccountListViewController *) accountList;
+- (void) accountListViewController : (IBAccountListViewController *) accountList willRemoveAccount : (Account *) account;
 
 @end
 

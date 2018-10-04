@@ -20,8 +20,16 @@
 
 #import "IBTimerTask.h"
 #import "IBPublish.h"
+#import "IBSNPublish.h"
+#import "IBConnect.h"
+#import "IBSNConnect.h"
+
+NSInteger const IBConnectRepeatTimes = 5;
 
 @implementation IBTimerTask
+{
+    NSInteger _connectCount;
+}
 
 - (instancetype) initWithMessage : (id<IBMessage>) message request : (id<IBRequests>) request andPeriod : (NSInteger) period {
     self = [super init];
@@ -30,12 +38,14 @@
         self->_request = request;
         self->_period = period;
         self->_status = false;
+        self->_connectCount = 0;
     }
     return self;
 }
 
 - (void) start {
     self->_timer = [NSTimer scheduledTimerWithTimeInterval:self->_period target:self selector:@selector(timerMethod:) userInfo:nil repeats:true];
+    [self->_timer fire];
 }
 
 - (void) stop {
@@ -46,17 +56,36 @@
 #pragma mark - Private methods -
 
 - (void) timerMethod : (NSTimer *) timer {
-        
+    
+    if ([self->_message isKindOfClass:[IBConnect class]] || [self->_message isKindOfClass:[IBSNConnect class]]) {
+        self->_connectCount += 1;
+        if (self->_connectCount >= IBConnectRepeatTimes) {
+            [self->_request connectionTimeout];
+            self->_connectCount = 0;
+            return;
+        }
+    }
+
+    [self sendMessage];
+
+}
+
+- (void) sendMessage {
+    
     if (self->_request.internetProtocol.state == IBTransportOpen) {
         if (self->_status == true) {
-            if ([self->_message getMessageType] == IBPublishMessage) {
+            if ([self->_message isKindOfClass:[IBPublish class]]) {
                 IBPublish *publish = (IBPublish *)self->_message;
+                publish.dup = true;
+            } else if ([self->_message isKindOfClass:[IBSNPublish class]]) {
+                IBSNPublish *publish = (IBSNPublish *)self->_message;
                 publish.dup = true;
             }
         }
         [self->_request sendMessage:self->_message];
         self->_status = true;
     }
+    
 }
 
 @end

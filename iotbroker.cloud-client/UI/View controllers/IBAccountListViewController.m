@@ -45,6 +45,11 @@
     [self showAnimate];
 }
 
+- (void)setAccounts:(NSArray<Account *> *)accounts {
+    self->_accounts = accounts;
+    [self->_tableView reloadData];
+}
+
 - (IBAction) addNewAccountButtonClick : (id)sender {
     [self removeAnimate];
     [self.delegate accountListViewControllerDidClickToCreateNewAccount:self];
@@ -104,6 +109,17 @@
     Account *selectedAccount = [self.accounts objectAtIndex:indexPath.row];
     [self removeAnimate];
     [self.delegate accountListViewController:self didSelectedAccount:selectedAccount];
+}
+
+- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewRowAction *delete = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Delete" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+        Account *account = [self->_accounts objectAtIndex:indexPath.row];
+        [self.delegate accountListViewController:self willRemoveAccount:account];
+    }];
+    delete.backgroundColor = [UIColor grayColor];
+    
+    return @[delete];
 }
 
 @end
