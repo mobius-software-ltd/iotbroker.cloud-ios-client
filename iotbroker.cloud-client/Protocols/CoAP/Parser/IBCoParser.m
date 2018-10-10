@@ -31,14 +31,14 @@
     Byte firstByte = [buffer readByte];
     Byte version = firstByte >> 6;
     if (version != message.version) {
-        @throw [NSException exceptionWithName:@"CoAP parser" reason:[NSString stringWithFormat:@"Invalid version: %zd", version] userInfo:nil];
+        @throw [NSException exceptionWithName:@"CoAP parser" reason:[NSString stringWithFormat:@"Invalid version: %hhu", version] userInfo:nil];
     }
     
     message.type = (firstByte >> 4) & 0x3;
     
     Byte tokenLength = firstByte & 0xF;
     if (tokenLength > 8) {
-        @throw [NSException exceptionWithName:@"CoAP parser" reason:[NSString stringWithFormat:@"Invalid token length: %zd", tokenLength] userInfo:nil];
+        @throw [NSException exceptionWithName:@"CoAP parser" reason:[NSString stringWithFormat:@"Invalid token length: %hhu", tokenLength] userInfo:nil];
     }
     
     int codeByte = [buffer readByte];
@@ -67,7 +67,7 @@
         } else if (delta == 14) {
             delta = [buffer readShort] + 269;
         } else if (delta > 14) {
-            @throw [NSException exceptionWithName:@"CoAP parser" reason:[NSString stringWithFormat:@"Invalid option delta value: %zd", delta] userInfo:nil];
+            @throw [NSException exceptionWithName:@"CoAP parser" reason:[NSString stringWithFormat:@"Invalid option delta value: %d", delta] userInfo:nil];
         }
         
         number += delta;
@@ -78,7 +78,7 @@
         } else if (optionLength == 14) {
             optionLength = [buffer readShort] + 269;
         } else if (optionLength > 14) {
-            @throw [NSException exceptionWithName:@"CoAP parser" reason:[NSString stringWithFormat:@"Invalid option delta value: %zd", optionLength] userInfo:nil];
+            @throw [NSException exceptionWithName:@"CoAP parser" reason:[NSString stringWithFormat:@"Invalid option delta value: %d", optionLength] userInfo:nil];
         }
         
         NSMutableData *optionValue = [NSMutableData data];
@@ -109,7 +109,7 @@
     firstByte += message.type << 4;
 
     if (message.token != -1) {
-        firstByte += [[NSNumber numberWithLong:message.token] stringValue].length;
+        firstByte += [@(message.token) stringValue].length;
     }
     
     [buffer appendByte:firstByte];

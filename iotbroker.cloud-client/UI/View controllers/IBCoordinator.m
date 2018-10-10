@@ -134,6 +134,11 @@ static NSString *const IBProgressHUDIdentifier = @"IBProgressHUDViewControllerId
 - (void)loginTableViewController:(IBLoginViewController *)loginTableViewController newAccountToAdd:(Account *)account {
     
     if ([account isValid] == true) {
+        if ([self->_accountManager accountByClientID:account.clientID] != nil) {
+            IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:@"This client id have been already use" preferredStyle:UIAlertControllerStyleActionSheet];
+            [alert pushToNavigationControllerStack:self->_navigationController];
+            return;
+        }
         [self->_accountManager writeAccount:account];
         [self->_accountManager setDefaultAccountWithClientID:account.clientID];
         IBTabBarController *tabBarController = (IBTabBarController *)[self controllerWithIdentifier:IBTabBarIdentifier];

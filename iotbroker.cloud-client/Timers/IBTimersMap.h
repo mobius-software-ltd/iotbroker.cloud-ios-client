@@ -45,7 +45,7 @@ static NSInteger const IBMessageResendPeriod = 3;
 - (NSInteger) startRegisterTimer: (id<IBMessage>) message;
 - (void) stopRegisterTimer;
 
-- (void) startCoAPMessageTimer: (id<IBMessage>) coapMessage;
+- (NSInteger) startCoAPMessageTimer: (id<IBMessage>) coapMessage oneSend:(BOOL)flag;
 
 - (void) startMessageTimer : (id<IBMessage>) message;
 

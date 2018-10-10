@@ -34,6 +34,7 @@
 + (instancetype) code : (IBCoAPCodes) code confirmableFlag : (BOOL) isCon andPayload : (NSString *) payload;
 - (instancetype) initWithCode : (IBCoAPCodes) code confirmableFlag : (BOOL) isCon andPayload : (NSString *) payload;
 
+- (void) addOption : (IBCoAPOptionDefinitions) option withData : (NSData *) value;
 - (void) addOption : (IBCoAPOptionDefinitions) option withValue : (NSString *) value;
 - (void) addOption : (IBCoOption *) option;
 

@@ -137,14 +137,16 @@
 }
 
 - (void) addTopicName : (NSString *) name qos : (NSInteger) qos content : (NSData *) content isDup : (BOOL) isDup isRetain : (BOOL) isRetain isIncoming : (BOOL) isIncoming  {
-    Message *message = [self->_accountManager message];
-    message.topicName = name;
-    message.qos = (int32_t)qos;
-    message.content = content;
-    message.isDup = (int)dup;
-    message.isRetain = isRetain;
-    message.isIncoming = isIncoming;
-    [self->_accountManager addMessageForDefaultAccount:message];
+    if (name != nil) {
+        Message *message = [self->_accountManager message];
+        message.topicName = name;
+        message.qos = (int32_t)qos;
+        message.content = content;
+        message.isDup = (int)dup;
+        message.isRetain = isRetain;
+        message.isIncoming = isIncoming;
+        [self->_accountManager addMessageForDefaultAccount:message];
+    }
 }
 
 - (void)logout {

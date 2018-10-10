@@ -152,16 +152,21 @@ static NSString *const IBKeyPasswordCell        = @"keyPasswordCell";
         [self->_settingsSectionCells addObject:IBRetainCell];
         [self->_settingsSectionCells addObject:IBQoSCell];
     } else if (type == IBCoAPProtocolType) {
-        [self->_registerInfoSectionCells addObject:IBServerHostCell];
-        [self->_registerInfoSectionCells addObject:IBPortCell];
-        [self->_registerInfoSectionCells addObject:IBSecureConnectionCell];
-        self->_settingsSectionCells = nil;
-    } else if (type == IBAMQPProtocolType) {
         [self->_registerInfoSectionCells addObject:IBClientIDCell];
         [self->_registerInfoSectionCells addObject:IBServerHostCell];
         [self->_registerInfoSectionCells addObject:IBPortCell];
         [self->_registerInfoSectionCells addObject:IBSecureConnectionCell];
-        self->_settingsSectionCells = nil;
+        self->_settingsSectionCells = [NSMutableArray array];
+        [self->_settingsSectionCells addObject:IBKeepaliveCell];
+    } else if (type == IBAMQPProtocolType) {
+        [self->_registerInfoSectionCells addObject:IBUsernameCell];
+        [self->_registerInfoSectionCells addObject:IBPasswordCell];
+        [self->_registerInfoSectionCells addObject:IBClientIDCell];
+        [self->_registerInfoSectionCells addObject:IBServerHostCell];
+        [self->_registerInfoSectionCells addObject:IBPortCell];
+        [self->_registerInfoSectionCells addObject:IBSecureConnectionCell];
+        self->_settingsSectionCells = [NSMutableArray array];
+        [self->_settingsSectionCells addObject:IBKeepaliveCell];
     }
     self.protocolField.text = [protocolType nameByValue];
 }

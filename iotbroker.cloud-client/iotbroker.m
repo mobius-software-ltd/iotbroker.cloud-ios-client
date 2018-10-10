@@ -19,6 +19,7 @@
  */
 
 #import <XCTest/XCTest.h>
+/*
 #import "IBMutableData.h"
 
 #import "IBAMQPWrapper.h"
@@ -45,7 +46,7 @@
 #import "IBAMQPAttach.h"
 #import "IBAMQPFlow.h"
 #import "IBAMQPBegin.h"
-
+*/
 
 @interface iotbroker : XCTestCase
 
@@ -72,6 +73,7 @@
     }];
 }
 
+/*
 - (void)testReadWriteIntInMutableData {
     
     int number = 7;
@@ -307,7 +309,7 @@
     
     XCTAssertNoThrow([IBAMQPParser decode:[IBAMQPParser encode:ping]]);
 }
-
+*/
 #pragma mark - Wrapper & Unwrapper
 /*
 - (void)testWU_UByte {

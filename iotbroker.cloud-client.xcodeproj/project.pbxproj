@@ -53,6 +53,8 @@
 		2223803721133942003AAD9A /* IBWebsocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2223803621133942003AAD9A /* IBWebsocket.m */; };
 		2223803B21134790003AAD9A /* IBWebsocketMQTT.m in Sources */ = {isa = PBXBuildFile; fileRef = 2223803A21134790003AAD9A /* IBWebsocketMQTT.m */; };
 		2223803F21134BA3003AAD9A /* IBMQJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2223803E21134BA3003AAD9A /* IBMQJsonParser.m */; };
+		22254039216765C300AAB455 /* IBStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 22254038216765C300AAB455 /* IBStringUtils.m */; };
+		2225403D2167925200AAB455 /* IBCoOptionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2225403C2167925200AAB455 /* IBCoOptionParser.m */; };
 		222722141ED829490098D40F /* IBCoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 222722131ED829490098D40F /* IBCoParser.m */; };
 		222722181ED829930098D40F /* IBCoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 222722171ED829930098D40F /* IBCoMessage.m */; };
 		2227221D1ED86A0E0098D40F /* IBCoAP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2227221C1ED86A0E0098D40F /* IBCoAP.m */; };
@@ -308,6 +310,10 @@
 		2223803A21134790003AAD9A /* IBWebsocketMQTT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBWebsocketMQTT.m; sourceTree = "<group>"; };
 		2223803D21134BA3003AAD9A /* IBMQJsonParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBMQJsonParser.h; sourceTree = "<group>"; };
 		2223803E21134BA3003AAD9A /* IBMQJsonParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBMQJsonParser.m; sourceTree = "<group>"; };
+		22254037216765C300AAB455 /* IBStringUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBStringUtils.h; sourceTree = "<group>"; };
+		22254038216765C300AAB455 /* IBStringUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBStringUtils.m; sourceTree = "<group>"; };
+		2225403B2167925200AAB455 /* IBCoOptionParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBCoOptionParser.h; sourceTree = "<group>"; };
+		2225403C2167925200AAB455 /* IBCoOptionParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBCoOptionParser.m; sourceTree = "<group>"; };
 		222722121ED829490098D40F /* IBCoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCoParser.h; sourceTree = "<group>"; };
 		222722131ED829490098D40F /* IBCoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBCoParser.m; sourceTree = "<group>"; };
 		222722161ED829930098D40F /* IBCoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCoMessage.h; sourceTree = "<group>"; };
@@ -822,6 +828,7 @@
 				2217D9681EBB18C400A636E7 /* LengthDetails */,
 				2217D9691EBB18CC00A636E7 /* MutableData */,
 				227E3DBC210F5DCD0028C899 /* P12FileExtractor */,
+				2225403A216765C800AAB455 /* StringUtils */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1138,6 +1145,15 @@
 			name = MQJsonParser;
 			sourceTree = "<group>";
 		};
+		2225403A216765C800AAB455 /* StringUtils */ = {
+			isa = PBXGroup;
+			children = (
+				22254037216765C300AAB455 /* IBStringUtils.h */,
+				22254038216765C300AAB455 /* IBStringUtils.m */,
+			);
+			name = StringUtils;
+			sourceTree = "<group>";
+		};
 		222722101ED829130098D40F /* CoAP */ = {
 			isa = PBXGroup;
 			children = (
@@ -1164,6 +1180,8 @@
 				222722191ED829C60098D40F /* IBCoEnums.h */,
 				222722161ED829930098D40F /* IBCoMessage.h */,
 				222722171ED829930098D40F /* IBCoMessage.m */,
+				2225403B2167925200AAB455 /* IBCoOptionParser.h */,
+				2225403C2167925200AAB455 /* IBCoOptionParser.m */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -2745,6 +2763,7 @@
 				22F3086E1EE6E68C008AF92F /* IBAMQPDescribedConstructor.m in Sources */,
 				2289A1BE1EE8305D009B98AA /* IBAMQPReceived.m in Sources */,
 				2289A1CA1EE8337E009B98AA /* IBAMQPDynamicNodeProperty.m in Sources */,
+				2225403D2167925200AAB455 /* IBCoOptionParser.m in Sources */,
 				22C531A31EAF90D2007F57A8 /* IBPuback.m in Sources */,
 				224BEFAC1EEA9D3E0033961F /* IBAMQPMessageAnnotations.m in Sources */,
 				2289A1B21EE80D43009B98AA /* IBAMQPTLVFactory.m in Sources */,
@@ -2855,6 +2874,7 @@
 				22F308721EE6ED12008AF92F /* IBAMQPTLVVariable.m in Sources */,
 				22D861111EF13C7500177088 /* IBAMQP.m in Sources */,
 				2217D93B1EBB177F00A636E7 /* IBMessagesListTableViewController.m in Sources */,
+				22254039216765C300AAB455 /* IBStringUtils.m in Sources */,
 				22C532101EAF9338007F57A8 /* IBSNEncapsulated.m in Sources */,
 				2217D8E61EBB127500A636E7 /* IBSocketTransport.m in Sources */,
 				224BEFAF1EEA9F1F0033961F /* IBAMQPMessageHeader.m in Sources */,

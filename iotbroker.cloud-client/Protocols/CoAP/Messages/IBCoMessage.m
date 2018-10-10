@@ -57,9 +57,13 @@
     return 0;
 }
 
-- (void) addOption : (IBCoAPOptionDefinitions) option withValue : (NSString *) value {
-    IBCoOption *item = [[IBCoOption alloc] initWithNumber:option length:(int)value.length value:[value dataUsingEncoding:NSUTF8StringEncoding]];
+- (void) addOption : (IBCoAPOptionDefinitions) option withData : (NSData *) value {    
+    IBCoOption *item = [[IBCoOption alloc] initWithNumber:option length:(int)value.length value:value];
     [self->_options addObject:item];
+}
+
+- (void) addOption : (IBCoAPOptionDefinitions) option withValue : (NSString *) value {
+    [self addOption:option withData:[value dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
 - (void) addOption : (IBCoOption *) option {

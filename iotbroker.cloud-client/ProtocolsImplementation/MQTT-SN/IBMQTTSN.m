@@ -201,10 +201,7 @@
             {
                 IBSNRegister *registerPacket = (IBSNRegister *)message;
                 IBSNRegack *regack = [[IBSNRegack alloc] initWithTopicID:registerPacket.topicID packetID:registerPacket.packetID returnCode:IBAcceptedReturnCode];
-
                 [self->_topics setObject:registerPacket.topicName forKey:@(registerPacket.topicID)];
-                NSLog(@"--------- %@", self->_topics);
-                
                 [self sendMessage:regack];
             } break;
             case IBRegackMessage:
@@ -214,10 +211,7 @@
                 
                 if (regack.returnCode == IBAcceptedReturnCode) {
                     IBSNPublish *publish = [self->_forPublish objectForKey:@(regack.packetID)];
-                    
                     [self->_topics setObject:[[NSString alloc] initWithData:[publish.topic encode] encoding:NSUTF8StringEncoding] forKey:@(regack.topicID)];
-                    NSLog(@"--------- %@", self->_topics);
-                    
                     IBSNIdentifierTopic *topic = [[IBSNIdentifierTopic alloc] initWithValue:regack.topicID andQoS:[publish.topic getQoS]];
                     publish.packetID = regack.packetID;
                     publish.topic = topic;

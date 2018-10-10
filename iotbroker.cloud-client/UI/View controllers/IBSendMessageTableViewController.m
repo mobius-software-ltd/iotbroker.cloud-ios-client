@@ -115,7 +115,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.protocol == IBCoAPProtocolType) {
-        return 2;
+        return 3;
     }
     return 5;
 }
