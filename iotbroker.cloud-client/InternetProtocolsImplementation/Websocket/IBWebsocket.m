@@ -42,7 +42,8 @@
         self->_state = IBTransportCreated;
         self->_host = host;
         self->_port = port;
-        NSString *url = [NSString stringWithFormat:@"ws://%@:%zd", self->_host, self->_port];
+        NSString *type = @"ws";
+        NSString *url = [NSString stringWithFormat:@"%@://%@:%zd/%@", type, self->_host, self->_port, type];
         self->_webSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:url]];
         self->_webSocket.delegate = self;
     }
@@ -50,7 +51,8 @@
 }
 
 - (void) setCertificate: (char *)certificate {
-    NSString *urlString = [NSString stringWithFormat:@"wss://%@:%zd", self->_host, self->_port];
+    NSString *type = @"wss";
+    NSString *urlString = [NSString stringWithFormat:@"%@://%@:%zd/%@", type, self->_host, self->_port, type];
     NSURL *url = [NSURL URLWithString: urlString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     NSData *certData = [NSData dataWithBytes:certificate length:strlen(certificate)];
@@ -73,7 +75,7 @@
 }
 
 - (BOOL) sendData : (NSData *) message {
-    [self->_webSocket send:message];
+    [self->_webSocket send:[[NSString alloc] initWithData:message encoding:NSUTF8StringEncoding]];
     return true;
 }
 

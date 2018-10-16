@@ -185,7 +185,7 @@
                 if (publish.packetID == 0) {
                     @throw [NSException exceptionWithName:@"PUBLISH" reason:@"publish qos-1,2 must contain packetID" userInfo:nil];
                 }
-                [buffer appendShort:publish.packetID];
+                [buffer appendShort:[publish.packetID shortValue]];
                 break;
             case IBLevelOne:
                 @throw [NSException exceptionWithName:@"PUBLISH" reason:@"publish qos-3 not support in MQTT" userInfo:nil];
@@ -201,7 +201,7 @@
         if (puback.packetID == 0) {
             @throw [NSException exceptionWithName:@"PUBACK" reason:@"puback must contain packetID" userInfo:nil];
         }
-        [buffer appendShort:puback.packetID];
+        [buffer appendShort:[puback.packetID shortValue]];
         
     } else if (messageType == IBPubrecMessage) {
         
@@ -211,7 +211,7 @@
         if (pubrec.packetID == 0) {
             @throw [NSException exceptionWithName:@"PUBREC" reason:@"pubrec must contain packetID" userInfo:nil];
         }
-        [buffer appendShort:pubrec.packetID];
+        [buffer appendShort:[pubrec.packetID shortValue]];
         
     } else if (messageType == IBPubrelMessage) {
         
@@ -221,7 +221,7 @@
         if (pubrel.packetID == 0) {
             @throw [NSException exceptionWithName:@"PUBREL" reason:@"pubrel must contain packetID" userInfo:nil];
         }
-        [buffer appendShort:pubrel.packetID];
+        [buffer appendShort:[pubrel.packetID shortValue]];
         
     } else if (messageType == IBPubcompMessage) {
         
@@ -231,7 +231,7 @@
         if (pubcomp.packetID == 0) {
             @throw [NSException exceptionWithName:@"PUBCOMP" reason:@"pubcomp must contain packetID" userInfo:nil];
         }
-        [buffer appendShort:pubcomp.packetID];
+        [buffer appendShort:[pubcomp.packetID shortValue]];
         
     } else if (messageType == IBSubscribeMessage) {
 
@@ -241,7 +241,7 @@
         if (subscribe.packetID == 0) {
             @throw [NSException exceptionWithName:@"SUBSCRIBE" reason:@"subscribe must contain packetID" userInfo:nil];
         }
-        [buffer appendShort:subscribe.packetID];
+        [buffer appendShort:[subscribe.packetID shortValue]];
         
         for (IBMQTTTopic *item in subscribe.topics) {
             [buffer appendShort:[item.name length]];
@@ -257,7 +257,7 @@
         if (suback.packetID == 0) {
             @throw [NSException exceptionWithName:@"SUBACK" reason:@"suback must contain packetID" userInfo:nil];
         }
-        [buffer appendShort:suback.packetID];
+        [buffer appendShort:[suback.packetID shortValue]];
         
         for (NSNumber *item in suback.returnCodes) {
             [buffer appendByte:item.integerValue];
@@ -271,7 +271,7 @@
         if (unsubscribe.packetID == 0) {
             @throw [NSException exceptionWithName:@"UNSUBSCRIBE" reason:@"unsubscribe must contain packetID" userInfo:nil];
         }
-        [buffer appendShort:unsubscribe.packetID];
+        [buffer appendShort:[unsubscribe.packetID shortValue]];
         
         for (NSString *item in unsubscribe.topics) {
             [buffer appendShort:[item length]];
@@ -286,7 +286,7 @@
         if (unsuback.packetID == 0) {
             @throw [NSException exceptionWithName:@"UNSUBACK" reason:@"unsuback must contain packetID" userInfo:nil];
         }
-        [buffer appendShort:unsuback.packetID];
+        [buffer appendShort:[unsuback.packetID shortValue]];
         
     } else if (messageType == IBPingreqMessage || messageType == IBPingrespMessage || messageType == IBDisconnectMessage) {
         

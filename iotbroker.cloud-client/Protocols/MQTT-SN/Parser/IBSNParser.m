@@ -102,14 +102,14 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
         {
             IBSNRegister *registerSN = (IBSNRegister *)message;
             [data appendShort:registerSN.topicID];
-            [data appendShort:registerSN.packetID];
+            [data appendShort:[registerSN.packetID shortValue]];
             [data appendData:[registerSN.topicName dataUsingEncoding:IBStringEncoding]];
         } break;
         case IBRegackMessage:
         {
             IBSNRegack *regack = (IBSNRegack *)message;
             [data appendShort:regack.topicID];
-            [data appendShort:regack.packetID];
+            [data appendShort:[regack.packetID shortValue]];
             [data appendByte:regack.returnCode];
         } break;
         case IBPublishMessage:
@@ -118,14 +118,14 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
             Byte publishFlagsByte = [IBSNFlags encodeWithDup:publish.isDup qos:[publish.topic getQoS] retainFlag:publish.isRetainFlag will:false cleanSession:false topicType:[publish.topic getType]];
             [data appendByte:publishFlagsByte];
             [data appendData:[publish.topic encode]];
-            [data appendShort:publish.packetID];
+            [data appendShort:[publish.packetID shortValue]];
             [data appendData:publish.content];
         } break;
         case IBPubackMessage:
         {
             IBSNPuback *puback = (IBSNPuback *)message;
             [data appendShort:puback.topicID];
-            [data appendShort:puback.packetID];
+            [data appendShort:[puback.packetID shortValue]];
             [data appendByte:puback.returnCode];
         } break;
         case IBPubrecMessage:
@@ -134,14 +134,14 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
         case IBUnsubackMessage:
         {
             IBCountableMessage *contableMessage = (IBCountableMessage *)message;
-            [data appendShort:contableMessage.packetID];
+            [data appendShort:[contableMessage.packetID shortValue]];
         } break;
         case IBSubscribeMessage:
         {
             IBSNSubscribe *subscribe = (IBSNSubscribe *)message;
             Byte subscribeFlags = [IBSNFlags encodeWithDup:subscribe.isDup qos:[subscribe.topic getQoS] retainFlag:false will:false cleanSession:false topicType:[subscribe.topic getType]];
             [data appendByte:subscribeFlags];
-            [data appendShort:subscribe.packetID];
+            [data appendShort:[subscribe.packetID shortValue]];
             [data appendData:[subscribe.topic encode]];
         } break;
         case IBSubackMessage:
@@ -150,7 +150,7 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
             Byte subackByte = [IBSNFlags encodeWithDup:false qos:suback.allowedQos retainFlag:false will:false cleanSession:false topicType:nil];
             [data appendByte:subackByte];
             [data appendShort:suback.topicID];
-            [data appendShort:suback.packetID];
+            [data appendShort:[suback.packetID shortValue]];
             [data appendByte:suback.returnCode];
         } break;
         case IBUnsubscribeMessage:
@@ -158,7 +158,7 @@ static Byte const IBThreeOctetLengthSuffix = 0x01;
             IBSNUnsubscribe *unsubscribe = (IBSNUnsubscribe *)message;
             Byte unsubscribeFlags = [IBSNFlags encodeWithDup:false qos:nil retainFlag:false will:false cleanSession:false topicType:[unsubscribe.topic getType]];
             [data appendByte:unsubscribeFlags];
-            [data appendShort:unsubscribe.packetID];
+            [data appendShort:[unsubscribe.packetID shortValue]];
             [data appendData:[unsubscribe.topic encode]];
         } break;
         case IBPingreqMessage:

@@ -24,7 +24,7 @@
 
 @interface IBCountableMessage : JSONModel <IBMessage>
 
-@property (assign, nonatomic) NSInteger packetID;
+@property (assign, nonatomic) NSNumber<Optional> *packetID;
 
 - (instancetype) initWithPacketID : (NSInteger) packetID;
 

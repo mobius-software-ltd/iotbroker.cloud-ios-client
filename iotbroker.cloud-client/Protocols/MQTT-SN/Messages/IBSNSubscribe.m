@@ -49,7 +49,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"\n - packetID = %zd\n - topic = %@\n - dup = %@", self.packetID, self->_topic, self->_dup?@"yes":@"no"];
+    return [NSString stringWithFormat:@"\n - packetID = %@\n - topic = %@\n - dup = %@", self.packetID, self->_topic, self->_dup?@"yes":@"no"];
 }
 
 @end

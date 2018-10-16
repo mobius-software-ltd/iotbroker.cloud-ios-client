@@ -36,7 +36,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"\n - packetID = %zd", self.packetID];
+    return [NSString stringWithFormat:@"\n - packetID = %@", self.packetID];
 }
 
 @end

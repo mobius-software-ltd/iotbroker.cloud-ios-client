@@ -30,59 +30,59 @@
     switch (type) {
         case IBConnectMessage: {
             IBConnect *connect = (IBConnect *)message;
-            return [connect toJSONData];
+            return [[connect toJSONString] dataUsingEncoding:NSUTF8StringEncoding];
         }
         case IBConnackMessage: {
             IBConnack *connack = (IBConnack *)message;
-            return [connack toJSONData];
+            return [[connack toJSONString] dataUsingEncoding:NSUTF8StringEncoding];
         }
         case IBPublishMessage: {
             IBPublish *publish = (IBPublish *)message;
-            return [publish toJSONData];
+            return [[publish toJSONString] dataUsingEncoding:NSUTF8StringEncoding];
         }
         case IBPubackMessage: {
             IBPuback *puback = (IBPuback *)message;
-            return [puback toJSONData];
+            return [[puback toJSONString] dataUsingEncoding:NSUTF8StringEncoding];
         }
         case IBPubrecMessage: {
             IBPubrec *pubrec = (IBPubrec *)message;
-            return [pubrec toJSONData];
+            return [[pubrec toJSONString] dataUsingEncoding:NSUTF8StringEncoding];
         }
         case IBPubrelMessage: {
             IBPubrel *pubrel = (IBPubrel *)message;
-            return [pubrel toJSONData];
+            return [[pubrel toJSONString] dataUsingEncoding:NSUTF8StringEncoding];
         }
         case IBPubcompMessage: {
             IBPubcomp *pubcomp = (IBPubcomp *)message;
-            return [pubcomp toJSONData];
+            return [[pubcomp toJSONString] dataUsingEncoding:NSUTF8StringEncoding];
         }
         case IBSubscribeMessage: {
             IBSubscribe *subscribe = (IBSubscribe *)message;
-            return [subscribe toJSONData];
+            return [[subscribe toJSONString] dataUsingEncoding:NSUTF8StringEncoding];
         }
         case IBSubackMessage: {
             IBSuback *suback = (IBSuback *)message;
-            return [suback toJSONData];
+            return [[suback toJSONString] dataUsingEncoding:NSUTF8StringEncoding];
         }
         case IBUnsubscribeMessage: {
             IBUnsubscribe *unsubscribe = (IBUnsubscribe *)message;
-            return [unsubscribe toJSONData];
+            return [[unsubscribe toJSONString] dataUsingEncoding:NSUTF8StringEncoding];
         }
         case IBUnsubackMessage: {
             IBUnsuback *unsuback = (IBUnsuback *)message;
-            return [unsuback toJSONData];
+            return [[unsuback toJSONString] dataUsingEncoding:NSUTF8StringEncoding];
         }
         case IBPingreqMessage: {
             IBPingreq *pingreq = (IBPingreq *)message;
-            return [pingreq toJSONData];
+            return [[pingreq toJSONString] dataUsingEncoding:NSUTF8StringEncoding];
         }
         case IBPingrespMessage: {
             IBPingresp *pingresp = (IBPingresp *)message;
-            return [pingresp toJSONData];
+            return [[pingresp toJSONString] dataUsingEncoding:NSUTF8StringEncoding];
         }
         case IBDisconnectMessage: {
             IBDisconnect *disconnect = (IBDisconnect *)message;
-            return [disconnect toJSONData];
+            return [[disconnect toJSONString] dataUsingEncoding:NSUTF8StringEncoding];
         }
         default: {
             return [[NSData alloc] init];

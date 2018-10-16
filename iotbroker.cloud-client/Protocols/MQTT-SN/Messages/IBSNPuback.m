@@ -40,7 +40,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"\n - packetID = %zd\n - topicID = %zd\n - returnCode = %zd", self.packetID, self->_topicID, self->_returnCode];
+    return [NSString stringWithFormat:@"\n - packetID = %@\n - topicID = %zd\n - returnCode = %zd", self.packetID, self->_topicID, self->_returnCode];
 }
 
 @end

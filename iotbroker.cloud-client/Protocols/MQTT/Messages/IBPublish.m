@@ -23,11 +23,13 @@
 
 @implementation IBPublish
 
+//@synthesize packetID = _packetID;
+
 - (instancetype) initWithPacketID : (NSInteger) packetID andTopic : (IBMQTTTopic *) topic andContent : (NSData *) data andIsRetain : (BOOL) isRetain andDup : (BOOL) dup {
 
     self = [super init];
     if (self != nil) {
-        self.packetID = packetID;
+        self.packetID = [NSNumber numberWithInteger:packetID];
         self.topic = topic;
         self.content = data;
         self.isRetain = isRetain;

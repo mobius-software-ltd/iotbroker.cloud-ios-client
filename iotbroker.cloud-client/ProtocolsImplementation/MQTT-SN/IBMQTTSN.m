@@ -200,7 +200,7 @@
             case IBRegisterMessage:
             {
                 IBSNRegister *registerPacket = (IBSNRegister *)message;
-                IBSNRegack *regack = [[IBSNRegack alloc] initWithTopicID:registerPacket.topicID packetID:registerPacket.packetID returnCode:IBAcceptedReturnCode];
+                IBSNRegack *regack = [[IBSNRegack alloc] initWithTopicID:registerPacket.topicID packetID:[registerPacket.packetID integerValue] returnCode:IBAcceptedReturnCode];
                 [self->_topics setObject:registerPacket.topicName forKey:@(registerPacket.topicID)];
                 [self sendMessage:regack];
             } break;
@@ -210,7 +210,7 @@
                 [self->_timers stopRegisterTimer];
                 
                 if (regack.returnCode == IBAcceptedReturnCode) {
-                    IBSNPublish *publish = [self->_forPublish objectForKey:@(regack.packetID)];
+                    IBSNPublish *publish = [self->_forPublish objectForKey:regack.packetID];
                     [self->_topics setObject:[[NSString alloc] initWithData:[publish.topic encode] encoding:NSUTF8StringEncoding] forKey:@(regack.topicID)];
                     IBSNIdentifierTopic *topic = [[IBSNIdentifierTopic alloc] initWithValue:regack.topicID andQoS:[publish.topic getQoS]];
                     publish.packetID = regack.packetID;
@@ -228,12 +228,12 @@
                 if ([publish.topic getQoS].value == 1) {
                     if ([publish.topic isKindOfClass:[IBSNIdentifierTopic class]]) {
                         NSInteger topicID = [IBSNIdentifierTopic topicIdByEncodedValue:[publish.topic encode]];
-                        IBSNPuback *puback = [[IBSNPuback alloc] initWithTopicID:topicID packetID:publish.packetID andReturnCode:IBAcceptedReturnCode];
+                        IBSNPuback *puback = [[IBSNPuback alloc] initWithTopicID:topicID packetID:[publish.packetID integerValue] andReturnCode:IBAcceptedReturnCode];
                         [self sendMessage:puback];
                     }
                 } else if ([publish.topic getQoS].value == 2) {
-                    IBSNPubrec *pubrec = [[IBSNPubrec alloc] initWithPacketID:publish.packetID];
-                    [self->_publishPackets setObject:publish forKey:@(publish.packetID)];
+                    IBSNPubrec *pubrec = [[IBSNPubrec alloc] initWithPacketID:[publish.packetID integerValue]];
+                    [self->_publishPackets setObject:publish forKey:publish.packetID];
                     [self->_timers startMessageTimer:pubrec];
                 }
                 NSInteger topicID = [IBSNIdentifierTopic topicIdByEncodedValue:[publish.topic encode]];
@@ -243,19 +243,19 @@
             case IBPubackMessage:
             {
                 IBSNPuback *puback = (IBSNPuback *)message;
-                [self->_timers removeTimerWithPacketID:@(puback.packetID)];
-                IBSNPublish *publish = [self->_publishPackets objectForKey:@(puback.packetID)];
+                [self->_timers removeTimerWithPacketID:puback.packetID];
+                IBSNPublish *publish = [self->_publishPackets objectForKey:puback.packetID];
                 NSString *name = [[NSString alloc] initWithData:[publish.topic encode] encoding:NSUTF8StringEncoding];
                 [self.delegate pubackForPublishWithTopicName:name qos:[publish.topic getQoS].value content:publish.content dup:publish.dup retainFlag:publish.retainFlag andReturnCode:puback.returnCode];
-                [self->_forPublish removeObjectForKey:@(puback.packetID)];
-                [self->_publishPackets removeObjectForKey:@(puback.packetID)];
+                [self->_forPublish removeObjectForKey:puback.packetID];
+                [self->_publishPackets removeObjectForKey:puback.packetID];
             } break;
             case IBPubrecMessage:
             {
                 IBSNPubrec *pubrec = (IBSNPubrec *)message;
-                [self->_timers removeTimerWithPacketID:@(pubrec.packetID)];
-                IBSNPublish *publish = [self->_publishPackets objectForKey:@(pubrec.packetID)];
-                IBSNPubrel *pubrel = [[IBSNPubrel alloc] initWithPacketID:pubrec.packetID];
+                [self->_timers removeTimerWithPacketID:pubrec.packetID];
+                IBSNPublish *publish = [self->_publishPackets objectForKey:pubrec.packetID];
+                IBSNPubrel *pubrel = [[IBSNPubrel alloc] initWithPacketID:[pubrec.packetID integerValue]];
                 [self->_timers startMessageTimer:pubrel];
                 NSInteger topicID = [IBSNIdentifierTopic topicIdByEncodedValue:[publish.topic encode]];
                 NSString *name =  [self->_topics objectForKey:@(topicID)];
@@ -264,9 +264,9 @@
             case IBPubrelMessage:
             {
                 IBSNPubrel *pubrel = (IBSNPubrel *)message;
-                [self->_timers removeTimerWithPacketID:@(pubrel.packetID)];
-                IBSNPublish *publish = [self->_publishPackets objectForKey:@(pubrel.packetID)];
-                IBSNPubcomp *pubcomp = [[IBSNPubcomp alloc] initWithPacketID:pubrel.packetID];
+                [self->_timers removeTimerWithPacketID:pubrel.packetID];
+                IBSNPublish *publish = [self->_publishPackets objectForKey:pubrel.packetID];
+                IBSNPubcomp *pubcomp = [[IBSNPubcomp alloc] initWithPacketID:[pubrel.packetID integerValue]];
                 [self sendMessage:pubcomp];
                 NSInteger topicID = [IBSNIdentifierTopic topicIdByEncodedValue:[publish.topic encode]];
                 NSString *name = [self->_topics objectForKey:@(topicID)];
@@ -275,17 +275,17 @@
             case IBPubcompMessage:
             {
                 IBSNPubcomp *pubcomp = (IBSNPubcomp *)message;
-                [self->_timers removeTimerWithPacketID:@(pubcomp.packetID)];
-                IBSNPublish *publish = [self->_publishPackets objectForKey:@(pubcomp.packetID)];
+                [self->_timers removeTimerWithPacketID:pubcomp.packetID];
+                IBSNPublish *publish = [self->_publishPackets objectForKey:pubcomp.packetID];
                 NSString *name = [[NSString alloc] initWithData:[publish.topic encode] encoding:NSUTF8StringEncoding];
                 [self.delegate pubcompForPublishWithTopicName:name qos:[publish.topic getQoS].value content:publish.content dup:publish.dup retainFlag:publish.retainFlag];
-                [self->_publishPackets removeObjectForKey:@(pubcomp.packetID)];
+                [self->_publishPackets removeObjectForKey:pubcomp.packetID];
             } break;
             case IBSubscribeMessage:        NSLog(@" > Error: SNSubscribe message has been received");      break;
             case IBSubackMessage:
             {
                 IBSNSuback *suback = (IBSNSuback *)message;
-                IBSNSubscribe *subscribe = (IBSNSubscribe *)[self->_timers removeTimerWithPacketID:@(suback.packetID)];
+                IBSNSubscribe *subscribe = (IBSNSubscribe *)[self->_timers removeTimerWithPacketID:suback.packetID];
                 NSString *name = [[NSString alloc] initWithData:[subscribe.topic encode] encoding:NSUTF8StringEncoding];
                 [self->_topics setObject:name forKey:@(suback.topicID)];
                 [self.delegate subackForSubscribeWithTopicName:name qos:[subscribe.topic getQoS].value returnCode:suback.returnCode];
@@ -294,7 +294,7 @@
             case IBUnsubackMessage:
             {
                 IBSNUnsuback *unsuback = (IBSNUnsuback *)message;
-                IBSNUnsubscribe *unsubscribe = (IBSNUnsubscribe *)[self->_timers removeTimerWithPacketID:@(unsuback.packetID)];
+                IBSNUnsubscribe *unsubscribe = (IBSNUnsubscribe *)[self->_timers removeTimerWithPacketID:unsuback.packetID];
                 NSString *name = [[NSString alloc] initWithData:[unsubscribe.topic encode] encoding:NSUTF8StringEncoding];
                 [self.delegate unsubackForUnsubscribeWithTopicName:name];
             } break;

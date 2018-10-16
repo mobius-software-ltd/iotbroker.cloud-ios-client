@@ -22,11 +22,21 @@
 
 @implementation IBCountableMessage
 
+@synthesize packetID = _packetID;
+
+- (instancetype)init {
+    self = [super init];
+    if (self != nil) {
+        self->_packetID = [NSNumber numberWithInteger:0];
+    }
+    return self;
+}
+
 - (instancetype) initWithPacketID : (NSInteger) packetID {
     
     self = [super init];
     if (self != nil) {
-        self->_packetID = packetID;
+        self->_packetID = [NSNumber numberWithInteger:packetID];
     }
     return self;
 }
@@ -39,6 +49,20 @@
 - (NSInteger) getMessageType {
     @throw [NSException exceptionWithName:@"ABSTRACT CLASS ERROR" reason:@"METHOD OF ABSTRACT CLASS WAS CALLED (getMessageType)" userInfo:nil];
     return 0;
+}
+
+- (NSNumber *)packetID {
+    if ([self->_packetID integerValue] == 0) {
+        return nil;
+    }
+    return self->_packetID;
+}
+
+- (void)setPacketID:(NSNumber *)packetID {
+    self->_packetID = packetID;
+    if ([self->_packetID isEqual:[NSNull null]] || self->_packetID == nil) {
+        self->_packetID = [NSNumber numberWithInteger:0];
+    }
 }
 
 @end

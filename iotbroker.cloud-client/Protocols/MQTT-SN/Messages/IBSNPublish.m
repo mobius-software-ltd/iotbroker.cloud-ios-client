@@ -56,11 +56,11 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"\n - packetID = %zd\n - topic = %@\n - content = %@\n - dup = %@\n - retainFlag = %@", self.packetID, self->_topic, [[NSString alloc] initWithData:self->_content encoding:NSUTF8StringEncoding], self->_dup?@"yes":@"no", self->_retainFlag?@"yes":@"no"];
+    return [NSString stringWithFormat:@"\n - packetID = %@\n - topic = %@\n - content = %@\n - dup = %@\n - retainFlag = %@", self.packetID, self->_topic, [[NSString alloc] initWithData:self->_content encoding:NSUTF8StringEncoding], self->_dup?@"yes":@"no", self->_retainFlag?@"yes":@"no"];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    return [[IBSNPublish alloc] initWithPacketID:self.packetID topic:self.topic content:self.content dup:self.dup retainFlag:self.retainFlag];
+    return [[IBSNPublish alloc] initWithPacketID:[self.packetID integerValue] topic:self.topic content:self.content dup:self.dup retainFlag:self.retainFlag];
 }
 
 @end

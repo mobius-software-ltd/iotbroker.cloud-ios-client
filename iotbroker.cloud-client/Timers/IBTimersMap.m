@@ -91,13 +91,13 @@ static NSInteger const IBFirstID = 1;
     
     IBCountableMessage *countableMessage = (IBCountableMessage *)message;
     if (countableMessage.packetID == 0) {
-        countableMessage.packetID = [self getNewPacketID];
+        countableMessage.packetID = [NSNumber numberWithInteger:[self getNewPacketID]];
     }
     
     self->_registerPacket = [[IBTimerTask alloc] initWithMessage:message request:self->_request andPeriod:IBMessageResendPeriod];
     [self->_registerPacket start];
     
-    return countableMessage.packetID;
+    return [countableMessage.packetID integerValue];
 }
 
 - (void) stopRegisterTimer {
@@ -140,9 +140,9 @@ static NSInteger const IBFirstID = 1;
     if ([message isKindOfClass:[IBCountableMessage class]]) {
         IBCountableMessage *countableMessage = (IBCountableMessage *)message;
         if (countableMessage.packetID == 0) {
-            countableMessage.packetID = number;
+            countableMessage.packetID = [NSNumber numberWithInteger:number];
         } else {
-            number = countableMessage.packetID;
+            number = [countableMessage.packetID integerValue];
         }
     }
     

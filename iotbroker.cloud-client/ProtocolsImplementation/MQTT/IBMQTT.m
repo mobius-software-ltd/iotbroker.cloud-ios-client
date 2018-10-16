@@ -173,11 +173,11 @@
                 IBQualitiesOfService qos = publish.topic.qos.value;
                 
                 if (qos == IBAtLeastOnce) {
-                    IBPuback *puback = [[IBPuback alloc] initWithPacketID:publish.packetID];
+                    IBPuback *puback = [[IBPuback alloc] initWithPacketID:[publish.packetID integerValue]];
                     [self sendMessage:puback];
                 } else if (qos == IBExactlyOnce) {
-                    IBPubrec *pubrec = [[IBPubrec alloc] initWithPacketID:publish.packetID];
-                    [self->_publishPackets setObject:publish forKey:@(publish.packetID)];
+                    IBPubrec *pubrec = [[IBPubrec alloc] initWithPacketID:[publish.packetID integerValue]];
+                    [self->_publishPackets setObject:publish forKey:publish.packetID];
                     [self->_timers startMessageTimer:pubrec];
                 }
                 [self.delegate publishWithTopicName:publish.topic.name qos:publish.topic.qos.value content:publish.content dup:publish.dup retainFlag:publish.isRetain];
@@ -185,43 +185,43 @@
             case IBPubackMessage:
             {
                 IBPuback *puback = (IBPuback *)message;
-                IBPublish *publish = (IBPublish *)[self->_timers removeTimerWithPacketID:@(puback.packetID)];
+                IBPublish *publish = (IBPublish *)[self->_timers removeTimerWithPacketID:puback.packetID];
                 [self.delegate pubackForPublishWithTopicName:publish.topic.name qos:publish.topic.qos.value content:publish.content dup:publish.dup retainFlag:publish.isRetain andReturnCode:-1];
-                [self->_publishPackets removeObjectForKey:@(puback.packetID)];
+                [self->_publishPackets removeObjectForKey:puback.packetID];
             } break;
             case IBPubrecMessage:
             {
                 IBPubrec *pubrec = (IBPubrec *)message;
-                IBPublish *publish = (IBPublish *)[self->_timers removeTimerWithPacketID:@(pubrec.packetID)];
-                [self->_publishPackets setObject:publish forKey:@(publish.packetID)];
-                IBPubrel *pubrel = [[IBPubrel alloc] initWithPacketID:pubrec.packetID];
+                IBPublish *publish = (IBPublish *)[self->_timers removeTimerWithPacketID:pubrec.packetID];
+                [self->_publishPackets setObject:publish forKey:publish.packetID];
+                IBPubrel *pubrel = [[IBPubrel alloc] initWithPacketID:[pubrec.packetID integerValue]];
                 [self->_timers startMessageTimer:pubrel];
                 [self.delegate pubrecForPublishWithTopicName:publish.topic.name qos:publish.topic.qos.value content:publish.content dup:publish.dup retainFlag:publish.isRetain];
             } break;
             case IBPubrelMessage:
             {
                 IBPubrel *pubrel = (IBPubrel *)message;
-                [self->_timers removeTimerWithPacketID:@(pubrel.packetID)];
-                IBPublish *publish = [self->_publishPackets objectForKey:@(pubrel.packetID)];
-                IBPubcomp *pubcomp = [[IBPubcomp alloc] initWithPacketID:pubrel.packetID];
+                [self->_timers removeTimerWithPacketID:pubrel.packetID];
+                IBPublish *publish = [self->_publishPackets objectForKey:pubrel.packetID];
+                IBPubcomp *pubcomp = [[IBPubcomp alloc] initWithPacketID:[pubrel.packetID integerValue]];
                 [self sendMessage:pubcomp];
                 [self.delegate pubrelForPublishWithTopicName:publish.topic.name qos:publish.topic.qos.value content:publish.content dup:publish.dup retainFlag:publish.isRetain];
             } break;
             case IBPubcompMessage:
             {
                 IBPubcomp *pubcomp = (IBPubcomp *)message;
-                [self->_timers removeTimerWithPacketID:@(pubcomp.packetID)];
+                [self->_timers removeTimerWithPacketID:pubcomp.packetID];
 
-                IBPublish *publish = [self->_publishPackets objectForKey:@(pubcomp.packetID)];
+                IBPublish *publish = [self->_publishPackets objectForKey:pubcomp.packetID];
 
-                [self->_publishPackets removeObjectForKey:@(pubcomp.packetID)];
+                [self->_publishPackets removeObjectForKey:pubcomp.packetID];
                 [self.delegate pubcompForPublishWithTopicName:publish.topic.name qos:publish.topic.qos.value content:publish.content dup:publish.dup retainFlag:publish.isRetain];
             } break;
             case IBSubscribeMessage:    NSLog(@" > Error: Subscribe message has been received");    break;
             case IBSubackMessage:
             {
                 IBSuback *suback = (IBSuback *)message;
-                IBSubscribe *subscribe = (IBSubscribe *)[self->_timers stopTimerWithPacketID:@(suback.packetID)];
+                IBSubscribe *subscribe = (IBSubscribe *)[self->_timers stopTimerWithPacketID:suback.packetID];
                 IBMQTTTopic *topic = [subscribe.topics lastObject];
                 [self.delegate subackForSubscribeWithTopicName:topic.name qos:topic.qos.value returnCode:[[suback.returnCodes lastObject] integerValue]];
             } break;
@@ -229,7 +229,7 @@
             case IBUnsubackMessage:
             {
                 IBUnsuback *unsuback = (IBUnsuback *)message;
-                IBUnsubscribe *unsubscribe = (IBUnsubscribe *)[self->_timers stopTimerWithPacketID:@(unsuback.packetID)];
+                IBUnsubscribe *unsubscribe = (IBUnsubscribe *)[self->_timers stopTimerWithPacketID:unsuback.packetID];
                 [self.delegate unsubackForUnsubscribeWithTopicName:[unsubscribe.topics lastObject]];
             } break;
             case IBPingreqMessage:      NSLog(@" > Error: Pingreq message has been received");      break;
