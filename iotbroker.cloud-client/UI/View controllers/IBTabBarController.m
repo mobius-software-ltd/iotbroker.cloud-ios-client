@@ -83,6 +83,7 @@
             if (account.isSecure) {
                 [self->_requests secureWithCertificatePath:account.keyPath withPassword:account.keyPass];
             }
+            [(IBAMQP *)self->_requests setTopics:[self->_accountManager topicsForCurrentAccount]];
         } else if (account.protocol == IBWebsocketsProtocolType) {
             self->_requests = [[IBWebsocketMQTT alloc] initWithHost:host port:port andResponseDelegate:self];
             if (account.isSecure) {
@@ -170,19 +171,13 @@
 #pragma mark - IBAddTopicDelegate -
 
 - (void) addTopicViewControllerClickOnAddButton : (IBAddTopicViewController *) controller {
-    
-    if (![self->_accountManager isTopicExist:controller.topicName]) {
-        Topic *topic = [self->_accountManager topic];
-        topic.topicName = controller.topicName;
-        topic.qos = (int32_t)controller.qosValue;
-        self->_progressHUD = [self.tabBarDelegate getPreparedProgressHUD];
-        self->_progressHUD.parentController = self;
-        [self showProgressWithMessage:@"Subscription..."];
-        [self->_requests subscribeToTopic:topic];
-    } else {
-        IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:@"You have already subscribe on this topic" preferredStyle:UIAlertControllerStyleActionSheet];
-        [alert pushToNavigationControllerStack:self.navigationController];
-    }
+    Topic *topic = [self->_accountManager topic];
+    topic.topicName = controller.topicName;
+    topic.qos = (int32_t)controller.qosValue;
+    self->_progressHUD = [self.tabBarDelegate getPreparedProgressHUD];
+    self->_progressHUD.parentController = self;
+    [self showProgressWithMessage:@"Subscription..."];
+    [self->_requests subscribeToTopic:topic];
 }
 
 #pragma mark - IBSendMessageControllerDelegate -

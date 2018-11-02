@@ -38,7 +38,7 @@
 @property (strong, nonatomic) NSMutableDictionary<NSNumber *, NSString *> *usedMappings;
 @property (strong, nonatomic) NSMutableArray<IBAMQPTransfer *> *pendingMessages;
 @property (strong, nonatomic) Account *account;
-
+@property (assign, nonatomic) NSInteger keepalive;
 @end
 
 @implementation IBAMQP
@@ -53,10 +53,12 @@
         self->_internetProtocol.delegate = self;
         self->_delegate = delegate;
         self->_isSASLСonfirm = false;
-        self->_nextHandle = 0;
+        self->_nextHandle = 1;
+        self->_chanel = 0;
         self->_usedMappings = [NSMutableDictionary dictionary];
+        self->_usedIncomingMappings = [NSMutableDictionary dictionary];
         self->_usedOutgoingMappings = [NSMutableDictionary dictionary];
-        self->_usedMappings = [NSMutableDictionary dictionary];
+        self->_pendingMessages = [NSMutableArray array];
     }
     return self;
 }
@@ -67,6 +69,14 @@
     ((IBSocketTransport *)self->_internetProtocol).tls = true;
     if (certificate.length > 0 && password.length > 0) {
         ((IBSocketTransport *)self->_internetProtocol).certificates = [IBSocketTransport clientCertsFromP12:certificate passphrase:password];
+    }
+}
+
+- (void) setTopics:(NSArray<Topic *> *)topics {
+    for (Topic *topic in topics) {
+        long currentHandler = self->_nextHandle++;
+        [self->_usedIncomingMappings setObject:[NSNumber numberWithLong:currentHandler] forKey:topic.topicName];
+        [self->_usedMappings setObject:topic.topicName forKey:[NSNumber numberWithLong:currentHandler]];
     }
 }
 
@@ -101,15 +111,13 @@
     
     IBAMQPTransfer *transfer = [[IBAMQPTransfer alloc] init];
     transfer.chanel = self->_chanel;
-    transfer.deliveryId = @(0);
-    transfer.settled = @(false);
+    if (message.qos == IBAtMostOnce) {
+        transfer.settled = @(true);
+    } else {
+        transfer.settled = @(false);
+    }
     transfer.more = @(false);
     transfer.messageFormat = [[IBAMQPMessageFormat alloc] initWithValue:0];
-    
-    IBAMQPMessageHeader *messageHeader = [[IBAMQPMessageHeader alloc] init];
-    messageHeader.durable = @(true);
-    messageHeader.priority = @(3);
-    messageHeader.milliseconds = @(1000);
     
     IBAMQPData *data = [[IBAMQPData alloc] init];
     data.data = [NSMutableData dataWithData:message.content];
@@ -119,6 +127,11 @@
     if ([self->_usedOutgoingMappings objectForKey:message.topicName]) {
         transfer.handle = [self->_usedOutgoingMappings objectForKey:message.topicName];
         [self->_timers startMessageTimer:transfer];
+        if (transfer.settled != nil && [transfer.settled boolValue]) {
+            if (transfer.deliveryId != nil) {
+                [self->_timers removeTimerWithPacketID:transfer.deliveryId];
+            }
+        }
     } else {
         long currentHandler = self->_nextHandle++;
         [self->_usedOutgoingMappings setObject:[NSNumber numberWithLong:currentHandler] forKey:message.topicName];
@@ -133,6 +146,7 @@
         attach.handle = [NSNumber numberWithLong:currentHandler];
         attach.role = [[IBAMQPRoleCode alloc] initWithRoleCode:IBAMQPSenderRoleCode];
         attach.sendCodes = [[IBAMQPSendCode alloc] initWithSendCode:IBAMQPMixedSendCode];
+        attach.initialDeliveryCount = @(0);
         
         IBAMQPSource *source = [[IBAMQPSource alloc] init];
         source.address = message.topicName;
@@ -147,32 +161,7 @@
 }
 
 - (void) subscribeToTopic:(Topic *)topic {
-    
-    long currentHandler;
-    if ([self->_usedIncomingMappings objectForKey:topic.topicName]) {
-        currentHandler = [[self->_usedIncomingMappings objectForKey:topic.topicName] longValue];
-    } else {
-        currentHandler = self->_nextHandle++;
-        [self->_usedIncomingMappings setObject:[NSNumber numberWithLong:currentHandler] forKey:topic.topicName];
-        [self->_usedMappings setObject:topic.topicName forKey:[NSNumber numberWithLong:currentHandler]];
-    }
-    
-    IBAMQPAttach *attach = [[IBAMQPAttach alloc] init];
-    attach.chanel = self->_chanel;
-    attach.name = topic.topicName;
-    attach.handle = [NSNumber numberWithLong:currentHandler];
-    attach.role = [[IBAMQPRoleCode alloc] initWithRoleCode:IBAMQPReceiverRoleCode];
-    attach.sendCodes = [[IBAMQPSendCode alloc] initWithSendCode:IBAMQPMixedSendCode];
-    
-    IBAMQPTarget *target = [[IBAMQPTarget alloc] init];
-    target.address = topic.topicName;
-    target.durable = [[IBAMQPTerminusDurability alloc] initWithTerminusDurability:IBAMQPNoneTerminusDurabilities];
-    target.timeout = [NSNumber numberWithLong:0];
-    target.dynamic = [NSNumber numberWithBool:false];
-    
-    attach.target = target;
-    
-    [self sendMessage:attach];
+    [self subscribeTo:topic.topicName];
 }
 
 - (void) unsubscribeFromTopic:(Topic *)topic {
@@ -205,6 +194,10 @@
 
 - (id<IBMessage>) getPingreqMessage {
     return [[IBAMQPPing alloc] init];
+}
+
+- (void)connectionTimeout {
+    [self.delegate timeout];
 }
 
 #pragma mark - IBInternetProtocolDelegate -
@@ -240,24 +233,22 @@
             case IBAMQPProtocolHeaderCode: {
                 IBAMQPProtoHeader *protoHeader = (IBAMQPProtoHeader *)message;
                 if (self->_isSASLСonfirm == true && protoHeader.protocolID == IBAMQPProtocolId) {
-                    
                     self.chanel = protoHeader.chanel;
-                    
                     IBAMQPOpen *open = [[IBAMQPOpen alloc] init];
-                    open.containerId = [[NSUUID UUID] UUIDString];
+                    open.containerId = self->_account.clientID;
                     open.chanel = protoHeader.chanel;
-                    open.hostname = self->_internetProtocol.host;
-                    
+                    open.idleTimeout = @(self->_account.keepalive * 1000);
                     [self sendMessage:open];
-                } else {
-                    [self->_timers stopAllTimers];
                 }
                 break;
             }
             case IBAMQPOpenHeaderCode: {
                 IBAMQPOpen *open = (IBAMQPOpen *)message;
-                NSInteger idleTimeoutInSeconds = [open.idleTimeout integerValue] / 1000;
-                [self->_timers startPingTimerWithKeepAlive:idleTimeoutInSeconds];
+                if (open.idleTimeout == nil) {
+                    self->_keepalive = self->_account.keepalive;
+                } else {
+                    self->_keepalive = [open.idleTimeout integerValue] / 1000;
+                }
                 
                 IBAMQPBegin *begin = [[IBAMQPBegin alloc] init];
                 begin.chanel = self->_chanel;
@@ -269,32 +260,41 @@
                 
                 break;
             }
-            case IBAMQPBeginHeaderCode: {                
-                
+            case IBAMQPBeginHeaderCode: {
+                [self.delegate connackWithCode:0];
+                [self->_timers startPingTimerWithKeepAlive:self->_keepalive];
+                for (NSString *key in self->_usedIncomingMappings.allKeys) {
+                    [self subscribeTo:key];
+                }
                 break;
             }
             case IBAMQPAttachHeaderCode: {
                 IBAMQPAttach *attach = (IBAMQPAttach *)message;
                 
-                if (attach.role.value == IBAMQPSenderRoleCode) {
+                if (attach.role.value == IBAMQPReceiverRoleCode) {
                     // publish
-                    if (attach.handle != nil) {
-                        for (int i = 0; i < self->_pendingMessages.count; i++) {
-                            IBAMQPTransfer *message = [self->_pendingMessages objectAtIndex:i];
-                            if ([message.handle unsignedIntegerValue] == [attach.handle unsignedIntegerValue]) {
-                                [self->_pendingMessages removeObject:message];
-                                i--;
-                                [self->_timers startMessageTimer:message];
+                    for (int i = 0; i < self->_pendingMessages.count; i++) {
+                        IBAMQPTransfer *message = [self->_pendingMessages objectAtIndex:i];
+                        if ([message.handle integerValue] == [attach.handle integerValue]) {
+                            [self->_pendingMessages removeObject:message];
+                            i--;
+                            [self->_timers startMessageTimer:message];
+                            if (message.settled != nil && [message.settled boolValue]) {
+                                if (message.deliveryId != nil) {
+                                    [self->_timers removeTimerWithPacketID:message.deliveryId];
+                                }
                             }
                         }
                     }
-                    [self.delegate connackWithCode:0];
                 } else {
                     // subscribe
+                    [self->_usedIncomingMappings setObject:attach.handle forKey:attach.name];
+                    [self.delegate subackForSubscribeWithTopicName:attach.name qos:IBAtLeastOnce returnCode:0];
                 }
                 break;
             }
             case IBAMQPFlowHeaderCode: {
+                // not implemented for now
                 break;
             }
             case IBAMQPTransferHeaderCode: {
@@ -328,12 +328,26 @@
             }
             case IBAMQPDispositionHeaderCode: {
                 IBAMQPDisposition *disposition = (IBAMQPDisposition *)message;
-                
-                long first = [disposition.first longValue];
-                long second = [disposition.last longValue];
-                
-                for (long i = first; i <= second; i++) {
-                    [self->_timers removeTimerWithPacketID:[NSNumber numberWithLong:i]];
+                if (disposition.first != nil) {
+                    NSInteger first = [disposition.first integerValue];
+                    if (disposition.last != nil) {
+                        NSInteger last = [disposition.last integerValue];
+                        for (NSInteger i = first; i < last; i++) {
+                            IBAMQPTransfer *transfer = (IBAMQPTransfer *)[self->_timers removeTimerWithPacketID:disposition.first];
+                            if (transfer != nil) {
+                                NSString *topicName = [self->_usedMappings objectForKey:transfer.handle];
+                                IBAMQPData *data = (IBAMQPData *)transfer.data;
+                                [self.delegate pubackForPublishWithTopicName:topicName qos:IBAtLeastOnce content:data.data dup:false retainFlag:false andReturnCode:0];
+                            }
+                        }
+                    } else {
+                        IBAMQPTransfer *transfer = (IBAMQPTransfer *)[self->_timers removeTimerWithPacketID:disposition.first];
+                        if (transfer != nil) {
+                            NSString *topicName = [self->_usedMappings objectForKey:transfer.handle];
+                            IBAMQPData *data = (IBAMQPData *)transfer.data;
+                            [self.delegate pubackForPublishWithTopicName:topicName qos:IBAtLeastOnce content:data.data dup:false retainFlag:false andReturnCode:0];
+                        }
+                    }
                 }
                 break;
             }
@@ -346,6 +360,8 @@
                     if ([self->_usedOutgoingMappings objectForKey:topicName]) {
                         [self->_usedOutgoingMappings removeObjectForKey:topicName];
                     }
+                    [self->_usedIncomingMappings removeObjectForKey:topicName];
+                    [self.delegate unsubackForUnsubscribeWithTopicName:topicName];
                 }
                 break;
             }
@@ -374,7 +390,7 @@
                     }
                 }
                 
-                if (plainMechanism != nil) {
+                if (plainMechanism == nil) {
                     [self->_timers stopAllTimers];
                     return;
                 }
@@ -450,6 +466,34 @@
 }
 
 #pragma mark - Private methods -
+
+- (void) subscribeTo:(NSString *)topicName {
+    long currentHandler;
+    if ([self->_usedIncomingMappings objectForKey:topicName]) {
+        currentHandler = [[self->_usedIncomingMappings objectForKey:topicName] longValue];
+    } else {
+        currentHandler = self->_nextHandle++;
+        [self->_usedIncomingMappings setObject:[NSNumber numberWithLong:currentHandler] forKey:topicName];
+        [self->_usedMappings setObject:topicName forKey:[NSNumber numberWithLong:currentHandler]];
+    }
+    
+    IBAMQPAttach *attach = [[IBAMQPAttach alloc] init];
+    attach.chanel = self->_chanel;
+    attach.name = topicName;
+    attach.handle = [NSNumber numberWithLong:currentHandler];
+    attach.role = [[IBAMQPRoleCode alloc] initWithRoleCode:IBAMQPReceiverRoleCode];
+    attach.sendCodes = [[IBAMQPSendCode alloc] initWithSendCode:IBAMQPMixedSendCode];
+    
+    IBAMQPTarget *target = [[IBAMQPTarget alloc] init];
+    target.address = topicName;
+    target.durable = [[IBAMQPTerminusDurability alloc] initWithTerminusDurability:IBAMQPNoneTerminusDurabilities];
+    target.timeout = [NSNumber numberWithLong:0];
+    target.dynamic = [NSNumber numberWithBool:false];
+    
+    attach.target = target;
+    
+    [self sendMessage:attach];
+}
 
 - (NSData *) encodeMessage : (id<IBMessage>) message {
     

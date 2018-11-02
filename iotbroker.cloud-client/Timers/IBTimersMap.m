@@ -23,6 +23,7 @@
 #import "IBSNRegister.h"
 #import "IBCoMessage.h"
 #import "IBStringUtils.h"
+#import "IBAMQPTransfer.h"
 
 static NSInteger const IBMaxValue = 65535;
 static NSInteger const IBFirstID = 1;
@@ -144,10 +145,12 @@ static NSInteger const IBFirstID = 1;
         } else {
             number = [countableMessage.packetID integerValue];
         }
+    } else if ([message isKindOfClass:[IBAMQPTransfer class]]) {
+        IBAMQPTransfer *transfer = (IBAMQPTransfer *)message;
+        transfer.deliveryId = @(number);
     }
     
     [self->_timersDictionary setObject:timerTask forKey:@(number)];
-    
     [timerTask start];
 }
 

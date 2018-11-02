@@ -66,6 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Account (CoreDataValueValidation)
 
 - (BOOL) isValid;
+- (BOOL) isValidKeepaliveRange;
 
 @end
 

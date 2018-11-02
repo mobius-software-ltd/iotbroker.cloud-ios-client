@@ -139,6 +139,11 @@ static NSString *const IBProgressHUDIdentifier = @"IBProgressHUDViewControllerId
             [alert pushToNavigationControllerStack:self->_navigationController];
             return;
         }
+        if (![account isValidKeepaliveRange]) {
+            IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:@"Keepalive must be in the range [0, 65535]." preferredStyle:UIAlertControllerStyleActionSheet];
+            [alert pushToNavigationControllerStack:self->_navigationController];
+            return;
+        }
         [self->_accountManager writeAccount:account];
         [self->_accountManager setDefaultAccountWithClientID:account.clientID];
         IBTabBarController *tabBarController = (IBTabBarController *)[self controllerWithIdentifier:IBTabBarIdentifier];

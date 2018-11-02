@@ -30,4 +30,6 @@
 
 - (instancetype) initWithHost : (NSString *) host port : (NSInteger) port andResponseDelegate : (id<IBResponsesDelegate>) delegate;
 
+- (void) setTopics:(NSArray<Topic *> *)topics;
+
 @end

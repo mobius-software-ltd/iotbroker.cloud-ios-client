@@ -52,11 +52,11 @@
 - (BOOL) isValid {
     
     if (self.protocol == IBMqttProtocolType) {
-        if (self.username.length == 0 || self.password.length == 0 || self.clientID.length == 0 || self.serverHost.length == 0 || self.port == 0 || self.keepalive <= 0 || self.keepalive > 65535) {
+        if (self.username.length == 0 || self.password.length == 0 || self.clientID.length == 0 || self.serverHost.length == 0 || self.port == 0) {
             return false;
         }
     } else if (self.protocol == IBMqttSNProtocolType) {
-        if (self.clientID.length == 0 || self.serverHost.length == 0 || self.port == 0 || self.keepalive == 0) {
+        if (self.clientID.length == 0 || self.serverHost.length == 0 || self.port == 0) {
             return false;
         }
     } else if (self.protocol == IBCoAPProtocolType) {
@@ -69,6 +69,10 @@
         }
     }
     return true;
+}
+
+- (BOOL) isValidKeepaliveRange {
+    return (self.keepalive >= 0 && self.keepalive <= 65535);
 }
 
 @end

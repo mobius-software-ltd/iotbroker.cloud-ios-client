@@ -147,10 +147,14 @@ NSComparisonResult dateSort(Message *m1, Message *m2, void *context) {
 
 - (void) addTopicToCurrentAccount : (Topic *) topic {
     if (topic != nil) {
+        Account *currentAccount = [self readDefaultAccount];
+        Topic *findTopic = [self topicByTopicName:topic.topicName];
+        if (findTopic != nil) {
+            [currentAccount removeTopicsObject:findTopic];
+        }
         Topic *topicToAdd = (Topic *)[self->_coreDataManager entityForInserting:IBTopicEntity];
         [topicToAdd setTopicName:topic.topicName];
         [topicToAdd setQos:(int32_t)topic.qos];
-        Account *currentAccount = [self readDefaultAccount];
         if ([self readDefaultAccount] != nil) {
             [currentAccount addTopicsObject:topicToAdd];
         }
@@ -215,7 +219,6 @@ NSComparisonResult dateSort(Message *m1, Message *m2, void *context) {
 
 - (void) cleanSessionData {
     [self deleteAllTopicsForCurrentAccount];
-    [self deleteAllMessagesForCurrentAccount];
 }
 
 - (BOOL) isTopicExist: (NSString *)name {
@@ -260,6 +263,15 @@ NSComparisonResult dateSort(Message *m1, Message *m2, void *context) {
     for (Message *message in [self messagesForCurrentAccount]) {
         [self->_coreDataManager deleteEntity:message];
     }
+}
+
+- (Topic *) topicByTopicName: (NSString *)name {
+    for (Topic *topic in [self topicsForCurrentAccount]) {
+        if ([topic.topicName isEqualToString:name]) {
+            return topic;
+        }
+    }
+    return nil;
 }
 
 @end
