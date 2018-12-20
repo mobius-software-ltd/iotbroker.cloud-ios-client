@@ -38,7 +38,7 @@ If you do not have Xcode installed on your Mac, you should do the following:
 
 * First it is necessary to go to [Apple Developer website](https://developer.apple.com/) and to sign in to your account or register the new one if you yet do not have the account. In order to register you should go to Account section and press the **Create Apple ID** button.
 
-* In your account you should go to Downloads tab and download Xcode. You will be forwarded to the corresponding page. Here you should press View in Mac App Store button. On the Xcode pop-up window you should press Get button to start the download process. On your Mac you will find the downloaded Xcode in DMG extension. To start working with Xcode you should open this DMG file and run Xcode.
+* In your account you should go to **Downloads** tab and download **Xcode**. You will be forwarded to the corresponding page. Here you should press **View** in Mac App Store button. On the Xcode pop-up window you should press **Get** button to start the download process. On your Mac you will find the downloaded Xcode in DMG extension. To start working with Xcode you should open this DMG file and run Xcode.
 
 * To install IoTBroker.Cloud on your iPhone, first you should download IoTBroker.Cloud iOS client
 
