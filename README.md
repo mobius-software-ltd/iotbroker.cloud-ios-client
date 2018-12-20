@@ -34,17 +34,23 @@ that need to be controlled or supervised remotely, through standard Internet net
 
 ### Installation
 
-* To install IoTBroker.Cloud on your iPhone, first you should download [IotBroker.Cloud iOS Client](https://github.com/mobius-software-ltd/iotbroker.cloud-ios-client).
+If you do not have Xcode installed on your Mac, you should do the following:
 
-* In order to open IoTBroker.Cloud iOS client in Xcode, you should go to **File-Open-Choose project**. It is necessary to choose **iotbroker.cloud-client.xcodeproj** file.
+* First it is necessary to go to [Apple Developer website](https://developer.apple.com/) and to sign in to your account or register the new one if you yet do not have the account. In order to register you should go to Account section and press the **Create Apple ID** button.
 
-* Now you should connect your iPhone to Mac via USB.
+* In your account you should go to Downloads tab and download Xcode. You will be forwarded to the corresponding page. Here you should press View in Mac App Store button. On the Xcode pop-up window you should press Get button to start the download process. On your Mac you will find the downloaded Xcode in DMG extension. To start working with Xcode you should open this DMG file and run Xcode.
 
-* On the **Scheme** toolbar menu you should choose your device and click **Play** icon.
+* To install IoTBroker.Cloud on your iPhone, first you should download IoTBroker.Cloud iOS client
+
+* In order to open IoTBroker.Cloud iOS client in Xcode, first you should **go to File-Open-Choose project**. It is necessary to choose **iotbroker.cloud-client.xcodeproj file**.
+
+* Now you should connect your iPhone to Mac via USB or via Wi-Fi.
+
+* On the Scheme toolbar menu you should choose your device and click Play icon.
 
 In a few minutes IotBroker iOS Client will be available for use as any other mobile application. When you finished with installation, you can open IoTBroker.Cloud on your iPhone and log in.
 
-Now you are able to start exchanging messages with MQTT server.
+Now you are able to start exchanging messages with server.
 
 Please note that at this stage it is not possible to register as a client. You can log in to your existing account.
 
