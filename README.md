@@ -54,7 +54,7 @@ Now you are able to start exchanging messages with server.
 
 Please note that at this stage it is not possible to register as a client. You can log in to your existing account.
 
-IoTBroker.Cloud iOS Client is developed by [Mobius Software](http://mobius-software.com).
+IoTBroker.Cloud iOS Client is developed by [Mobius Software](https://www.mobius-software.com/).
 
 ## [License](LICENSE.md)
 
