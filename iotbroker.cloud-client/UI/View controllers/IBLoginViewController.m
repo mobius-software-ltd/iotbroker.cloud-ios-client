@@ -50,7 +50,7 @@ static NSString *const IBSecureConnectionCell   = @"secureConnectionCell";
 static NSString *const IBSecurityKeyCell        = @"securityKeyCell";
 static NSString *const IBKeyPasswordCell        = @"keyPasswordCell";
 
-@interface IBLoginViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIDocumentBrowserViewControllerDelegate, IBPickerViewDelegate>
+@interface IBLoginViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, IBPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -237,10 +237,7 @@ static NSString *const IBKeyPasswordCell        = @"keyPasswordCell";
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     if ([textField isEqual:self.securityKeyTextField]) {
-        NSArray *types = @[@"public.text", @"public.item", @"public.content", @"public.source-code"];
-        UIDocumentBrowserViewController *documentBrowser = [[UIDocumentBrowserViewController alloc] initForOpeningFilesWithContentTypes:types];
-        documentBrowser.delegate = self;
-        [self.navigationController pushViewController:documentBrowser animated:true];
+        [self.delegate loginTableViewControllerKeyFieldSelected:self];
         return false;
     }
     return true;
@@ -373,41 +370,6 @@ static NSString *const IBKeyPasswordCell        = @"keyPasswordCell";
     if (indexPath.section == IBRegustrationInfoSection && indexPath.row == 0) {
         [self.delegate loginTableViewControllerProtocolCellDidClick:self];
         [tableView deselectRowAtIndexPath:indexPath animated:true];
-    }
-}
-
-#pragma mark - UIDocumentBrowserViewControllerDelegate -
-
-- (void)documentBrowser:(UIDocumentBrowserViewController *)controller didPickDocumentURLs:(NSArray <NSURL *> *)documentURLs {
-    
-    NSURL *initialUrl = [documentURLs firstObject];
-    NSURL *destinationUrl = [[[NSFileManager defaultManager] temporaryDirectory] URLByAppendingPathComponent:[initialUrl lastPathComponent]];
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[destinationUrl path]]) {
-        NSString *message = [NSString stringWithFormat:@"File %@ already exist.", [destinationUrl lastPathComponent]];
-        IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:message preferredStyle:UIAlertControllerStyleActionSheet];
-        [alert pushToNavigationControllerStack:self.navigationController];
-    } else {
-        
-        NSError *error = nil;
-        
-        [initialUrl startAccessingSecurityScopedResource];
-        BOOL result = [[NSFileManager defaultManager] copyItemAtURL:initialUrl toURL:destinationUrl error:&error];
-        [initialUrl stopAccessingSecurityScopedResource];
-        
-        if (result) {
-            [self.navigationController popViewControllerAnimated:true];
-            self.securityKeyTextField.text = [destinationUrl path];
-        } else {
-            NSString *message = [NSString stringWithFormat:@"Error while copying  of %@. Try again.", [destinationUrl lastPathComponent]];
-            IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:message preferredStyle:UIAlertControllerStyleActionSheet];
-            [alert pushToNavigationControllerStack:self.navigationController];
-        }
-        
-        if (error != nil) {
-            IBAlertViewController *alert = [IBAlertViewController alertControllerWithTitle:@"Attention" message:[error localizedDescription] preferredStyle:UIAlertControllerStyleActionSheet];
-            [alert pushToNavigationControllerStack:self.navigationController];
-        }
     }
 }
 

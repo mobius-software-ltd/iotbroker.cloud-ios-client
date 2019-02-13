@@ -21,12 +21,16 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, IBTransportState) {
-    
     IBTransportCreated  = 0,
     IBTransportOpening  = 1,
     IBTransportOpen     = 2,
     IBTransportClosing  = 3,
     IBTransportClosed   = 4,
+};
+
+typedef NS_ENUM(NSInteger, IBProtocolType) {
+    IBTCPProtocol = 0,
+    IBUDPProtocol = 1,
 };
 
 @protocol IBInternetProtocolDelegate;
@@ -40,12 +44,13 @@ typedef NS_ENUM(NSInteger, IBTransportState) {
 @property (strong, nonatomic, readonly) NSString *host;
 @property (assign, nonatomic, readonly) NSInteger port;
 
+- (instancetype)initWithHost:(NSString *)host andPort:(NSInteger)port;
 
-- (instancetype) initWithHost : (NSString *) host andPort : (NSInteger) port;
+- (void) configureProtocol:(IBProtocolType)protocol security:(BOOL)sec;
 
 - (void) start;
 - (void) stop;
-- (BOOL) sendData : (NSData *) message;
+- (void) sendData:(NSData *) message;
 
 @end
 

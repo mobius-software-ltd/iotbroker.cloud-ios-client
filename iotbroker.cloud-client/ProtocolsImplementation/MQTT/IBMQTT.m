@@ -20,7 +20,7 @@
 
 #import "IBMQTT.h"
 #import "IBParser.h"
-#import "IBSocketTransport.h"
+#import "IBNetwork.h"
 #import "IBTimersMap.h"
 
 @interface IBMQTT () <IBInternetProtocolDelegate>
@@ -39,10 +39,11 @@
     self = [super init];
     if (self != nil) {
         self->_timers = [[IBTimersMap alloc] initWithRequest:self];
-        self->_internetProtocol = [[IBSocketTransport alloc] initWithHost:host andPort:1883];
-        self->_internetProtocol.delegate = self;
         self->_delegate = delegate;
         self->_publishPackets = [NSMutableDictionary dictionary];
+        self->_internetProtocol = [[IBNetwork alloc] initWithHost:host andPort:port];
+        [self->_internetProtocol configureProtocol:IBTCPProtocol security:false];
+        self->_internetProtocol.delegate = self;
     }
     return self;
 }
@@ -50,24 +51,19 @@
 #pragma mark - API's methods -
 
 - (void) secureWithCertificatePath : (NSString *) certificate withPassword : (NSString *) password {
-    ((IBSocketTransport *)self->_internetProtocol).tls = true;
-    if (certificate.length > 0 && password.length > 0) {
-        ((IBSocketTransport *)self->_internetProtocol).certificates = [IBSocketTransport clientCertsFromP12:certificate passphrase:password];
-    }
+    [self->_internetProtocol configureProtocol:IBTCPProtocol security:true];
+    NSLog(@"%@: SET CERTFICATE", [[self class] description]);
 }
 
 - (void)prepareToSendingRequest {
     [self->_internetProtocol start];
 }
 
-- (BOOL) sendMessage : (id<IBMessage>) message {
-    
+- (void) sendMessage : (id<IBMessage>) message {
     NSData *data = [self encodeMessage:message];
     if (data != nil) {
         [self->_internetProtocol sendData:data];
-        return true;
     }
-    return false;
 }
 
 - (void)connectionTimeout {

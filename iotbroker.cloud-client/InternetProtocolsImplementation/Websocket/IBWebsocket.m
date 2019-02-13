@@ -50,6 +50,10 @@
     return self;
 }
 
+- (void)configureProtocol:(IBProtocolType)protocol security:(BOOL)sec {
+    
+}
+
 - (void) setCertificate: (char *)certificate {
     NSString *type = @"wss";
     NSString *urlString = [NSString stringWithFormat:@"%@://%@:%zd/%@", type, self->_host, self->_port, type];
@@ -74,9 +78,8 @@
     [self->_webSocket close];
 }
 
-- (BOOL) sendData : (NSData *) message {
+- (void) sendData : (NSData *) message {
     [self->_webSocket send:[[NSString alloc] initWithData:message encoding:NSUTF8StringEncoding]];
-    return true;
 }
 
 #pragma mark - SRWebSocketDelegate -

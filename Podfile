@@ -1,8 +1,10 @@
 use_frameworks! 
 
 target 'iotbroker.cloud-client' do
-	pod 'CocoaAsyncSocket'
+
+inhibit_all_warnings!
+
 	pod 'SocketRocket'
-	pod 'OpenSSL-Universal'
 	pod 'JSONModel'
+
 end

@@ -21,6 +21,7 @@
 #import "IBCoordinator.h"
 #import "IBLoadingViewController.h"
 #import "IBAccountListViewController.h"
+#import "IBCertificateViewController.h"
 #import "IBRootViewController.h"
 #import "IBAlertViewController.h"
 #import "IBAddTopicViewController.h"
@@ -33,13 +34,14 @@
 static NSString *const IBLoadingIdentifier = @"IBLoadingViewControllerIdentifier";
 static NSString *const IBRootIdentifier = @"IBRootViewControllerIdentifier";
 static NSString *const IBAccountListIdentifier = @"IBAccountListViewControllerIdentifier";
+static NSString *const IBCertificateIdentifier = @"IBCertificateViewControllerIdentifier";
 static NSString *const IBAddTopicIdentifier = @"IBAddTopicViewControllerIdentifier";
 static NSString *const IBLoginControllerIdentifier = @"IBLoginControllerIdentifier";
 static NSString *const IBProtocolControllerIdentifier = @"IBProtocolTypeViewControllerIdentifier";
 static NSString *const IBTabBarIdentifier = @"IBTabBarControllerIdentifier";
 static NSString *const IBProgressHUDIdentifier = @"IBProgressHUDViewControllerIdentifier";
 
-@interface IBCoordinator () <IBAccountListDelegate, IBLoginControllerDelegate, IBTabBarControllerDelegate, IBProtocolTypeViewControllerDelegate>
+@interface IBCoordinator () <IBAccountListDelegate, IBLoginControllerDelegate, IBTabBarControllerDelegate, IBProtocolTypeViewControllerDelegate, IBCertificateControllerDelegate>
 
 @property (strong, nonatomic) IBAccountManager *accountManager;
 
@@ -169,6 +171,24 @@ static NSString *const IBProgressHUDIdentifier = @"IBProgressHUDViewControllerId
     protocolType.view.frame = controller.view.bounds;
     [controller.view addSubview:protocolType.view];
     [protocolType didMoveToParentViewController:controller];
+}
+
+- (void)loginTableViewControllerKeyFieldSelected:(IBLoginViewController *)loginTableViewController {
+    IBCertificateViewController *controller = (IBCertificateViewController *)[self controllerWithIdentifier:IBCertificateIdentifier];
+    controller.delegate = self;
+    UIViewController *top = [self topViewController];
+    
+    [top addChildViewController:controller];
+    controller.view.frame = top.view.bounds;
+    [top.view addSubview:controller.view];
+    [controller didMoveToParentViewController:top];
+}
+
+#pragma mark - IBCertificateControllerDelegate -
+
+- (void) certificateViewControllerDidClickOkButton : (IBCertificateViewController *) certificateViewController {
+    NSString *certificate = certificateViewController.certificate;
+    NSLog(@"%@", certificate);
 }
 
 #pragma mark - IBProtocolTypeViewControllerDelegate -

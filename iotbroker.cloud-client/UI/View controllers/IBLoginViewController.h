@@ -28,6 +28,7 @@
 - (void) loginTableViewController : (IBLoginViewController *) loginTableViewController newAccountToAdd : (Account *) account;
 - (void) loginTableViewControllerBackButtonDidClick : (IBLoginViewController *) loginTableViewController;
 - (void) loginTableViewControllerProtocolCellDidClick : (IBLoginViewController *) loginTableViewController;
+- (void) loginTableViewControllerKeyFieldSelected : (IBLoginViewController *) loginTableViewController;
 
 @end
 

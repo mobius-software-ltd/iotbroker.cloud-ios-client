@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		015F422EA1D7A5DEA8470010 /* Pods_iotbroker_cloud_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 488B0E9AFE7E719102170D94 /* Pods_iotbroker_cloud_client.framework */; };
-		2217D8E61EBB127500A636E7 /* IBSocketTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8E11EBB127500A636E7 /* IBSocketTransport.m */; };
-		2217D8E71EBB127500A636E7 /* IBSocketDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8E31EBB127500A636E7 /* IBSocketDecoder.m */; };
-		2217D8E81EBB127500A636E7 /* IBSocketEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8E51EBB127500A636E7 /* IBSocketEncoder.m */; };
 		2217D8EE1EBB12F200A636E7 /* IBTimersMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8EB1EBB12F200A636E7 /* IBTimersMap.m */; };
 		2217D8EF1EBB12F200A636E7 /* IBTimerTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8ED1EBB12F200A636E7 /* IBTimerTask.m */; };
 		2217D8FE1EBB160700A636E7 /* Account+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217D8F31EBB160700A636E7 /* Account+CoreDataProperties.m */; };
@@ -84,9 +81,6 @@
 		224BEFD41EEADB200033961F /* IBAMQPOpen.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFD31EEADB200033961F /* IBAMQPOpen.m */; };
 		224BEFD71EEAE19C0033961F /* IBAMQPTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 224BEFD61EEAE19C0033961F /* IBAMQPTransfer.m */; };
 		22664DCC1EF9A1FA007E7438 /* IBAMQPTransferMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 22664DCB1EF9A1FA007E7438 /* IBAMQPTransferMap.m */; };
-		227E3DBB210F5DBF0028C899 /* P12FileExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 227E3DBA210F5DBF0028C899 /* P12FileExtractor.m */; };
-		227E3E33210F601B0028C899 /* IBDtls.m in Sources */ = {isa = PBXBuildFile; fileRef = 227E3E32210F601B0028C899 /* IBDtls.m */; };
-		227E3E37210F60EA0028C899 /* IBDTLSSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 227E3E36210F60EA0028C899 /* IBDTLSSocket.m */; };
 		2289A1A81EE7E8EF009B98AA /* IBAMQPTLVList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1A71EE7E8EF009B98AA /* IBAMQPTLVList.m */; };
 		2289A1AB1EE7F332009B98AA /* IBAMQPTLVMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1AA1EE7F332009B98AA /* IBAMQPTLVMap.m */; };
 		2289A1AF1EE7FAB1009B98AA /* IBAMQPTLVArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1AE1EE7FAB1009B98AA /* IBAMQPTLVArray.m */; };
@@ -109,7 +103,6 @@
 		2289A1E91EE84E03009B98AA /* IBAMQPPing.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1E81EE84E03009B98AA /* IBAMQPPing.m */; };
 		2289A1EC1EE84F05009B98AA /* IBAMQPProtoHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1EB1EE84F05009B98AA /* IBAMQPProtoHeader.m */; };
 		2289A1EF1EE8520A009B98AA /* IBAMQPWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289A1EE1EE8520A009B98AA /* IBAMQPWrapper.m */; };
-		229A68E021624A2900C547C9 /* libwolfssl_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 229A68DF21624A2900C547C9 /* libwolfssl_ios.a */; };
 		229BF78120EA352900407C60 /* IBCoOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 229BF78020EA352900407C60 /* IBCoOption.m */; };
 		22C531A31EAF90D2007F57A8 /* IBPuback.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531871EAF90D2007F57A8 /* IBPuback.m */; };
 		22C531A41EAF90D2007F57A8 /* IBConnack.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C531891EAF90D2007F57A8 /* IBConnack.m */; };
@@ -174,12 +167,10 @@
 		22C5C0511DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C5C0501DF061CE00790EF6 /* iotbroker_cloud_clientUITests.m */; };
 		22C728061EEAF78800D2F277 /* IBAMQPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C728051EEAF78800D2F277 /* IBAMQPParser.m */; };
 		22D861111EF13C7500177088 /* IBAMQP.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D861101EF13C7500177088 /* IBAMQP.m */; };
-		22DE14311EDFFFB300A9CDA7 /* iotbroker.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DE14301EDFFFB300A9CDA7 /* iotbroker.m */; };
 		22ED8B441EB092F9006A0C98 /* IBMQTTSN.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B431EB092F9006A0C98 /* IBMQTTSN.m */; };
 		22ED8B561EB0B8B0006A0C98 /* IBMQTT.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B551EB0B8B0006A0C98 /* IBMQTT.m */; };
 		22ED8B5E1EB0D00E006A0C98 /* IBQoS.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B591EB0D00E006A0C98 /* IBQoS.m */; };
 		22ED8B5F1EB0D00E006A0C98 /* IBCountableMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B5B1EB0D00E006A0C98 /* IBCountableMessage.m */; };
-		22ED8B761EB0D745006A0C98 /* IBUDPSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8B751EB0D745006A0C98 /* IBUDPSocket.m */; };
 		22F2C6E21DFAC397004FB400 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F2C6E11DFAC397004FB400 /* CoreData.framework */; };
 		22F308591EE6E285008AF92F /* IBAMQPSimpleConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F3083D1EE6E285008AF92F /* IBAMQPSimpleConstructor.m */; };
 		22F3085A1EE6E285008AF92F /* IBAMQPDistributionMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F308401EE6E285008AF92F /* IBAMQPDistributionMode.m */; };
@@ -200,6 +191,8 @@
 		22F308721EE6ED12008AF92F /* IBAMQPTLVVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F308711EE6ED12008AF92F /* IBAMQPTLVVariable.m */; };
 		22F308761EE6FB56008AF92F /* IBAMQPTLVNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F308751EE6FB56008AF92F /* IBAMQPTLVNull.m */; };
 		22F308791EE6FC99008AF92F /* IBAMQPTLVFixed.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F308781EE6FC99008AF92F /* IBAMQPTLVFixed.m */; };
+		BD80D7BE2213424F00C7D04E /* IBNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80D7BD2213424F00C7D04E /* IBNetwork.m */; };
+		BDE895FE2212019700D5EA28 /* IBCertificateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE895FD2212019700D5EA28 /* IBCertificateViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,12 +214,6 @@
 
 /* Begin PBXFileReference section */
 		0589C7D167EA1F54ED0C102B /* Pods-iotbroker.cloud-client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iotbroker.cloud-client.release.xcconfig"; path = "Pods/Target Support Files/Pods-iotbroker.cloud-client/Pods-iotbroker.cloud-client.release.xcconfig"; sourceTree = "<group>"; };
-		2217D8E01EBB127500A636E7 /* IBSocketTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSocketTransport.h; sourceTree = "<group>"; };
-		2217D8E11EBB127500A636E7 /* IBSocketTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBSocketTransport.m; sourceTree = "<group>"; };
-		2217D8E21EBB127500A636E7 /* IBSocketDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSocketDecoder.h; sourceTree = "<group>"; };
-		2217D8E31EBB127500A636E7 /* IBSocketDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBSocketDecoder.m; sourceTree = "<group>"; };
-		2217D8E41EBB127500A636E7 /* IBSocketEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBSocketEncoder.h; sourceTree = "<group>"; };
-		2217D8E51EBB127500A636E7 /* IBSocketEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBSocketEncoder.m; sourceTree = "<group>"; };
 		2217D8EA1EBB12F200A636E7 /* IBTimersMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBTimersMap.h; path = Timers/IBTimersMap.h; sourceTree = "<group>"; };
 		2217D8EB1EBB12F200A636E7 /* IBTimersMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBTimersMap.m; path = Timers/IBTimersMap.m; sourceTree = "<group>"; };
 		2217D8EC1EBB12F200A636E7 /* IBTimerTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBTimerTask.h; path = Timers/IBTimerTask.h; sourceTree = "<group>"; };
@@ -375,120 +362,6 @@
 		22661E5E20D113D500ADA774 /* iotbroker.cloud-client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iotbroker.cloud-client.entitlements"; sourceTree = "<group>"; };
 		22664DCA1EF9A1FA007E7438 /* IBAMQPTransferMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPTransferMap.h; sourceTree = "<group>"; };
 		22664DCB1EF9A1FA007E7438 /* IBAMQPTransferMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPTransferMap.m; sourceTree = "<group>"; };
-		227E3DB9210F5DBF0028C899 /* P12FileExtractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = P12FileExtractor.h; sourceTree = "<group>"; };
-		227E3DBA210F5DBF0028C899 /* P12FileExtractor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = P12FileExtractor.m; sourceTree = "<group>"; };
-		227E3DC0210F5FA20028C899 /* callbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = callbacks.h; sourceTree = "<group>"; };
-		227E3DC1210F5FA20028C899 /* certs_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = certs_test.h; sourceTree = "<group>"; };
-		227E3DC2210F5FA20028C899 /* crl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crl.h; sourceTree = "<group>"; };
-		227E3DC4210F5FA20028C899 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
-		227E3DC5210F5FA20028C899 /* arc4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arc4.h; sourceTree = "<group>"; };
-		227E3DC6210F5FA20028C899 /* asn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn.h; sourceTree = "<group>"; };
-		227E3DC7210F5FA20028C899 /* asn_public.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn_public.h; sourceTree = "<group>"; };
-		227E3DC8210F5FA20028C899 /* blake2-impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "blake2-impl.h"; sourceTree = "<group>"; };
-		227E3DC9210F5FA20028C899 /* blake2-int.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "blake2-int.h"; sourceTree = "<group>"; };
-		227E3DCA210F5FA20028C899 /* blake2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blake2.h; sourceTree = "<group>"; };
-		227E3DCB210F5FA20028C899 /* camellia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camellia.h; sourceTree = "<group>"; };
-		227E3DCC210F5FA20028C899 /* chacha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chacha.h; sourceTree = "<group>"; };
-		227E3DCD210F5FA20028C899 /* coding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coding.h; sourceTree = "<group>"; };
-		227E3DCE210F5FA20028C899 /* compress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compress.h; sourceTree = "<group>"; };
-		227E3DCF210F5FA20028C899 /* des3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = des3.h; sourceTree = "<group>"; };
-		227E3DD0210F5FA20028C899 /* dh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dh.h; sourceTree = "<group>"; };
-		227E3DD1210F5FA20028C899 /* dsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dsa.h; sourceTree = "<group>"; };
-		227E3DD2210F5FA20028C899 /* ecc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ecc.h; sourceTree = "<group>"; };
-		227E3DD3210F5FA20028C899 /* error-crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "error-crypt.h"; sourceTree = "<group>"; };
-		227E3DD4210F5FA20028C899 /* fips_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fips_test.h; sourceTree = "<group>"; };
-		227E3DD5210F5FA20028C899 /* hc128.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hc128.h; sourceTree = "<group>"; };
-		227E3DD6210F5FA20028C899 /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
-		227E3DD7210F5FA20028C899 /* integer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = integer.h; sourceTree = "<group>"; };
-		227E3DD8210F5FA20028C899 /* logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logging.h; sourceTree = "<group>"; };
-		227E3DD9210F5FA20028C899 /* md2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md2.h; sourceTree = "<group>"; };
-		227E3DDA210F5FA20028C899 /* md4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md4.h; sourceTree = "<group>"; };
-		227E3DDB210F5FA20028C899 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
-		227E3DDC210F5FA20028C899 /* memory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memory.h; sourceTree = "<group>"; };
-		227E3DDD210F5FA20028C899 /* misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misc.h; sourceTree = "<group>"; };
-		227E3DDE210F5FA20028C899 /* mpi_class.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpi_class.h; sourceTree = "<group>"; };
-		227E3DDF210F5FA20028C899 /* mpi_superclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpi_superclass.h; sourceTree = "<group>"; };
-		227E3DE0210F5FA20028C899 /* pkcs7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkcs7.h; sourceTree = "<group>"; };
-		227E3DE1210F5FA20028C899 /* poly1305.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poly1305.h; sourceTree = "<group>"; };
-		227E3DE2210F5FA20028C899 /* pwdbased.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pwdbased.h; sourceTree = "<group>"; };
-		227E3DE3210F5FA20028C899 /* rabbit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rabbit.h; sourceTree = "<group>"; };
-		227E3DE4210F5FA20028C899 /* random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = random.h; sourceTree = "<group>"; };
-		227E3DE5210F5FA20028C899 /* ripemd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ripemd.h; sourceTree = "<group>"; };
-		227E3DE6210F5FA20028C899 /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rsa.h; sourceTree = "<group>"; };
-		227E3DE7210F5FA20028C899 /* settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settings.h; sourceTree = "<group>"; };
-		227E3DE8210F5FA20028C899 /* settings_comp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settings_comp.h; sourceTree = "<group>"; };
-		227E3DE9210F5FA20028C899 /* sha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha.h; sourceTree = "<group>"; };
-		227E3DEA210F5FA20028C899 /* sha256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha256.h; sourceTree = "<group>"; };
-		227E3DEB210F5FA20028C899 /* sha512.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha512.h; sourceTree = "<group>"; };
-		227E3DEC210F5FA20028C899 /* tfm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tfm.h; sourceTree = "<group>"; };
-		227E3DED210F5FA20028C899 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
-		227E3DEE210F5FA20028C899 /* visibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = visibility.h; sourceTree = "<group>"; };
-		227E3DEF210F5FA20028C899 /* wc_port.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wc_port.h; sourceTree = "<group>"; };
-		227E3DF0210F5FA20028C899 /* error-ssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "error-ssl.h"; sourceTree = "<group>"; };
-		227E3DF1210F5FA20028C899 /* internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = internal.h; sourceTree = "<group>"; };
-		227E3DF2210F5FA20028C899 /* ocsp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ocsp.h; sourceTree = "<group>"; };
-		227E3DF3210F5FA20028C899 /* ssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl.h; sourceTree = "<group>"; };
-		227E3DF4210F5FA20028C899 /* test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test.h; sourceTree = "<group>"; };
-		227E3DF5210F5FA20028C899 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
-		227E3DF7210F5FA20028C899 /* callbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = callbacks.h; sourceTree = "<group>"; };
-		227E3DF8210F5FA20028C899 /* certs_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = certs_test.h; sourceTree = "<group>"; };
-		227E3DF9210F5FA20028C899 /* crl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crl.h; sourceTree = "<group>"; };
-		227E3DFA210F5FA20028C899 /* error-ssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "error-ssl.h"; sourceTree = "<group>"; };
-		227E3DFB210F5FA20028C899 /* internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = internal.h; sourceTree = "<group>"; };
-		227E3DFC210F5FA20028C899 /* ocsp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ocsp.h; sourceTree = "<group>"; };
-		227E3DFD210F5FA20028C899 /* ssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl.h; sourceTree = "<group>"; };
-		227E3DFE210F5FA20028C899 /* test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test.h; sourceTree = "<group>"; };
-		227E3DFF210F5FA20028C899 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
-		227E3E01210F5FA20028C899 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
-		227E3E02210F5FA20028C899 /* arc4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arc4.h; sourceTree = "<group>"; };
-		227E3E03210F5FA20028C899 /* asn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn.h; sourceTree = "<group>"; };
-		227E3E04210F5FA20028C899 /* asn_public.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn_public.h; sourceTree = "<group>"; };
-		227E3E05210F5FA20028C899 /* blake2-impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "blake2-impl.h"; sourceTree = "<group>"; };
-		227E3E06210F5FA20028C899 /* blake2-int.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "blake2-int.h"; sourceTree = "<group>"; };
-		227E3E07210F5FA20028C899 /* blake2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blake2.h; sourceTree = "<group>"; };
-		227E3E08210F5FA20028C899 /* camellia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camellia.h; sourceTree = "<group>"; };
-		227E3E09210F5FA20028C899 /* chacha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chacha.h; sourceTree = "<group>"; };
-		227E3E0A210F5FA20028C899 /* coding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coding.h; sourceTree = "<group>"; };
-		227E3E0B210F5FA20028C899 /* compress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compress.h; sourceTree = "<group>"; };
-		227E3E0C210F5FA20028C899 /* des3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = des3.h; sourceTree = "<group>"; };
-		227E3E0D210F5FA20028C899 /* dh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dh.h; sourceTree = "<group>"; };
-		227E3E0E210F5FA20028C899 /* dsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dsa.h; sourceTree = "<group>"; };
-		227E3E0F210F5FA20028C899 /* ecc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ecc.h; sourceTree = "<group>"; };
-		227E3E10210F5FA20028C899 /* error-crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "error-crypt.h"; sourceTree = "<group>"; };
-		227E3E11210F5FA20028C899 /* fips_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fips_test.h; sourceTree = "<group>"; };
-		227E3E12210F5FA20028C899 /* hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hash.h; sourceTree = "<group>"; };
-		227E3E13210F5FA20028C899 /* hc128.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hc128.h; sourceTree = "<group>"; };
-		227E3E14210F5FA20028C899 /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
-		227E3E15210F5FA20028C899 /* integer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = integer.h; sourceTree = "<group>"; };
-		227E3E16210F5FA20028C899 /* logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logging.h; sourceTree = "<group>"; };
-		227E3E17210F5FA20028C899 /* md2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md2.h; sourceTree = "<group>"; };
-		227E3E18210F5FA20028C899 /* md4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md4.h; sourceTree = "<group>"; };
-		227E3E19210F5FA20028C899 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
-		227E3E1A210F5FA20028C899 /* memory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memory.h; sourceTree = "<group>"; };
-		227E3E1B210F5FA20028C899 /* misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misc.h; sourceTree = "<group>"; };
-		227E3E1C210F5FA20028C899 /* mpi_class.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpi_class.h; sourceTree = "<group>"; };
-		227E3E1D210F5FA20028C899 /* mpi_superclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpi_superclass.h; sourceTree = "<group>"; };
-		227E3E1E210F5FA20028C899 /* pkcs7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkcs7.h; sourceTree = "<group>"; };
-		227E3E1F210F5FA20028C899 /* poly1305.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poly1305.h; sourceTree = "<group>"; };
-		227E3E20210F5FA20028C899 /* pwdbased.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pwdbased.h; sourceTree = "<group>"; };
-		227E3E21210F5FA20028C899 /* rabbit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rabbit.h; sourceTree = "<group>"; };
-		227E3E22210F5FA20028C899 /* random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = random.h; sourceTree = "<group>"; };
-		227E3E23210F5FA20028C899 /* ripemd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ripemd.h; sourceTree = "<group>"; };
-		227E3E24210F5FA20028C899 /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rsa.h; sourceTree = "<group>"; };
-		227E3E25210F5FA20028C899 /* settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settings.h; sourceTree = "<group>"; };
-		227E3E26210F5FA20028C899 /* sha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha.h; sourceTree = "<group>"; };
-		227E3E27210F5FA20028C899 /* sha256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha256.h; sourceTree = "<group>"; };
-		227E3E28210F5FA20028C899 /* sha512.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha512.h; sourceTree = "<group>"; };
-		227E3E29210F5FA20028C899 /* tfm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tfm.h; sourceTree = "<group>"; };
-		227E3E2A210F5FA20028C899 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
-		227E3E2B210F5FA20028C899 /* visibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = visibility.h; sourceTree = "<group>"; };
-		227E3E2C210F5FA20028C899 /* wc_encrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wc_encrypt.h; sourceTree = "<group>"; };
-		227E3E2D210F5FA20028C899 /* wc_port.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wc_port.h; sourceTree = "<group>"; };
-		227E3E2E210F5FA20028C899 /* wolfio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wolfio.h; sourceTree = "<group>"; };
-		227E3E31210F601B0028C899 /* IBDtls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBDtls.h; sourceTree = "<group>"; };
-		227E3E32210F601B0028C899 /* IBDtls.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBDtls.m; sourceTree = "<group>"; };
-		227E3E35210F60EA0028C899 /* IBDTLSSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBDTLSSocket.h; sourceTree = "<group>"; };
-		227E3E36210F60EA0028C899 /* IBDTLSSocket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBDTLSSocket.m; sourceTree = "<group>"; };
 		2289A1A61EE7E8EF009B98AA /* IBAMQPTLVList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPTLVList.h; sourceTree = "<group>"; };
 		2289A1A71EE7E8EF009B98AA /* IBAMQPTLVList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPTLVList.m; sourceTree = "<group>"; };
 		2289A1A91EE7F332009B98AA /* IBAMQPTLVMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPTLVMap.h; sourceTree = "<group>"; };
@@ -536,7 +409,6 @@
 		2289A1EB1EE84F05009B98AA /* IBAMQPProtoHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPProtoHeader.m; sourceTree = "<group>"; };
 		2289A1ED1EE8520A009B98AA /* IBAMQPWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPWrapper.h; sourceTree = "<group>"; };
 		2289A1EE1EE8520A009B98AA /* IBAMQPWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPWrapper.m; sourceTree = "<group>"; };
-		229A68DF21624A2900C547C9 /* libwolfssl_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwolfssl_ios.a; sourceTree = "<group>"; };
 		229BF77F20EA352900407C60 /* IBCoOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBCoOption.h; sourceTree = "<group>"; };
 		229BF78020EA352900407C60 /* IBCoOption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBCoOption.m; sourceTree = "<group>"; };
 		22C531811EAF8AC3007F57A8 /* IBMQTTMessages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBMQTTMessages.h; sourceTree = "<group>"; };
@@ -667,7 +539,6 @@
 		22C728051EEAF78800D2F277 /* IBAMQPParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPParser.m; sourceTree = "<group>"; };
 		22D8610F1EF13C7500177088 /* IBAMQP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQP.h; sourceTree = "<group>"; };
 		22D861101EF13C7500177088 /* IBAMQP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQP.m; sourceTree = "<group>"; };
-		22DE14301EDFFFB300A9CDA7 /* iotbroker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iotbroker.m; sourceTree = "<group>"; };
 		22ED8B3B1EB0847D006A0C98 /* IBRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBRequests.h; sourceTree = "<group>"; };
 		22ED8B3C1EB084A4006A0C98 /* IBResponsesDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBResponsesDelegate.h; sourceTree = "<group>"; };
 		22ED8B421EB092F9006A0C98 /* IBMQTTSN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBMQTTSN.h; sourceTree = "<group>"; };
@@ -683,8 +554,6 @@
 		22ED8B5B1EB0D00E006A0C98 /* IBCountableMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBCountableMessage.m; sourceTree = "<group>"; };
 		22ED8B5C1EB0D00E006A0C98 /* IBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBMessage.h; sourceTree = "<group>"; };
 		22ED8B5D1EB0D00E006A0C98 /* IBCountableMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCountableMessage.h; sourceTree = "<group>"; };
-		22ED8B741EB0D745006A0C98 /* IBUDPSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBUDPSocket.h; sourceTree = "<group>"; };
-		22ED8B751EB0D745006A0C98 /* IBUDPSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBUDPSocket.m; sourceTree = "<group>"; };
 		22F2C6E11DFAC397004FB400 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		22F3083C1EE6E285008AF92F /* IBAMQPSimpleConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBAMQPSimpleConstructor.h; sourceTree = "<group>"; };
 		22F3083D1EE6E285008AF92F /* IBAMQPSimpleConstructor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPSimpleConstructor.m; sourceTree = "<group>"; };
@@ -726,6 +595,10 @@
 		22F308781EE6FC99008AF92F /* IBAMQPTLVFixed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBAMQPTLVFixed.m; sourceTree = "<group>"; };
 		488B0E9AFE7E719102170D94 /* Pods_iotbroker_cloud_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iotbroker_cloud_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A016733DB13CAF666DB499F0 /* Pods-iotbroker.cloud-client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iotbroker.cloud-client.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iotbroker.cloud-client/Pods-iotbroker.cloud-client.debug.xcconfig"; sourceTree = "<group>"; };
+		BD80D7BC2213424F00C7D04E /* IBNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBNetwork.h; sourceTree = "<group>"; };
+		BD80D7BD2213424F00C7D04E /* IBNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBNetwork.m; sourceTree = "<group>"; };
+		BDE895FC2212019700D5EA28 /* IBCertificateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBCertificateViewController.h; sourceTree = "<group>"; };
+		BDE895FD2212019700D5EA28 /* IBCertificateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBCertificateViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -735,7 +608,6 @@
 			files = (
 				22F2C6E21DFAC397004FB400 /* CoreData.framework in Frameworks */,
 				015F422EA1D7A5DEA8470010 /* Pods_iotbroker_cloud_client.framework in Frameworks */,
-				229A68E021624A2900C547C9 /* libwolfssl_ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,11 +695,9 @@
 		2217D90F1EBB168000A636E7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				227E3E30210F5FFE0028C899 /* Dtls */,
 				2217D9671EBB18BF00A636E7 /* ProtocolTypeEnum */,
 				2217D9681EBB18C400A636E7 /* LengthDetails */,
 				2217D9691EBB18CC00A636E7 /* MutableData */,
-				227E3DBC210F5DCD0028C899 /* P12FileExtractor */,
 				2225403A216765C800AAB455 /* StringUtils */,
 			);
 			path = Classes;
@@ -856,6 +726,7 @@
 			children = (
 				2217D94B1EBB17ED00A636E7 /* Coordinator */,
 				2217D94C1EBB17F700A636E7 /* LoginViewController */,
+				BDE895FB2212016B00D5EA28 /* CertificateViewController */,
 				2217D94D1EBB17FE00A636E7 /* ProtocolTypeViewController */,
 				2217D9571EBB188500A636E7 /* AccountListViewController  */,
 				2217D94E1EBB180600A636E7 /* TabBarController */,
@@ -1254,181 +1125,6 @@
 				22664DCB1EF9A1FA007E7438 /* IBAMQPTransferMap.m */,
 			);
 			path = classes;
-			sourceTree = "<group>";
-		};
-		227E3DBC210F5DCD0028C899 /* P12FileExtractor */ = {
-			isa = PBXGroup;
-			children = (
-				227E3DB9210F5DBF0028C899 /* P12FileExtractor.h */,
-				227E3DBA210F5DBF0028C899 /* P12FileExtractor.m */,
-			);
-			name = P12FileExtractor;
-			sourceTree = "<group>";
-		};
-		227E3DBE210F5FA20028C899 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				229A68DF21624A2900C547C9 /* libwolfssl_ios.a */,
-				227E3DBF210F5FA20028C899 /* cyassl */,
-				227E3DF6210F5FA20028C899 /* wolfssl */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		227E3DBF210F5FA20028C899 /* cyassl */ = {
-			isa = PBXGroup;
-			children = (
-				227E3DC0210F5FA20028C899 /* callbacks.h */,
-				227E3DC1210F5FA20028C899 /* certs_test.h */,
-				227E3DC2210F5FA20028C899 /* crl.h */,
-				227E3DC3210F5FA20028C899 /* ctaocrypt */,
-				227E3DF0210F5FA20028C899 /* error-ssl.h */,
-				227E3DF1210F5FA20028C899 /* internal.h */,
-				227E3DF2210F5FA20028C899 /* ocsp.h */,
-				227E3DF3210F5FA20028C899 /* ssl.h */,
-				227E3DF4210F5FA20028C899 /* test.h */,
-				227E3DF5210F5FA20028C899 /* version.h */,
-			);
-			path = cyassl;
-			sourceTree = "<group>";
-		};
-		227E3DC3210F5FA20028C899 /* ctaocrypt */ = {
-			isa = PBXGroup;
-			children = (
-				227E3DC4210F5FA20028C899 /* aes.h */,
-				227E3DC5210F5FA20028C899 /* arc4.h */,
-				227E3DC6210F5FA20028C899 /* asn.h */,
-				227E3DC7210F5FA20028C899 /* asn_public.h */,
-				227E3DC8210F5FA20028C899 /* blake2-impl.h */,
-				227E3DC9210F5FA20028C899 /* blake2-int.h */,
-				227E3DCA210F5FA20028C899 /* blake2.h */,
-				227E3DCB210F5FA20028C899 /* camellia.h */,
-				227E3DCC210F5FA20028C899 /* chacha.h */,
-				227E3DCD210F5FA20028C899 /* coding.h */,
-				227E3DCE210F5FA20028C899 /* compress.h */,
-				227E3DCF210F5FA20028C899 /* des3.h */,
-				227E3DD0210F5FA20028C899 /* dh.h */,
-				227E3DD1210F5FA20028C899 /* dsa.h */,
-				227E3DD2210F5FA20028C899 /* ecc.h */,
-				227E3DD3210F5FA20028C899 /* error-crypt.h */,
-				227E3DD4210F5FA20028C899 /* fips_test.h */,
-				227E3DD5210F5FA20028C899 /* hc128.h */,
-				227E3DD6210F5FA20028C899 /* hmac.h */,
-				227E3DD7210F5FA20028C899 /* integer.h */,
-				227E3DD8210F5FA20028C899 /* logging.h */,
-				227E3DD9210F5FA20028C899 /* md2.h */,
-				227E3DDA210F5FA20028C899 /* md4.h */,
-				227E3DDB210F5FA20028C899 /* md5.h */,
-				227E3DDC210F5FA20028C899 /* memory.h */,
-				227E3DDD210F5FA20028C899 /* misc.h */,
-				227E3DDE210F5FA20028C899 /* mpi_class.h */,
-				227E3DDF210F5FA20028C899 /* mpi_superclass.h */,
-				227E3DE0210F5FA20028C899 /* pkcs7.h */,
-				227E3DE1210F5FA20028C899 /* poly1305.h */,
-				227E3DE2210F5FA20028C899 /* pwdbased.h */,
-				227E3DE3210F5FA20028C899 /* rabbit.h */,
-				227E3DE4210F5FA20028C899 /* random.h */,
-				227E3DE5210F5FA20028C899 /* ripemd.h */,
-				227E3DE6210F5FA20028C899 /* rsa.h */,
-				227E3DE7210F5FA20028C899 /* settings.h */,
-				227E3DE8210F5FA20028C899 /* settings_comp.h */,
-				227E3DE9210F5FA20028C899 /* sha.h */,
-				227E3DEA210F5FA20028C899 /* sha256.h */,
-				227E3DEB210F5FA20028C899 /* sha512.h */,
-				227E3DEC210F5FA20028C899 /* tfm.h */,
-				227E3DED210F5FA20028C899 /* types.h */,
-				227E3DEE210F5FA20028C899 /* visibility.h */,
-				227E3DEF210F5FA20028C899 /* wc_port.h */,
-			);
-			path = ctaocrypt;
-			sourceTree = "<group>";
-		};
-		227E3DF6210F5FA20028C899 /* wolfssl */ = {
-			isa = PBXGroup;
-			children = (
-				227E3DF7210F5FA20028C899 /* callbacks.h */,
-				227E3DF8210F5FA20028C899 /* certs_test.h */,
-				227E3DF9210F5FA20028C899 /* crl.h */,
-				227E3DFA210F5FA20028C899 /* error-ssl.h */,
-				227E3DFB210F5FA20028C899 /* internal.h */,
-				227E3DFC210F5FA20028C899 /* ocsp.h */,
-				227E3DFD210F5FA20028C899 /* ssl.h */,
-				227E3DFE210F5FA20028C899 /* test.h */,
-				227E3DFF210F5FA20028C899 /* version.h */,
-				227E3E00210F5FA20028C899 /* wolfcrypt */,
-				227E3E2E210F5FA20028C899 /* wolfio.h */,
-			);
-			path = wolfssl;
-			sourceTree = "<group>";
-		};
-		227E3E00210F5FA20028C899 /* wolfcrypt */ = {
-			isa = PBXGroup;
-			children = (
-				227E3E01210F5FA20028C899 /* aes.h */,
-				227E3E02210F5FA20028C899 /* arc4.h */,
-				227E3E03210F5FA20028C899 /* asn.h */,
-				227E3E04210F5FA20028C899 /* asn_public.h */,
-				227E3E05210F5FA20028C899 /* blake2-impl.h */,
-				227E3E06210F5FA20028C899 /* blake2-int.h */,
-				227E3E07210F5FA20028C899 /* blake2.h */,
-				227E3E08210F5FA20028C899 /* camellia.h */,
-				227E3E09210F5FA20028C899 /* chacha.h */,
-				227E3E0A210F5FA20028C899 /* coding.h */,
-				227E3E0B210F5FA20028C899 /* compress.h */,
-				227E3E0C210F5FA20028C899 /* des3.h */,
-				227E3E0D210F5FA20028C899 /* dh.h */,
-				227E3E0E210F5FA20028C899 /* dsa.h */,
-				227E3E0F210F5FA20028C899 /* ecc.h */,
-				227E3E10210F5FA20028C899 /* error-crypt.h */,
-				227E3E11210F5FA20028C899 /* fips_test.h */,
-				227E3E12210F5FA20028C899 /* hash.h */,
-				227E3E13210F5FA20028C899 /* hc128.h */,
-				227E3E14210F5FA20028C899 /* hmac.h */,
-				227E3E15210F5FA20028C899 /* integer.h */,
-				227E3E16210F5FA20028C899 /* logging.h */,
-				227E3E17210F5FA20028C899 /* md2.h */,
-				227E3E18210F5FA20028C899 /* md4.h */,
-				227E3E19210F5FA20028C899 /* md5.h */,
-				227E3E1A210F5FA20028C899 /* memory.h */,
-				227E3E1B210F5FA20028C899 /* misc.h */,
-				227E3E1C210F5FA20028C899 /* mpi_class.h */,
-				227E3E1D210F5FA20028C899 /* mpi_superclass.h */,
-				227E3E1E210F5FA20028C899 /* pkcs7.h */,
-				227E3E1F210F5FA20028C899 /* poly1305.h */,
-				227E3E20210F5FA20028C899 /* pwdbased.h */,
-				227E3E21210F5FA20028C899 /* rabbit.h */,
-				227E3E22210F5FA20028C899 /* random.h */,
-				227E3E23210F5FA20028C899 /* ripemd.h */,
-				227E3E24210F5FA20028C899 /* rsa.h */,
-				227E3E25210F5FA20028C899 /* settings.h */,
-				227E3E26210F5FA20028C899 /* sha.h */,
-				227E3E27210F5FA20028C899 /* sha256.h */,
-				227E3E28210F5FA20028C899 /* sha512.h */,
-				227E3E29210F5FA20028C899 /* tfm.h */,
-				227E3E2A210F5FA20028C899 /* types.h */,
-				227E3E2B210F5FA20028C899 /* visibility.h */,
-				227E3E2C210F5FA20028C899 /* wc_encrypt.h */,
-				227E3E2D210F5FA20028C899 /* wc_port.h */,
-			);
-			path = wolfcrypt;
-			sourceTree = "<group>";
-		};
-		227E3E30210F5FFE0028C899 /* Dtls */ = {
-			isa = PBXGroup;
-			children = (
-				227E3E31210F601B0028C899 /* IBDtls.h */,
-				227E3E32210F601B0028C899 /* IBDtls.m */,
-			);
-			name = Dtls;
-			sourceTree = "<group>";
-		};
-		227E3E34210F60DD0028C899 /* DTLSSocket */ = {
-			isa = PBXGroup;
-			children = (
-				227E3E35210F60EA0028C899 /* IBDTLSSocket.h */,
-				227E3E36210F60EA0028C899 /* IBDTLSSocket.m */,
-			);
-			name = DTLSSocket;
 			sourceTree = "<group>";
 		};
 		2289A1A51EE7E8CF009B98AA /* compound */ = {
@@ -2173,7 +1869,6 @@
 		22C5C01C1DF061CE00790EF6 = {
 			isa = PBXGroup;
 			children = (
-				227E3DBE210F5FA20028C899 /* include */,
 				22C5C0271DF061CE00790EF6 /* iotbroker.cloud-client */,
 				22C5C0441DF061CE00790EF6 /* iotbroker.cloud-clientTests */,
 				22C5C04F1DF061CE00790EF6 /* iotbroker.cloud-clientUITests */,
@@ -2196,6 +1891,9 @@
 		22C5C0271DF061CE00790EF6 /* iotbroker.cloud-client */ = {
 			isa = PBXGroup;
 			children = (
+				22C5C03C1DF061CE00790EF6 /* Info.plist */,
+				22C5C02B1DF061CE00790EF6 /* AppDelegate.h */,
+				22C5C02C1DF061CE00790EF6 /* AppDelegate.m */,
 				22661E5E20D113D500ADA774 /* iotbroker.cloud-client.entitlements */,
 				2217D9111EBB16F800A636E7 /* UI */,
 				2217D90F1EBB168000A636E7 /* Classes */,
@@ -2204,14 +1902,7 @@
 				22ED8B471EB093CD006A0C98 /* InternetProtocolsImplementation */,
 				22ED8B3A1EB0843E006A0C98 /* ProtocolsImplementation */,
 				22C5317B1EAF88D8007F57A8 /* Protocols */,
-				22C5C02B1DF061CE00790EF6 /* AppDelegate.h */,
-				22C5C02C1DF061CE00790EF6 /* AppDelegate.m */,
-				22C5C0311DF061CE00790EF6 /* Main.storyboard */,
-				22C5C0371DF061CE00790EF6 /* Assets.xcassets */,
-				22C5C0391DF061CE00790EF6 /* LaunchScreen.storyboard */,
-				22C5C03C1DF061CE00790EF6 /* Info.plist */,
 				22C5C0281DF061CE00790EF6 /* Supporting Files */,
-				22DE14301EDFFFB300A9CDA7 /* iotbroker.m */,
 			);
 			path = "iotbroker.cloud-client";
 			sourceTree = "<group>";
@@ -2220,6 +1911,9 @@
 			isa = PBXGroup;
 			children = (
 				22C5C0291DF061CE00790EF6 /* main.m */,
+				22C5C0311DF061CE00790EF6 /* Main.storyboard */,
+				22C5C0371DF061CE00790EF6 /* Assets.xcassets */,
+				22C5C0391DF061CE00790EF6 /* LaunchScreen.storyboard */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2296,8 +1990,8 @@
 			isa = PBXGroup;
 			children = (
 				22ED8B481EB093E1006A0C98 /* IBInternetProtocol.h */,
-				22ED8B621EB0D69F006A0C98 /* TCP */,
-				22ED8B731EB0D71D006A0C98 /* UDP */,
+				BD80D7BC2213424F00C7D04E /* IBNetwork.h */,
+				BD80D7BD2213424F00C7D04E /* IBNetwork.m */,
 				2223802C2113387A003AAD9A /* Websocket */,
 			);
 			path = InternetProtocolsImplementation;
@@ -2350,61 +2044,6 @@
 				22ED8B5B1EB0D00E006A0C98 /* IBCountableMessage.m */,
 			);
 			name = CountableMessage;
-			sourceTree = "<group>";
-		};
-		22ED8B621EB0D69F006A0C98 /* TCP */ = {
-			isa = PBXGroup;
-			children = (
-				22ED8B701EB0D6DF006A0C98 /* SocketDecoder */,
-				22ED8B711EB0D6EA006A0C98 /* SocketEncoder */,
-				22ED8B721EB0D6EF006A0C98 /* SocketTransport */,
-			);
-			path = TCP;
-			sourceTree = "<group>";
-		};
-		22ED8B701EB0D6DF006A0C98 /* SocketDecoder */ = {
-			isa = PBXGroup;
-			children = (
-				2217D8E21EBB127500A636E7 /* IBSocketDecoder.h */,
-				2217D8E31EBB127500A636E7 /* IBSocketDecoder.m */,
-			);
-			name = SocketDecoder;
-			sourceTree = "<group>";
-		};
-		22ED8B711EB0D6EA006A0C98 /* SocketEncoder */ = {
-			isa = PBXGroup;
-			children = (
-				2217D8E41EBB127500A636E7 /* IBSocketEncoder.h */,
-				2217D8E51EBB127500A636E7 /* IBSocketEncoder.m */,
-			);
-			name = SocketEncoder;
-			sourceTree = "<group>";
-		};
-		22ED8B721EB0D6EF006A0C98 /* SocketTransport */ = {
-			isa = PBXGroup;
-			children = (
-				2217D8E01EBB127500A636E7 /* IBSocketTransport.h */,
-				2217D8E11EBB127500A636E7 /* IBSocketTransport.m */,
-			);
-			name = SocketTransport;
-			sourceTree = "<group>";
-		};
-		22ED8B731EB0D71D006A0C98 /* UDP */ = {
-			isa = PBXGroup;
-			children = (
-				22ED8B771EB0D74E006A0C98 /* UDPSocket */,
-				227E3E34210F60DD0028C899 /* DTLSSocket */,
-			);
-			path = UDP;
-			sourceTree = "<group>";
-		};
-		22ED8B771EB0D74E006A0C98 /* UDPSocket */ = {
-			isa = PBXGroup;
-			children = (
-				22ED8B741EB0D745006A0C98 /* IBUDPSocket.h */,
-				22ED8B751EB0D745006A0C98 /* IBUDPSocket.m */,
-			);
-			name = UDPSocket;
 			sourceTree = "<group>";
 		};
 		22F2C6E01DFAC397004FB400 /* Frameworks */ = {
@@ -2527,6 +2166,15 @@
 			path = fixed;
 			sourceTree = "<group>";
 		};
+		BDE895FB2212016B00D5EA28 /* CertificateViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BDE895FC2212019700D5EA28 /* IBCertificateViewController.h */,
+				BDE895FD2212019700D5EA28 /* IBCertificateViewController.m */,
+			);
+			name = CertificateViewController;
+			sourceTree = "<group>";
+		};
 		F953D14044569FC0763B8522 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2548,7 +2196,6 @@
 				22C5C0221DF061CE00790EF6 /* Frameworks */,
 				22C5C0231DF061CE00790EF6 /* Resources */,
 				E116BB7A9C7D31E68A3995A3 /* [CP] Embed Pods Frameworks */,
-				154A673ABC2CC0D1C92E815B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2601,7 +2248,7 @@
 		22C5C01D1DF061CE00790EF6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = MobiusSoftware;
 				TargetAttributes = {
 					22C5C0241DF061CE00790EF6 = {
@@ -2613,7 +2260,7 @@
 								enabled = 0;
 							};
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -2679,34 +2326,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		154A673ABC2CC0D1C92E815B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iotbroker.cloud-client/Pods-iotbroker.cloud-client-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6FE743A07F0B9371DCB58E93 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iotbroker.cloud-client-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E116BB7A9C7D31E68A3995A3 /* [CP] Embed Pods Frameworks */ = {
@@ -2715,9 +2350,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iotbroker.cloud-client/Pods-iotbroker.cloud-client-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JSONModel/JSONModel.framework",
+				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2752,7 +2392,6 @@
 				22F3085B1EE6E285008AF92F /* IBAMQPErrorCode.m in Sources */,
 				222722181ED829930098D40F /* IBCoMessage.m in Sources */,
 				224BEFB31EEAA2920033961F /* IBAMQPSASLChallenge.m in Sources */,
-				2217D8E71EBB127500A636E7 /* IBSocketDecoder.m in Sources */,
 				224BEFC51EEABECF0033961F /* IBAMQPEnd.m in Sources */,
 				2217D9031EBB160700A636E7 /* Topic+CoreDataClass.m in Sources */,
 				22F3085E1EE6E285008AF92F /* IBAMQPReceiverSettleMode.m in Sources */,
@@ -2780,8 +2419,8 @@
 				2289A1C41EE830E8009B98AA /* IBAMQPReleased.m in Sources */,
 				221AE5D51EE99B12009C0A09 /* IBAMQPAttach.m in Sources */,
 				2217D9401EBB177F00A636E7 /* IBAlertViewController.m in Sources */,
-				22ED8B761EB0D745006A0C98 /* IBUDPSocket.m in Sources */,
 				2289A1D91EE848B2009B98AA /* IBAMQPBinaryID.m in Sources */,
+				BD80D7BE2213424F00C7D04E /* IBNetwork.m in Sources */,
 				22C531A81EAF90D2007F57A8 /* IBPingresp.m in Sources */,
 				2217D9431EBB177F00A636E7 /* IBLoadingViewController.m in Sources */,
 				2217D9391EBB177F00A636E7 /* IBAccountListViewController.m in Sources */,
@@ -2811,7 +2450,6 @@
 				22C5C02D1DF061CE00790EF6 /* AppDelegate.m in Sources */,
 				2289A1AF1EE7FAB1009B98AA /* IBAMQPTLVArray.m in Sources */,
 				224BEFCB1EEACBD30033961F /* IBAMQPBegin.m in Sources */,
-				2217D8E81EBB127500A636E7 /* IBSocketEncoder.m in Sources */,
 				2289A1D41EE8468F009B98AA /* IBAMQPSymbol.m in Sources */,
 				224BEFB91EEAA7450033961F /* IBAMQPSASLMechanisms.m in Sources */,
 				22F308611EE6E285008AF92F /* IBAMQPSectionCode.m in Sources */,
@@ -2837,7 +2475,6 @@
 				22F308791EE6FC99008AF92F /* IBAMQPTLVFixed.m in Sources */,
 				22C532151EAF9338007F57A8 /* IBSNPubrel.m in Sources */,
 				22F3085F1EE6E285008AF92F /* IBAMQPRoleCode.m in Sources */,
-				227E3E37210F60EA0028C899 /* IBDTLSSocket.m in Sources */,
 				22F308761EE6FB56008AF92F /* IBAMQPTLVNull.m in Sources */,
 				22C532171EAF9338007F57A8 /* IBSNRegister.m in Sources */,
 				2217D93E1EBB177F00A636E7 /* IBTopicsListTableViewController.m in Sources */,
@@ -2855,9 +2492,7 @@
 				22280FA21EDC46A300D56252 /* IBProtocolTypeTableViewCell.m in Sources */,
 				22C531AB1EAF90D2007F57A8 /* IBPubrec.m in Sources */,
 				22ED8B441EB092F9006A0C98 /* IBMQTTSN.m in Sources */,
-				227E3E33210F601B0028C899 /* IBDtls.m in Sources */,
 				22C532251EAF9338007F57A8 /* IBSNWillMsgReq.m in Sources */,
-				227E3DBB210F5DBF0028C899 /* P12FileExtractor.m in Sources */,
 				2289A1E91EE84E03009B98AA /* IBAMQPPing.m in Sources */,
 				22664DCC1EF9A1FA007E7438 /* IBAMQPTransferMap.m in Sources */,
 				22F308641EE6E285008AF92F /* IBAMQPTerminusDurability.m in Sources */,
@@ -2876,7 +2511,6 @@
 				2217D93B1EBB177F00A636E7 /* IBMessagesListTableViewController.m in Sources */,
 				22254039216765C300AAB455 /* IBStringUtils.m in Sources */,
 				22C532101EAF9338007F57A8 /* IBSNEncapsulated.m in Sources */,
-				2217D8E61EBB127500A636E7 /* IBSocketTransport.m in Sources */,
 				224BEFAF1EEA9F1F0033961F /* IBAMQPMessageHeader.m in Sources */,
 				22C5321F1EAF9338007F57A8 /* IBSNConnack.m in Sources */,
 				224BEF9A1EEA89050033961F /* IBAMQPFooter.m in Sources */,
@@ -2895,6 +2529,7 @@
 				2289A1EF1EE8520A009B98AA /* IBAMQPWrapper.m in Sources */,
 				22C728061EEAF78800D2F277 /* IBAMQPParser.m in Sources */,
 				22C5323C1EAF95A8007F57A8 /* IBSNFlags.m in Sources */,
+				BDE895FE2212019700D5EA28 /* IBCertificateViewController.m in Sources */,
 				22C5323E1EAF95A8007F57A8 /* IBSNIdentifierTopic.m in Sources */,
 				2289A1DC1EE849E8009B98AA /* IBAMQPLongID.m in Sources */,
 				2223803721133942003AAD9A /* IBWebsocket.m in Sources */,
@@ -2923,7 +2558,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				22C5C0461DF061CE00790EF6 /* iotbroker_cloud_clientTests.m in Sources */,
-				22DE14311EDFFFB300A9CDA7 /* iotbroker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2983,6 +2617,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -2990,6 +2625,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -3038,6 +2674,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -3045,6 +2682,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -3079,21 +2717,18 @@
 			baseConfigurationReference = A016733DB13CAF666DB499F0 /* Pods-iotbroker.cloud-client.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "iotbroker.cloud-client/iotbroker.cloud-client.entitlements";
 				DEVELOPMENT_TEAM = 53A7V2WPHY;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/OpenSSL-Universal\"",
-					"$(PROJECT_DIR)/include",
 				);
 				INFOPLIST_FILE = "iotbroker.cloud-client/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker.cloud.client";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3105,21 +2740,18 @@
 			baseConfigurationReference = 0589C7D167EA1F54ED0C102B /* Pods-iotbroker.cloud-client.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "iotbroker.cloud-client/iotbroker.cloud-client.entitlements";
 				DEVELOPMENT_TEAM = 53A7V2WPHY;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/OpenSSL-Universal\"",
-					"$(PROJECT_DIR)/include",
 				);
 				INFOPLIST_FILE = "iotbroker.cloud-client/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/include",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mobius-software.iotbroker.cloud.client";
 				PRODUCT_NAME = "$(TARGET_NAME)";

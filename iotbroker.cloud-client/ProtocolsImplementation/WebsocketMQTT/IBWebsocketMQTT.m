@@ -20,11 +20,9 @@
 
 #import "IBWebsocketMQTT.h"
 #import "IBParser.h"
-#import "IBSocketTransport.h"
 #import "IBTimersMap.h"
 #import "IBWebsocket.h"
 #import "IBMQJsonParser.h"
-#import "P12FileExtractor.h"
 
 @interface IBWebsocketMQTT () <IBInternetProtocolDelegate>
 
@@ -54,8 +52,10 @@
 #pragma mark - API's methods -
 
 - (void) secureWithCertificatePath : (NSString *) certificate withPassword : (NSString *) password {
+    self->_internetProtocol = [[IBWebsocket alloc] initWithHost:self->_internetProtocol.host andPort:self->_internetProtocol.port];
+    self->_internetProtocol.delegate = self;
     if (certificate.length > 0 && password.length > 0) {
-        [((IBWebsocket *)self->_internetProtocol) setCertificate:[P12FileExtractor certificateFromP12:certificate passphrase:password]];
+        //[((IBWebsocket *)self->_internetProtocol) setCertificate:[P12FileExtractor certificateFromP12:certificate passphrase:password]];
     }
 }
 
@@ -63,14 +63,11 @@
     [self->_internetProtocol start];
 }
 
-- (BOOL) sendMessage : (id<IBMessage>) message {
-    
+- (void) sendMessage : (id<IBMessage>) message {
     NSData *data = [IBMQJsonParser json:message];
     if (data != nil) {
         [self->_internetProtocol sendData:data];
-        return true;
     }
-    return false;
 }
 
 - (void)connectWithAccount:(Account *)account {
